@@ -20,8 +20,14 @@
 
 package org.granite.logging;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
+import org.hibernate.proxy.HibernateProxy;
 
 /**
  * @author Franck WOLFF
@@ -89,8 +95,27 @@ public class Log4jLogger extends Logger {
 
     @Override
     public void debug(String message, Object... args) {
-        if (isDebugEnabled())
-            getLoggerImpl().log(FQCN, Level.DEBUG, getFormatter().format(message, args), null);
+    	if (isDebugEnabled())
+        {
+    		List<Object> arguments = new ArrayList<Object>();
+    		Map<String, Object> lazyObject = null;
+        	for (Object object : args) {
+				if (object instanceof HibernateProxy && 
+						((HibernateProxy) object).getHibernateLazyInitializer().isUninitialized())
+				{
+					lazyObject = new HashMap<String, Object>();
+					lazyObject.put("id", ((HibernateProxy) object).getHibernateLazyInitializer().getIdentifier());
+					lazyObject.put("entityName", ((HibernateProxy) object).getHibernateLazyInitializer().getEntityName());
+					arguments.add(lazyObject);
+				}
+				else
+				{
+					arguments.add(object);
+				}
+			}
+        	getLoggerImpl().log(FQCN, Level.DEBUG, getFormatter().format(message, arguments), null);
+        	
+        }
     }
 
     @Override

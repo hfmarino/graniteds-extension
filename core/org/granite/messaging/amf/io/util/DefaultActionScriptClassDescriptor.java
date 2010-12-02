@@ -50,11 +50,11 @@ public class DefaultActionScriptClassDescriptor extends ActionScriptClassDescrip
                 // Try to find public getter/setter.
                 BeanInfo info = Introspector.getBeanInfo(clazz);
                 PropertyDescriptor[] props = info.getPropertyDescriptors();
-                Boolean found = false;
+                Boolean found = Boolean.FALSE;
                 for (PropertyDescriptor prop : props) {
                     if (name.equals(prop.getName()) && prop.getWriteMethod() != null && prop.getReadMethod() != null) {
                         properties.add(new MethodProperty(converters, name, prop.getWriteMethod(), prop.getReadMethod()));
-                        found = true;
+                        found = Boolean.TRUE;
                         return;
                     }
                 }
@@ -62,18 +62,20 @@ public class DefaultActionScriptClassDescriptor extends ActionScriptClassDescrip
                 {
                 	properties.add(new DummyProperty(converters, name));
                 }
-
-                // Try to find public field.
-                Field field = clazz.getField(name);
-                if (!Modifier.isStatic(field.getModifiers()) && !Modifier.isTransient(field.getModifiers()))
-                    properties.add(new FieldProperty(converters, field));
+                else
+                {
+                	// Try to find public field.
+                	Field field = clazz.getField(name);
+                	if (!Modifier.isStatic(field.getModifiers()) && !Modifier.isTransient(field.getModifiers()))
+                		properties.add(new FieldProperty(converters, field));
+                }
 
             }
             catch (NoSuchFieldException e) {
                 if ("uid".equals(name)) // ObjectProxy specific property...
                     properties.add(new UIDProperty(converters));
-//                else
-//                	throw new RuntimeException(e);
+                else
+                	throw new RuntimeException(e);
             }
             catch (Exception e) {
                 throw new RuntimeException(e);
