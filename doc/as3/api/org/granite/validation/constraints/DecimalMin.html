@@ -1,0 +1,470 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="DecimalMin,org.granite.validation.constraints.DecimalMin,DEFAULT_MESSAGE,value,initialize,validate" name="keywords">
+<title>org.granite.validation.constraints.DecimalMin</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'DecimalMin - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/granite/validation/constraints/DecimalMin.html&amp;org/granite/validation/constraints/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;DecimalMin</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class DecimalMin"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.validation.constraints</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class DecimalMin</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">DecimalMin <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> <a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+</table>
+<p></p>
+  The ActionsScript3 implementation of the
+  <code>javax.validation.constraints.DecimalMin</code> annotation
+  validator.<p />
+  
+  The annotated element must be a number whose value must be higher or
+  equal to the specified minimum.<p />
+  
+  Accepted arguments are:
+  <ul>
+  <li>message (optional): used to create the error message (override the
+    default message).</li>
+  <li>groups (optional): a comma separated list of fully qualified interface names that
+    specifies the processing groups with which the constraint declaration is associated.</li>
+  <li>payload (optional): a comma separated list of <code>String</code> that specifies the
+    payloads with which the constraint declaration is associated (unlike the Java
+    implementation, payloads are arbitrary <code>String</code>s and does not represent
+    necessarily existing class names).</li>
+  <li>value (<b>required</b>): the minimum accepted value.</li>
+  </ul>
+  
+  Supported types are:
+  <ul>
+  <li><code>org.granite.math.BigDecimal</code></li>
+  <li><code>org.granite.math.BigInteger</code></li>
+  <li><code>org.granite.math.Long</code></li>
+  <li><code>Number</code> (with possible rounding issues)</li>
+  <li><code>int</code></li>
+  <li><code>uint</code></li>
+  <li><code>String</code></li>
+  </ul>
+  
+  <code>null</code> elements are considered valid.<p />
+  
+  Example:<p />
+  <div class='listing'><pre>
+  [DecimalMin(message="{my.custom.message}", groups="path.to.MyGroup1, path.to.MyGroup2", value="123.5")]
+  public function get property():BigDecimal {
+      ...
+  }</pre></div>
+  
+  General notes on escaping:
+  <ul>
+  <li>Double quotes: all double quotes (<code>"</code>) in argument values <b>must</b> be escaped
+    by using the XML entity (<code>&amp;quot;</code>).</li>
+  <li>Ampersand: all ampersands (<code>&amp;</code>) in argument values should be escaped by
+    using the XML entity (<code>&amp;amp;</code>).</li>
+  <li>Less and greater than: all "less than" (<code>&lt;</code>) characters in argument values
+    <b>must</b> be escaped by using the XML entity (<code>&amp;lt;</code>). All "greater than"
+    (<code>&gt;</code>) characters in argument values should be escaped by using the XML entity
+    (<code>&amp;gt;</code>)</li>
+  <li>White spaces: since all argument values are trimed, you may use the pseudo XML entity
+    (<code>&amp;space;</code>) in order to keep leading or trailing white spaces in literals.</li>
+  <li>Comma: arguments specified as comma separated String lists (such as <code>groups</code>)
+    may use the pseudo XML entity (<code>&amp;comma;</code>) in order to keep comma characters
+    in literals.</li>
+  </ul>
+    <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#factory">factory</a> : <a href="../../validation/ValidatorFactory.html">ValidatorFactory</a>
+<div class="summaryTableDescription">
+   
+   The <code>ValidatorFactory</code> passed to the <code>initialized</code>
+   function.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#groups">groups</a> : Array<div class="summaryTableDescription">
+   
+   The processing groups with which this constraint is associated as
+   an array of <code>Class</code>.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#message">message</a> : String<div class="summaryTableDescription">
+   
+   The error message associated with this constraint.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#payload">payload</a> : Array<div class="summaryTableDescription">
+   
+   The payload with which this constraint is associated as
+   an array of <code>String</code>.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#properties">properties</a> : Array<div class="summaryTableDescription">
+   
+   The properties with which this constraint is associated as
+   an array of <code>String</code> (only for class-level constraints that
+   deal with one or more properties, in order to figure out where error
+   messages should be displayed when this constraint fails).</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#value">value</a> : <a href="../../math/BigDecimal.html">BigDecimal</a>
+<div class="summaryTableDescription">[read-only]
+   The minimum value as specified in the annotation arguments.</div>
+</td><td class="summaryTableOwnerCol">DecimalMin</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#_factory">_factory</a> : <a href="../../validation/ValidatorFactory.html">ValidatorFactory</a>
+<div class="summaryTableDescription">
+   Direct access (protected) to the <code>ValidatorFactory</code>
+   instance passed to the initialized function.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#_groups">_groups</a> : Array<div class="summaryTableDescription">
+   Direct access (protected) to the groups defined for this
+   constraint.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#_message">_message</a> : String<div class="summaryTableDescription">
+   Direct access (protected) to the message key defined for this
+   constraint.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#_payload">_payload</a> : Array<div class="summaryTableDescription">
+   Direct access (protected) to the payload defined for this
+   constraint.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#_properties">_properties</a> : Array<div class="summaryTableDescription">
+   Direct access (protected) to the properties defined for this
+   constraint.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initialize()">initialize</a>(annotation:<a href="../../reflect/Annotation.html">Annotation</a>, factory:<a href="../ValidatorFactory.html">ValidatorFactory</a>):void</div>
+<div class="summaryTableDescription">
+   
+   
+   Initialize this constraint, according to the supplied annotation
+   parameters.</div>
+</td><td class="summaryTableOwnerCol">DecimalMin</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#validate()">validate</a>(value:*):String</div>
+<div class="summaryTableDescription">
+   
+   
+   Validate the <code>value</code> parameter, according to this
+   constraint specification.</div>
+</td><td class="summaryTableOwnerCol">DecimalMin</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable hideInheritedProtectedMethod" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../BaseConstraint.html#createMessageParameter()">createMessageParameter</a>(message:String):<a href="../helper/ParameterDefinition.html">ParameterDefinition</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Creates a definition of the standard <code>message</code> annotation
+   argument with the supplied string.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../BaseConstraint.html#internalInitialize()">internalInitialize</a>(factory:<a href="../../validation/ValidatorFactory.html">ValidatorFactory</a>, annotation:<a href="../../reflect/Annotation.html">Annotation</a>, defaultMessage:String, parameterDefinitions:Array = null):Dictionary</div>
+<div class="summaryTableDescription">
+   Parse constraint parameters according to the annotation arguments,
+   initialize the message, groups and payload properties and return a
+   <code>Dictionary</code> that contains all parsed values.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#DEFAULT_MESSAGE">DEFAULT_MESSAGE</a> : String = "{javax.validation.constraints.DecimalMin.message}"<div class="summaryTableDescription">[static]
+   The default message key of this constraint.</div>
+</td><td class="summaryTableOwnerCol">DecimalMin</td>
+</tr>
+</table>
+</div>
+<a name="protectedConstantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Constants</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedConstant" id="hideInheritedProtectedConstant">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedConstant');" href="#protectedConstantSummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Constants</a>
+</div>
+<div class="showInheritedProtectedConstant" id="showInheritedProtectedConstant">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedConstant');" href="#protectedConstantSummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Constants</a>
+</div>
+</div>
+<table id="summaryTableProtectedConstant" class="summaryTable hideInheritedProtectedConstant" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#BOOLEAN_TYPES">BOOLEAN_TYPES</a> : Array<div class="summaryTableDescription">[static]
+   An array of boolean types: <code>[Boolean]</code> (used when checking
+   the value type of a constraint annotation argument).</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#DATE_TYPES">DATE_TYPES</a> : Array<div class="summaryTableDescription">[static]
+   An array of date types: <code>[Date]</code> (used when checking
+   the value type of a constraint annotation argument).</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#GROUPS_PARAMETER">GROUPS_PARAMETER</a> : <a href="../helper/ParameterDefinition.html">ParameterDefinition</a>
+<div class="summaryTableDescription">[static]
+   The definition of the standard <code>groups</code> constraint annotation
+   argument, as an optional array of <code>Class</code> names.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#NUMBER_STRING_TYPES">NUMBER_STRING_TYPES</a> : Array<div class="summaryTableDescription">[static]
+   An array of numeric or string types:
+   <code>[BigDecimal, BigInteger, Long, Number, int, uint String]</code>
+   (used when checking the value type of a constraint annotation argument).</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#PAYLOAD_PARAMETER">PAYLOAD_PARAMETER</a> : <a href="../helper/ParameterDefinition.html">ParameterDefinition</a>
+<div class="summaryTableDescription">[static]
+   The definition of the standard <code>payload</code> constraint annotation
+   argument, as an optional array of <code>String</code>s.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#PROPERTIES_PARAMETER">PROPERTIES_PARAMETER</a> : <a href="../helper/ParameterDefinition.html">ParameterDefinition</a>
+<div class="summaryTableDescription">[static]
+   The definition of the standard <code>properties</code> constraint annotation
+   argument, as an optional array of <code>String</code>s.</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+<tr class="hideInheritedProtectedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../BaseConstraint.html#STRING_TYPES">STRING_TYPES</a> : Array<div class="summaryTableDescription">[static]
+   An array of string types: <code>[String]</code> (used when checking
+   the value type of a constraint annotation argument).</div>
+</td><td class="summaryTableOwnerCol"><a href="../BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="value"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">value</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>value:<a href="../../math/BigDecimal.html">BigDecimal</a></code>&nbsp;&nbsp;[read-only]<p>
+   The minimum value as specified in the annotation arguments.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get value():<a href="../../math/BigDecimal.html">BigDecimal</a></code>
+<br>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="initialize()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initialize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function initialize(annotation:<a href="../../reflect/Annotation.html">Annotation</a>, factory:<a href="../ValidatorFactory.html">ValidatorFactory</a>):void</code><p>
+   
+   
+   Initialize this constraint, according to the supplied annotation
+   parameters.
+   <br>
+   <br>
+   <i>The <code>org.granite.validation.BaseConstraint</code>
+   implementation of this method throws an <code>Error</code>
+   and must be overridden in inherited classes.</i>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">annotation</span>:<a href="../../reflect/Annotation.html">Annotation</a></code> &mdash; the anntotation defining this constraint.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">factory</span>:<a href="../ValidatorFactory.html">ValidatorFactory</a></code></td>
+</tr>
+</table>
+</div>
+<a name="validate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">validate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function validate(value:*):String</code><p>
+   
+   
+   Validate the <code>value</code> parameter, according to this
+   constraint specification.
+   <br>
+   <br>
+   <i>The <code>org.granite.validation.BaseConstraint</code>
+   implementation of this method throws an <code>Error</code>
+   and must be overridden in inherited classes.</i>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> &mdash; the value to be validated.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; <code>null</code> if the supplied value is valid, an error
+     message key otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="DEFAULT_MESSAGE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DEFAULT_MESSAGE</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const DEFAULT_MESSAGE:String = "{javax.validation.constraints.DecimalMin.message}"</code><p>
+   The default message key of this constraint. 
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

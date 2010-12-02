@@ -1,0 +1,643 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    package org.granite.util;<a name="line.1"></a>
+<FONT color="green">002</FONT>    <a name="line.2"></a>
+<FONT color="green">003</FONT>    import java.util.Arrays;<a name="line.3"></a>
+<FONT color="green">004</FONT>    <a name="line.4"></a>
+<FONT color="green">005</FONT>    /** A very fast and memory efficient class to encode and decode to and from BASE64 in full accordance<a name="line.5"></a>
+<FONT color="green">006</FONT>     * with RFC 2045.&lt;br&gt;&lt;br&gt;<a name="line.6"></a>
+<FONT color="green">007</FONT>     * On Windows XP sp1 with 1.4.2_04 and later ;), this encoder and decoder is about 10 times faster<a name="line.7"></a>
+<FONT color="green">008</FONT>     * on small arrays (10 - 1000 bytes) and 2-3 times as fast on larger arrays (10000 - 1000000 bytes)<a name="line.8"></a>
+<FONT color="green">009</FONT>     * compared to &lt;code&gt;sun.misc.Encoder()/Decoder()&lt;/code&gt;.&lt;br&gt;&lt;br&gt;<a name="line.9"></a>
+<FONT color="green">010</FONT>     *<a name="line.10"></a>
+<FONT color="green">011</FONT>     * On byte arrays the encoder is about 20% faster than Jakarta Commons Base64 Codec for encode and<a name="line.11"></a>
+<FONT color="green">012</FONT>     * about 50% faster for decoding large arrays. This implementation is about twice as fast on very small<a name="line.12"></a>
+<FONT color="green">013</FONT>     * arrays (&amp;lt 30 bytes). If source/destination is a &lt;code&gt;String&lt;/code&gt; this<a name="line.13"></a>
+<FONT color="green">014</FONT>     * version is about three times as fast due to the fact that the Commons Codec result has to be recoded<a name="line.14"></a>
+<FONT color="green">015</FONT>     * to a &lt;code&gt;String&lt;/code&gt; from &lt;code&gt;byte[]&lt;/code&gt;, which is very expensive.&lt;br&gt;&lt;br&gt;<a name="line.15"></a>
+<FONT color="green">016</FONT>     *<a name="line.16"></a>
+<FONT color="green">017</FONT>     * This encode/decode algorithm doesn't create any temporary arrays as many other codecs do, it only<a name="line.17"></a>
+<FONT color="green">018</FONT>     * allocates the resulting array. This produces less garbage and it is possible to handle arrays twice<a name="line.18"></a>
+<FONT color="green">019</FONT>     * as large as algorithms that create a temporary array. (E.g. Jakarta Commons Codec). It is unknown<a name="line.19"></a>
+<FONT color="green">020</FONT>     * whether Sun's &lt;code&gt;sun.misc.Encoder()/Decoder()&lt;/code&gt; produce temporary arrays but since performance<a name="line.20"></a>
+<FONT color="green">021</FONT>     * is quite low it probably does.&lt;br&gt;&lt;br&gt;<a name="line.21"></a>
+<FONT color="green">022</FONT>     *<a name="line.22"></a>
+<FONT color="green">023</FONT>     * The encoder produces the same output as the Sun one except that the Sun's encoder appends<a name="line.23"></a>
+<FONT color="green">024</FONT>     * a trailing line separator if the last character isn't a pad. Unclear why but it only adds to the<a name="line.24"></a>
+<FONT color="green">025</FONT>     * length and is probably a side effect. Both are in conformance with RFC 2045 though.&lt;br&gt;<a name="line.25"></a>
+<FONT color="green">026</FONT>     * Commons codec seem to always att a trailing line separator.&lt;br&gt;&lt;br&gt;<a name="line.26"></a>
+<FONT color="green">027</FONT>     *<a name="line.27"></a>
+<FONT color="green">028</FONT>     * &lt;b&gt;Note!&lt;/b&gt;<a name="line.28"></a>
+<FONT color="green">029</FONT>     * The encode/decode method pairs (types) come in three versions with the &lt;b&gt;exact&lt;/b&gt; same algorithm and<a name="line.29"></a>
+<FONT color="green">030</FONT>     * thus a lot of code redundancy. This is to not create any temporary arrays for transcoding to/from different<a name="line.30"></a>
+<FONT color="green">031</FONT>     * format types. The methods not used can simply be commented out.&lt;br&gt;&lt;br&gt;<a name="line.31"></a>
+<FONT color="green">032</FONT>     *<a name="line.32"></a>
+<FONT color="green">033</FONT>     * There is also a "fast" version of all decode methods that works the same way as the normal ones, but<a name="line.33"></a>
+<FONT color="green">034</FONT>     * har a few demands on the decoded input. Normally though, these fast verions should be used if the source if<a name="line.34"></a>
+<FONT color="green">035</FONT>     * the input is known and it hasn't bee tampered with.&lt;br&gt;&lt;br&gt;<a name="line.35"></a>
+<FONT color="green">036</FONT>     *<a name="line.36"></a>
+<FONT color="green">037</FONT>     * If you find the code useful or you find a bug, please send me a note at base64 @ miginfocom . com.<a name="line.37"></a>
+<FONT color="green">038</FONT>     *<a name="line.38"></a>
+<FONT color="green">039</FONT>     * Licence (BSD):<a name="line.39"></a>
+<FONT color="green">040</FONT>     * ==============<a name="line.40"></a>
+<FONT color="green">041</FONT>     *<a name="line.41"></a>
+<FONT color="green">042</FONT>     * Copyright (c) 2004, Mikael Grev, MiG InfoCom AB. (base64 @ miginfocom . com)<a name="line.42"></a>
+<FONT color="green">043</FONT>     * All rights reserved.<a name="line.43"></a>
+<FONT color="green">044</FONT>     *<a name="line.44"></a>
+<FONT color="green">045</FONT>     * Redistribution and use in source and binary forms, with or without modification,<a name="line.45"></a>
+<FONT color="green">046</FONT>     * are permitted provided that the following conditions are met:<a name="line.46"></a>
+<FONT color="green">047</FONT>     * Redistributions of source code must retain the above copyright notice, this list<a name="line.47"></a>
+<FONT color="green">048</FONT>     * of conditions and the following disclaimer.<a name="line.48"></a>
+<FONT color="green">049</FONT>     * Redistributions in binary form must reproduce the above copyright notice, this<a name="line.49"></a>
+<FONT color="green">050</FONT>     * list of conditions and the following disclaimer in the documentation and/or other<a name="line.50"></a>
+<FONT color="green">051</FONT>     * materials provided with the distribution.<a name="line.51"></a>
+<FONT color="green">052</FONT>     * Neither the name of the MiG InfoCom AB nor the names of its contributors may be<a name="line.52"></a>
+<FONT color="green">053</FONT>     * used to endorse or promote products derived from this software without specific<a name="line.53"></a>
+<FONT color="green">054</FONT>     * prior written permission.<a name="line.54"></a>
+<FONT color="green">055</FONT>     *<a name="line.55"></a>
+<FONT color="green">056</FONT>     * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND<a name="line.56"></a>
+<FONT color="green">057</FONT>     * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED<a name="line.57"></a>
+<FONT color="green">058</FONT>     * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.<a name="line.58"></a>
+<FONT color="green">059</FONT>     * IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,<a name="line.59"></a>
+<FONT color="green">060</FONT>     * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,<a name="line.60"></a>
+<FONT color="green">061</FONT>     * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,<a name="line.61"></a>
+<FONT color="green">062</FONT>     * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,<a name="line.62"></a>
+<FONT color="green">063</FONT>     * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)<a name="line.63"></a>
+<FONT color="green">064</FONT>     * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY<a name="line.64"></a>
+<FONT color="green">065</FONT>     * OF SUCH DAMAGE.<a name="line.65"></a>
+<FONT color="green">066</FONT>     *<a name="line.66"></a>
+<FONT color="green">067</FONT>     * @version 2.2<a name="line.67"></a>
+<FONT color="green">068</FONT>     * @author Mikael Grev<a name="line.68"></a>
+<FONT color="green">069</FONT>     *         Date: 2004-aug-02<a name="line.69"></a>
+<FONT color="green">070</FONT>     *         Time: 11:31:11<a name="line.70"></a>
+<FONT color="green">071</FONT>     */<a name="line.71"></a>
+<FONT color="green">072</FONT>    <a name="line.72"></a>
+<FONT color="green">073</FONT>    public class Base64<a name="line.73"></a>
+<FONT color="green">074</FONT>    {<a name="line.74"></a>
+<FONT color="green">075</FONT>        private static final char[] CA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();<a name="line.75"></a>
+<FONT color="green">076</FONT>        private static final int[] IA = new int[256];<a name="line.76"></a>
+<FONT color="green">077</FONT>        static {<a name="line.77"></a>
+<FONT color="green">078</FONT>            Arrays.fill(IA, -1);<a name="line.78"></a>
+<FONT color="green">079</FONT>            for (int i = 0, iS = CA.length; i &lt; iS; i++)<a name="line.79"></a>
+<FONT color="green">080</FONT>                IA[CA[i]] = i;<a name="line.80"></a>
+<FONT color="green">081</FONT>            IA['='] = 0;<a name="line.81"></a>
+<FONT color="green">082</FONT>        }<a name="line.82"></a>
+<FONT color="green">083</FONT>    <a name="line.83"></a>
+<FONT color="green">084</FONT>        // ****************************************************************************************<a name="line.84"></a>
+<FONT color="green">085</FONT>        // *  char[] version<a name="line.85"></a>
+<FONT color="green">086</FONT>        // ****************************************************************************************<a name="line.86"></a>
+<FONT color="green">087</FONT>    <a name="line.87"></a>
+<FONT color="green">088</FONT>        /** Encodes a raw byte array into a BASE64 &lt;code&gt;char[]&lt;/code&gt; representation i accordance with RFC 2045.<a name="line.88"></a>
+<FONT color="green">089</FONT>         * @param sArr The bytes to convert. If &lt;code&gt;null&lt;/code&gt; or length 0 an empty array will be returned.<a name="line.89"></a>
+<FONT color="green">090</FONT>         * @param lineSep Optional "\r\n" after 76 characters, unless end of file.&lt;br&gt;<a name="line.90"></a>
+<FONT color="green">091</FONT>         * No line separator will be in breach of RFC 2045 which specifies max 76 per line but will be a<a name="line.91"></a>
+<FONT color="green">092</FONT>         * little faster.<a name="line.92"></a>
+<FONT color="green">093</FONT>         * @return A BASE64 encoded array. Never &lt;code&gt;null&lt;/code&gt;.<a name="line.93"></a>
+<FONT color="green">094</FONT>         */<a name="line.94"></a>
+<FONT color="green">095</FONT>        public final static char[] encodeToChar(byte[] sArr, boolean lineSep)<a name="line.95"></a>
+<FONT color="green">096</FONT>        {<a name="line.96"></a>
+<FONT color="green">097</FONT>            // Check special case<a name="line.97"></a>
+<FONT color="green">098</FONT>            if (sArr == null || sArr.length == 0)<a name="line.98"></a>
+<FONT color="green">099</FONT>                return new char[0];<a name="line.99"></a>
+<FONT color="green">100</FONT>    <a name="line.100"></a>
+<FONT color="green">101</FONT>            int sLen = sArr.length;<a name="line.101"></a>
+<FONT color="green">102</FONT>            int eLen = (sLen / 3) * 3;              // Length of even 24-bits.<a name="line.102"></a>
+<FONT color="green">103</FONT>            int cCnt = ((sLen - 1) / 3 + 1) &lt;&lt; 2;   // Returned character count<a name="line.103"></a>
+<FONT color="green">104</FONT>            int dLen = cCnt + (lineSep ? (cCnt - 1) / 76 &lt;&lt; 1 : 0); // Length of returned array<a name="line.104"></a>
+<FONT color="green">105</FONT>            char[] dArr = new char[dLen];<a name="line.105"></a>
+<FONT color="green">106</FONT>    <a name="line.106"></a>
+<FONT color="green">107</FONT>            // Encode even 24-bits<a name="line.107"></a>
+<FONT color="green">108</FONT>            for (int s = 0, d = 0, cc = 0; s &lt; eLen;) {<a name="line.108"></a>
+<FONT color="green">109</FONT>                // Copy next three bytes into lower 24 bits of int, paying attension to sign.<a name="line.109"></a>
+<FONT color="green">110</FONT>                int i = (sArr[s++] &amp; 0xff) &lt;&lt; 16 | (sArr[s++] &amp; 0xff) &lt;&lt; 8 | (sArr[s++] &amp; 0xff);<a name="line.110"></a>
+<FONT color="green">111</FONT>    <a name="line.111"></a>
+<FONT color="green">112</FONT>                // Encode the int into four chars<a name="line.112"></a>
+<FONT color="green">113</FONT>                dArr[d++] = CA[(i &gt;&gt;&gt; 18) &amp; 0x3f];<a name="line.113"></a>
+<FONT color="green">114</FONT>                dArr[d++] = CA[(i &gt;&gt;&gt; 12) &amp; 0x3f];<a name="line.114"></a>
+<FONT color="green">115</FONT>                dArr[d++] = CA[(i &gt;&gt;&gt; 6) &amp; 0x3f];<a name="line.115"></a>
+<FONT color="green">116</FONT>                dArr[d++] = CA[i &amp; 0x3f];<a name="line.116"></a>
+<FONT color="green">117</FONT>    <a name="line.117"></a>
+<FONT color="green">118</FONT>                // Add optional line separator<a name="line.118"></a>
+<FONT color="green">119</FONT>                if (lineSep &amp;&amp; ++cc == 19 &amp;&amp; d &lt; dLen - 2) {<a name="line.119"></a>
+<FONT color="green">120</FONT>                    dArr[d++] = '\r';<a name="line.120"></a>
+<FONT color="green">121</FONT>                    dArr[d++] = '\n';<a name="line.121"></a>
+<FONT color="green">122</FONT>                    cc = 0;<a name="line.122"></a>
+<FONT color="green">123</FONT>                }<a name="line.123"></a>
+<FONT color="green">124</FONT>            }<a name="line.124"></a>
+<FONT color="green">125</FONT>    <a name="line.125"></a>
+<FONT color="green">126</FONT>            // Pad and encode last bits if source isn't even 24 bits.<a name="line.126"></a>
+<FONT color="green">127</FONT>            int left = sLen - eLen; // 0 - 2.<a name="line.127"></a>
+<FONT color="green">128</FONT>            if (left &gt; 0) {<a name="line.128"></a>
+<FONT color="green">129</FONT>                // Prepare the int<a name="line.129"></a>
+<FONT color="green">130</FONT>                int i = ((sArr[eLen] &amp; 0xff) &lt;&lt; 10) | (left == 2 ? ((sArr[sLen - 1] &amp; 0xff) &lt;&lt; 2) : 0);<a name="line.130"></a>
+<FONT color="green">131</FONT>    <a name="line.131"></a>
+<FONT color="green">132</FONT>                // Set last four chars<a name="line.132"></a>
+<FONT color="green">133</FONT>                dArr[dLen - 4] = CA[i &gt;&gt; 12];<a name="line.133"></a>
+<FONT color="green">134</FONT>                dArr[dLen - 3] = CA[(i &gt;&gt;&gt; 6) &amp; 0x3f];<a name="line.134"></a>
+<FONT color="green">135</FONT>                dArr[dLen - 2] = left == 2 ? CA[i &amp; 0x3f] : '=';<a name="line.135"></a>
+<FONT color="green">136</FONT>                dArr[dLen - 1] = '=';<a name="line.136"></a>
+<FONT color="green">137</FONT>            }<a name="line.137"></a>
+<FONT color="green">138</FONT>            return dArr;<a name="line.138"></a>
+<FONT color="green">139</FONT>        }<a name="line.139"></a>
+<FONT color="green">140</FONT>    <a name="line.140"></a>
+<FONT color="green">141</FONT>        /** Decodes a BASE64 encoded char array. All illegal characters will be ignored and can handle both arrays with<a name="line.141"></a>
+<FONT color="green">142</FONT>         * and without line separators.<a name="line.142"></a>
+<FONT color="green">143</FONT>         * @param sArr The source array. &lt;code&gt;null&lt;/code&gt; or length 0 will return an empty array.<a name="line.143"></a>
+<FONT color="green">144</FONT>         * @return The decoded array of bytes. May be of length 0. Will be &lt;code&gt;null&lt;/code&gt; if the legal characters<a name="line.144"></a>
+<FONT color="green">145</FONT>         * (including '=') isn't divideable by 4.  (I.e. definitely corrupted).<a name="line.145"></a>
+<FONT color="green">146</FONT>         */<a name="line.146"></a>
+<FONT color="green">147</FONT>        public final static byte[] decode(char[] sArr)<a name="line.147"></a>
+<FONT color="green">148</FONT>        {<a name="line.148"></a>
+<FONT color="green">149</FONT>            // Check special case<a name="line.149"></a>
+<FONT color="green">150</FONT>            if (sArr == null || sArr.length == 0)<a name="line.150"></a>
+<FONT color="green">151</FONT>                return new byte[0];<a name="line.151"></a>
+<FONT color="green">152</FONT>    <a name="line.152"></a>
+<FONT color="green">153</FONT>            int sLen = sArr.length;<a name="line.153"></a>
+<FONT color="green">154</FONT>    <a name="line.154"></a>
+<FONT color="green">155</FONT>            // Count illegal characters (including '\r', '\n') to know what size the returned array will be,<a name="line.155"></a>
+<FONT color="green">156</FONT>            // so we don't have to reallocate &amp; copy it later.<a name="line.156"></a>
+<FONT color="green">157</FONT>            int sepCnt = 0; // Number of separator characters. (Actually illegal characters, but that's a bonus...)<a name="line.157"></a>
+<FONT color="green">158</FONT>            for (int i = 0; i &lt; sLen; i++)  // If input is "pure" (I.e. no line separators or illegal chars) base64 this loop can be commented out.<a name="line.158"></a>
+<FONT color="green">159</FONT>                if (IA[sArr[i]] &lt; 0)<a name="line.159"></a>
+<FONT color="green">160</FONT>                    sepCnt++;<a name="line.160"></a>
+<FONT color="green">161</FONT>    <a name="line.161"></a>
+<FONT color="green">162</FONT>            // Check so that legal chars (including '=') are evenly divideable by 4 as specified in RFC 2045.<a name="line.162"></a>
+<FONT color="green">163</FONT>            if ((sLen - sepCnt) % 4 != 0)<a name="line.163"></a>
+<FONT color="green">164</FONT>                return null;<a name="line.164"></a>
+<FONT color="green">165</FONT>    <a name="line.165"></a>
+<FONT color="green">166</FONT>            int pad = 0;<a name="line.166"></a>
+<FONT color="green">167</FONT>            for (int i = sLen; i &gt; 1 &amp;&amp; IA[sArr[--i]] &lt;= 0;)<a name="line.167"></a>
+<FONT color="green">168</FONT>                if (sArr[i] == '=')<a name="line.168"></a>
+<FONT color="green">169</FONT>                    pad++;<a name="line.169"></a>
+<FONT color="green">170</FONT>    <a name="line.170"></a>
+<FONT color="green">171</FONT>            int len = ((sLen - sepCnt) * 6 &gt;&gt; 3) - pad;<a name="line.171"></a>
+<FONT color="green">172</FONT>    <a name="line.172"></a>
+<FONT color="green">173</FONT>            byte[] dArr = new byte[len];       // Preallocate byte[] of exact length<a name="line.173"></a>
+<FONT color="green">174</FONT>    <a name="line.174"></a>
+<FONT color="green">175</FONT>            for (int s = 0, d = 0; d &lt; len;) {<a name="line.175"></a>
+<FONT color="green">176</FONT>                // Assemble three bytes into an int from four "valid" characters.<a name="line.176"></a>
+<FONT color="green">177</FONT>                int i = 0;<a name="line.177"></a>
+<FONT color="green">178</FONT>                for (int j = 0; j &lt; 4; j++) {   // j only increased if a valid char was found.<a name="line.178"></a>
+<FONT color="green">179</FONT>                    int c = IA[sArr[s++]];<a name="line.179"></a>
+<FONT color="green">180</FONT>                    if (c &gt;= 0)<a name="line.180"></a>
+<FONT color="green">181</FONT>                        i |= c &lt;&lt; (18 - j * 6);<a name="line.181"></a>
+<FONT color="green">182</FONT>                    else<a name="line.182"></a>
+<FONT color="green">183</FONT>                        j--;<a name="line.183"></a>
+<FONT color="green">184</FONT>                }<a name="line.184"></a>
+<FONT color="green">185</FONT>                // Add the bytes<a name="line.185"></a>
+<FONT color="green">186</FONT>                dArr[d++] = (byte) (i &gt;&gt; 16);<a name="line.186"></a>
+<FONT color="green">187</FONT>                if (d &lt; len) {<a name="line.187"></a>
+<FONT color="green">188</FONT>                    dArr[d++]= (byte) (i &gt;&gt; 8);<a name="line.188"></a>
+<FONT color="green">189</FONT>                    if (d &lt; len)<a name="line.189"></a>
+<FONT color="green">190</FONT>                        dArr[d++] = (byte) i;<a name="line.190"></a>
+<FONT color="green">191</FONT>                }<a name="line.191"></a>
+<FONT color="green">192</FONT>            }<a name="line.192"></a>
+<FONT color="green">193</FONT>            return dArr;<a name="line.193"></a>
+<FONT color="green">194</FONT>        }<a name="line.194"></a>
+<FONT color="green">195</FONT>    <a name="line.195"></a>
+<FONT color="green">196</FONT>        /** Decodes a BASE64 encoded char array that is known to be resonably well formatted. The method is about twice as<a name="line.196"></a>
+<FONT color="green">197</FONT>         * fast as {@link #decode(char[])}. The preconditions are:&lt;br&gt;<a name="line.197"></a>
+<FONT color="green">198</FONT>         * + The array must have a line length of 76 chars OR no line separators at all (one line).&lt;br&gt;<a name="line.198"></a>
+<FONT color="green">199</FONT>         * + Line separator must be "\r\n", as specified in RFC 2045<a name="line.199"></a>
+<FONT color="green">200</FONT>         * + The array must not contain illegal characters within the encoded string&lt;br&gt;<a name="line.200"></a>
+<FONT color="green">201</FONT>         * + The array CAN have illegal characters at the beginning and end, those will be dealt with appropriately.&lt;br&gt;<a name="line.201"></a>
+<FONT color="green">202</FONT>         * @param sArr The source array. Length 0 will return an empty array. &lt;code&gt;null&lt;/code&gt; will throw an exception.<a name="line.202"></a>
+<FONT color="green">203</FONT>         * @return The decoded array of bytes. May be of length 0.<a name="line.203"></a>
+<FONT color="green">204</FONT>         */<a name="line.204"></a>
+<FONT color="green">205</FONT>        public final static byte[] decodeFast(char[] sArr)<a name="line.205"></a>
+<FONT color="green">206</FONT>        {<a name="line.206"></a>
+<FONT color="green">207</FONT>            // Check special case<a name="line.207"></a>
+<FONT color="green">208</FONT>            int sLen = sArr.length;<a name="line.208"></a>
+<FONT color="green">209</FONT>            if (sLen == 0)<a name="line.209"></a>
+<FONT color="green">210</FONT>                return new byte[0];<a name="line.210"></a>
+<FONT color="green">211</FONT>    <a name="line.211"></a>
+<FONT color="green">212</FONT>            int sIx = 0, eIx = sLen - 1;    // Start and end index after trimming.<a name="line.212"></a>
+<FONT color="green">213</FONT>    <a name="line.213"></a>
+<FONT color="green">214</FONT>            // Trim illegal chars from start<a name="line.214"></a>
+<FONT color="green">215</FONT>            while (sIx &lt; eIx &amp;&amp; IA[sArr[sIx]] &lt; 0)<a name="line.215"></a>
+<FONT color="green">216</FONT>                sIx++;<a name="line.216"></a>
+<FONT color="green">217</FONT>    <a name="line.217"></a>
+<FONT color="green">218</FONT>            // Trim illegal chars from end<a name="line.218"></a>
+<FONT color="green">219</FONT>            while (eIx &gt; 0 &amp;&amp; IA[sArr[eIx]] &lt; 0)<a name="line.219"></a>
+<FONT color="green">220</FONT>                eIx--;<a name="line.220"></a>
+<FONT color="green">221</FONT>    <a name="line.221"></a>
+<FONT color="green">222</FONT>            // get the padding count (=) (0, 1 or 2)<a name="line.222"></a>
+<FONT color="green">223</FONT>            int pad = sArr[eIx] == '=' ? (sArr[eIx - 1] == '=' ? 2 : 1) : 0;  // Count '=' at end.<a name="line.223"></a>
+<FONT color="green">224</FONT>            int cCnt = eIx - sIx + 1;   // Content count including possible separators<a name="line.224"></a>
+<FONT color="green">225</FONT>            int sepCnt = sLen &gt; 76 ? (sArr[76] == '\r' ? cCnt / 78 : 0) &lt;&lt; 1 : 0;<a name="line.225"></a>
+<FONT color="green">226</FONT>    <a name="line.226"></a>
+<FONT color="green">227</FONT>            int len = ((cCnt - sepCnt) * 6 &gt;&gt; 3) - pad; // The number of decoded bytes<a name="line.227"></a>
+<FONT color="green">228</FONT>            byte[] dArr = new byte[len];       // Preallocate byte[] of exact length<a name="line.228"></a>
+<FONT color="green">229</FONT>    <a name="line.229"></a>
+<FONT color="green">230</FONT>            // Decode all but the last 0 - 2 bytes.<a name="line.230"></a>
+<FONT color="green">231</FONT>            int d = 0;<a name="line.231"></a>
+<FONT color="green">232</FONT>            for (int cc = 0, eLen = (len / 3) * 3; d &lt; eLen;) {<a name="line.232"></a>
+<FONT color="green">233</FONT>                // Assemble three bytes into an int from four "valid" characters.<a name="line.233"></a>
+<FONT color="green">234</FONT>                int i = IA[sArr[sIx++]] &lt;&lt; 18 | IA[sArr[sIx++]] &lt;&lt; 12 | IA[sArr[sIx++]] &lt;&lt; 6 | IA[sArr[sIx++]];<a name="line.234"></a>
+<FONT color="green">235</FONT>    <a name="line.235"></a>
+<FONT color="green">236</FONT>                // Add the bytes<a name="line.236"></a>
+<FONT color="green">237</FONT>                dArr[d++] = (byte) (i &gt;&gt; 16);<a name="line.237"></a>
+<FONT color="green">238</FONT>                dArr[d++] = (byte) (i &gt;&gt; 8);<a name="line.238"></a>
+<FONT color="green">239</FONT>                dArr[d++] = (byte) i;<a name="line.239"></a>
+<FONT color="green">240</FONT>    <a name="line.240"></a>
+<FONT color="green">241</FONT>                // If line separator, jump over it.<a name="line.241"></a>
+<FONT color="green">242</FONT>                if (sepCnt &gt; 0 &amp;&amp; ++cc == 19) {<a name="line.242"></a>
+<FONT color="green">243</FONT>                    sIx += 2;<a name="line.243"></a>
+<FONT color="green">244</FONT>                    cc = 0;<a name="line.244"></a>
+<FONT color="green">245</FONT>                }<a name="line.245"></a>
+<FONT color="green">246</FONT>            }<a name="line.246"></a>
+<FONT color="green">247</FONT>    <a name="line.247"></a>
+<FONT color="green">248</FONT>            if (d &lt; len) {<a name="line.248"></a>
+<FONT color="green">249</FONT>                // Decode last 1-3 bytes (incl '=') into 1-3 bytes<a name="line.249"></a>
+<FONT color="green">250</FONT>                int i = 0;<a name="line.250"></a>
+<FONT color="green">251</FONT>                for (int j = 0; sIx &lt;= eIx - pad; j++)<a name="line.251"></a>
+<FONT color="green">252</FONT>                    i |= IA[sArr[sIx++]] &lt;&lt; (18 - j * 6);<a name="line.252"></a>
+<FONT color="green">253</FONT>    <a name="line.253"></a>
+<FONT color="green">254</FONT>                for (int r = 16; d &lt; len; r -= 8)<a name="line.254"></a>
+<FONT color="green">255</FONT>                    dArr[d++] = (byte) (i &gt;&gt; r);<a name="line.255"></a>
+<FONT color="green">256</FONT>            }<a name="line.256"></a>
+<FONT color="green">257</FONT>    <a name="line.257"></a>
+<FONT color="green">258</FONT>            return dArr;<a name="line.258"></a>
+<FONT color="green">259</FONT>        }<a name="line.259"></a>
+<FONT color="green">260</FONT>    <a name="line.260"></a>
+<FONT color="green">261</FONT>        // ****************************************************************************************<a name="line.261"></a>
+<FONT color="green">262</FONT>        // *  byte[] version<a name="line.262"></a>
+<FONT color="green">263</FONT>        // ****************************************************************************************<a name="line.263"></a>
+<FONT color="green">264</FONT>    <a name="line.264"></a>
+<FONT color="green">265</FONT>        /** Encodes a raw byte array into a BASE64 &lt;code&gt;byte[]&lt;/code&gt; representation i accordance with RFC 2045.<a name="line.265"></a>
+<FONT color="green">266</FONT>         * @param sArr The bytes to convert. If &lt;code&gt;null&lt;/code&gt; or length 0 an empty array will be returned.<a name="line.266"></a>
+<FONT color="green">267</FONT>         * @param lineSep Optional "\r\n" after 76 characters, unless end of file.&lt;br&gt;<a name="line.267"></a>
+<FONT color="green">268</FONT>         * No line separator will be in breach of RFC 2045 which specifies max 76 per line but will be a<a name="line.268"></a>
+<FONT color="green">269</FONT>         * little faster.<a name="line.269"></a>
+<FONT color="green">270</FONT>         * @return A BASE64 encoded array. Never &lt;code&gt;null&lt;/code&gt;.<a name="line.270"></a>
+<FONT color="green">271</FONT>         */<a name="line.271"></a>
+<FONT color="green">272</FONT>        public final static byte[] encodeToByte(byte[] sArr, boolean lineSep)<a name="line.272"></a>
+<FONT color="green">273</FONT>        {<a name="line.273"></a>
+<FONT color="green">274</FONT>            // Check special case<a name="line.274"></a>
+<FONT color="green">275</FONT>            if (sArr == null || sArr.length == 0)<a name="line.275"></a>
+<FONT color="green">276</FONT>                return new byte[0];<a name="line.276"></a>
+<FONT color="green">277</FONT>    <a name="line.277"></a>
+<FONT color="green">278</FONT>            int sLen = sArr.length;<a name="line.278"></a>
+<FONT color="green">279</FONT>            int eLen = (sLen / 3) * 3;                              // Length of even 24-bits.<a name="line.279"></a>
+<FONT color="green">280</FONT>            int cCnt = ((sLen - 1) / 3 + 1) &lt;&lt; 2;                   // Returned character count<a name="line.280"></a>
+<FONT color="green">281</FONT>            int dLen = cCnt + (lineSep ? (cCnt - 1) / 76 &lt;&lt; 1 : 0); // Length of returned array<a name="line.281"></a>
+<FONT color="green">282</FONT>            byte[] dArr = new byte[dLen];<a name="line.282"></a>
+<FONT color="green">283</FONT>    <a name="line.283"></a>
+<FONT color="green">284</FONT>            // Encode even 24-bits<a name="line.284"></a>
+<FONT color="green">285</FONT>            for (int s = 0, d = 0, cc = 0; s &lt; eLen;) {<a name="line.285"></a>
+<FONT color="green">286</FONT>                // Copy next three bytes into lower 24 bits of int, paying attension to sign.<a name="line.286"></a>
+<FONT color="green">287</FONT>                int i = (sArr[s++] &amp; 0xff) &lt;&lt; 16 | (sArr[s++] &amp; 0xff) &lt;&lt; 8 | (sArr[s++] &amp; 0xff);<a name="line.287"></a>
+<FONT color="green">288</FONT>    <a name="line.288"></a>
+<FONT color="green">289</FONT>                // Encode the int into four chars<a name="line.289"></a>
+<FONT color="green">290</FONT>                dArr[d++] = (byte) CA[(i &gt;&gt;&gt; 18) &amp; 0x3f];<a name="line.290"></a>
+<FONT color="green">291</FONT>                dArr[d++] = (byte) CA[(i &gt;&gt;&gt; 12) &amp; 0x3f];<a name="line.291"></a>
+<FONT color="green">292</FONT>                dArr[d++] = (byte) CA[(i &gt;&gt;&gt; 6) &amp; 0x3f];<a name="line.292"></a>
+<FONT color="green">293</FONT>                dArr[d++] = (byte) CA[i &amp; 0x3f];<a name="line.293"></a>
+<FONT color="green">294</FONT>    <a name="line.294"></a>
+<FONT color="green">295</FONT>                // Add optional line separator<a name="line.295"></a>
+<FONT color="green">296</FONT>                if (lineSep &amp;&amp; ++cc == 19 &amp;&amp; d &lt; dLen - 2) {<a name="line.296"></a>
+<FONT color="green">297</FONT>                    dArr[d++] = '\r';<a name="line.297"></a>
+<FONT color="green">298</FONT>                    dArr[d++] = '\n';<a name="line.298"></a>
+<FONT color="green">299</FONT>                    cc = 0;<a name="line.299"></a>
+<FONT color="green">300</FONT>                }<a name="line.300"></a>
+<FONT color="green">301</FONT>            }<a name="line.301"></a>
+<FONT color="green">302</FONT>    <a name="line.302"></a>
+<FONT color="green">303</FONT>            // Pad and encode last bits if source isn't an even 24 bits.<a name="line.303"></a>
+<FONT color="green">304</FONT>            int left = sLen - eLen; // 0 - 2.<a name="line.304"></a>
+<FONT color="green">305</FONT>            if (left &gt; 0) {<a name="line.305"></a>
+<FONT color="green">306</FONT>                // Prepare the int<a name="line.306"></a>
+<FONT color="green">307</FONT>                int i = ((sArr[eLen] &amp; 0xff) &lt;&lt; 10) | (left == 2 ? ((sArr[sLen - 1] &amp; 0xff) &lt;&lt; 2) : 0);<a name="line.307"></a>
+<FONT color="green">308</FONT>    <a name="line.308"></a>
+<FONT color="green">309</FONT>                // Set last four chars<a name="line.309"></a>
+<FONT color="green">310</FONT>                dArr[dLen - 4] = (byte) CA[i &gt;&gt; 12];<a name="line.310"></a>
+<FONT color="green">311</FONT>                dArr[dLen - 3] = (byte) CA[(i &gt;&gt;&gt; 6) &amp; 0x3f];<a name="line.311"></a>
+<FONT color="green">312</FONT>                dArr[dLen - 2] = left == 2 ? (byte) CA[i &amp; 0x3f] : (byte) '=';<a name="line.312"></a>
+<FONT color="green">313</FONT>                dArr[dLen - 1] = '=';<a name="line.313"></a>
+<FONT color="green">314</FONT>            }<a name="line.314"></a>
+<FONT color="green">315</FONT>            return dArr;<a name="line.315"></a>
+<FONT color="green">316</FONT>        }<a name="line.316"></a>
+<FONT color="green">317</FONT>    <a name="line.317"></a>
+<FONT color="green">318</FONT>        /** Decodes a BASE64 encoded byte array. All illegal characters will be ignored and can handle both arrays with<a name="line.318"></a>
+<FONT color="green">319</FONT>         * and without line separators.<a name="line.319"></a>
+<FONT color="green">320</FONT>         * @param sArr The source array. Length 0 will return an empty array. &lt;code&gt;null&lt;/code&gt; will throw an exception.<a name="line.320"></a>
+<FONT color="green">321</FONT>         * @return The decoded array of bytes. May be of length 0. Will be &lt;code&gt;null&lt;/code&gt; if the legal characters<a name="line.321"></a>
+<FONT color="green">322</FONT>         * (including '=') isn't divideable by 4. (I.e. definitely corrupted).<a name="line.322"></a>
+<FONT color="green">323</FONT>         */<a name="line.323"></a>
+<FONT color="green">324</FONT>        public final static byte[] decode(byte[] sArr)<a name="line.324"></a>
+<FONT color="green">325</FONT>        {<a name="line.325"></a>
+<FONT color="green">326</FONT>            // Check special case<a name="line.326"></a>
+<FONT color="green">327</FONT>            int sLen = sArr.length;<a name="line.327"></a>
+<FONT color="green">328</FONT>    <a name="line.328"></a>
+<FONT color="green">329</FONT>            // Count illegal characters (including '\r', '\n') to know what size the returned array will be,<a name="line.329"></a>
+<FONT color="green">330</FONT>            // so we don't have to reallocate &amp; copy it later.<a name="line.330"></a>
+<FONT color="green">331</FONT>            int sepCnt = 0; // Number of separator characters. (Actually illegal characters, but that's a bonus...)<a name="line.331"></a>
+<FONT color="green">332</FONT>            for (int i = 0; i &lt; sLen; i++)      // If input is "pure" (I.e. no line separators or illegal chars) base64 this loop can be commented out.<a name="line.332"></a>
+<FONT color="green">333</FONT>                if (IA[sArr[i] &amp; 0xff] &lt; 0)<a name="line.333"></a>
+<FONT color="green">334</FONT>                    sepCnt++;<a name="line.334"></a>
+<FONT color="green">335</FONT>    <a name="line.335"></a>
+<FONT color="green">336</FONT>            // Check so that legal chars (including '=') are evenly divideable by 4 as specified in RFC 2045.<a name="line.336"></a>
+<FONT color="green">337</FONT>            if ((sLen - sepCnt) % 4 != 0)<a name="line.337"></a>
+<FONT color="green">338</FONT>                return null;<a name="line.338"></a>
+<FONT color="green">339</FONT>    <a name="line.339"></a>
+<FONT color="green">340</FONT>            int pad = 0;<a name="line.340"></a>
+<FONT color="green">341</FONT>            for (int i = sLen; i &gt; 1 &amp;&amp; IA[sArr[--i] &amp; 0xff] &lt;= 0;)<a name="line.341"></a>
+<FONT color="green">342</FONT>                if (sArr[i] == '=')<a name="line.342"></a>
+<FONT color="green">343</FONT>                    pad++;<a name="line.343"></a>
+<FONT color="green">344</FONT>    <a name="line.344"></a>
+<FONT color="green">345</FONT>            int len = ((sLen - sepCnt) * 6 &gt;&gt; 3) - pad;<a name="line.345"></a>
+<FONT color="green">346</FONT>    <a name="line.346"></a>
+<FONT color="green">347</FONT>            byte[] dArr = new byte[len];       // Preallocate byte[] of exact length<a name="line.347"></a>
+<FONT color="green">348</FONT>    <a name="line.348"></a>
+<FONT color="green">349</FONT>            for (int s = 0, d = 0; d &lt; len;) {<a name="line.349"></a>
+<FONT color="green">350</FONT>                // Assemble three bytes into an int from four "valid" characters.<a name="line.350"></a>
+<FONT color="green">351</FONT>                int i = 0;<a name="line.351"></a>
+<FONT color="green">352</FONT>                for (int j = 0; j &lt; 4; j++) {   // j only increased if a valid char was found.<a name="line.352"></a>
+<FONT color="green">353</FONT>                    int c = IA[sArr[s++] &amp; 0xff];<a name="line.353"></a>
+<FONT color="green">354</FONT>                    if (c &gt;= 0)<a name="line.354"></a>
+<FONT color="green">355</FONT>                        i |= c &lt;&lt; (18 - j * 6);<a name="line.355"></a>
+<FONT color="green">356</FONT>                    else<a name="line.356"></a>
+<FONT color="green">357</FONT>                        j--;<a name="line.357"></a>
+<FONT color="green">358</FONT>                }<a name="line.358"></a>
+<FONT color="green">359</FONT>    <a name="line.359"></a>
+<FONT color="green">360</FONT>                // Add the bytes<a name="line.360"></a>
+<FONT color="green">361</FONT>                dArr[d++] = (byte) (i &gt;&gt; 16);<a name="line.361"></a>
+<FONT color="green">362</FONT>                if (d &lt; len) {<a name="line.362"></a>
+<FONT color="green">363</FONT>                    dArr[d++]= (byte) (i &gt;&gt; 8);<a name="line.363"></a>
+<FONT color="green">364</FONT>                    if (d &lt; len)<a name="line.364"></a>
+<FONT color="green">365</FONT>                        dArr[d++] = (byte) i;<a name="line.365"></a>
+<FONT color="green">366</FONT>                }<a name="line.366"></a>
+<FONT color="green">367</FONT>            }<a name="line.367"></a>
+<FONT color="green">368</FONT>    <a name="line.368"></a>
+<FONT color="green">369</FONT>            return dArr;<a name="line.369"></a>
+<FONT color="green">370</FONT>        }<a name="line.370"></a>
+<FONT color="green">371</FONT>    <a name="line.371"></a>
+<FONT color="green">372</FONT>    <a name="line.372"></a>
+<FONT color="green">373</FONT>        /** Decodes a BASE64 encoded byte array that is known to be resonably well formatted. The method is about twice as<a name="line.373"></a>
+<FONT color="green">374</FONT>         * fast as {@link #decode(byte[])}. The preconditions are:&lt;br&gt;<a name="line.374"></a>
+<FONT color="green">375</FONT>         * + The array must have a line length of 76 chars OR no line separators at all (one line).&lt;br&gt;<a name="line.375"></a>
+<FONT color="green">376</FONT>         * + Line separator must be "\r\n", as specified in RFC 2045<a name="line.376"></a>
+<FONT color="green">377</FONT>         * + The array must not contain illegal characters within the encoded string&lt;br&gt;<a name="line.377"></a>
+<FONT color="green">378</FONT>         * + The array CAN have illegal characters at the beginning and end, those will be dealt with appropriately.&lt;br&gt;<a name="line.378"></a>
+<FONT color="green">379</FONT>         * @param sArr The source array. Length 0 will return an empty array. &lt;code&gt;null&lt;/code&gt; will throw an exception.<a name="line.379"></a>
+<FONT color="green">380</FONT>         * @return The decoded array of bytes. May be of length 0.<a name="line.380"></a>
+<FONT color="green">381</FONT>         */<a name="line.381"></a>
+<FONT color="green">382</FONT>        public final static byte[] decodeFast(byte[] sArr)<a name="line.382"></a>
+<FONT color="green">383</FONT>        {<a name="line.383"></a>
+<FONT color="green">384</FONT>            // Check special case<a name="line.384"></a>
+<FONT color="green">385</FONT>            int sLen = sArr.length;<a name="line.385"></a>
+<FONT color="green">386</FONT>            if (sLen == 0)<a name="line.386"></a>
+<FONT color="green">387</FONT>                return new byte[0];<a name="line.387"></a>
+<FONT color="green">388</FONT>    <a name="line.388"></a>
+<FONT color="green">389</FONT>            int sIx = 0, eIx = sLen - 1;    // Start and end index after trimming.<a name="line.389"></a>
+<FONT color="green">390</FONT>    <a name="line.390"></a>
+<FONT color="green">391</FONT>            // Trim illegal chars from start<a name="line.391"></a>
+<FONT color="green">392</FONT>            while (sIx &lt; eIx &amp;&amp; IA[sArr[sIx] &amp; 0xff] &lt; 0)<a name="line.392"></a>
+<FONT color="green">393</FONT>                sIx++;<a name="line.393"></a>
+<FONT color="green">394</FONT>    <a name="line.394"></a>
+<FONT color="green">395</FONT>            // Trim illegal chars from end<a name="line.395"></a>
+<FONT color="green">396</FONT>            while (eIx &gt; 0 &amp;&amp; IA[sArr[eIx] &amp; 0xff] &lt; 0)<a name="line.396"></a>
+<FONT color="green">397</FONT>                eIx--;<a name="line.397"></a>
+<FONT color="green">398</FONT>    <a name="line.398"></a>
+<FONT color="green">399</FONT>            // get the padding count (=) (0, 1 or 2)<a name="line.399"></a>
+<FONT color="green">400</FONT>            int pad = sArr[eIx] == '=' ? (sArr[eIx - 1] == '=' ? 2 : 1) : 0;  // Count '=' at end.<a name="line.400"></a>
+<FONT color="green">401</FONT>            int cCnt = eIx - sIx + 1;   // Content count including possible separators<a name="line.401"></a>
+<FONT color="green">402</FONT>            int sepCnt = sLen &gt; 76 ? (sArr[76] == '\r' ? cCnt / 78 : 0) &lt;&lt; 1 : 0;<a name="line.402"></a>
+<FONT color="green">403</FONT>    <a name="line.403"></a>
+<FONT color="green">404</FONT>            int len = ((cCnt - sepCnt) * 6 &gt;&gt; 3) - pad; // The number of decoded bytes<a name="line.404"></a>
+<FONT color="green">405</FONT>            byte[] dArr = new byte[len];       // Preallocate byte[] of exact length<a name="line.405"></a>
+<FONT color="green">406</FONT>    <a name="line.406"></a>
+<FONT color="green">407</FONT>            // Decode all but the last 0 - 2 bytes.<a name="line.407"></a>
+<FONT color="green">408</FONT>            int d = 0;<a name="line.408"></a>
+<FONT color="green">409</FONT>            for (int cc = 0, eLen = (len / 3) * 3; d &lt; eLen;) {<a name="line.409"></a>
+<FONT color="green">410</FONT>                // Assemble three bytes into an int from four "valid" characters.<a name="line.410"></a>
+<FONT color="green">411</FONT>                int i = IA[sArr[sIx++]] &lt;&lt; 18 | IA[sArr[sIx++]] &lt;&lt; 12 | IA[sArr[sIx++]] &lt;&lt; 6 | IA[sArr[sIx++]];<a name="line.411"></a>
+<FONT color="green">412</FONT>    <a name="line.412"></a>
+<FONT color="green">413</FONT>                // Add the bytes<a name="line.413"></a>
+<FONT color="green">414</FONT>                dArr[d++] = (byte) (i &gt;&gt; 16);<a name="line.414"></a>
+<FONT color="green">415</FONT>                dArr[d++] = (byte) (i &gt;&gt; 8);<a name="line.415"></a>
+<FONT color="green">416</FONT>                dArr[d++] = (byte) i;<a name="line.416"></a>
+<FONT color="green">417</FONT>    <a name="line.417"></a>
+<FONT color="green">418</FONT>                // If line separator, jump over it.<a name="line.418"></a>
+<FONT color="green">419</FONT>                if (sepCnt &gt; 0 &amp;&amp; ++cc == 19) {<a name="line.419"></a>
+<FONT color="green">420</FONT>                    sIx += 2;<a name="line.420"></a>
+<FONT color="green">421</FONT>                    cc = 0;<a name="line.421"></a>
+<FONT color="green">422</FONT>                }<a name="line.422"></a>
+<FONT color="green">423</FONT>            }<a name="line.423"></a>
+<FONT color="green">424</FONT>    <a name="line.424"></a>
+<FONT color="green">425</FONT>            if (d &lt; len) {<a name="line.425"></a>
+<FONT color="green">426</FONT>                // Decode last 1-3 bytes (incl '=') into 1-3 bytes<a name="line.426"></a>
+<FONT color="green">427</FONT>                int i = 0;<a name="line.427"></a>
+<FONT color="green">428</FONT>                for (int j = 0; sIx &lt;= eIx - pad; j++)<a name="line.428"></a>
+<FONT color="green">429</FONT>                    i |= IA[sArr[sIx++]] &lt;&lt; (18 - j * 6);<a name="line.429"></a>
+<FONT color="green">430</FONT>    <a name="line.430"></a>
+<FONT color="green">431</FONT>                for (int r = 16; d &lt; len; r -= 8)<a name="line.431"></a>
+<FONT color="green">432</FONT>                    dArr[d++] = (byte) (i &gt;&gt; r);<a name="line.432"></a>
+<FONT color="green">433</FONT>            }<a name="line.433"></a>
+<FONT color="green">434</FONT>    <a name="line.434"></a>
+<FONT color="green">435</FONT>            return dArr;<a name="line.435"></a>
+<FONT color="green">436</FONT>        }<a name="line.436"></a>
+<FONT color="green">437</FONT>    <a name="line.437"></a>
+<FONT color="green">438</FONT>        // ****************************************************************************************<a name="line.438"></a>
+<FONT color="green">439</FONT>        // * String version<a name="line.439"></a>
+<FONT color="green">440</FONT>        // ****************************************************************************************<a name="line.440"></a>
+<FONT color="green">441</FONT>    <a name="line.441"></a>
+<FONT color="green">442</FONT>        /** Encodes a raw byte array into a BASE64 &lt;code&gt;String&lt;/code&gt; representation i accordance with RFC 2045.<a name="line.442"></a>
+<FONT color="green">443</FONT>         * @param sArr The bytes to convert. If &lt;code&gt;null&lt;/code&gt; or length 0 an empty array will be returned.<a name="line.443"></a>
+<FONT color="green">444</FONT>         * @param lineSep Optional "\r\n" after 76 characters, unless end of file.&lt;br&gt;<a name="line.444"></a>
+<FONT color="green">445</FONT>         * No line separator will be in breach of RFC 2045 which specifies max 76 per line but will be a<a name="line.445"></a>
+<FONT color="green">446</FONT>         * little faster.<a name="line.446"></a>
+<FONT color="green">447</FONT>         * @return A BASE64 encoded array. Never &lt;code&gt;null&lt;/code&gt;.<a name="line.447"></a>
+<FONT color="green">448</FONT>         */<a name="line.448"></a>
+<FONT color="green">449</FONT>        public final static String encodeToString(byte[] sArr, boolean lineSep)<a name="line.449"></a>
+<FONT color="green">450</FONT>        {<a name="line.450"></a>
+<FONT color="green">451</FONT>            // Reuse char[] since we can't create a String incrementally anyway and StringBuffer/Builder would be slower.<a name="line.451"></a>
+<FONT color="green">452</FONT>            return new String(encodeToChar(sArr, lineSep));<a name="line.452"></a>
+<FONT color="green">453</FONT>        }<a name="line.453"></a>
+<FONT color="green">454</FONT>    <a name="line.454"></a>
+<FONT color="green">455</FONT>        /** Decodes a BASE64 encoded &lt;code&gt;String&lt;/code&gt;. All illegal characters will be ignored and can handle both strings with<a name="line.455"></a>
+<FONT color="green">456</FONT>         * and without line separators.&lt;br&gt;<a name="line.456"></a>
+<FONT color="green">457</FONT>         * &lt;b&gt;Note!&lt;/b&gt; It can be up to about 2x the speed to call &lt;code&gt;decode(str.toCharArray())&lt;/code&gt; instead. That<a name="line.457"></a>
+<FONT color="green">458</FONT>         * will create a temporary array though. This version will use &lt;code&gt;str.charAt(i)&lt;/code&gt; to iterate the string.<a name="line.458"></a>
+<FONT color="green">459</FONT>         * @param str The source string. &lt;code&gt;null&lt;/code&gt; or length 0 will return an empty array.<a name="line.459"></a>
+<FONT color="green">460</FONT>         * @return The decoded array of bytes. May be of length 0. Will be &lt;code&gt;null&lt;/code&gt; if the legal characters<a name="line.460"></a>
+<FONT color="green">461</FONT>         * (including '=') isn't divideable by 4.  (I.e. definitely corrupted).<a name="line.461"></a>
+<FONT color="green">462</FONT>         */<a name="line.462"></a>
+<FONT color="green">463</FONT>        public final static byte[] decode(String str)<a name="line.463"></a>
+<FONT color="green">464</FONT>        {<a name="line.464"></a>
+<FONT color="green">465</FONT>            // Check special case<a name="line.465"></a>
+<FONT color="green">466</FONT>            if (str == null || str.length() == 0)<a name="line.466"></a>
+<FONT color="green">467</FONT>                return new byte[0];<a name="line.467"></a>
+<FONT color="green">468</FONT>    <a name="line.468"></a>
+<FONT color="green">469</FONT>            int sLen = str.length();<a name="line.469"></a>
+<FONT color="green">470</FONT>    <a name="line.470"></a>
+<FONT color="green">471</FONT>            // Count illegal characters (including '\r', '\n') to know what size the returned array will be,<a name="line.471"></a>
+<FONT color="green">472</FONT>            // so we don't have to reallocate &amp; copy it later.<a name="line.472"></a>
+<FONT color="green">473</FONT>            int sepCnt = 0; // Number of separator characters. (Actually illegal characters, but that's a bonus...)<a name="line.473"></a>
+<FONT color="green">474</FONT>            for (int i = 0; i &lt; sLen; i++)  // If input is "pure" (I.e. no line separators or illegal chars) base64 this loop can be commented out.<a name="line.474"></a>
+<FONT color="green">475</FONT>                if (IA[str.charAt(i)] &lt; 0)<a name="line.475"></a>
+<FONT color="green">476</FONT>                    sepCnt++;<a name="line.476"></a>
+<FONT color="green">477</FONT>    <a name="line.477"></a>
+<FONT color="green">478</FONT>            // Check so that legal chars (including '=') are evenly divideable by 4 as specified in RFC 2045.<a name="line.478"></a>
+<FONT color="green">479</FONT>            if ((sLen - sepCnt) % 4 != 0)<a name="line.479"></a>
+<FONT color="green">480</FONT>                return null;<a name="line.480"></a>
+<FONT color="green">481</FONT>    <a name="line.481"></a>
+<FONT color="green">482</FONT>            // Count '=' at end<a name="line.482"></a>
+<FONT color="green">483</FONT>            int pad = 0;<a name="line.483"></a>
+<FONT color="green">484</FONT>            for (int i = sLen; i &gt; 1 &amp;&amp; IA[str.charAt(--i)] &lt;= 0;)<a name="line.484"></a>
+<FONT color="green">485</FONT>                if (str.charAt(i) == '=')<a name="line.485"></a>
+<FONT color="green">486</FONT>                    pad++;<a name="line.486"></a>
+<FONT color="green">487</FONT>    <a name="line.487"></a>
+<FONT color="green">488</FONT>            int len = ((sLen - sepCnt) * 6 &gt;&gt; 3) - pad;<a name="line.488"></a>
+<FONT color="green">489</FONT>    <a name="line.489"></a>
+<FONT color="green">490</FONT>            byte[] dArr = new byte[len];       // Preallocate byte[] of exact length<a name="line.490"></a>
+<FONT color="green">491</FONT>    <a name="line.491"></a>
+<FONT color="green">492</FONT>            for (int s = 0, d = 0; d &lt; len;) {<a name="line.492"></a>
+<FONT color="green">493</FONT>                // Assemble three bytes into an int from four "valid" characters.<a name="line.493"></a>
+<FONT color="green">494</FONT>                int i = 0;<a name="line.494"></a>
+<FONT color="green">495</FONT>                for (int j = 0; j &lt; 4; j++) {   // j only increased if a valid char was found.<a name="line.495"></a>
+<FONT color="green">496</FONT>                    int c = IA[str.charAt(s++)];<a name="line.496"></a>
+<FONT color="green">497</FONT>                    if (c &gt;= 0)<a name="line.497"></a>
+<FONT color="green">498</FONT>                        i |= c &lt;&lt; (18 - j * 6);<a name="line.498"></a>
+<FONT color="green">499</FONT>                    else<a name="line.499"></a>
+<FONT color="green">500</FONT>                        j--;<a name="line.500"></a>
+<FONT color="green">501</FONT>                }<a name="line.501"></a>
+<FONT color="green">502</FONT>                // Add the bytes<a name="line.502"></a>
+<FONT color="green">503</FONT>                dArr[d++] = (byte) (i &gt;&gt; 16);<a name="line.503"></a>
+<FONT color="green">504</FONT>                if (d &lt; len) {<a name="line.504"></a>
+<FONT color="green">505</FONT>                    dArr[d++]= (byte) (i &gt;&gt; 8);<a name="line.505"></a>
+<FONT color="green">506</FONT>                    if (d &lt; len)<a name="line.506"></a>
+<FONT color="green">507</FONT>                        dArr[d++] = (byte) i;<a name="line.507"></a>
+<FONT color="green">508</FONT>                }<a name="line.508"></a>
+<FONT color="green">509</FONT>            }<a name="line.509"></a>
+<FONT color="green">510</FONT>            return dArr;<a name="line.510"></a>
+<FONT color="green">511</FONT>        }<a name="line.511"></a>
+<FONT color="green">512</FONT>    <a name="line.512"></a>
+<FONT color="green">513</FONT>        /** Decodes a BASE64 encoded string that is known to be resonably well formatted. The method is about twice as<a name="line.513"></a>
+<FONT color="green">514</FONT>         * fast as {@link #decode(String)}. The preconditions are:&lt;br&gt;<a name="line.514"></a>
+<FONT color="green">515</FONT>         * + The array must have a line length of 76 chars OR no line separators at all (one line).&lt;br&gt;<a name="line.515"></a>
+<FONT color="green">516</FONT>         * + Line separator must be "\r\n", as specified in RFC 2045<a name="line.516"></a>
+<FONT color="green">517</FONT>         * + The array must not contain illegal characters within the encoded string&lt;br&gt;<a name="line.517"></a>
+<FONT color="green">518</FONT>         * + The array CAN have illegal characters at the beginning and end, those will be dealt with appropriately.&lt;br&gt;<a name="line.518"></a>
+<FONT color="green">519</FONT>         * @param s The source string. Length 0 will return an empty array. &lt;code&gt;null&lt;/code&gt; will throw an exception.<a name="line.519"></a>
+<FONT color="green">520</FONT>         * @return The decoded array of bytes. May be of length 0.<a name="line.520"></a>
+<FONT color="green">521</FONT>         */<a name="line.521"></a>
+<FONT color="green">522</FONT>        public final static byte[] decodeFast(String s)<a name="line.522"></a>
+<FONT color="green">523</FONT>        {<a name="line.523"></a>
+<FONT color="green">524</FONT>            // Check special case<a name="line.524"></a>
+<FONT color="green">525</FONT>            if (s == null || s.length() == 0)<a name="line.525"></a>
+<FONT color="green">526</FONT>                return new byte[0];<a name="line.526"></a>
+<FONT color="green">527</FONT>    <a name="line.527"></a>
+<FONT color="green">528</FONT>            int sLen = s.length();<a name="line.528"></a>
+<FONT color="green">529</FONT>            int sIx = 0, eIx = sLen - 1;    // Start and end index after trimming.<a name="line.529"></a>
+<FONT color="green">530</FONT>    <a name="line.530"></a>
+<FONT color="green">531</FONT>            // Trim illegal chars from start<a name="line.531"></a>
+<FONT color="green">532</FONT>            while (sIx &lt; eIx &amp;&amp; IA[s.charAt(sIx) &amp; 0xff] &lt; 0)<a name="line.532"></a>
+<FONT color="green">533</FONT>                sIx++;<a name="line.533"></a>
+<FONT color="green">534</FONT>    <a name="line.534"></a>
+<FONT color="green">535</FONT>            // Trim illegal chars from end<a name="line.535"></a>
+<FONT color="green">536</FONT>            while (eIx &gt; 0 &amp;&amp; IA[s.charAt(eIx) &amp; 0xff] &lt; 0)<a name="line.536"></a>
+<FONT color="green">537</FONT>                eIx--;<a name="line.537"></a>
+<FONT color="green">538</FONT>    <a name="line.538"></a>
+<FONT color="green">539</FONT>            // get the padding count (=) (0, 1 or 2)<a name="line.539"></a>
+<FONT color="green">540</FONT>            int pad = s.charAt(eIx) == '=' ? (s.charAt(eIx - 1) == '=' ? 2 : 1) : 0;  // Count '=' at end.<a name="line.540"></a>
+<FONT color="green">541</FONT>            int cCnt = eIx - sIx + 1;   // Content count including possible separators<a name="line.541"></a>
+<FONT color="green">542</FONT>            int sepCnt = sLen &gt; 76 ? (s.charAt(76) == '\r' ? cCnt / 78 : 0) &lt;&lt; 1 : 0;<a name="line.542"></a>
+<FONT color="green">543</FONT>    <a name="line.543"></a>
+<FONT color="green">544</FONT>            int len = ((cCnt - sepCnt) * 6 &gt;&gt; 3) - pad; // The number of decoded bytes<a name="line.544"></a>
+<FONT color="green">545</FONT>            byte[] dArr = new byte[len];       // Preallocate byte[] of exact length<a name="line.545"></a>
+<FONT color="green">546</FONT>    <a name="line.546"></a>
+<FONT color="green">547</FONT>            // Decode all but the last 0 - 2 bytes.<a name="line.547"></a>
+<FONT color="green">548</FONT>            int d = 0;<a name="line.548"></a>
+<FONT color="green">549</FONT>            for (int cc = 0, eLen = (len / 3) * 3; d &lt; eLen;) {<a name="line.549"></a>
+<FONT color="green">550</FONT>                // Assemble three bytes into an int from four "valid" characters.<a name="line.550"></a>
+<FONT color="green">551</FONT>                int i = IA[s.charAt(sIx++)] &lt;&lt; 18 | IA[s.charAt(sIx++)] &lt;&lt; 12 | IA[s.charAt(sIx++)] &lt;&lt; 6 | IA[s.charAt(sIx++)];<a name="line.551"></a>
+<FONT color="green">552</FONT>    <a name="line.552"></a>
+<FONT color="green">553</FONT>                // Add the bytes<a name="line.553"></a>
+<FONT color="green">554</FONT>                dArr[d++] = (byte) (i &gt;&gt; 16);<a name="line.554"></a>
+<FONT color="green">555</FONT>                dArr[d++] = (byte) (i &gt;&gt; 8);<a name="line.555"></a>
+<FONT color="green">556</FONT>                dArr[d++] = (byte) i;<a name="line.556"></a>
+<FONT color="green">557</FONT>    <a name="line.557"></a>
+<FONT color="green">558</FONT>                // If line separator, jump over it.<a name="line.558"></a>
+<FONT color="green">559</FONT>                if (sepCnt &gt; 0 &amp;&amp; ++cc == 19) {<a name="line.559"></a>
+<FONT color="green">560</FONT>                    sIx += 2;<a name="line.560"></a>
+<FONT color="green">561</FONT>                    cc = 0;<a name="line.561"></a>
+<FONT color="green">562</FONT>                }<a name="line.562"></a>
+<FONT color="green">563</FONT>            }<a name="line.563"></a>
+<FONT color="green">564</FONT>    <a name="line.564"></a>
+<FONT color="green">565</FONT>            if (d &lt; len) {<a name="line.565"></a>
+<FONT color="green">566</FONT>                // Decode last 1-3 bytes (incl '=') into 1-3 bytes<a name="line.566"></a>
+<FONT color="green">567</FONT>                int i = 0;<a name="line.567"></a>
+<FONT color="green">568</FONT>                for (int j = 0; sIx &lt;= eIx - pad; j++)<a name="line.568"></a>
+<FONT color="green">569</FONT>                    i |= IA[s.charAt(sIx++)] &lt;&lt; (18 - j * 6);<a name="line.569"></a>
+<FONT color="green">570</FONT>    <a name="line.570"></a>
+<FONT color="green">571</FONT>                for (int r = 16; d &lt; len; r -= 8)<a name="line.571"></a>
+<FONT color="green">572</FONT>                    dArr[d++] = (byte) (i &gt;&gt; r);<a name="line.572"></a>
+<FONT color="green">573</FONT>            }<a name="line.573"></a>
+<FONT color="green">574</FONT>    <a name="line.574"></a>
+<FONT color="green">575</FONT>            return dArr;<a name="line.575"></a>
+<FONT color="green">576</FONT>        }<a name="line.576"></a>
+<FONT color="green">577</FONT>    }<a name="line.577"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

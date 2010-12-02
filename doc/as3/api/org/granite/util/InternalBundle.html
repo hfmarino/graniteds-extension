@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="InternalBundle,org.granite.util.InternalBundle,addBundle,getString" name="keywords">
+<title>org.granite.util.InternalBundle</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'InternalBundle - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/util/InternalBundle.html&amp;org/granite/util/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;InternalBundle</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class InternalBundle"); titleBar_setSubNav(false,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.util</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class InternalBundle</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../validation/ValidationMessages.html">ValidationMessages</a></td>
+</tr>
+</table>
+<p></p>
+  Utility (abstract) class for embedded resources bundles loading and resource
+  lookup.
+  
+  <p>
+  Bundles loaded by this class must be in the Java XML properties format, ie:
+  </p>
+  
+  <div class='listing'><pre>
+  &lt;properties&gt;
+      &lt;entry key="hello.world"&gt;Salut tout le monde!&lt;/entry&gt;
+  &lt;/properties&gt;
+  </pre></div>
+  
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#InternalBundle()">InternalBundle</a>(bundleName:String)</div>
+<div class="summaryTableDescription">
+   Constructs a new <code>InternalBundle</code> instance.</div>
+</td><td class="summaryTableOwnerCol">InternalBundle</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getString()">getString</a>(resourceName:String, parameters:Array = null, locale:String = null):String</div>
+<div class="summaryTableDescription">
+   Look for a resource named <code>resourceName</code> in the loaded Flex application
+   bundles (with the bundle name provided at creation time) and, if it cannot be found,
+   look for it in this internal bundle properties.</div>
+</td><td class="summaryTableOwnerCol">InternalBundle</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addBundle()">addBundle</a>(locale:String, properties:XML, defaultBundle:Boolean = false):void</div>
+<div class="summaryTableDescription">
+   Add XML resources properties for the given locale.</div>
+</td><td class="summaryTableOwnerCol">InternalBundle</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="InternalBundle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">InternalBundle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function InternalBundle(bundleName:String)</code><p>
+   Constructs a new <code>InternalBundle</code> instance.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:String</code> &mdash; the name of this resources bundle, that will be
+     used for standard Flex <code>ResourceManager</code> looking.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">mx.resources.ResourceManager<br>
+<a href="../util/InternalBundle.html#getString" target="">getString</a>
+</div>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addBundle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addBundle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function addBundle(locale:String, properties:XML, defaultBundle:Boolean = false):void</code><p>
+   Add XML resources properties for the given locale.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">locale</span>:String</code> &mdash; the locale in which the properties are given (eg: "fr" or "fr_FR").
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">properties</span>:XML</code> &mdash; a XML object that contains resources properties for the locale.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">defaultBundle</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; <code>true</code> if this bundle should be used as a fallback
+     bundle when a resource for a given locale cannot be found. Default is
+     <code>false</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getString(resourceName:String, parameters:Array = null, locale:String = null):String</code><p>
+   Look for a resource named <code>resourceName</code> in the loaded Flex application
+   bundles (with the bundle name provided at creation time) and, if it cannot be found,
+   look for it in this internal bundle properties.
+   
+   </p><p>
+   Locale resolution with internal bundles is performed by using the usual Java algorithm:
+   if "fr_FR" is passed as the locale (or if it appears in the current locale chain), this
+   class will first try to find a bundle for this exact locale (as passed to the
+   <code>addBundle</code> method); if no such bundle can be found, it will try to find a
+   bundle for the less restrictive "fr" locale; if it fails again, it will try to use the
+   default bundle.
+   </p>
+   
+   <p>
+   If a <code>parameters<code> array is passed to this method, the parameters in it
+   are converted to Strings and then substituted, in order, for the placeholders
+   "{0}", "{1}", and so on, in the string before it is returned.
+   </p>
+   
+   <p>
+   If the specified resource is not found, this method returns null.
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:String</code> &mdash; the name of a resource in the resource bundle.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">parameters</span>:Array</code> (default = <code>null</code>)<code></code> &mdash; an Array of parameters that are substituted for the placeholders.
+     Each parameter is converted to a String with the toString() method before
+     being substituted.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">locale</span>:String</code> (default = <code>null</code>)<code></code> &mdash; a specific locale to be used for the lookup, or null to search all
+     locales in the localeChain. This parameter is optional and defaults to null; you
+     should seldom need to specify it. 
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the resource value, or null if it is not found. 
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

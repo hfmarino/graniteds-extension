@@ -1,0 +1,517 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="FormValidator,org.granite.validation.FormValidator,UNHANDLED_VIOLATIONS,groups,validateOnChange,validatorFactory,actualListeners,entity,form,unhandledViolationsMessage,doValidation,getUnhandledViolations,getViolations,handleResults,validateEntity" name="keywords">
+<title>org.granite.validation.FormValidator</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'FormValidator - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/validation/FormValidator.html&amp;org/granite/validation/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;FormValidator</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class FormValidator"); titleBar_setSubNav(true,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.validation</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class FormValidator</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">FormValidator <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> mx.validators.Validator</td>
+</tr>
+</table>
+<p></p>
+  The <code>FormValidator</code> class is Flex utility that simplifies
+  the validation framework usage with input components. It performs
+  validation on the fly whenever the user enters data into graphical
+  inputs and automatically displays error messages when these data are
+  incorrect, based on constraint annotations placed on bean properties.
+  
+  <p></p>
+<br>
+<span class="label">Example</span>
+<br>The following code excerpt illustrates a typical usage (Flex 4
+  with bidirectional bindings):
+  
+  <div class='listing'><pre>
+  
+  [Bindable]
+  public class Person {
+  
+      [Size(max="10")]
+      public var firstname:String;
+  
+      [NotNull] [Size(min="2", max="10")]
+      public var lastname:String;
+  }
+  <hr />
+  &lt;fx:Declarations&gt;
+      &lt;v:FormValidator id="fValidator" form="{personForm}" entity="{person}"/&gt;
+  &lt;/fx:Declarations&gt;
+  
+  &lt;fx:Script&gt;
+  
+      [Bindable]
+      protected var person:Person = new Person();
+  
+      protected function savePerson():void {
+          if (fValidator.validateEntity()) {
+              // actually save the validated person entity...
+          }
+      }
+  
+      protected function resetPerson():void {
+          person = new Person();
+      }
+  
+  &lt;/fx:Script&gt;
+  
+  &lt;mx:Form id="personForm"&gt;
+      &lt;mx:FormItem label="Firstname" required="true"&gt;
+          &lt;s:TextInput text="&#64;{person.firstname}"/&gt;
+      &lt;/mx:FormItem&gt;
+      &lt;mx:FormItem label="Lastname" required="true"&gt;
+          &lt;s:TextInput text="&#64;{person.lastname}"/&gt;
+      &lt;/mx:FormItem&gt;
+  &lt;/mx:Form&gt;
+  
+  &lt;s:Button label="Save" click="savePerson()"/&gt;
+  &lt;s:Button label="Cancel" click="resetPerson()"/&gt;
+  </pre></div>
+  
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#entity">entity</a> : Object<div class="summaryTableDescription">
+   The entity, with constraint annotations, to be validated.</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#form">form</a> : Object<div class="summaryTableDescription">
+   The form component that contains inputs bound to the entity properties
+   (may be a <code>Form</code> or any other <code>Container</code>
+   subclass).</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#groups">groups</a> : Array = null<div class="summaryTableDescription">
+   The validation groups to be used, as an array of <code>Class</code>
+   names.</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#unhandledViolationsMessage">unhandledViolationsMessage</a> : String<div class="summaryTableDescription">[read-only]
+   A message containing all unhandled violations messages, separated by
+   new lines.</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#validateOnChange">validateOnChange</a> : Boolean = true<div class="summaryTableDescription">
+   Should validation be done on the fly? Otherwise, validation will be
+   only done when an input loses focus.</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#validatorFactory">validatorFactory</a> : <a href="../validation/ValidatorFactory.html">ValidatorFactory</a>
+<div class="summaryTableDescription">
+   The <code>ValidatorFactory</code> to be used in the validation
+   process (initialized with the the default instance).</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#actualListeners">actualListeners</a> : Array<div class="summaryTableDescription">[read-only]
+   </div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getUnhandledViolations()">getUnhandledViolations</a>():Array</div>
+<div class="summaryTableDescription">
+   Returns the <i>unhandled</i> violations of the last global validation
+   as an array of <code>ConstraintViolation</code>s.</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getViolations()">getViolations</a>():Array</div>
+<div class="summaryTableDescription">
+   Returns the result of the last global validation as an array of
+   <code>ConstraintViolation</code>s.</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#validateEntity()">validateEntity</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Validate the underlying entity instance for the currently set groups.</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#doValidation()">doValidation</a>(value:Object):Array</div>
+<div class="summaryTableDescription">
+   </div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#handleResults()">handleResults</a>(errorResults:Array):ValidationResultEvent</div>
+<div class="summaryTableDescription">
+   </div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:unhandledViolations">unhandledViolations</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when validation is done, with a (possibly empty) array 
+  of <code>ValidationResult</code> for any <code>ConstraintViolation</code>
+  that couldn't be associated with any input.</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#UNHANDLED_VIOLATIONS">UNHANDLED_VIOLATIONS</a> : String = "unhandledViolations"<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">FormValidator</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="actualListeners"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">actualListeners</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>actualListeners:Array</code>&nbsp;&nbsp;[read-only]<p>
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get actualListeners():Array</code>
+<br>
+</div>
+<a name="entity"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">entity</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>entity:Object</code>&nbsp;&nbsp;[read-write]<p>
+   The entity, with constraint annotations, to be validated. This entity
+   must implement the <code>IEventDispatcher</code> interface, explicitly
+   or not (ie: annotated with [Bindable]).
+   </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get entity():Object</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set entity(value:Object):void</code>
+<br>
+</div>
+<a name="form"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">form</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>form:Object</code>&nbsp;&nbsp;[read-write]<p>
+   The form component that contains inputs bound to the entity properties
+   (may be a <code>Form</code> or any other <code>Container</code>
+   subclass).
+   </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get form():Object</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set form(value:Object):void</code>
+<br>
+</div>
+<a name="groups"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">groups</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var groups:Array = null</code><p>
+   The validation groups to be used, as an array of <code>Class</code>
+   names. Default is null, meaning that the <code>Default</code> group
+   will be used.
+   </p></div>
+<a name="unhandledViolationsMessage"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unhandledViolationsMessage</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>unhandledViolationsMessage:String</code>&nbsp;&nbsp;[read-only]<p>
+   A message containing all unhandled violations messages, separated by
+   new lines.
+   </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get unhandledViolationsMessage():String</code>
+<br>
+</div>
+<a name="validateOnChange"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">validateOnChange</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var validateOnChange:Boolean = true</code><p>
+   Should validation be done on the fly? Otherwise, validation will be
+   only done when an input loses focus. Default is true.
+   </p></div>
+<a name="validatorFactory"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">validatorFactory</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var validatorFactory:<a href="../validation/ValidatorFactory.html">ValidatorFactory</a></code><p>
+   The <code>ValidatorFactory</code> to be used in the validation
+   process (initialized with the the default instance).
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="doValidation()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">doValidation</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function doValidation(value:Object):Array</code><p>
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:Object</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code></td>
+</tr>
+</table>
+</div>
+<a name="getUnhandledViolations()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getUnhandledViolations</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getUnhandledViolations():Array</code><p>
+   Returns the <i>unhandled</i> violations of the last global validation
+   as an array of <code>ConstraintViolation</code>s. Unhandled violations
+   are violations that couldn't be associated to any input during the
+   last global validation (thus, they couldn't be displayed anywhere).
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; the <i>unhandled</i> violations of the last global validation
+     as an array of <code>ConstraintViolation</code>s.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getViolations()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getViolations</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getViolations():Array</code><p>
+   Returns the result of the last global validation as an array of
+   <code>ConstraintViolation</code>s.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; the result of the last global validation as an array of
+     <code>ConstraintViolation</code>s.
+   </td>
+</tr>
+</table>
+</div>
+<a name="handleResults()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">handleResults</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function handleResults(errorResults:Array):ValidationResultEvent</code><p>
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">errorResults</span>:Array</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>ValidationResultEvent</code></td>
+</tr>
+</table>
+</div>
+<a name="validateEntity()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">validateEntity</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function validateEntity():Boolean</code><p>
+   Validate the underlying entity instance for the currently set groups.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if validation succeeds, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<div class="detailSectionHeader">Event detail</div>
+<a name="event:unhandledViolations"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unhandledViolations</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href=""><code>mx.events.ValidationResultEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when validation is done, with a (possibly empty) array 
+  of <code>ValidationResult</code> for any <code>ConstraintViolation</code>
+  that couldn't be associated with any input.
+    </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">mx.events.ValidationResultEvent<br>mx.events.ValidationResult</div>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="UNHANDLED_VIOLATIONS"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">UNHANDLED_VIOLATIONS</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const UNHANDLED_VIOLATIONS:String = "unhandledViolations"</code>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="ITraversableResolver,org.granite.validation.ITraversableResolver,isCascadable,isReachable" name="keywords">
+<title>org.granite.validation.ITraversableResolver</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'ITraversableResolver - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/validation/ITraversableResolver.html&amp;org/granite/validation/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;ITraversableResolver</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface ITraversableResolver"); titleBar_setSubNav(false,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.validation</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface ITraversableResolver</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../validation/DefaultTraversableResolver.html">DefaultTraversableResolver</a></td>
+</tr>
+</table>
+<p></p>
+  Contract determining if a property can be accessed by the Bean Validation provider.
+  This contract is called for each property that is being either validated or cascaded.
+    A traversable resolver implementation must be thread-safe.
+    <p></p>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isCascadable()">isCascadable</a>(traversableObject:Object, traversableProperty:<a href="INode.html">INode</a>, rootBeanType:<a href="../reflect/Type.html">Type</a>, pathToTraversableObject:<a href="IPath.html">IPath</a>, elementType:<a href="../reflect/IAnnotatedElement.html">IAnnotatedElement</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Determine if the Bean Validation provider is allowed to cascade validation on
+   the bean instance returned by the property value
+   marked as <code>[Valid]</code>.</div>
+</td><td class="summaryTableOwnerCol">ITraversableResolver</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isReachable()">isReachable</a>(traversableObject:Object, traversableProperty:<a href="INode.html">INode</a>, rootBeanType:<a href="../reflect/Type.html">Type</a>, pathToTraversableObject:<a href="IPath.html">IPath</a>, elementType:<a href="../reflect/IAnnotatedElement.html">IAnnotatedElement</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Determine if the Bean Validation provider is allowed to reach the property state
+      </div>
+</td><td class="summaryTableOwnerCol">ITraversableResolver</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="isCascadable()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isCascadable</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isCascadable(traversableObject:Object, traversableProperty:<a href="INode.html">INode</a>, rootBeanType:<a href="../reflect/Type.html">Type</a>, pathToTraversableObject:<a href="IPath.html">IPath</a>, elementType:<a href="../reflect/IAnnotatedElement.html">IAnnotatedElement</a>):Boolean</code><p>
+   Determine if the Bean Validation provider is allowed to cascade validation on
+   the bean instance returned by the property value
+   marked as <code>[Valid]</code>.
+   Note that this method is called only if <code>isReachable</code> returns true
+   for the same set of arguments and if the property is marked as <code>[Valid]</code>
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">traversableObject</span>:Object</code> &mdash; object hosting <code>traversableProperty</code> or null
+     if <code>validateValue</code> is called
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">traversableProperty</span>:<a href="INode.html">INode</a></code> &mdash; the traversable property.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">rootBeanType</span>:<a href="../reflect/Type.html">Type</a></code> &mdash; type of the root object passed to the Validator.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">pathToTraversableObject</span>:<a href="IPath.html">IPath</a></code> &mdash; path from the root object to
+     <code>traversableObject</code>
+     (using the path specification defined by Bean Validator).
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">elementType</span>:<a href="../reflect/IAnnotatedElement.html">IAnnotatedElement</a></code> &mdash; either <code>FIELD</code> or <code>METHOD</code>.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if the Bean Validation provider is allowed to
+     cascade validation, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isReachable()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isReachable</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isReachable(traversableObject:Object, traversableProperty:<a href="INode.html">INode</a>, rootBeanType:<a href="../reflect/Type.html">Type</a>, pathToTraversableObject:<a href="IPath.html">IPath</a>, elementType:<a href="../reflect/IAnnotatedElement.html">IAnnotatedElement</a>):Boolean</code><p>
+   Determine if the Bean Validation provider is allowed to reach the property state
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">traversableObject</span>:Object</code> &mdash; object hosting <code>traversableProperty</code> or null
+     if <code>validateValue</code> is called
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">traversableProperty</span>:<a href="INode.html">INode</a></code> &mdash; the traversable property.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">rootBeanType</span>:<a href="../reflect/Type.html">Type</a></code> &mdash; type of the root object passed to the Validator.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">pathToTraversableObject</span>:<a href="IPath.html">IPath</a></code> &mdash; path from the root object to
+     <code>traversableObject</code>
+     (using the path specification defined by Bean Validator).
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">elementType</span>:<a href="../reflect/IAnnotatedElement.html">IAnnotatedElement</a></code> &mdash; either <code>FIELD</code> or <code>METHOD</code>.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if the Bean Validation provider is allowed to
+     reach the property state, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

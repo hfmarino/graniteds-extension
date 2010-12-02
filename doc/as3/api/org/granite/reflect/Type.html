@@ -1,0 +1,2377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="Type,org.granite.reflect.Type,VOID,WILD,alias,annotations,constructor,domain,fields,interfaces,members,methods,name,packageName,properties,registeredDomains,simpleName,superclass,superclasses,systemDomain,forClass,forInstance,forName,getAnnotatedFields,getAnnotatedMethods,getAnnotatedProperties,getAnnotation,getAnnotations,getClass,getField,getFields,getInstanceField,getInstanceMethod,getMembers,getMethod,getMethods,getProperties,getProperty,getStaticField,getStaticMethod,hasConstructor,hasDeclaredConstructor,isAnnotationPresent,isClass,isDomainRegistered,isInterface,isSubclassOf,isSuperclassOf,isVoid,isWild,registerDomain,unregisterDomain" name="keywords">
+<title>org.granite.reflect.Type</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Type - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/reflect/Type.html&amp;org/granite/reflect/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Type</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Type"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.reflect</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Type</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Type <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="DescribedElement.html">DescribedElement</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="IAnnotatedElement.html">IAnnotatedElement</a>, <a href="IVisitableElement.html">IVisitableElement</a></td>
+</tr>
+</table>
+<p></p>
+  The <code>Type</code> class is the entry point to the GraniteDS reflection API for
+  ActionScript 3 classes. <code>Type</code> instances (with their underlying XML
+  descriptions) are cached, so subsequent calls for retrieving a known type are
+  faster. 
+  
+  <p>
+  From any <code>Type</code> instance, you may retrieve:
+  
+  <ul>superclasses and implemented interfaces (or superinterfaces for interface),</ul>
+  <ul>constructor,</ul>
+  <ul>constants,</ul>
+  <ul>variables,</ul>
+  <ul>accessors (get/set),</ul>
+  <ul>methods,</ul>
+  <ul>annotations (metadata).</ul>
+  
+  Constructors, constants, variables, accessors and methods are represented by three
+  <code>Member</code> child classes: <code>Constructor</code>, <code>Field</code>
+  (for constants, variables and accessors) and <code>Method</code>. The overall API
+  tries to look much alike the Java reflection API.
+  </p>
+  
+  <p>
+  For returned members (constructor, methods, fields), the following rules apply:
+  
+  <ol><b>Constructor</b>: only one constructor is returned, the one declared (explicitly or or)
+  by this <code>Type</code> class.</ol>
+  
+  <ol><b>Methods</b>: all <i>instance</i> methods are returned, either declared by this
+  <code>Type</code> class or by any of its superclasses (overridden methods only appear once).
+  Only <i>static</i> methods directly declared by this <code>Type</code> class are returned.</ol>
+  
+  <ol><b>Fields</b>: all <i>instance</i> fields (constants, variables and accessors) are returned,
+  either declared by this <code>Type</code> class or by any of its superclasses (overridden
+  accessors only appear once, variables and constants cannot be overridden). Only
+  <i>static</i> fields directly declared by this <code>Type</code> class are returned.</ol>
+  </p>
+  
+  <p>
+  This API brings also <code>Namespace</code> and <code>ApplicationDomain</code> support: all types
+  are bound to an <code>ApplicationDomain</code>, that can be the Flash system domain or a dedicated
+  domain created when loading SWF module classes. All type's members are also bound to a namespace
+  (default is the public namespace) and may be searched according to their namespace.
+  </p>
+  
+  <p>
+  To get a <code>Type</code> instance, use one of the following static methods:
+  </p>
+  
+  <div class='listing'><pre>
+  var type:Type = Type.forName("path.to::MyClass"); // or Type.forName("path.to.MyClass");
+  var type:Type = Type.forInstance(new MyClass());
+  var type:Type = Type.forClass(MyClass);</pre></div>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">flash.system.ApplicationDomain<br>
+<a href="Member.html" target="">Member</a>
+<br>
+<a href="Constructor.html" target="">Constructor</a>
+<br>
+<a href="Field.html" target="">Field</a>
+<br>
+<a href="Method.html" target="">Method</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#alias">alias</a> : String<div class="summaryTableDescription">[read-only]
+   The remote class alias of the class of this <code>Type</code> instance (may be
+   an empty string).</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#annotations">annotations</a> : Array<div class="summaryTableDescription">[read-only]
+   
+   An array that contains all annotations directly attached to this <code>IAnnotatedElement</code>.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#constructor">constructor</a> : <a href="../reflect/Constructor.html">Constructor</a>
+<div class="summaryTableDescription">
+   Returns this <code>Type</code> instance constructor.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="DescribedElement.html#declaredBy">declaredBy</a> : <a href="../reflect/Type.html">Type</a>
+<div class="summaryTableDescription">
+   The <code>Type</code> instance this described element belongs to.</div>
+</td><td class="summaryTableOwnerCol"><a href="DescribedElement.html">DescribedElement</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#domain">domain</a> : ApplicationDomain<div class="summaryTableDescription">[read-only]
+   The underlying <code>ApplicationDomain</code> instance associated
+   to this <code>Type</code>.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#fields">fields</a> : Array<div class="summaryTableDescription">[read-only]
+   An array containing all fields of this <code>Type</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#interfaces">interfaces</a> : Array<div class="summaryTableDescription">[read-only]
+   An array (possibly empty) that contains all interface types implemented by
+   this <code>Type</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#members">members</a> : Array<div class="summaryTableDescription">[read-only]
+   An array containing all members of this <code>Type</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#methods">methods</a> : Array<div class="summaryTableDescription">[read-only]
+   An array containing all public methods of this <code>Type</code> class.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#name">name</a> : String<div class="summaryTableDescription">[read-only]
+   The fully qualified class name of this <code>Type</code> instance, in
+   the form of <code>path.to::Bean</code>.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#packageName">packageName</a> : String<div class="summaryTableDescription">[read-only]
+   The package name of the class of this <code>Type</code> instance (may be
+   an empty string).</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#properties">properties</a> : Array<div class="summaryTableDescription">[read-only]
+   An array containing all properties of this <code>Type</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#registeredDomains">registeredDomains</a> : Array<div class="summaryTableDescription">[static][read-only]
+   An array that contains all currently registered application domains.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#simpleName">simpleName</a> : String<div class="summaryTableDescription">[read-only]
+   The unqualified class name of this <code>Type</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#superclass">superclass</a> : <a href="../reflect/Type.html">Type</a>
+<div class="summaryTableDescription">[read-only]
+   The superclass type of this <code>Type</code> instance or <code>null</code>
+   if this class (or interface) has no superclass (or superinterface).</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#superclasses">superclasses</a> : Array<div class="summaryTableDescription">[read-only]
+   An array that contains all superclass types of this <code>Type</code> instance,
+   or an empty array if this class (or interface) has no superclass (or superinterface).</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#systemDomain">systemDomain</a> : ApplicationDomain<div class="summaryTableDescription">[static][read-only]
+   The Flash system domain (parent of all other application domains).</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Type()">Type</a>(desc:XML, clazz:Class, domain:ApplicationDomain)</div>
+<div class="summaryTableDescription">
+   Constructs a new <code>Type</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="DescribedElement.html#equals()">equals</a>(o:*):Boolean</div>
+<div class="summaryTableDescription">
+   Tells if this <code>DescribedElement</code> instance is equal to the supplied
+   o parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="DescribedElement.html">DescribedElement</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#forClass()">forClass</a>(clazz:Class, domain:ApplicationDomain = null):<a href="../reflect/Type.html">Type</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Returns a <code>Type</code> instance for the supplied clazz parameter, in the optional
+   application domain.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#forInstance()">forInstance</a>(o:*, domain:ApplicationDomain = null):<a href="../reflect/Type.html">Type</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Returns <code>Type</code> instance for the supplied o instance parameter, in the optional
+   application domain.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#forName()">forName</a>(name:String, domain:ApplicationDomain = null):<a href="../reflect/Type.html">Type</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Returns a <code>Type</code> instance for the class denoted by the name parameter, in the optional
+   application domain.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getAnnotatedFields()">getAnnotatedFields</a>(recursive:Boolean, ... annotatedWiths):Array</div>
+<div class="summaryTableDescription">
+   Returns an array containing all fields of this <code>Type</code> instance that are
+   annotated with at least one of the supplied annotation names.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getAnnotatedMethods()">getAnnotatedMethods</a>(recursive:Boolean, ... annotatedWiths):Array</div>
+<div class="summaryTableDescription">
+   Returns an array containing all methods of this <code>Type</code> instance that are
+   annotated with at least one of the supplied annotation names.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getAnnotatedProperties()">getAnnotatedProperties</a>(recursive:Boolean, ... annotatedWiths):Array</div>
+<div class="summaryTableDescription">
+   Returns an array containing all properties of this <code>Type</code> instance that are
+   annotated with at least one of the supplied annotation names.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getAnnotation()">getAnnotation</a>(type:String, recursive:Boolean = false):<a href="../reflect/Annotation.html">Annotation</a>
+</div>
+<div class="summaryTableDescription">
+   
+   Returns the first <code>Annotation</code> whose name is equal to the supplied type parameter,
+   attached to this <code>IAnnotatedElement</code>.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getAnnotations()">getAnnotations</a>(recursive:Boolean = false, pattern:String = "^_?[^_]"):Array</div>
+<div class="summaryTableDescription">
+   
+   Returns an array (possibly empty) that contains all annotations attached to this
+   <code>IAnnotatedElement</code>.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getClass()">getClass</a>():Class</div>
+<div class="summaryTableDescription">
+   Returns the underlying <code>Class</code> instance associated to this
+   <code>Type</code>.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getField()">getField</a>(filter:Function):<a href="../reflect/Field.html">Field</a>
+</div>
+<div class="summaryTableDescription">
+   Returns the <i>first</i> field of this <code>Type</code> instance that match the
+   supplied function's criteria.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getFields()">getFields</a>(filter:Function = null):Array</div>
+<div class="summaryTableDescription">
+   Returns an array containing all fields of this <code>Type</code> instance that match the
+   supplied function's criteria.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getInstanceField()">getInstanceField</a>(name:String, ns:Namespace = null):<a href="../reflect/Field.html">Field</a>
+</div>
+<div class="summaryTableDescription">
+   Returns the <i>non static</i> field of this <code>Type</code> class whose name is
+   equals to the supplied parameter and declared in the namespace ns.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getInstanceMethod()">getInstanceMethod</a>(name:String, ns:Namespace = null):<a href="../reflect/Method.html">Method</a>
+</div>
+<div class="summaryTableDescription">
+   Returns the <i>non static</i> method of this <code>Type</code> class whose name is
+   equals to the supplied parameter.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getMembers()">getMembers</a>(filter:Function = null):Array</div>
+<div class="summaryTableDescription">
+   Returns an array containing all members of this <code>Type</code> instance that match the
+   supplied function's criteria.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getMethod()">getMethod</a>(filter:Function):<a href="../reflect/Method.html">Method</a>
+</div>
+<div class="summaryTableDescription">
+   Returns the <i>first</i> method of this <code>Type</code> instance that match the
+   supplied function's criteria.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getMethods()">getMethods</a>(filter:Function = null):Array</div>
+<div class="summaryTableDescription">
+   Returns an array containing all methods of this <code>Type</code> instance that match the
+   supplied function's criteria.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getProperties()">getProperties</a>(filter:Function = null):Array</div>
+<div class="summaryTableDescription">
+   Returns an array containing all properties of this <code>Type</code> instance that
+   match the supplied function's criteria.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getProperty()">getProperty</a>(name:String):<a href="../reflect/Field.html">Field</a>
+</div>
+<div class="summaryTableDescription">
+   Returns the property of this <code>Type</code> instance whose name is
+   equals to the supplied parameter.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getStaticField()">getStaticField</a>(name:String, ns:Namespace = null):<a href="../reflect/Field.html">Field</a>
+</div>
+<div class="summaryTableDescription">
+   Returns the <i>static</i> field of this <code>Type</code> class whose name is
+   equals to the supplied parameter.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getStaticMethod()">getStaticMethod</a>(name:String, ns:Namespace = null):<a href="../reflect/Method.html">Method</a>
+</div>
+<div class="summaryTableDescription">
+   Returns the <i>static</i> method of this <code>Type</code> class whose name is
+   equals to the supplied parameter.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasConstructor()">hasConstructor</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Tests if this <code>Type</code> instance has a constructor.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasDeclaredConstructor()">hasDeclaredConstructor</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Tests if this <code>Type</code> instance has a declared constructor.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isAnnotationPresent()">isAnnotationPresent</a>(type:String, recursive:Boolean = false):Boolean</div>
+<div class="summaryTableDescription">
+   
+   Tests if an <code>Annotation</code>, whose name is equal to the supplied type parameter, is attached
+   to this <code>IAnnotatedElement</code>.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isClass()">isClass</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Tells if this <code>Type</code> instance represents a class.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isDomainRegistered()">isDomainRegistered</a>(domain:ApplicationDomain):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Tells if an <code>ApplicationDomain</code> is registered.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isInterface()">isInterface</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Tells if this <code>Type</code> instance represents an interface.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isSubclassOf()">isSubclassOf</a>(type:<a href="Type.html">Type</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Determines if the class or interface represented by this <code>Type</code> instance is
+   a subclass or subinterface of the class or interface represented by the
+   specified <code>Type</code> parameter.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isSuperclassOf()">isSuperclassOf</a>(type:<a href="Type.html">Type</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Determines if the class or interface represented by this <code>Type</code> instance is
+   a superclass or superinterface of the class or interface represented by the
+   specified <code>Type</code> parameter.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isVoid()">isVoid</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Tells if this <code>Type</code> instance represents the pseudo-class "void".</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isWild()">isWild</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Tells if this <code>Type</code> instance represents the pseudo-class "*" (wildcard).</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerDomain()">registerDomain</a>(domain:ApplicationDomain):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Registers an application domain so objects or classes that belong to this
+   domain, when passed to the <code>Type.forInstance(...)</code> or the
+   <code>Type.forClass(...)</code> methods without specifying a domain, may
+   be associated this domain.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="DescribedElement.html#toString()">toString</a>():String</div>
+<div class="summaryTableDescription">
+   Returns the a string (XML) representation of this described element.</div>
+</td><td class="summaryTableOwnerCol"><a href="DescribedElement.html">DescribedElement</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unregisterDomain()">unregisterDomain</a>(domain:ApplicationDomain):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Unregisters an application domain and all its children domains.</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#VOID">VOID</a> : <a href="../reflect/Type.html">Type</a>
+<div class="summaryTableDescription">[static]
+   Builtin type for the pseudo-class "void".</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#WILD">WILD</a> : <a href="../reflect/Type.html">Type</a>
+<div class="summaryTableDescription">[static]
+   Builtin type for the pseudo-class "*" (wildcard).</div>
+</td><td class="summaryTableOwnerCol">Type</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="alias"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">alias</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>alias:String</code>&nbsp;&nbsp;[read-only]<p>
+   The remote class alias of the class of this <code>Type</code> instance (may be
+   an empty string).
+   
+   </p><p>
+   For example, for a class definition such as the following, the returned alias
+   would be the String "path.to.MyJavaBean":
+   </p>
+   
+   <div class='listing'><pre>
+   [RemoteClass(alias="path.to.MyJavaBean")]
+   public class MyAS3Bean {}</pre></div>
+   <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get alias():String</code>
+<br>
+</div>
+<a name="annotations"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">annotations</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>annotations:Array</code>&nbsp;&nbsp;[read-only]<p>
+   
+   An array that contains all annotations directly attached to this <code>IAnnotatedElement</code>.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get annotations():Array</code>
+<br>
+</div>
+<a name="constructor"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">constructor</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var constructor:<a href="../reflect/Constructor.html">Constructor</a></code><p>
+   Returns this <code>Type</code> instance constructor.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#hasConstructor" target="">hasConstructor</a>
+</div>
+</div>
+<a name="domain"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">domain</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>domain:ApplicationDomain</code>&nbsp;&nbsp;[read-only]<p>
+   The underlying <code>ApplicationDomain</code> instance associated
+   to this <code>Type</code>.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get domain():ApplicationDomain</code>
+<br>
+</div>
+<a name="fields"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">fields</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>fields:Array</code>&nbsp;&nbsp;[read-only]<p>
+   An array containing all fields of this <code>Type</code> instance. Fields are
+   public constants, variables and accessors (get/set).
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get fields():Array</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="interfaces"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">interfaces</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>interfaces:Array</code>&nbsp;&nbsp;[read-only]<p>
+   An array (possibly empty) that contains all interface types implemented by
+   this <code>Type</code> instance.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get interfaces():Array</code>
+<br>
+</div>
+<a name="members"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">members</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>members:Array</code>&nbsp;&nbsp;[read-only]<p>
+   An array containing all members of this <code>Type</code> instance. Members are
+   public constructor, methods, constants, variables and accessors (get/set).
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get members():Array</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Member.html" target="">Member</a>
+<br>
+<a href="Constructor.html" target="">Constructor</a>
+<br>
+<a href="Method.html" target="">Method</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="methods"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">methods</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>methods:Array</code>&nbsp;&nbsp;[read-only]<p>
+   An array containing all public methods of this <code>Type</code> class.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get methods():Array</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Method.html" target="">Method</a>
+</div>
+</div>
+<a name="name"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">name</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>name:String</code>&nbsp;&nbsp;[read-only]<p>
+   The fully qualified class name of this <code>Type</code> instance, in
+   the form of <code>path.to::Bean</code>.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get name():String</code>
+<br>
+</div>
+<a name="packageName"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">packageName</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>packageName:String</code>&nbsp;&nbsp;[read-only]<p>
+   The package name of the class of this <code>Type</code> instance (may be
+   an empty string).
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get packageName():String</code>
+<br>
+</div>
+<a name="properties"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">properties</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>properties:Array</code>&nbsp;&nbsp;[read-only]<p>
+   An array containing all properties of this <code>Type</code> instance. Properties are
+   non-static variables or read/write accessors (get/set) declared in the public or the
+   builtin AS3 namespace.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get properties():Array</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="registeredDomains"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registeredDomains</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>registeredDomains:Array</code>&nbsp;&nbsp;[read-only]<p>
+   An array that contains all currently registered application domains.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get registeredDomains():Array</code>
+<br>
+</div>
+<a name="simpleName"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">simpleName</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>simpleName:String</code>&nbsp;&nbsp;[read-only]<p>
+   The unqualified class name of this <code>Type</code> instance.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get simpleName():String</code>
+<br>
+</div>
+<a name="superclass"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">superclass</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>superclass:<a href="../reflect/Type.html">Type</a></code>&nbsp;&nbsp;[read-only]<p>
+   The superclass type of this <code>Type</code> instance or <code>null</code>
+   if this class (or interface) has no superclass (or superinterface).
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get superclass():<a href="../reflect/Type.html">Type</a></code>
+<br>
+</div>
+<a name="superclasses"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">superclasses</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>superclasses:Array</code>&nbsp;&nbsp;[read-only]<p>
+   An array that contains all superclass types of this <code>Type</code> instance,
+   or an empty array if this class (or interface) has no superclass (or superinterface).
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get superclasses():Array</code>
+<br>
+</div>
+<a name="systemDomain"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">systemDomain</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>systemDomain:ApplicationDomain</code>&nbsp;&nbsp;[read-only]<p>
+   The Flash system domain (parent of all other application domains).
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get systemDomain():ApplicationDomain</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Type()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Type</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Type(desc:XML, clazz:Class, domain:ApplicationDomain)</code><p>
+   Constructs a new <code>Type</code> instance.
+   
+   </p><p>
+   <b>This constructor should not be used directly</b>. Instead, use the static
+   methods <code>forName(...)</code>, <code>forInstance(...)</code> or
+   <code>forClass(...)</code>.
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">desc</span>:XML</code> &mdash; a class description as returned by the
+     <code>flash.utils.describeType</code> method.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; the underlying <code>Class</code> of this type.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> &mdash; the application domain of this type.
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/ReflectionError.html">ReflectionError</a> </code> &mdash; if domain is <code>null</code>.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#forName" target="">forName</a>
+<br>
+<a href="../reflect/Type.html#forInstance" target="">forInstance</a>
+<br>
+<a href="../reflect/Type.html#forClass" target="">forClass</a>
+</div>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="forClass()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">forClass</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function forClass(clazz:Class, domain:ApplicationDomain = null):<a href="../reflect/Type.html">Type</a></code><p>
+   Returns a <code>Type</code> instance for the supplied clazz parameter, in the optional
+   application domain. The returned <code>Type</code> instance, if not already cached, is
+   put in a static cache so subsequent calls to this method with the same class parameter
+   may return a cached instance.
+   
+   </p><p>
+   If the domain parameter is not <code>null</code>, this method will verify if the supplied
+   class actually belongs to this domain. Otherwise, if domain is <code>null</code>, it will
+   try to find the class domain among all registered application domain and the Flash system
+   domain.
+   </p>
+   
+   <p>
+   When a domain for the <code>Class</code> parameter is found, this method tries to figure
+   out if any parent domain of the found domain contains the class definition. The new
+   <code>Type</code> is then associated with the top-most parent application domain that
+   defines the class (not necessarily the supplied domain) and this domain is used in order
+   to load any dependant <code>Type</code> (superclasses, interfaces, members classes). This
+   domain is then automatically registered (see the <code>Type.registerDomain()</code>
+   method) if it wasn't already known. The domain of the returned <code>Type</code> may be
+   retreived by the <code>Type.domain</code> property.
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; the <code>Class</code> to introspect.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> (default = <code>null</code>)<code></code> &mdash; the optional application domain to which this <code>Class</code>
+     belongs.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Type.html">Type</a></code> &mdash; 
+                        a Type instance describing the clazz Class parameter (or <code>null</code>
+     if the clazz parameter is <code>null</code>).
+   
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/ClassNotFoundError.html">ClassNotFoundError</a> </code> &mdash; if the <code>Class</code> does not belong
+     to the supplied application domain or to any registered or system domain.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#registerDomain" target="">registerDomain</a>
+<br>
+<a href="../reflect/Type.html#domain" target="">domain</a>
+</div>
+</div>
+<a name="forInstance()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">forInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function forInstance(o:*, domain:ApplicationDomain = null):<a href="../reflect/Type.html">Type</a></code><p>
+   Returns <code>Type</code> instance for the supplied o instance parameter, in the optional
+   application domain. If domain parameter is null and if o is a proxy, this method will try
+   to find a registered domain where the class is defined (including the Flash system domain),
+   by using the <code>forName</code> method.
+   
+   </p><p>
+   Known bug: if o is a uint instance, the returned Type will be a descriptor
+   of a signed interger (int).
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:*</code> &mdash; the instance to introspect.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> (default = <code>null</code>)<code></code> &mdash; the optional application domain to which this object <code>Class</code>
+     belongs (useful for <code>flash.utils.Proxy</code> instances).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Type.html">Type</a></code> &mdash; 
+                        a Type instance describing the class of the o parameter (or <code>null</code>
+     if the o parameter is <code>null</code>).
+   
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/ClassNotFoundError.html">ClassNotFoundError</a> </code> &mdash; if the <code>Class</code> cannot be found
+     in the supplied domain or, if domain parameter is <code>null</code>, in the system
+     domain or in any registered domain.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../reflect/AmbiguousClassNameError.html">AmbiguousClassNameError</a> </code> &mdash; if the class is defined in more than one
+     application domain (<code>flash.utils.Proxy</code> instances only).
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#forName" target="">forName</a>
+<br>
+<a href="../reflect/Type.html#forClass" target="">forClass</a>
+<br>
+<a href="../reflect/Type.html#registerDomain" target="">registerDomain</a>
+</div>
+</div>
+<a name="forName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">forName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function forName(name:String, domain:ApplicationDomain = null):<a href="../reflect/Type.html">Type</a></code><p>
+   Returns a <code>Type</code> instance for the class denoted by the name parameter, in the optional
+   application domain. If domain parameter is null, this method will try to find a registered domain
+   where the class is defined (including the Flash system domain). If several classes with this name
+   are defined in different application domain, this method will throw a
+   <code>AmbiguousClassNameError</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the class name.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> (default = <code>null</code>)<code></code> &mdash; the optional application domain to be used for getting the class definition.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Type.html">Type</a></code> &mdash; 
+                        a Type instance describing the class denoted by the name parameter (or <code>null</code>
+     if the name parameter is <code>null</code>).
+   
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/ClassNotFoundError.html">ClassNotFoundError</a> </code> &mdash; if no <code>Class</code> can be found in the
+     supplied or system domain.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../reflect/AmbiguousClassNameError.html">AmbiguousClassNameError</a> </code> &mdash; if the class is defined in more than one
+     application domain.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#forClass" target="">forClass</a>
+<br>
+<a href="../util/ClassUtil.html#parseQName" target="">org.granite.util.ClassUtil.parseQName</a>
+</div>
+</div>
+<a name="getAnnotatedFields()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getAnnotatedFields</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getAnnotatedFields(recursive:Boolean, ... annotatedWiths):Array</code><p>
+   Returns an array containing all fields of this <code>Type</code> instance that are
+   annotated with at least one of the supplied annotation names.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> &mdash; should we try to look for annotations in the superclasses's or the
+     superinterfaces's overridden accessors?
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code>... <span class="label">annotatedWiths</span></code> &mdash; a list of annotation names to look for.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array that contains all <code>Field</code>s annotated
+     with at least one the supplied annotation names.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getAnnotatedMethods()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getAnnotatedMethods</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getAnnotatedMethods(recursive:Boolean, ... annotatedWiths):Array</code><p>
+   Returns an array containing all methods of this <code>Type</code> instance that are
+   annotated with at least one of the supplied annotation names.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> &mdash; should we try to look for annotations in the superclasses's or the
+     superinterfaces's overridden methods?
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code>... <span class="label">annotatedWiths</span></code> &mdash; a list of annotation names to look for.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array that contains all <code>Method</code>s annotated
+     with at least one the supplied annotation names.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Method.html" target="">Method</a>
+</div>
+</div>
+<a name="getAnnotatedProperties()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getAnnotatedProperties</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getAnnotatedProperties(recursive:Boolean, ... annotatedWiths):Array</code><p>
+   Returns an array containing all properties of this <code>Type</code> instance that are
+   annotated with at least one of the supplied annotation names.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> &mdash; should we try to look for annotations in the superclasses's or the
+     superinterfaces's overridden accessors?
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code>... <span class="label">annotatedWiths</span></code> &mdash; a list of annotation names to look for.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array that contains all <code>Field</code>s annotated
+     with at least one the supplied annotation names.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getAnnotation()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getAnnotation</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getAnnotation(type:String, recursive:Boolean = false):<a href="../reflect/Annotation.html">Annotation</a></code><p>
+   
+   Returns the first <code>Annotation</code> whose name is equal to the supplied type parameter,
+   attached to this <code>IAnnotatedElement</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; the name of the annotation to look for.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; should we look for annotations attached to overridden elements (non-static
+     accessors or methods) or superclasses/superinterfaces ?
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Annotation.html">Annotation</a></code> &mdash; 
+                        an <code>Annotation</code> instance or null if it cannot be found.
+   
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="getAnnotations()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getAnnotations</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getAnnotations(recursive:Boolean = false, pattern:String = "^_?[^_]"):Array</code><p>
+   
+   Returns an array (possibly empty) that contains all annotations attached to this
+   <code>IAnnotatedElement</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; should we look for annotations attached to overridden elements (non-static
+     accessors or methods) or superclasses/superinterfaces ?
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">pattern</span>:String</code> (default = "<code>^_?[^_]</code>")<code></code> &mdash; a regexp expression used as a filter. Default is to eliminate all annotations
+     prefixed with a double '_' character. You may use this parameter to find all
+     annotations with a specific name.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array that contains all annotations attached to this <code>IAnnotatedElement</code>.
+   
+   </td>
+</tr>
+</table>
+</div>
+<a name="getClass()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getClass</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getClass():Class</code><p>
+   Returns the underlying <code>Class</code> instance associated to this
+   <code>Type</code>.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Class</code> &mdash; the <code>Class</code> instance (<code>null</code> for <code>void</code>
+     or <code*</code> types).
+   </td>
+</tr>
+</table>
+</div>
+<a name="getField()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getField</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getField(filter:Function):<a href="../reflect/Field.html">Field</a></code><p>
+   Returns the <i>first</i> field of this <code>Type</code> instance that match the
+   supplied function's criteria.
+   
+   </p><p>
+   The filter <code>Function</code> is expected to have the following signature:
+   </p>
+   
+   <div class='listing'><pre>
+   function (f:Field):Boolean</pre></div>
+   
+   <p>
+   For example, to get the first static field whose name is equal to "abc", you may use:
+   </p>
+   
+   <div class='listing'><pre>
+   var staticAbcField:Field = type.getField(function (f:Field):Boolean {
+       return f.isStatic() &amp;&amp; f.name == "abc";
+   });</pre></div>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">filter</span>:Function</code> &mdash; a function that will be used to eliminate fields that do not match the
+     function's criteria.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Field.html">Field</a></code> &mdash; 
+                        the first found <code>Field</code> or <code>null</code> if no field matching
+    the function's criteria can be found.
+   
+   
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getFields()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getFields</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getFields(filter:Function = null):Array</code><p>
+   Returns an array containing all fields of this <code>Type</code> instance that match the
+   supplied function's criteria.
+   
+   </p><p>
+   The filter <code>Function</code> is expected to have the following signature:
+   </p>
+   
+   <div class='listing'><pre>
+   function (f:Field):Boolean</pre></div>
+   
+   <p>
+   For example, to get all static constants, you may use:
+   </p>
+   
+   <div class='listing'><pre>
+   var staticConstants:Array = type.getFields(function (f:Field):Boolean {
+       return f.isStatic() &amp;&amp; f.isConstant();
+   }</pre></div>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">filter</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; a function that will be used to eliminate fields that do not match the
+     function's criteria.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array that contains all <code>Field</code>s that match the supplied
+     filter.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#fields" target="">fields</a>
+<br>
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getInstanceField()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getInstanceField</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getInstanceField(name:String, ns:Namespace = null):<a href="../reflect/Field.html">Field</a></code><p>
+   Returns the <i>non static</i> field of this <code>Type</code> class whose name is
+   equals to the supplied parameter and declared in the namespace ns.
+   
+   </p><p>
+   A non-static field and a static field with the same name and namespace may coexist
+   in the same class. That the purpose of the two methods <code>getInstanceField</code>
+   and <code>getStaticField</code>.
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the name of the field to search for.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">ns</span>:Namespace</code> (default = <code>null</code>)<code></code> &mdash; the namespace of the field to search for (<code>null</code> for public or
+     builtin AS3 namespace).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Field.html">Field</a></code> &mdash; 
+                        the found <code>Field</code> or <code>null</code> if no instance field with
+     the supplied name can be found.
+   
+   
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="../reflect/Type.html#getStaticField" target="">getStaticField</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getInstanceMethod()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getInstanceMethod</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getInstanceMethod(name:String, ns:Namespace = null):<a href="../reflect/Method.html">Method</a></code><p>
+   Returns the <i>non static</i> method of this <code>Type</code> class whose name is
+   equals to the supplied parameter.
+   
+   </p><p>
+   Instead of Java, there is no need to care about parameters. Only one non-static method
+   with a given name may exist. However, a non-static method and a static method with the
+   same name may coexist in the same class. That the purpose of the two methods
+   <code>getInstanceMethod</code> and <code>getStaticMethod</code>.
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the name of the method to search for.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">ns</span>:Namespace</code> (default = <code>null</code>)<code></code> &mdash; the namespace of the method to search for (<code>null</code> for public or
+     builtin AS3 namespace).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Method.html">Method</a></code> &mdash; 
+                        the found <code>Method</code> or <code>null</code> if no instance method with
+    the supplied name can be found.
+   
+   
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#getStaticMethod" target="">getStaticMethod</a>
+<br>
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Method.html" target="">Method</a>
+</div>
+</div>
+<a name="getMembers()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getMembers</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getMembers(filter:Function = null):Array</code><p>
+   Returns an array containing all members of this <code>Type</code> instance that match the
+   supplied function's criteria.
+   
+   </p><p>
+   The filter <code>Function</code> is expected to have the following signature:
+   </p>
+   
+   <div class='listing'><pre>
+   function (m:Member):Boolean</pre></div>
+   
+   <p>
+   For example, to get all static methods and constants, you may use:
+   </p>
+   
+   <div class='listing'><pre>
+   var staticConstantAndMethods:Array = type.getMembers(function (m:Member):Boolean {
+       return m.isStatic() &amp;&amp; (m.isConstant() || m.isMethod());
+   }</pre></div>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">filter</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; a function that will be used to eliminate members that do not match the
+     function's criteria.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array that contains all <code>Member</code>s that match the supplied
+     filter.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#members" target="">members</a>
+<br>
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Member.html" target="">Member</a>
+<br>
+<a href="Constructor.html" target="">Constructor</a>
+<br>
+<a href="Method.html" target="">Method</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getMethod()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getMethod</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getMethod(filter:Function):<a href="../reflect/Method.html">Method</a></code><p>
+   Returns the <i>first</i> method of this <code>Type</code> instance that match the
+   supplied function's criteria.
+   
+   </p><p>
+   The filter <code>Function</code> is expected to have the following signature:
+   </p>
+   
+   <div class='listing'><pre>
+   function (m:Method):Boolean</pre></div>
+   
+   <p>
+   For example, to get the first static method whose name is equal to "abc", you may use:
+   </p>
+   
+   <div class='listing'><pre>
+   var staticAbcMethod:Method = type.getMethod(function (m:Method):Boolean {
+       return m.isStatic() &amp;&amp; m.name == "abc";
+   });</pre></div>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">filter</span>:Function</code> &mdash; a function that will be used to eliminate methods that do not match the
+     function's criteria.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Method.html">Method</a></code> &mdash; 
+                        the first found <code>Method</code> or <code>null</code> if no method matching
+    the function's criteria can be found.
+   
+   
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Method.html" target="">Method</a>
+</div>
+</div>
+<a name="getMethods()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getMethods</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getMethods(filter:Function = null):Array</code><p>
+   Returns an array containing all methods of this <code>Type</code> instance that match the
+   supplied function's criteria.
+   
+   </p><p>
+   The filter <code>Function</code> is expected to have the following signature:
+   </p>
+   
+   <div class='listing'><pre>
+   function (m:Method):Boolean</pre></div>
+   
+   <p>
+   For example, to get all static methods, you may use:
+   </p>
+   
+   <div class='listing'><pre>
+   var staticMethods:Array = type.getMethods(function (m:Method):Boolean {
+       return m.isStatic();
+   });</pre></div>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">filter</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; a function that will be used to eliminate methods that do not match the
+     function's criteria.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array that contains all <code>Method</code>s that match the supplied
+     filter.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#methods" target="">methods</a>
+<br>
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Method.html" target="">Method</a>
+</div>
+</div>
+<a name="getProperties()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getProperties</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getProperties(filter:Function = null):Array</code><p>
+   Returns an array containing all properties of this <code>Type</code> instance that
+   match the supplied function's criteria.
+   
+   </p><p>
+   The filter <code>Function</code> is expected to have the following signature:
+   </p>
+   
+   <div class='listing'><pre>
+   function (f:Field):Boolean</pre></div>
+   
+   <p>
+   For example, to get all non-static accessors, you may use:
+   </p>
+   
+   <div class='listing'><pre>
+   var nonStaticAccessors:Array = type.getProperties(function (f:Field):Boolean {
+       return f.isAccessor();
+   }</pre></div>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">filter</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; a function that will be used to eliminate properties that do not
+     match the function's criteria.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array that contains all <code>Field</code>s that match the
+     supplied filter.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#properties" target="">properties</a>
+<br>
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getProperty()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getProperty(name:String):<a href="../reflect/Field.html">Field</a></code><p>
+   Returns the property of this <code>Type</code> instance whose name is
+   equals to the supplied parameter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the name of the property to search for.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Field.html">Field</a></code> &mdash; 
+                        the found <code>Field</code> or <code>null</code> if no property with
+    the supplied name can be found.
+   
+   
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getStaticField()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getStaticField</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getStaticField(name:String, ns:Namespace = null):<a href="../reflect/Field.html">Field</a></code><p>
+   Returns the <i>static</i> field of this <code>Type</code> class whose name is
+   equals to the supplied parameter.
+   
+   </p><p>
+   A non-static field and a static field with the same name may coexist in the same
+   class. That the purpose of the two methods <code>getInstanceField</code> and
+   <code>getStaticField</code>.
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the name of the field to search for.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">ns</span>:Namespace</code> (default = <code>null</code>)<code></code> &mdash; the namespace of the field to search for (<code>null</code> for public or
+     builtin AS3 namespace).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Field.html">Field</a></code> &mdash; 
+                        the found <code>Field</code> or <code>null</code> if no static field with
+    the supplied name can be found.
+   
+   
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="../reflect/Type.html#getInstanceField" target="">getInstanceField</a>
+<br>
+<a href="Field.html" target="">Field</a>
+</div>
+</div>
+<a name="getStaticMethod()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getStaticMethod</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getStaticMethod(name:String, ns:Namespace = null):<a href="../reflect/Method.html">Method</a></code><p>
+   Returns the <i>static</i> method of this <code>Type</code> class whose name is
+   equals to the supplied parameter.
+   
+   </p><p>
+   Instead of Java, there is no need to care about parameters. Only one static method
+   with a given name may exist. However, a static method and a non-static method with the
+   same name may coexist in the same class. That the purpose of the two methods
+   <code>getInstanceMethod</code> and <code>getStaticMethod</code>.
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the name of the method to search for.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">ns</span>:Namespace</code> (default = <code>null</code>)<code></code> &mdash; the namespace of the method to search for (<code>null</code> for public or
+     builtin AS3 namespace).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/Method.html">Method</a></code> &mdash; 
+                        the found <code>Method</code> or <code>null</code> if no static method with
+    the supplied name can be found.
+   
+   
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../reflect/Type.html#getInstanceMethod" target="">getInstanceMethod</a>
+<br>
+<a href="Type.html" target="">Returned members description above</a>
+<br>
+<a href="Method.html" target="">Method</a>
+</div>
+</div>
+<a name="hasConstructor()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasConstructor</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasConstructor():Boolean</code><p>
+   Tests if this <code>Type</code> instance has a constructor.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if the type is not an interface and not one
+     of the pseudo types <code>VOID</code> and <code>WILD</code>.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Constructor.html" target="">Constructor</a>
+<br>
+<a href="../reflect/Type.html#constructor" target="">constructor</a>
+<br>
+<a href="../reflect/Type.html#isInterface" target="">isInterface</a>
+<br>
+<a href="../reflect/Type.html#isVoid" target="">isVoid</a>
+<br>
+<a href="../reflect/Type.html#isWild" target="">isWild</a>
+</div>
+</div>
+<a name="hasDeclaredConstructor()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasDeclaredConstructor</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasDeclaredConstructor():Boolean</code><p>
+   Tests if this <code>Type</code> instance has a declared constructor.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this type has declared constructor in its XML
+     description.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Constructor.html" target="">Constructor</a>
+<br>
+<a href="../reflect/Type.html#constructor" target="">constructor</a>
+</div>
+</div>
+<a name="isAnnotationPresent()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isAnnotationPresent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isAnnotationPresent(type:String, recursive:Boolean = false):Boolean</code><p>
+   
+   Tests if an <code>Annotation</code>, whose name is equal to the supplied type parameter, is attached
+   to this <code>IAnnotatedElement</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; the name of the annotation to look for.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; should we look for annotations attached to overridden elements (non-static
+     accessors or methods) or superclasses/superinterfaces ?
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if the annotation can be found, <code>false</code> otherwise.
+   
+   </td>
+</tr>
+</table>
+</div>
+<a name="isClass()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isClass</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isClass():Boolean</code><p>
+   Tells if this <code>Type</code> instance represents a class.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this <code>Type</code> instance represents a
+     class, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isDomainRegistered()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isDomainRegistered</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function isDomainRegistered(domain:ApplicationDomain):Boolean</code><p>
+   Tells if an <code>ApplicationDomain</code> is registered.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> &mdash; the domain to check for.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if the domain has been registered, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isInterface()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isInterface</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isInterface():Boolean</code><p>
+   Tells if this <code>Type</code> instance represents an interface.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this <code>Type</code> instance represents an
+     interface, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isSubclassOf()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isSubclassOf</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isSubclassOf(type:<a href="Type.html">Type</a>):Boolean</code><p>
+   Determines if the class or interface represented by this <code>Type</code> instance is
+   a subclass or subinterface of the class or interface represented by the
+   specified <code>Type</code> parameter. 
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:<a href="Type.html">Type</a></code> &mdash; the <code>Type</code> object to be checked.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> the supplied <code>type</code> is a superclass or a
+     superinferface of this type, <code>false</code> otherwise. 
+   </td>
+</tr>
+</table>
+</div>
+<a name="isSuperclassOf()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isSuperclassOf</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isSuperclassOf(type:<a href="Type.html">Type</a>):Boolean</code><p>
+   Determines if the class or interface represented by this <code>Type</code> instance is
+   a superclass or superinterface of the class or interface represented by the
+   specified <code>Type</code> parameter. 
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:<a href="Type.html">Type</a></code> &mdash; the <code>Type</code> object to be checked.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> the supplied <code>type</code> is a subclass or a
+     subinferface of this type, <code>false</code> otherwise. 
+   </td>
+</tr>
+</table>
+</div>
+<a name="isVoid()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isVoid</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isVoid():Boolean</code><p>
+   Tells if this <code>Type</code> instance represents the pseudo-class "void".
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this <code>Type</code> instance represents the
+     pseudo-class "void", <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isWild()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isWild</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isWild():Boolean</code><p>
+   Tells if this <code>Type</code> instance represents the pseudo-class "*" (wildcard).
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this <code>Type</code> instance represents the
+     pseudo-class "*", <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="registerDomain()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerDomain</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function registerDomain(domain:ApplicationDomain):Boolean</code><p>
+   Registers an application domain so objects or classes that belong to this
+   domain, when passed to the <code>Type.forInstance(...)</code> or the
+   <code>Type.forClass(...)</code> methods without specifying a domain, may
+   be associated this domain.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> &mdash; the <code>ApplicationDomain</code> to register. If the domain
+     is the Flash system domain or if it is already registered, this method
+     has no effect and returns <code>false</code>.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if the domain has been registered, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="unregisterDomain()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unregisterDomain</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function unregisterDomain(domain:ApplicationDomain):Boolean</code><p>
+   Unregisters an application domain and all its children domains. Additionally,
+   all cached <code>Type</code> instances associated with the domain parameter
+   will be evicted from the cache.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> &mdash; the <code>ApplicationDomain</code> to unregister. If the domain
+     is the Flash system domain or if it was not registered, this method
+     has no effect and returns <code>false</code>.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if the domain has been unregistered, <code>false</code>
+     otherwise (system domain or already registered).
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="VOID"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">VOID</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const VOID:<a href="../reflect/Type.html">Type</a></code><p>
+   Builtin type for the pseudo-class "void".
+   </p></div>
+<a name="WILD"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">WILD</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const WILD:<a href="../reflect/Type.html">Type</a></code><p>
+   Builtin type for the pseudo-class "*" (wildcard).
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

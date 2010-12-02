@@ -1,0 +1,588 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="DynamicProperty,org.granite.reflect.DynamicProperty,holder,key,propertyKey,type,value,isAccessor,isConstant,isConstructor,isDynamicProperty,isMethod,isReadable,isStatic,isVariable,isWriteable" name="keywords">
+<title>org.granite.reflect.DynamicProperty</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'DynamicProperty - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/reflect/DynamicProperty.html&amp;org/granite/reflect/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;DynamicProperty</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class DynamicProperty"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.reflect</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class DynamicProperty</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">DynamicProperty <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="DescribedElement.html">DescribedElement</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="IMember.html">IMember</a>, <a href="IVisitableElement.html">IVisitableElement</a></td>
+</tr>
+</table>
+<p></p>
+  Represents a dynamic propert of a given <code>Type</code> <i>instance</i>.
+  
+  <p>
+  Note: dynamic properties are never returned as part of <code>Type</code>'s members.
+  They belong, by definition, to <i>instances</i>, not classes, and their purpose is
+  to represent a special kind of property when visiting a dynamic object or key/value
+  pair class instances (such as <code>Dictionary</code> and the various collection
+  classes with numeric keys).
+  </p>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">org.granite.reflect.Visitable</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="DescribedElement.html#declaredBy">declaredBy</a> : <a href="../reflect/Type.html">Type</a>
+<div class="summaryTableDescription">
+   The <code>Type</code> instance this described element belongs to.</div>
+</td><td class="summaryTableOwnerCol"><a href="DescribedElement.html">DescribedElement</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#holder">holder</a> : Object<div class="summaryTableDescription">[read-only]
+   The instance thet holds this dynamic property.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#key">key</a> : *<div class="summaryTableDescription">[read-only]
+   The key (name or object) of this dynamic property.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#propertyKey">propertyKey</a> : String<div class="summaryTableDescription">[read-only]
+   
+   The String representation of this member (field or method qName, key of a
+   dynamic property or dictionary, index of an array, etc.)
+   </div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#type">type</a> : <a href="../reflect/Type.html">Type</a>
+<div class="summaryTableDescription">[read-only]
+   The <code>Type</code> of the value of this dynamic property.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#value">value</a> : *<div class="summaryTableDescription">
+   The value of this dynamic property.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#DynamicProperty()">DynamicProperty</a>(holder:Object, key:Function, getter:Function = null, setter:* = null)</div>
+<div class="summaryTableDescription">
+   Constructs a new <code>DynamicProperty</code> instance.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="DescribedElement.html#equals()">equals</a>(o:*):Boolean</div>
+<div class="summaryTableDescription">
+   Tells if this <code>DescribedElement</code> instance is equal to the supplied
+   o parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="DescribedElement.html">DescribedElement</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isAccessor()">isAccessor</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is an accessor (get/set) field.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isConstant()">isConstant</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is a constant field.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isConstructor()">isConstructor</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is a constructor.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isDynamicProperty()">isDynamicProperty</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is a dynamic property (always <code>false</code> for
+   <code>Member</code>, always <code>true</code> for <code>DynamicProperty</code>).</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isMethod()">isMethod</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is a method.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isReadable()">isReadable</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is readable (fields only).</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isStatic()">isStatic</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is static.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isVariable()">isVariable</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is a variable field.</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isWriteable()">isWriteable</a>():Boolean</div>
+<div class="summaryTableDescription">
+   
+   Checks if this member is writeable (fields only).</div>
+</td><td class="summaryTableOwnerCol">DynamicProperty</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="DescribedElement.html#toString()">toString</a>():String</div>
+<div class="summaryTableDescription">
+   Returns the a string (XML) representation of this described element.</div>
+</td><td class="summaryTableOwnerCol"><a href="DescribedElement.html">DescribedElement</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="holder"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">holder</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>holder:Object</code>&nbsp;&nbsp;[read-only]<p>
+   The instance thet holds this dynamic property. 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get holder():Object</code>
+<br>
+</div>
+<a name="key"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">key</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>key:*</code>&nbsp;&nbsp;[read-only]<p>
+   The key (name or object) of this dynamic property. 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get key():*</code>
+<br>
+</div>
+<a name="propertyKey"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">propertyKey</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>propertyKey:String</code>&nbsp;&nbsp;[read-only]<p>
+   
+   The String representation of this member (field or method qName, key of a
+   dynamic property or dictionary, index of an array, etc.)
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get propertyKey():String</code>
+<br>
+</div>
+<a name="type"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">type</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>type:<a href="../reflect/Type.html">Type</a></code>&nbsp;&nbsp;[read-only]<p>
+   The <code>Type</code> of the value of this dynamic property. 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get type():<a href="../reflect/Type.html">Type</a></code>
+<br>
+</div>
+<a name="value"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">value</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>value:*</code>&nbsp;&nbsp;[read-write]<p>
+   The value of this dynamic property. 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get value():*</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set value(value:*):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="DynamicProperty()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DynamicProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function DynamicProperty(holder:Object, key:Function, getter:Function = null, setter:* = null)</code><p>
+   Constructs a new <code>DynamicProperty</code> instance.
+   
+   </p><p>
+   The optional getter and setter functions are expected to have the following signatures:
+   </p>
+   
+   <div class='listing'><pre>
+   function (holder:Object, key:*):*</pre></div>
+   <div class='listing'><pre>
+   function (holder:Object, key:*, value:*):void</pre></div>
+   
+   <p>
+   If no getter or setter functions are provided, it is expected that getting and setting
+   this dynamic property value will follow this standard:
+   </p>
+   
+   <div class='listing'><pre>
+   holder[key]</pre></div>
+   <div class='listing'><pre>
+   holder[key] = value</pre></div>
+   
+   <p> </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">holder</span>:Object</code> &mdash; the <code>Type</code> instance this dynamic property belongs to.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">key</span>:Function</code> &mdash; the key (name or object) of this dynamic property.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">getter</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; the getter function to be used to get this dynamic property value.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">setter</span>:*</code> (default = <code>null</code>)<code></code> &mdash; the setter function to be used to set this dynamic property value.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="isAccessor()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isAccessor</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isAccessor():Boolean</code><p>
+   
+   Checks if this member is an accessor (get/set) field.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is an accessor, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isConstant()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isConstant</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isConstant():Boolean</code><p>
+   
+   Checks if this member is a constant field.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is a constant, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isConstructor()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isConstructor</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isConstructor():Boolean</code><p>
+   
+   Checks if this member is a constructor.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is a constructor, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isDynamicProperty()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isDynamicProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isDynamicProperty():Boolean</code><p>
+   
+   Checks if this member is a dynamic property (always <code>false</code> for
+   <code>Member</code>, always <code>true</code> for <code>DynamicProperty</code>).
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is a dynamic property, <code>false</code>
+     otherwise.
+   
+   </td>
+</tr>
+</table>
+</div>
+<a name="isMethod()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isMethod</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isMethod():Boolean</code><p>
+   
+   Checks if this member is a method.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is a method, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isReadable()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isReadable</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isReadable():Boolean</code><p>
+   
+   Checks if this member is readable (fields only).
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is readable, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isStatic()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isStatic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isStatic():Boolean</code><p>
+   
+   Checks if this member is static.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is static, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isVariable()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isVariable</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isVariable():Boolean</code><p>
+   
+   Checks if this member is a variable field.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is a variable, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isWriteable()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isWriteable</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isWriteable():Boolean</code><p>
+   
+   Checks if this member is writeable (fields only).
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if this member is writeable, <code>false</code>
+     otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

@@ -1,0 +1,533 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="EntityManager,org.granite.tide.data.EntityManager,resolvingConflict,dirty,mergeConflicts,defaultMerge,handleMergeConflicts,isEntityChanged,isEntityPropertyChanged,mergeExternal,mergeInContext,objectEquals,resetEntity,resolveMergeConflicts" name="keywords">
+<title>org.granite.tide.data.EntityManager</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'EntityManager - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/granite/tide/data/EntityManager.html&amp;org/granite/tide/data/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;EntityManager</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class EntityManager"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.tide.data</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class EntityManager</td>
+</tr>
+</table>
+<p></p>
+   PersistenceContext is the base implementation of the entity container context
+  
+      <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#dirty">dirty</a> : Boolean<div class="summaryTableDescription">[read-only]
+         Entity manager is dirty when any entity/collection/map has been modified
+                   </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#mergeConflicts">mergeConflicts</a> : <a href="../data/Conflicts.html">Conflicts</a>
+<div class="summaryTableDescription">[read-only]
+         List of conflicts detected during last merge operation
+         
+          </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#resolvingConflict">resolvingConflict</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#EntityManager()">EntityManager</a>(context:<a href="../BaseContext.html">BaseContext</a>, contextManager:<a href="../IContextManager.html">IContextManager</a>)</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#defaultMerge()">defaultMerge</a>(em:<a href="../IEntityManager.html">IEntityManager</a>, obj:Object, dest:Object, mergeUpdate:Boolean = true, expr:IExpression = null):void</div>
+<div class="summaryTableDescription">[static]
+          Default implementation of entity merge for simple ActionScript beans with public properties
+          Can be used to implement Tide managed entities with simple objects
+                   </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#handleMergeConflicts()">handleMergeConflicts</a>():void</div>
+<div class="summaryTableDescription">
+          Dispatch an event when last merge generated conflicts 
+         </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isEntityChanged()">isEntityChanged</a>(entity:<a href="../IEntity.html">IEntity</a>, propName:String = null, value:* = null):Boolean</div>
+<div class="summaryTableDescription">
+          Check if entity has changed since last save point
+                   </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isEntityPropertyChanged()">isEntityPropertyChanged</a>(entity:<a href="../IEntity.html">IEntity</a>, propertyName:String, value:Object):Boolean</div>
+<div class="summaryTableDescription">
+          Check if entity property has been changed since last remote call
+                   </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#mergeExternal()">mergeExternal</a>(obj:Object, previous:Object = null, expr:IExpression = null, parent:Object = null, propertyName:String = null, setter:Function = null, forceUpdate:Boolean = false):Object</div>
+<div class="summaryTableDescription">
+          Merge an object coming from the server in the context
+                   </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#mergeInContext()">mergeInContext</a>(context:<a href="../BaseContext.html">BaseContext</a>):void</div>
+<div class="summaryTableDescription">
+          Merge conversation context variables in global context 
+          Only applicable to conversation contexts 
+         </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#objectEquals()">objectEquals</a>(obj1:Object, obj2:Object):Boolean</div>
+<div class="summaryTableDescription">
+          Equality for objects, using uid property when possible
+                   </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#resetEntity()">resetEntity</a>(entity:<a href="../IEntity.html">IEntity</a>, cache:Dictionary):void</div>
+<div class="summaryTableDescription">
+          Discard changes of entity from last version received from the server
+                   </div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#resolveMergeConflicts()">resolveMergeConflicts</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">EntityManager</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="dirty"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dirty</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>dirty:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+         Entity manager is dirty when any entity/collection/map has been modified
+                   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get dirty():Boolean</code>
+<br>
+</div>
+<a name="mergeConflicts"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">mergeConflicts</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>mergeConflicts:<a href="../data/Conflicts.html">Conflicts</a></code>&nbsp;&nbsp;[read-only]<p>
+         List of conflicts detected during last merge operation
+         
+          </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get mergeConflicts():<a href="../data/Conflicts.html">Conflicts</a></code>
+<br>
+</div>
+<a name="resolvingConflict"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resolvingConflict</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var resolvingConflict:Boolean = false</code>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="EntityManager()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">EntityManager</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function EntityManager(context:<a href="../BaseContext.html">BaseContext</a>, contextManager:<a href="../IContextManager.html">IContextManager</a>)</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">context</span>:<a href="../BaseContext.html">BaseContext</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">contextManager</span>:<a href="../IContextManager.html">IContextManager</a></code></td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="defaultMerge()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">defaultMerge</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function defaultMerge(em:<a href="../IEntityManager.html">IEntityManager</a>, obj:Object, dest:Object, mergeUpdate:Boolean = true, expr:IExpression = null):void</code><p>
+          Default implementation of entity merge for simple ActionScript beans with public properties
+          Can be used to implement Tide managed entities with simple objects
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">em</span>:<a href="../IEntityManager.html">IEntityManager</a></code> &mdash; the context
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">obj</span>:Object</code> &mdash; source object
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">dest</span>:Object</code> &mdash; destination object
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mergeUpdate</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; current path of the entity in the context (mostly for internal use)
+         </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">expr</span>:IExpression</code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+</div>
+<a name="handleMergeConflicts()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">handleMergeConflicts</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function handleMergeConflicts():void</code><p>
+          Dispatch an event when last merge generated conflicts 
+         </p></div>
+<a name="isEntityChanged()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isEntityChanged</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isEntityChanged(entity:<a href="../IEntity.html">IEntity</a>, propName:String = null, value:* = null):Boolean</code><p>
+          Check if entity has changed since last save point
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="../IEntity.html">IEntity</a></code> &mdash; entity to restore
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">propName</span>:String</code> (default = <code>null</code>)<code></code> &mdash; property name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; entity is dirty
+         </td>
+</tr>
+</table>
+</div>
+<a name="isEntityPropertyChanged()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isEntityPropertyChanged</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isEntityPropertyChanged(entity:<a href="../IEntity.html">IEntity</a>, propertyName:String, value:Object):Boolean</code><p>
+          Check if entity property has been changed since last remote call
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="../IEntity.html">IEntity</a></code> &mdash; entity to check
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">propertyName</span>:String</code> &mdash; property to check
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:Object</code> &mdash; current value to compare with saved value
+           
+          </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true is value has been changed
+         </td>
+</tr>
+</table>
+</div>
+<a name="mergeExternal()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">mergeExternal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function mergeExternal(obj:Object, previous:Object = null, expr:IExpression = null, parent:Object = null, propertyName:String = null, setter:Function = null, forceUpdate:Boolean = false):Object</code><p>
+          Merge an object coming from the server in the context
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">obj</span>:Object</code> &mdash; external object
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">previous</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; previously existing object in the context (null if no existing object)
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">expr</span>:IExpression</code> (default = <code>null</code>)<code></code> &mdash; current path from the context
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">parent</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; parent object for collections
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">propertyName</span>:String</code> (default = <code>null</code>)<code></code> &mdash; property name of the current object in the parent object
+    </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">setter</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; setter function to update the private property
+    </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">forceUpdate</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; force update of property (used for externalized properties)
+                   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Object</code> &mdash; merged object (should === previous when previous not null)
+         </td>
+</tr>
+</table>
+</div>
+<a name="mergeInContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">mergeInContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function mergeInContext(context:<a href="../BaseContext.html">BaseContext</a>):void</code><p>
+          Merge conversation context variables in global context 
+          Only applicable to conversation contexts 
+         </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">context</span>:<a href="../BaseContext.html">BaseContext</a></code></td>
+</tr>
+</table>
+</div>
+<a name="objectEquals()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">objectEquals</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function objectEquals(obj1:Object, obj2:Object):Boolean</code><p>
+          Equality for objects, using uid property when possible
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">obj1</span>:Object</code> &mdash; object
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">obj2</span>:Object</code> &mdash; object
+         
+          </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true when objects are instances of the same entity
+         </td>
+</tr>
+</table>
+</div>
+<a name="resetEntity()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resetEntity</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function resetEntity(entity:<a href="../IEntity.html">IEntity</a>, cache:Dictionary):void</code><p>
+          Discard changes of entity from last version received from the server
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="../IEntity.html">IEntity</a></code> &mdash; entity to restore
+         </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">cache</span>:Dictionary</code></td>
+</tr>
+</table>
+</div>
+<a name="resolveMergeConflicts()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resolveMergeConflicts</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function resolveMergeConflicts():void</code>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="DefaultMessageInterpolator,org.granite.validation.DefaultMessageInterpolator,getBundle,interpolate,split,unescape" name="keywords">
+<title>org.granite.validation.DefaultMessageInterpolator</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'DefaultMessageInterpolator - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/validation/DefaultMessageInterpolator.html&amp;org/granite/validation/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;DefaultMessageInterpolator</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class DefaultMessageInterpolator"); titleBar_setSubNav(false,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.validation</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class DefaultMessageInterpolator</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="IMessageInterpolator.html">IMessageInterpolator</a></td>
+</tr>
+</table>
+<p></p>
+  A default implementation of the <code>IMessageInterpolator</code>
+  interface, that transform a constraint message key into a human
+  readable error message. This implementation follows the JSR-303
+  specification recommendations (section 4.3.1) for message parameters
+  substitutions.
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="ValidatorFactory.html#messageInterpolator" target="">ValidatorFactory.messageInterpolator</a>
+<br>
+<a href="ValidationMessages.html" target="">ValidationMessages</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#DefaultMessageInterpolator()">DefaultMessageInterpolator</a>()</div>
+<div class="summaryTableDescription">
+   Constructs a new <code>DefaultMessageInterpolator</code> instance.</div>
+</td><td class="summaryTableOwnerCol">DefaultMessageInterpolator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getBundle()">getBundle</a>():<a href="../validation/ValidationMessages.html">ValidationMessages</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Returns the unique instance of the <code>ValidationMessages</code>
+   class (shortcut for <code>ValidationMessages.getInstance()</code>).</div>
+</td><td class="summaryTableOwnerCol">DefaultMessageInterpolator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#interpolate()">interpolate</a>(messageTemplate:String, constraint:<a href="IConstraint.html">IConstraint</a>, value:String, locale:* = null):String</div>
+<div class="summaryTableDescription">
+   Interpolate the message template based on the contraint validation context
+   and substitute message parameters according to the JSR-303 specification
+   (section 4.3.1).</div>
+</td><td class="summaryTableOwnerCol">DefaultMessageInterpolator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#split()">split</a>(messageTemplate:String):Array</div>
+<div class="summaryTableDescription">[static]
+   Splits a message template into an array of string literals and
+   parameters.</div>
+</td><td class="summaryTableOwnerCol">DefaultMessageInterpolator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unescape()">unescape</a>(message:String):String</div>
+<div class="summaryTableDescription">[static]
+   Unescape the given string parameter, removing extraneous backslashs.</div>
+</td><td class="summaryTableOwnerCol">DefaultMessageInterpolator</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="DefaultMessageInterpolator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DefaultMessageInterpolator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function DefaultMessageInterpolator()</code><p>
+   Constructs a new <code>DefaultMessageInterpolator</code> instance.
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="getBundle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getBundle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getBundle():<a href="../validation/ValidationMessages.html">ValidationMessages</a></code><p>
+   Returns the unique instance of the <code>ValidationMessages</code>
+   class (shortcut for <code>ValidationMessages.getInstance()</code>).
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../validation/ValidationMessages.html">ValidationMessages</a></code> &mdash; 
+                        the unique instance of the <code>ValidationMessages</code>
+     class.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="interpolate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">interpolate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function interpolate(messageTemplate:String, constraint:<a href="IConstraint.html">IConstraint</a>, value:String, locale:* = null):String</code><p>
+   Interpolate the message template based on the contraint validation context
+   and substitute message parameters according to the JSR-303 specification
+   (section 4.3.1). Standard or user specific validation bundles are used for
+   parameters resolution.
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">messageTemplate</span>:String</code> &mdash; the message to interpolate.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">constraint</span>:<a href="IConstraint.html">IConstraint</a></code> &mdash; the constraint related to the interpolation.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:String</code> &mdash; the invalid value (according to the current constraint).
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">locale</span>:*</code> (default = <code>null</code>)<code></code> &mdash; an optional locale used for message localization.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the interpolated error message.
+   
+    </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="ValidationMessages.html" target="">ValidationMessages</a>
+</div>
+</div>
+<a name="split()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">split</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function split(messageTemplate:String):Array</code><p>
+   Splits a message template into an array of string literals and
+   parameters. For example, <code>split('Must be in [{min}, {max}]')</code>
+   will return <code>['Must be in [', '{min}', ', ', '{max}', ']'])</code>.
+   See JSR-303 specification section 4.3.1.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">messageTemplate</span>:String</code> &mdash; message template to be split into tokens.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array of string literals and parameters.
+   </td>
+</tr>
+</table>
+</div>
+<a name="unescape()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unescape</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function unescape(message:String):String</code><p>
+   Unescape the given string parameter, removing extraneous backslashs.
+   See JSR-303 specification section 4.3.1.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">message</span>:String</code> &mdash; the message to be unescaped.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the unescaped message.
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

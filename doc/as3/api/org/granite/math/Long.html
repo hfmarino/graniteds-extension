@@ -1,0 +1,1376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="Long,org.granite.math.Long,MAX_VALUE,MIN_VALUE,ONE,TEN,ZERO,highBits,lowBits,sign,abs,add,and,clearBit,compareTo,divide,divideAndRemainder,equals,leftShift,multiply,negate,not,or,remainder,rightShift,setBit,subtract,testBit,toHexString,toInt,toNumber,toString,xor" name="keywords">
+<title>org.granite.math.Long</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Long - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/math/Long.html&amp;org/granite/math/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Long</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Long"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.math</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public final  class Long</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="BigNumber.html">BigNumber</a></td>
+</tr>
+</table>
+<p></p>
+  An ActionScript3 equivalent to the signed 64bits <code>long</code> type
+  in Java. All arithmetic operations are provided, as well as bitwise, bit
+  shift and comparison operator equivalents.
+  <br>
+  <br>
+  <i>This class provides externalization methods that are meant to be used
+  with specific GraniteDS serialization mechanisms. Its main purpose is to
+  give a reliable serialization behavior between ActionScript3 and Java
+  <code>long</code> type: standard serialization uses the ActionScript3
+  <code>Number</code> type, with possible lose of precision.</i>
+  
+     <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="BigInteger.html" target="">BigInteger</a>
+<br>
+<a href="BigDecimal.html" target="">BigDecimal</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#highBits">highBits</a> : uint<div class="summaryTableDescription">[read-only]
+      The high 32bits of this <code>Long</code> as an <code>uint</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lowBits">lowBits</a> : uint<div class="summaryTableDescription">[read-only]
+      The low 32bits of this <code>Long</code> as an <code>uint</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sign">sign</a> : int<div class="summaryTableDescription">[read-only]
+      The sign of this <code>Long</code> as an <code>int</code>, ie:
+   -1, 0 or 1 as the value of this <code>Long</code> is negative,
+   zero or positive.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Long()">Long</a>(value:* = null, radix:int = 10)</div>
+<div class="summaryTableDescription">
+   Constructs a new <code>Long</code> instance according to the
+   supplied parameters.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#abs()">abs</a>():<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is the absolute value
+   of this <code>Long</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#add()">add</a>(b:*):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is <code>(this + b)</code>,
+   with a possible overflow (silently ignored, as in primitive operations).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#and()">and</a>(b:*):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+   Returns <code>(this &amp; b)</code> (bitwise AND).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#clearBit()">clearBit</a>(index:int):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is equivalent to this <code>Long</code>
+      with the designated bit cleared: computes <code>(this &amp; ~(1 &lt;&lt; n))</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#compareTo()">compareTo</a>(b:<a href="Long.html">Long</a>):int</div>
+<div class="summaryTableDescription">
+      Compares this <code>Long</code> with the specified
+   <code>Long</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#divide()">divide</a>(b:*):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is <code>(this / b)</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#divideAndRemainder()">divideAndRemainder</a>(b:*):Array</div>
+<div class="summaryTableDescription">
+      Returns an array of two <code>Long</code> containing
+   <code>(this / b)</code> followed by <code>(this % b)</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#equals()">equals</a>(b:*):Boolean</div>
+<div class="summaryTableDescription">
+      Compares this <code>Long</code> with the specified object
+   for equality.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#leftShift()">leftShift</a>(value:uint):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+   Returns <code>(this &lt;&lt; b)</code> (bitwise left shift).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#multiply()">multiply</a>(b:*):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is <code>(this * b)</code>,
+   with a possible overflow (silently ignored, as in primitive operations).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#negate()">negate</a>():<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is <code>(-this)</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#not()">not</a>():<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+   Returns <code>(~this)</code> (bitwise NOT).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#or()">or</a>(b:*):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+   Returns <code>(this | b)</code> (bitwise OR).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#remainder()">remainder</a>(b:*):Array</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is <code>(this % b)</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#rightShift()">rightShift</a>(value:uint, unsigned:Boolean = false):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+   Returns <code>(this &gt;&gt; b)</code> (bitwise right shift).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setBit()">setBit</a>(index:int):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is equivalent to this <code>Long</code>
+      with the designated bit set: computes <code>(this | (1 &lt;&lt; n))</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#subtract()">subtract</a>(b:*):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>Long</code> whose value is <code>(this - b)</code>,
+   with a possible overflow (silently ignored, as in primitive operations).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#testBit()">testBit</a>(index:int):Boolean</div>
+<div class="summaryTableDescription">
+      Returns <code>true</code> if and only if the designated bit is set:
+      computes <code>((this &amp; (1 &lt;&lt; n)) != 0)</code>.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toHexString()">toHexString</a>():String</div>
+<div class="summaryTableDescription">
+   Returns a string representation of this <code>Long</code> as an unsigned integer
+   in base 16.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toInt()">toInt</a>():int</div>
+<div class="summaryTableDescription">
+      Converts this <code>Long</code> to an <code>int</code>: it is equivalent
+   to <code>int(this.lowBits)</code> with a possible lose of precision and
+   a different sign than the original value.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toNumber()">toNumber</a>():Number</div>
+<div class="summaryTableDescription">
+      Converts this <code>Long</code> to a <code>Number</code> (with a possible
+   lose of precision).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>(radix:int = 10):String</div>
+<div class="summaryTableDescription">
+   Returns a string representation of this <code>Long</code> as signed integer
+   in the specified radix.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#xor()">xor</a>(b:*):<a href="../math/Long.html">Long</a>
+</div>
+<div class="summaryTableDescription">
+   Returns <code>(this ^ b)</code> (bitwise XOR).</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#MAX_VALUE">MAX_VALUE</a> : <a href="../math/Long.html">Long</a>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#MIN_VALUE">MIN_VALUE</a> : <a href="../math/Long.html">Long</a>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ONE">ONE</a> : <a href="../math/Long.html">Long</a>
+<div class="summaryTableDescription">[static]
+   The <code>Long</code> constant one.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#TEN">TEN</a> : <a href="../math/Long.html">Long</a>
+<div class="summaryTableDescription">[static]
+   The <code>Long</code> constant ten.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ZERO">ZERO</a> : <a href="../math/Long.html">Long</a>
+<div class="summaryTableDescription">[static]
+   The <code>Long</code> constant zero.</div>
+</td><td class="summaryTableOwnerCol">Long</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="highBits"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">highBits</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>highBits:uint</code>&nbsp;&nbsp;[read-only]<p>
+      The high 32bits of this <code>Long</code> as an <code>uint</code>.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get highBits():uint</code>
+<br>
+</div>
+<a name="lowBits"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">lowBits</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>lowBits:uint</code>&nbsp;&nbsp;[read-only]<p>
+      The low 32bits of this <code>Long</code> as an <code>uint</code>.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get lowBits():uint</code>
+<br>
+</div>
+<a name="sign"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sign</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>sign:int</code>&nbsp;&nbsp;[read-only]<p>
+      The sign of this <code>Long</code> as an <code>int</code>, ie:
+   -1, 0 or 1 as the value of this <code>Long</code> is negative,
+   zero or positive.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get sign():int</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Long()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Long</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Long(value:* = null, radix:int = 10)</code><p>
+   Constructs a new <code>Long</code> instance according to the
+   supplied parameters.
+   <br>
+   <br>
+   The <code>value</code> parameter may be a String representation of
+   an integer, a <code>int</code> primitive value, a <code>Number</code>
+   or even another <code>Long</code>:
+   <br>
+   <ul>
+   <li><code>String</code>: it must be a not empty String in the form of
+     <i>-?[0-9a-zA-Z]+</i> (ie: an optional '-' character followed by
+     a not empty sequence of digits (with radix >= 2 and <= 36)). When
+     a String value is used, the second parameter <code>radix</code>
+     is also used, and the supplied digits must be in accordance with
+     the specified radix.</li>
+   <li><code>int</code>: a primitive integer value (radix ignored).</li>
+   <li><code>Number</code>: a primitive number value (radix ignored). Only
+     the fixed part of the number will be used (decimal part is
+        ignored).</li>
+   <li><code>Long</code>: the new Long will be an exact copy of
+     the specified parameter.</li>
+   <li><code>null</code>: the new Long will be an exact copy of
+     the constant <code>Long.ZERO</code>.</li>
+   </ul>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> (default = <code>null</code>)<code></code> &mdash; the value to be assigned to the new <code>Long</code>.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">radix</span>:int</code> (default = <code>10</code>)<code></code> &mdash; the radix (2 <= radix <= 36) to be used for string conversion
+     (ignored if the <code>value</code> parameter isn't a string).
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/NumberFormatError.html">NumberFormatError</a> </code> &mdash; if the <code>value</code>
+     parameter is an invalid String representation or it doesn't fit into
+     a signed 64bits type. 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>value</code>
+     parameter is not one of the supported types or if it is
+     <code>Number.NaN</code>, <code>Number.POSITIVE_INFINITY</code> or
+     <code>Number.NEGATIVE_INFINITY</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="abs()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">abs</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function abs():<a href="../math/Long.html">Long</a></code><p>
+      Returns a <code>Long</code> whose value is the absolute value
+   of this <code>Long</code>.
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        the absolute value of this <code>Long</code>.
+      
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="add()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">add</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function add(b:*):<a href="../math/Long.html">Long</a></code><p>
+      Returns a <code>Long</code> whose value is <code>(this + b)</code>,
+   with a possible overflow (silently ignored, as in primitive operations).
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>Long</code> constructor documentation
+   (a radix of 10 is assumed for String representations).
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the value to be added to this <code>Long</code>.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this + b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/NumberFormatError.html">NumberFormatError</a> </code> &mdash; if the <code>b</code>
+     parameter is an invalid String representation (for radix 10). 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>b</code>
+     parameter is not one of the supported types or if it is
+     <code>Number.NaN</code>, <code>Number.POSITIVE_INFINITY</code> or
+     <code>Number.NEGATIVE_INFINITY</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="and()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">and</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function and(b:*):<a href="../math/Long.html">Long</a></code><p>
+   Returns <code>(this &amp; b)</code> (bitwise AND).
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the other operand used in the operation (may be of any type
+     accepted by the <code>Long</code> constructor).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this &amp; b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="clearBit()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clearBit</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function clearBit(index:int):<a href="../math/Long.html">Long</a></code><p>
+      Returns a <code>Long</code> whose value is equivalent to this <code>Long</code>
+      with the designated bit cleared: computes <code>(this &amp; ~(1 &lt;&lt; n))</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:int</code> &mdash; the index of bit to clear.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>this &amp; ~(1 &lt;&lt; n)</code>
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>index</code> is negative
+     or greater than 63.
+      </td>
+</tr>
+</table>
+</div>
+<a name="compareTo()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">compareTo</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function compareTo(b:<a href="Long.html">Long</a>):int</code><p>
+      Compares this <code>Long</code> with the specified
+   <code>Long</code>. This method is provided in preference to
+   individual methods for each of the six boolean comparison operators
+   (&lt;, ==, &gt;, &lt;=, !=, &gt;=).  The suggested idiom for performing
+   these comparisons is: <code>(x.compareTo(y) &lt;<i>op</i>&gt; 0)</code>,
+   where &lt;<i>op</i>&gt; is one of the six comparison operators.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:<a href="Long.html">Long</a></code> &mdash; the <code>Long</code> to which this <code>Long</code>
+     is to be compared.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash; -1, 0 or 1 as this <code>Long</code> is numerically less than,
+     equal to, or greater than <code>b</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="divide()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">divide</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function divide(b:*):<a href="../math/Long.html">Long</a></code><p>
+      Returns a <code>Long</code> whose value is <code>(this / b)</code>.
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>Long</code> constructor documentation
+   (a radix of 10 is assumed for String representations).
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the value by which this <code>Long</code> is to be divided.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this / b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the <code>b</code>
+     parameter is equals to <code>0</code>. 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/NumberFormatError.html">NumberFormatError</a> </code> &mdash; if the <code>b</code>
+     parameter is an invalid String representation (for radix 10). 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>b</code>
+     parameter is not one of the supported types or if it is
+     <code>Number.NaN</code>, <code>Number.POSITIVE_INFINITY</code> or
+     <code>Number.NEGATIVE_INFINITY</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="divideAndRemainder()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">divideAndRemainder</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function divideAndRemainder(b:*):Array</code><p>
+      Returns an array of two <code>Long</code> containing
+   <code>(this / b)</code> followed by <code>(this % b)</code>. 
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>Long</code> constructor documentation
+   (a radix of 10 is assumed for String representations).
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the value by which this <code>Long</code> is to be divided,
+     and the remainder computed.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array of two Long: the quotient <code>(this / val)</code>
+     is the initial element, and the remainder <code>(this % val)</code>
+     is the final element.
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the <code>b</code>
+     parameter is equals to <code>0</code>. 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/NumberFormatError.html">NumberFormatError</a> </code> &mdash; if the <code>b</code>
+     parameter is an invalid String representation (for radix 10). 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>b</code>
+     parameter is not one of the supported types or if it is
+     <code>Number.NaN</code>, <code>Number.POSITIVE_INFINITY</code> or
+     <code>Number.NEGATIVE_INFINITY</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="equals()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">equals</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function equals(b:*):Boolean</code><p>
+      Compares this <code>Long</code> with the specified object
+   for equality.
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>Long</code> constructor documentation
+   (a radix of 10 is assumed for String representations).
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; an object to which this <code>Long</code> is to
+     be compared.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if and only if the specified object is
+     a <code>Long</code> (or convertible to a
+     <code>Long</code>) whose value is numerically equal
+     to this <code>Long</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="leftShift()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">leftShift</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function leftShift(value:uint):<a href="../math/Long.html">Long</a></code><p>
+   Returns <code>(this &lt;&lt; b)</code> (bitwise left shift).
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:uint</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this &lt;&lt; b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="multiply()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">multiply</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function multiply(b:*):<a href="../math/Long.html">Long</a></code><p>
+      Returns a <code>Long</code> whose value is <code>(this * b)</code>,
+   with a possible overflow (silently ignored, as in primitive operations).
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>Long</code> constructor documentation
+   (a radix of 10 is assumed for String representations).
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the value to be multiplied by this <code>Long</code>.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this * b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/NumberFormatError.html">NumberFormatError</a> </code> &mdash; if the <code>b</code>
+     parameter is an invalid String representation (for radix 10). 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>b</code>
+     parameter is not one of the supported types or if it is
+     <code>Number.NaN</code>, <code>Number.POSITIVE_INFINITY</code> or
+     <code>Number.NEGATIVE_INFINITY</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="negate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">negate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function negate():<a href="../math/Long.html">Long</a></code><p>
+      Returns a <code>Long</code> whose value is <code>(-this)</code>.
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(-this)</code>.
+      
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="not()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">not</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function not():<a href="../math/Long.html">Long</a></code><p>
+   Returns <code>(~this)</code> (bitwise NOT).
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(~this)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="or()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">or</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function or(b:*):<a href="../math/Long.html">Long</a></code><p>
+   Returns <code>(this | b)</code> (bitwise OR).
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the other operand used in the operation (may be of any type
+     accepted by the <code>Long</code> constructor).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this | b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="remainder()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">remainder</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function remainder(b:*):Array</code><p>
+      Returns a <code>Long</code> whose value is <code>(this % b)</code>.
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>Long</code> constructor documentation
+   (a radix of 10 is assumed for String representations).
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the value by which this <code>Long</code> is to be divided,
+     and the remainder computed.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; <code>(this % b)</code>.
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the <code>b</code>
+     parameter is equals to <code>0</code>. 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/NumberFormatError.html">NumberFormatError</a> </code> &mdash; if the <code>b</code>
+     parameter is an invalid String representation (for radix 10). 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>b</code>
+     parameter is not one of the supported types or if it is
+     <code>Number.NaN</code>, <code>Number.POSITIVE_INFINITY</code> or
+     <code>Number.NEGATIVE_INFINITY</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="rightShift()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">rightShift</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function rightShift(value:uint, unsigned:Boolean = false):<a href="../math/Long.html">Long</a></code><p>
+   Returns <code>(this &gt;&gt; b)</code> (bitwise right shift).
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:uint</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">unsigned</span>:Boolean</code> (default = <code>false</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this &gt;&gt; b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="setBit()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setBit</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setBit(index:int):<a href="../math/Long.html">Long</a></code><p>
+      Returns a <code>Long</code> whose value is equivalent to this <code>Long</code>
+      with the designated bit set: computes <code>(this | (1 &lt;&lt; n))</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:int</code> &mdash; the index of bit to set.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>this | (1 &lt;&lt; n)</code>
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>index</code> is negative
+     or greater than 63.
+      </td>
+</tr>
+</table>
+</div>
+<a name="subtract()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">subtract</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function subtract(b:*):<a href="../math/Long.html">Long</a></code><p>
+      Returns a <code>Long</code> whose value is <code>(this - b)</code>,
+   with a possible overflow (silently ignored, as in primitive operations).
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>Long</code> constructor documentation
+   (a radix of 10 is assumed for String representations).
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the value to be subtracted from this <code>Long</code>.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this - b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/NumberFormatError.html">NumberFormatError</a> </code> &mdash; if the <code>b</code>
+     parameter is an invalid String representation (for radix 10). 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>b</code>
+     parameter is not one of the supported types or if it is
+     <code>Number.NaN</code>, <code>Number.POSITIVE_INFINITY</code> or
+     <code>Number.NEGATIVE_INFINITY</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="testBit()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">testBit</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function testBit(index:int):Boolean</code><p>
+      Returns <code>true</code> if and only if the designated bit is set:
+      computes <code>((this &amp; (1 &lt;&lt; n)) != 0)</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:int</code> &mdash; the index of bit to test.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if and only if the designated bit is set.
+      </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>index</code> is negative
+     or greater than 63.
+      </td>
+</tr>
+</table>
+</div>
+<a name="toHexString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toHexString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toHexString():String</code><p>
+   Returns a string representation of this <code>Long</code> as an unsigned integer
+   in base 16. 
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; a string representation of this <code>Long</code> as an unsigned integer
+     in base 16.
+   </td>
+</tr>
+</table>
+</div>
+<a name="toInt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toInt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toInt():int</code><p>
+      Converts this <code>Long</code> to an <code>int</code>: it is equivalent
+   to <code>int(this.lowBits)</code> with a possible lose of precision and
+   a different sign than the original value.
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash; this <code>Long</code> converted to an <code>int</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="toNumber()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toNumber</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toNumber():Number</code><p>
+      Converts this <code>Long</code> to a <code>Number</code> (with a possible
+   lose of precision).
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; this <code>Long</code> converted to a <code>Number</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toString(radix:int = 10):String</code><p>
+   Returns a string representation of this <code>Long</code> as signed integer
+   in the specified radix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">radix</span>:int</code> (default = <code>10</code>)<code></code> &mdash; the radix to be used (2 &lt;= radix &lt;= 36).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; a string representation of this <code>Long</code> as signed integer
+     in the specified radix.
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the specified radix is out
+     of supported range.
+   </td>
+</tr>
+</table>
+</div>
+<a name="xor()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">xor</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function xor(b:*):<a href="../math/Long.html">Long</a></code><p>
+   Returns <code>(this ^ b)</code> (bitwise XOR).
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; the other operand used in the operation (may be of any type
+     accepted by the <code>Long</code> constructor).
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/Long.html">Long</a></code> &mdash; 
+                        <code>(this ^ b)</code>.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="MAX_VALUE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">MAX_VALUE</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const MAX_VALUE:<a href="../math/Long.html">Long</a></code>
+</div>
+<a name="MIN_VALUE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">MIN_VALUE</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const MIN_VALUE:<a href="../math/Long.html">Long</a></code>
+</div>
+<a name="ONE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ONE</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const ONE:<a href="../math/Long.html">Long</a></code><p>
+   The <code>Long</code> constant one.
+   </p></div>
+<a name="TEN"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">TEN</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const TEN:<a href="../math/Long.html">Long</a></code><p>
+   The <code>Long</code> constant ten.
+   </p></div>
+<a name="ZERO"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ZERO</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const ZERO:<a href="../math/Long.html">Long</a></code><p>
+   The <code>Long</code> constant zero.
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

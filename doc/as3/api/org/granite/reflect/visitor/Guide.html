@@ -1,0 +1,490 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Guide,org.granite.reflect.visitor.Guide,RS_DICTIONARY,RS_STACK,defaultHandlers,handlers,recursionStrategy,visitor,accept,explore,exploreVisitable,isInContext,popFromContext,pushInContext" name="keywords">
+<title>org.granite.reflect.visitor.Guide</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Guide - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/granite/reflect/visitor/Guide.html&amp;org/granite/reflect/visitor/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Guide</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Guide"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.reflect.visitor</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Guide</td>
+</tr>
+</table>
+<p></p>
+  The <code>Guide</code> class is the entry point of the visitor pattern
+  implementation. It uses an array of <code>IHandler</code>s in order to
+  explore and expose to a visitor the properties of a given bean.
+  Exploring a beans graph is a sequence of two-phases processes: for each
+  bean, first, the visitor is asked if it accepts to visit each property
+  of the current bean; second, for each accepted property of this bean,
+  the property is visited and cascaded.
+  
+  <p>
+  A <code>Guide</code> instance is not intended to be used more than once.
+  Any attempt to reuse an already used intance will throw an error.
+  </p>
+  
+  <p>
+  A typical usage would be:
+  </p>
+  
+  <div class='listing'><pre>
+  var guide:Guide = new Guide(new MyVisitorImpl());
+  guide.explore(myBean);</pre></div>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="IHandler.html" target="">IHandler</a>
+<br>
+<a href="IVisitor.html" target="">IVisitor</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#defaultHandlers">defaultHandlers</a> : Array<div class="summaryTableDescription">[static][read-only]
+   The array of the default handlers (not including the
+   <code>NullHandler</code>)used when visiting a given bean.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#handlers">handlers</a> : Array<div class="summaryTableDescription">[read-only]
+   The array <code>IHandlers</code> used by this <code>Guide</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#recursionStrategy">recursionStrategy</a> : String<div class="summaryTableDescription">[read-only]
+   The recursion strategy used by this <code>Guide</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#visitor">visitor</a> : <a href="../visitor/IVisitor.html">IVisitor</a>
+<div class="summaryTableDescription">[read-only]
+   The <code>IVisitor</code> implementation used by this <code>Guide</code> instance.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Guide()">Guide</a>(visitor:<a href="IVisitor.html">IVisitor</a>, handlers:Array = null, recursionStrategy:String)</div>
+<div class="summaryTableDescription">
+   Constructs a new <code>Guide</code> that will explore a given bean and
+   expose its properties to the supplied visitor implementation.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#explore()">explore</a>(o:*):void</div>
+<div class="summaryTableDescription">
+   Explore the supplied bean, exposing its properties to the current visitor.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#exploreVisitable()">exploreVisitable</a>(visitable:<a href="Visitable.html">Visitable</a>):void</div>
+<div class="summaryTableDescription">
+   Explore the supplied <code>Visitable</code>, exposing its properties to the
+   current visitor.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#accept()">accept</a>(visitor:<a href="IVisitor.html">IVisitor</a>, visitable:<a href="Visitable.html">Visitable</a>):void</div>
+<div class="summaryTableDescription">
+   Try to find a <code>IHandler</code> instance that will handle the visit of the visitable
+   item by the visitor object.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isInContext()">isInContext</a>(value:*):Boolean</div>
+<div class="summaryTableDescription">
+   Checks if the supplied parameter is already in the recursion context (ie.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#popFromContext()">popFromContext</a>(value:*):void</div>
+<div class="summaryTableDescription">
+   Remove the supplied parameter from the recursion context (this method does nothing when
+   the recursion strategy is "dictionary").</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#pushInContext()">pushInContext</a>(value:*):void</div>
+<div class="summaryTableDescription">
+   Put the supplied parameter in the recursion context (so it is marked as already visited).</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#RS_DICTIONARY">RS_DICTIONARY</a> : String = "dictionary"<div class="summaryTableDescription">[static]
+   The constant for "dictionary" recursion strategy: an instance of a
+   bean is only visited once, even if it appears several times in an
+   objects graph (this is the default).</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#RS_STACK">RS_STACK</a> : String = "stack"<div class="summaryTableDescription">[static]
+   The constant for "stack" recursion strategy: an instance of a
+   bean is visited if and only if it wasn't already visited in the
+   current path fo the objects graph.</div>
+</td><td class="summaryTableOwnerCol">Guide</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="defaultHandlers"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">defaultHandlers</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>defaultHandlers:Array</code>&nbsp;&nbsp;[read-only]<p>
+   The array of the default handlers (not including the
+   <code>NullHandler</code>)used when visiting a given bean.
+   This array may be modified in order to globally add a specific
+   handler (or replace an existing one).
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get defaultHandlers():Array</code>
+<br>
+</div>
+<a name="handlers"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">handlers</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>handlers:Array</code>&nbsp;&nbsp;[read-only]<p>
+   The array <code>IHandlers</code> used by this <code>Guide</code> instance.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get handlers():Array</code>
+<br>
+</div>
+<a name="recursionStrategy"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">recursionStrategy</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>recursionStrategy:String</code>&nbsp;&nbsp;[read-only]<p>
+   The recursion strategy used by this <code>Guide</code> instance.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get recursionStrategy():String</code>
+<br>
+</div>
+<a name="visitor"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">visitor</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>visitor:<a href="../visitor/IVisitor.html">IVisitor</a></code>&nbsp;&nbsp;[read-only]<p>
+   The <code>IVisitor</code> implementation used by this <code>Guide</code> instance.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get visitor():<a href="../visitor/IVisitor.html">IVisitor</a></code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Guide()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Guide</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Guide(visitor:<a href="IVisitor.html">IVisitor</a>, handlers:Array = null, recursionStrategy:String)</code><p>
+   Constructs a new <code>Guide</code> that will explore a given bean and
+   expose its properties to the supplied visitor implementation.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">visitor</span>:<a href="IVisitor.html">IVisitor</a></code> &mdash; a <code>IVisitor</code> implementation.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">handlers</span>:Array</code> (default = <code>null</code>)<code></code> &mdash; an array of specific handlers to insert between the
+     <code>NullHandler</code> and the default handlers.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">recursionStrategy</span>:String</code> &mdash; the recursion strategy to be used when visiting a
+     bean (must be RS_DICTIONARY or RS_STACK). Default is RS_DICTIONARY.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="handlers/NullHandler.html" target="">org.granite.reflect.visitor.handlers.NullHandler</a>
+<br>
+<a href="../visitor/Guide.html#RS_DICTIONARY" target="">RS_DICTIONARY</a>
+</div>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="accept()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">accept</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function accept(visitor:<a href="IVisitor.html">IVisitor</a>, visitable:<a href="Visitable.html">Visitable</a>):void</code><p>
+   Try to find a <code>IHandler</code> instance that will handle the visit of the visitable
+   item by the visitor object.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">visitor</span>:<a href="IVisitor.html">IVisitor</a></code> &mdash; the <code>IVisitor</code> that will visit the item.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">visitable</span>:<a href="Visitable.html">Visitable</a></code> &mdash; the <code>Visitable</code> item to visit.
+   </td>
+</tr>
+</table>
+</div>
+<a name="explore()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">explore</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function explore(o:*):void</code><p>
+   Explore the supplied bean, exposing its properties to the current visitor.
+   
+   </p><p>
+   This method is a shortcut for:
+   <code>exploreVisitable(new Visitable(null, Type.forInstance(o), o))</code>.
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:*</code> &mdash; the bean to explore.
+   </td>
+</tr>
+</table>
+</div>
+<a name="exploreVisitable()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">exploreVisitable</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function exploreVisitable(visitable:<a href="Visitable.html">Visitable</a>):void</code><p>
+   Explore the supplied <code>Visitable</code>, exposing its properties to the
+   current visitor.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">visitable</span>:<a href="Visitable.html">Visitable</a></code> &mdash; the visitable to explore.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isInContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isInContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function isInContext(value:*):Boolean</code><p>
+   Checks if the supplied parameter is already in the recursion context (ie. already
+   visited).
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> &mdash; the value to check against the current recursion context.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if value is already in the recursion context, <code>false</code>
+     otherwise. 
+   </td>
+</tr>
+</table>
+</div>
+<a name="popFromContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">popFromContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function popFromContext(value:*):void</code><p>
+   Remove the supplied parameter from the recursion context (this method does nothing when
+   the recursion strategy is "dictionary").
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> &mdash; the value to remove from the recursion context.
+   </td>
+</tr>
+</table>
+</div>
+<a name="pushInContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pushInContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function pushInContext(value:*):void</code><p>
+   Put the supplied parameter in the recursion context (so it is marked as already visited).
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> &mdash; the value to put in the recursion context.
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="RS_DICTIONARY"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">RS_DICTIONARY</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const RS_DICTIONARY:String = "dictionary"</code><p>
+   The constant for "dictionary" recursion strategy: an instance of a
+   bean is only visited once, even if it appears several times in an
+   objects graph (this is the default). 
+   </p></div>
+<a name="RS_STACK"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">RS_STACK</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const RS_STACK:String = "stack"</code><p>
+   The constant for "stack" recursion strategy: an instance of a
+   bean is visited if and only if it wasn't already visited in the
+   current path fo the objects graph.  
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

@@ -1,0 +1,1431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="BaseContext,org.granite.tide.BaseContext,_tide,meta_lazyInitializationDisabled,meta_destination,meta_dirty,meta_finished,meta_parentContext,meta_tide,addContextEventListener,allByType,bindIn,bindOut,bindProperty,byType,dispatchEvent,injectByType,meta_continue,meta_destroy,meta_end,meta_getContext,meta_getInstance,meta_getInstanceNoProxy,meta_internalRaiseEvent,meta_isEntityChanged,meta_isEntityPropertyChanged,meta_isGlobal,meta_isObjectInitialized,meta_mergeExternalData,meta_mergeInGlobalContext,meta_mergeInParentContext,meta_objectEquals,meta_resetEntity,meta_resync,raiseEvent,raiseGlobalEvent,toString,unbindIns,unbindOuts" name="keywords">
+<title>org.granite.tide.BaseContext</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'BaseContext - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/tide/BaseContext.html&amp;org/granite/tide/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;BaseContext</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class BaseContext"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.tide</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public dynamic  class BaseContext</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">BaseContext <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> mx.utils.ObjectProxy</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="IEntityManager.html">IEntityManager</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="cdi/Context.html">Context</a>, <a href="seam/Context.html">Context</a>, <a href="ejb/Context.html">Context</a>, <a href="../tide/Context.html">Context</a>, <a href="spring/Context.html">Context</a></td>
+</tr>
+</table>
+<p></p>
+   BaseContext is the base implementation of the component/entity container context
+   It is mostly an abstract class that is not exposed directly.
+   Instead the user will get one of its subclasses.
+  
+      <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#meta_destination">meta_destination</a> : String<div class="summaryTableDescription">[read-only]
+    Returns the RemoteObject destination for this context
+    </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#meta_dirty">meta_dirty</a> : Boolean<div class="summaryTableDescription">[read-only]
+         Entity manager is dirty when any entity/collection/map has been modified
+                   </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#meta_finished">meta_finished</a> : Boolean<div class="summaryTableDescription">[read-only]
+          Indicates if the current conversation has been marked as finished by the server
+         </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#meta_lazyInitializationDisabled">meta_lazyInitializationDisabled</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#meta_parentContext">meta_parentContext</a> : <a href="../tide/BaseContext.html">BaseContext</a>
+<div class="summaryTableDescription">[read-only]
+    </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#meta_tide">meta_tide</a> : <a href="../tide/Tide.html">Tide</a>
+<div class="summaryTableDescription">[read-only]
+    Returns the Tide singleton for this context
+    </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_tide">_tide</a> : <a href="../tide/Tide.html">Tide</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#BaseContext()">BaseContext</a>(tide:<a href="Tide.html">Tide</a> = null, parentContext:<a href="BaseContext.html">BaseContext</a> = null)</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addContextEventListener()">addContextEventListener</a>(type:String, handler:Function, remote:Boolean = false):void</div>
+<div class="summaryTableDescription">
+           Registers a tide context event listener (should be done with [Observer])
+         
+           </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#allByType()">allByType</a>(serviceClass:Class, create:Boolean = false):Array</div>
+<div class="summaryTableDescription">
+    Returns all component instances in this context implementing the specified class/interface
+   
+    </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#bindIn()">bindIn</a>(componentName:String, component:Object, propName:Object, create:Boolean = true, contextPropName:Object = null):void</div>
+<div class="summaryTableDescription">
+         Binds a component property from a context variable (should be done with [In])
+          
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#bindOut()">bindOut</a>(componentName:String, component:Object, propName:Object, contextPropName:Object = null):void</div>
+<div class="summaryTableDescription">
+         Binds a component property to a context variable (should be done with [Out])
+          
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#bindProperty()">bindProperty</a>(site:Object, prop:Object, host:Object, chain:Object, commitOnly:Boolean = false):ChangeWatcher</div>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#byType()">byType</a>(serviceClass:Class, create:Boolean = false):Object</div>
+<div class="summaryTableDescription">
+    Returns the current component instance implementation in this context for the specified class/interface
+   
+    </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#dispatchEvent()">dispatchEvent</a>(event:Event):Boolean</div>
+<div class="summaryTableDescription">
+          Dispatches a context event 
+           
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#injectByType()">injectByType</a>(type:Class, component:Object, componentName:String, propName:Object, create:Boolean = true):void</div>
+<div class="summaryTableDescription">
+         Binds a component property from a context variable (should be done with [In])
+          
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_continue()">meta_continue</a>(merge:Boolean = true):void</div>
+<div class="summaryTableDescription">
+          Continues the current context: restart a new conversation with the same context content when the server has ended the current conversation 
+          Only applicable to conversation contexts 
+          
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_destroy()">meta_destroy</a>(name:String, force:Boolean = false):void</div>
+<div class="summaryTableDescription">
+          Destroys/reset a component
+         
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_end()">meta_end</a>(merge:Boolean = true):void</div>
+<div class="summaryTableDescription">
+          Ends the current context
+          Only applicable to conversation contexts 
+          
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_getContext()">meta_getContext</a>(name:*, component:Object):<a href="../tide/BaseContext.html">BaseContext</a>
+</div>
+<div class="summaryTableDescription">
+          Returns the context where the component instance is stored
+         
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_getInstance()">meta_getInstance</a>(name:*, create:Boolean = false, forceNoCreate:Boolean = false, noProxy:Boolean = false):*</div>
+<div class="summaryTableDescription">
+          Returns the component instance in this context
+         
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_getInstanceNoProxy()">meta_getInstanceNoProxy</a>(name:*):*</div>
+<div class="summaryTableDescription">
+    Returns the component instance in this context but never creates proxies
+   
+    </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_isEntityChanged()">meta_isEntityChanged</a>(entity:<a href="IEntity.html">IEntity</a>, propName:String = null, value:* = null):Boolean</div>
+<div class="summaryTableDescription">
+          Check if entity has changed since last save point
+                   </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_isEntityPropertyChanged()">meta_isEntityPropertyChanged</a>(entity:<a href="IEntity.html">IEntity</a>, propertyName:String, value:Object):Boolean</div>
+<div class="summaryTableDescription">
+          Check if entity property has been changed since last remote call
+                   </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_isGlobal()">meta_isGlobal</a>():Boolean</div>
+<div class="summaryTableDescription">
+    </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_isObjectInitialized()">meta_isObjectInitialized</a>(object:Object):Boolean</div>
+<div class="summaryTableDescription">
+          Indicates if an object is initialized
+          For non managed objects, always return true
+         
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_mergeExternalData()">meta_mergeExternalData</a>(obj:Object, prev:Object = null, sourceSessionId:String = null):Object</div>
+<div class="summaryTableDescription">
+          Merge an object coming from the server in the context
+                   </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_mergeInGlobalContext()">meta_mergeInGlobalContext</a>():void</div>
+<div class="summaryTableDescription">
+          Merge conversation context variables in global context 
+          Only applicable to conversation contexts 
+         </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_mergeInParentContext()">meta_mergeInParentContext</a>():void</div>
+<div class="summaryTableDescription">
+    Merge conversation context variables in parent context 
+    Only applicable to conversation contexts 
+   </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_objectEquals()">meta_objectEquals</a>(obj1:Object, obj2:Object):Boolean</div>
+<div class="summaryTableDescription">
+          Equality for objects, using uid property when possible
+                   </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_resetEntity()">meta_resetEntity</a>(entity:<a href="IEntity.html">IEntity</a>):void</div>
+<div class="summaryTableDescription">
+          Discard changes of entity from last version received from the server
+                   </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_resync()">meta_resync</a>(resultHandler:Function = null, faultHandler:Function = null):AsyncToken</div>
+<div class="summaryTableDescription">
+          Resync current context with server (similar to invoke with no operation)
+         
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#raiseEvent()">raiseEvent</a>(type:String, ... params):void</div>
+<div class="summaryTableDescription">
+          Dispatches a context event (possibly in a subcontext)
+           
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#raiseGlobalEvent()">raiseGlobalEvent</a>(type:String, ... params):void</div>
+<div class="summaryTableDescription">
+          Dispatches a context event (always in the global context)
+           
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>(object:Object):String</div>
+<div class="summaryTableDescription">[static]
+          Convenient toString implementation which avoids triggering collection initialization
+                   </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unbindIns()">unbindIns</a>(componentName:String):void</div>
+<div class="summaryTableDescription">
+         Unbinds all [In] component properties
+          
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unbindOuts()">unbindOuts</a>(componentName:String):void</div>
+<div class="summaryTableDescription">
+         Unbinds all [Out] component properties
+          
+          </div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#meta_internalRaiseEvent()">meta_internalRaiseEvent</a>(type:String, params:Array):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">BaseContext</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="meta_destination"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_destination</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>meta_destination:String</code>&nbsp;&nbsp;[read-only]<p>
+    Returns the RemoteObject destination for this context
+    </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get meta_destination():String</code>
+<br>
+</div>
+<a name="meta_dirty"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_dirty</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>meta_dirty:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+         Entity manager is dirty when any entity/collection/map has been modified
+                   </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get meta_dirty():Boolean</code>
+<br>
+</div>
+<a name="meta_finished"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_finished</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>meta_finished:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+          Indicates if the current conversation has been marked as finished by the server
+         </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get meta_finished():Boolean</code>
+<br>
+</div>
+<a name="meta_lazyInitializationDisabled"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_lazyInitializationDisabled</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var meta_lazyInitializationDisabled:Boolean = false</code>
+</div>
+<a name="meta_parentContext"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_parentContext</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>meta_parentContext:<a href="../tide/BaseContext.html">BaseContext</a></code>&nbsp;&nbsp;[read-only]<p>
+    </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get meta_parentContext():<a href="../tide/BaseContext.html">BaseContext</a></code>
+<br>
+</div>
+<a name="meta_tide"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_tide</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>meta_tide:<a href="../tide/Tide.html">Tide</a></code>&nbsp;&nbsp;[read-only]<p>
+    Returns the Tide singleton for this context
+    </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get meta_tide():<a href="../tide/Tide.html">Tide</a></code>
+<br>
+</div>
+<a name="_tide"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_tide</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _tide:<a href="../tide/Tide.html">Tide</a></code>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="BaseContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">BaseContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function BaseContext(tide:<a href="Tide.html">Tide</a> = null, parentContext:<a href="BaseContext.html">BaseContext</a> = null)</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">tide</span>:<a href="Tide.html">Tide</a></code> (default = <code>null</code>)<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">parentContext</span>:<a href="BaseContext.html">BaseContext</a></code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addContextEventListener()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addContextEventListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addContextEventListener(type:String, handler:Function, remote:Boolean = false):void</code><p>
+           Registers a tide context event listener (should be done with [Observer])
+         
+           </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; event type
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">handler</span>:Function</code> &mdash; function callback
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">remote</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; listener for remote events
+         </td>
+</tr>
+</table>
+</div>
+<a name="allByType()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">allByType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function allByType(serviceClass:Class, create:Boolean = false):Array</code><p>
+    Returns all component instances in this context implementing the specified class/interface
+   
+    </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">serviceClass</span>:Class</code> &mdash; class/interface to implement
+    </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">create</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; create instance of component if not instantiated
+    </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; the current implementation in the context
+   </td>
+</tr>
+</table>
+</div>
+<a name="bindIn()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">bindIn</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function bindIn(componentName:String, component:Object, propName:Object, create:Boolean = true, contextPropName:Object = null):void</code><p>
+         Binds a component property from a context variable (should be done with [In])
+          
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">componentName</span>:String</code> &mdash; component name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">component</span>:Object</code> &mdash; component instance
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">propName</span>:Object</code> &mdash; property name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">create</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; no instance created when create = false
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">contextPropName</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; context variable name
+         </td>
+</tr>
+</table>
+</div>
+<a name="bindOut()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">bindOut</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function bindOut(componentName:String, component:Object, propName:Object, contextPropName:Object = null):void</code><p>
+         Binds a component property to a context variable (should be done with [Out])
+          
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">componentName</span>:String</code> &mdash; component name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">component</span>:Object</code> &mdash; component instance
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">propName</span>:Object</code> &mdash; property name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">contextPropName</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; context variable name
+         </td>
+</tr>
+</table>
+</div>
+<a name="bindProperty()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">bindProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function bindProperty(site:Object, prop:Object, host:Object, chain:Object, commitOnly:Boolean = false):ChangeWatcher</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">site</span>:Object</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">prop</span>:Object</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">host</span>:Object</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">chain</span>:Object</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">commitOnly</span>:Boolean</code> (default = <code>false</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>ChangeWatcher</code></td>
+</tr>
+</table>
+</div>
+<a name="byType()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">byType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function byType(serviceClass:Class, create:Boolean = false):Object</code><p>
+    Returns the current component instance implementation in this context for the specified class/interface
+   
+    </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">serviceClass</span>:Class</code> &mdash; class/interface to implement
+    </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">create</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; create instance of component if not instantiated
+    </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Object</code> &mdash; the current implementation in the context
+   </td>
+</tr>
+</table>
+</div>
+<a name="dispatchEvent()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dispatchEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function dispatchEvent(event:Event):Boolean</code><p>
+          Dispatches a context event 
+           
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:Event</code> &mdash; event type
+          </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code></td>
+</tr>
+</table>
+</div>
+<a name="injectByType()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">injectByType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function injectByType(type:Class, component:Object, componentName:String, propName:Object, create:Boolean = true):void</code><p>
+         Binds a component property from a context variable (should be done with [In])
+          
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:Class</code> &mdash; injection point class
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">component</span>:Object</code> &mdash; target component instance
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">componentName</span>:String</code> &mdash; target component name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">propName</span>:Object</code> &mdash; property name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">create</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; no instance created when create = false
+          </td>
+</tr>
+</table>
+</div>
+<a name="meta_continue()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_continue</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_continue(merge:Boolean = true):void</code><p>
+          Continues the current context: restart a new conversation with the same context content when the server has ended the current conversation 
+          Only applicable to conversation contexts 
+          
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">merge</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; merge conversation context in global context
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_destroy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_destroy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_destroy(name:String, force:Boolean = false):void</code><p>
+          Destroys/reset a component
+         
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; component name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">force</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; true for forcing complete removal of instance
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_end()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_end</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_end(merge:Boolean = true):void</code><p>
+          Ends the current context
+          Only applicable to conversation contexts 
+          
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">merge</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; merge conversation context in global context
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_getContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_getContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_getContext(name:*, component:Object):<a href="../tide/BaseContext.html">BaseContext</a></code><p>
+          Returns the context where the component instance is stored
+         
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:*</code> &mdash; component name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">component</span>:Object</code> &mdash; component instance
+          </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../tide/BaseContext.html">BaseContext</a></code> &mdash; 
+                        context
+         
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="meta_getInstance()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_getInstance(name:*, create:Boolean = false, forceNoCreate:Boolean = false, noProxy:Boolean = false):*</code><p>
+          Returns the component instance in this context
+         
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:*</code> &mdash; name of the component/context variable
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">create</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; instantiate if not present
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">forceNoCreate</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; never instantiate a new component in any case
+    </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">noProxy</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; don't create remote proxy if not found
+         </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>*</code></td>
+</tr>
+</table>
+</div>
+<a name="meta_getInstanceNoProxy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_getInstanceNoProxy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_getInstanceNoProxy(name:*):*</code><p>
+    Returns the component instance in this context but never creates proxies
+   
+    </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:*</code> &mdash; name of the component/context variable
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>*</code></td>
+</tr>
+</table>
+</div>
+<a name="meta_internalRaiseEvent()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_internalRaiseEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function meta_internalRaiseEvent(type:String, params:Array):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">params</span>:Array</code></td>
+</tr>
+</table>
+</div>
+<a name="meta_isEntityChanged()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_isEntityChanged</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_isEntityChanged(entity:<a href="IEntity.html">IEntity</a>, propName:String = null, value:* = null):Boolean</code><p>
+          Check if entity has changed since last save point
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="IEntity.html">IEntity</a></code> &mdash; entity to restore
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">propName</span>:String</code> (default = <code>null</code>)<code></code> &mdash; property name
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; entity is dirty
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_isEntityPropertyChanged()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_isEntityPropertyChanged</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_isEntityPropertyChanged(entity:<a href="IEntity.html">IEntity</a>, propertyName:String, value:Object):Boolean</code><p>
+          Check if entity property has been changed since last remote call
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="IEntity.html">IEntity</a></code> &mdash; entity to check
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">propertyName</span>:String</code> &mdash; property to check
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:Object</code> &mdash; current value to compare with saved value
+           
+          </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true is value has been changed
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_isGlobal()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_isGlobal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_isGlobal():Boolean</code><p>
+    </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if this is the global context
+   </td>
+</tr>
+</table>
+</div>
+<a name="meta_isObjectInitialized()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_isObjectInitialized</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_isObjectInitialized(object:Object):Boolean</code><p>
+          Indicates if an object is initialized
+          For non managed objects, always return true
+         
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">object</span>:Object</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true when initialized
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_mergeExternalData()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_mergeExternalData</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_mergeExternalData(obj:Object, prev:Object = null, sourceSessionId:String = null):Object</code><p>
+          Merge an object coming from the server in the context
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">obj</span>:Object</code> &mdash; external object
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">prev</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; existing object on which incoming data has to be merged 
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">sourceSessionId</span>:String</code> (default = <code>null</code>)<code></code> &mdash; sessionId of the incoming data (null when from current session) 
+                   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Object</code> &mdash; merged object (should === prev when prev not null)
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_mergeInGlobalContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_mergeInGlobalContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_mergeInGlobalContext():void</code><p>
+          Merge conversation context variables in global context 
+          Only applicable to conversation contexts 
+         </p></div>
+<a name="meta_mergeInParentContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_mergeInParentContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_mergeInParentContext():void</code><p>
+    Merge conversation context variables in parent context 
+    Only applicable to conversation contexts 
+   </p></div>
+<a name="meta_objectEquals()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_objectEquals</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_objectEquals(obj1:Object, obj2:Object):Boolean</code><p>
+          Equality for objects, using uid property when possible
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">obj1</span>:Object</code> &mdash; object
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">obj2</span>:Object</code> &mdash; object
+         
+          </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true when objects are instances of the same entity
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_resetEntity()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_resetEntity</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_resetEntity(entity:<a href="IEntity.html">IEntity</a>):void</code><p>
+          Discard changes of entity from last version received from the server
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="IEntity.html">IEntity</a></code> &mdash; entity to restore
+         </td>
+</tr>
+</table>
+</div>
+<a name="meta_resync()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">meta_resync</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function meta_resync(resultHandler:Function = null, faultHandler:Function = null):AsyncToken</code><p>
+          Resync current context with server (similar to invoke with no operation)
+         
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">resultHandler</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; result handler
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">faultHandler</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; fault handler
+         
+          </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>AsyncToken</code> &mdash; the operation token
+         </td>
+</tr>
+</table>
+</div>
+<a name="raiseEvent()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">raiseEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function raiseEvent(type:String, ... params):void</code><p>
+          Dispatches a context event (possibly in a subcontext)
+           
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; event type
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code>... <span class="label">params</span></code> &mdash; optional event parameters
+         </td>
+</tr>
+</table>
+</div>
+<a name="raiseGlobalEvent()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">raiseGlobalEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function raiseGlobalEvent(type:String, ... params):void</code><p>
+          Dispatches a context event (always in the global context)
+           
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; event type
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code>... <span class="label">params</span></code> &mdash; optional event parameters
+         </td>
+</tr>
+</table>
+</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function toString(object:Object):String</code><p>
+          Convenient toString implementation which avoids triggering collection initialization
+                   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">object</span>:Object</code> &mdash; object to describe
+          </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; toString
+         </td>
+</tr>
+</table>
+</div>
+<a name="unbindIns()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unbindIns</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unbindIns(componentName:String):void</code><p>
+         Unbinds all [In] component properties
+          
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">componentName</span>:String</code> &mdash; component name
+         </td>
+</tr>
+</table>
+</div>
+<a name="unbindOuts()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unbindOuts</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unbindOuts(componentName:String):void</code><p>
+         Unbinds all [Out] component properties
+          
+          </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">componentName</span>:String</code> &mdash; component name
+         </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

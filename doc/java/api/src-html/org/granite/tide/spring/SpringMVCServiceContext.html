@@ -1,0 +1,526 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /*<a name="line.1"></a>
+<FONT color="green">002</FONT>      GRANITE DATA SERVICES<a name="line.2"></a>
+<FONT color="green">003</FONT>      Copyright (C) 2007-2010 ADEQUATE SYSTEMS SARL<a name="line.3"></a>
+<FONT color="green">004</FONT>    <a name="line.4"></a>
+<FONT color="green">005</FONT>      This file is part of Granite Data Services.<a name="line.5"></a>
+<FONT color="green">006</FONT>    <a name="line.6"></a>
+<FONT color="green">007</FONT>      Granite Data Services is free software; you can redistribute it and/or modify<a name="line.7"></a>
+<FONT color="green">008</FONT>      it under the terms of the GNU Library General Public License as published by<a name="line.8"></a>
+<FONT color="green">009</FONT>      the Free Software Foundation; either version 2 of the License, or (at your<a name="line.9"></a>
+<FONT color="green">010</FONT>      option) any later version.<a name="line.10"></a>
+<FONT color="green">011</FONT>    <a name="line.11"></a>
+<FONT color="green">012</FONT>      Granite Data Services is distributed in the hope that it will be useful, but<a name="line.12"></a>
+<FONT color="green">013</FONT>      WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or<a name="line.13"></a>
+<FONT color="green">014</FONT>      FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License<a name="line.14"></a>
+<FONT color="green">015</FONT>      for more details.<a name="line.15"></a>
+<FONT color="green">016</FONT>    <a name="line.16"></a>
+<FONT color="green">017</FONT>      You should have received a copy of the GNU Library General Public License<a name="line.17"></a>
+<FONT color="green">018</FONT>      along with this library; if not, see &lt;http://www.gnu.org/licenses/&gt;.<a name="line.18"></a>
+<FONT color="green">019</FONT>    */<a name="line.19"></a>
+<FONT color="green">020</FONT>    <a name="line.20"></a>
+<FONT color="green">021</FONT>    package org.granite.tide.spring;<a name="line.21"></a>
+<FONT color="green">022</FONT>    <a name="line.22"></a>
+<FONT color="green">023</FONT>    import java.lang.reflect.Method;<a name="line.23"></a>
+<FONT color="green">024</FONT>    import java.util.ArrayList;<a name="line.24"></a>
+<FONT color="green">025</FONT>    import java.util.Enumeration;<a name="line.25"></a>
+<FONT color="green">026</FONT>    import java.util.HashMap;<a name="line.26"></a>
+<FONT color="green">027</FONT>    import java.util.Hashtable;<a name="line.27"></a>
+<FONT color="green">028</FONT>    import java.util.List;<a name="line.28"></a>
+<FONT color="green">029</FONT>    import java.util.Map;<a name="line.29"></a>
+<FONT color="green">030</FONT>    import java.util.Set;<a name="line.30"></a>
+<FONT color="green">031</FONT>    <a name="line.31"></a>
+<FONT color="green">032</FONT>    import javax.servlet.ServletRequest;<a name="line.32"></a>
+<FONT color="green">033</FONT>    import javax.servlet.http.HttpServletRequest;<a name="line.33"></a>
+<FONT color="green">034</FONT>    import javax.servlet.http.HttpServletRequestWrapper;<a name="line.34"></a>
+<FONT color="green">035</FONT>    import javax.servlet.http.HttpServletResponse;<a name="line.35"></a>
+<FONT color="green">036</FONT>    <a name="line.36"></a>
+<FONT color="green">037</FONT>    import org.granite.context.GraniteContext;<a name="line.37"></a>
+<FONT color="green">038</FONT>    import org.granite.logging.Logger;<a name="line.38"></a>
+<FONT color="green">039</FONT>    import org.granite.messaging.amf.io.convert.Converter;<a name="line.39"></a>
+<FONT color="green">040</FONT>    import org.granite.messaging.amf.io.util.ClassGetter;<a name="line.40"></a>
+<FONT color="green">041</FONT>    import org.granite.messaging.service.ServiceException;<a name="line.41"></a>
+<FONT color="green">042</FONT>    import org.granite.messaging.service.ServiceInvocationContext;<a name="line.42"></a>
+<FONT color="green">043</FONT>    import org.granite.messaging.webapp.HttpGraniteContext;<a name="line.43"></a>
+<FONT color="green">044</FONT>    import org.granite.tide.IInvocationCall;<a name="line.44"></a>
+<FONT color="green">045</FONT>    import org.granite.tide.IInvocationResult;<a name="line.45"></a>
+<FONT color="green">046</FONT>    import org.granite.tide.TidePersistenceManager;<a name="line.46"></a>
+<FONT color="green">047</FONT>    import org.granite.tide.annotations.BypassTideMerge;<a name="line.47"></a>
+<FONT color="green">048</FONT>    import org.granite.tide.data.DataContext;<a name="line.48"></a>
+<FONT color="green">049</FONT>    import org.granite.tide.invocation.ContextUpdate;<a name="line.49"></a>
+<FONT color="green">050</FONT>    import org.granite.tide.invocation.InvocationCall;<a name="line.50"></a>
+<FONT color="green">051</FONT>    import org.granite.tide.invocation.InvocationResult;<a name="line.51"></a>
+<FONT color="green">052</FONT>    import org.granite.util.ClassUtil;<a name="line.52"></a>
+<FONT color="green">053</FONT>    import org.springframework.beans.TypeMismatchException;<a name="line.53"></a>
+<FONT color="green">054</FONT>    import org.springframework.context.ApplicationContext;<a name="line.54"></a>
+<FONT color="green">055</FONT>    import org.springframework.core.MethodParameter;<a name="line.55"></a>
+<FONT color="green">056</FONT>    import org.springframework.web.bind.ServletRequestDataBinder;<a name="line.56"></a>
+<FONT color="green">057</FONT>    import org.springframework.web.context.request.WebRequestInterceptor;<a name="line.57"></a>
+<FONT color="green">058</FONT>    import org.springframework.web.servlet.HandlerAdapter;<a name="line.58"></a>
+<FONT color="green">059</FONT>    import org.springframework.web.servlet.HandlerInterceptor;<a name="line.59"></a>
+<FONT color="green">060</FONT>    import org.springframework.web.servlet.ModelAndView;<a name="line.60"></a>
+<FONT color="green">061</FONT>    import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapter;<a name="line.61"></a>
+<FONT color="green">062</FONT>    import org.springframework.web.servlet.mvc.Controller;<a name="line.62"></a>
+<FONT color="green">063</FONT>    import org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;<a name="line.63"></a>
+<FONT color="green">064</FONT>    import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;<a name="line.64"></a>
+<FONT color="green">065</FONT>    <a name="line.65"></a>
+<FONT color="green">066</FONT>    <a name="line.66"></a>
+<FONT color="green">067</FONT>    /**<a name="line.67"></a>
+<FONT color="green">068</FONT>     * @author William DRAI<a name="line.68"></a>
+<FONT color="green">069</FONT>     */<a name="line.69"></a>
+<FONT color="green">070</FONT>    public class SpringMVCServiceContext extends SpringServiceContext {<a name="line.70"></a>
+<FONT color="green">071</FONT>    <a name="line.71"></a>
+<FONT color="green">072</FONT>        private static final long serialVersionUID = 1L;<a name="line.72"></a>
+<FONT color="green">073</FONT>        <a name="line.73"></a>
+<FONT color="green">074</FONT>        private static final String REQUEST_VALUE = "__REQUEST_VALUE__";<a name="line.74"></a>
+<FONT color="green">075</FONT>        <a name="line.75"></a>
+<FONT color="green">076</FONT>        private static final Logger log = Logger.getLogger(SpringMVCServiceContext.class);<a name="line.76"></a>
+<FONT color="green">077</FONT>    <a name="line.77"></a>
+<FONT color="green">078</FONT>        <a name="line.78"></a>
+<FONT color="green">079</FONT>        @Override<a name="line.79"></a>
+<FONT color="green">080</FONT>        public Object adjustInvokee(Object instance, String componentName, Set&lt;Class&lt;?&gt;&gt; componentClasses) {<a name="line.80"></a>
+<FONT color="green">081</FONT>            for (Class&lt;?&gt; componentClass : componentClasses) {<a name="line.81"></a>
+<FONT color="green">082</FONT>                    if (componentClass.isAnnotationPresent(org.springframework.stereotype.Controller.class)) {<a name="line.82"></a>
+<FONT color="green">083</FONT>                            return new AnnotationMethodHandlerAdapter() {<a name="line.83"></a>
+<FONT color="green">084</FONT>                                    @Override<a name="line.84"></a>
+<FONT color="green">085</FONT>                                    protected ServletRequestDataBinder createBinder(HttpServletRequest request, Object target, String objectName) throws Exception {<a name="line.85"></a>
+<FONT color="green">086</FONT>                                            return new ControllerRequestDataBinder(request, target, objectName);<a name="line.86"></a>
+<FONT color="green">087</FONT>                                    }<a name="line.87"></a>
+<FONT color="green">088</FONT>                            };<a name="line.88"></a>
+<FONT color="green">089</FONT>                    }<a name="line.89"></a>
+<FONT color="green">090</FONT>            }<a name="line.90"></a>
+<FONT color="green">091</FONT>            if (Controller.class.isInstance(instance) || componentName.endsWith("Controller"))<a name="line.91"></a>
+<FONT color="green">092</FONT>                    return new SimpleControllerHandlerAdapter();<a name="line.92"></a>
+<FONT color="green">093</FONT>            <a name="line.93"></a>
+<FONT color="green">094</FONT>            return instance;<a name="line.94"></a>
+<FONT color="green">095</FONT>        }<a name="line.95"></a>
+<FONT color="green">096</FONT>        <a name="line.96"></a>
+<FONT color="green">097</FONT>        <a name="line.97"></a>
+<FONT color="green">098</FONT>        private static final String SPRINGMVC_BINDING_ATTR = "__SPRINGMVC_LOCAL_BINDING__";<a name="line.98"></a>
+<FONT color="green">099</FONT>        <a name="line.99"></a>
+<FONT color="green">100</FONT>        @Override<a name="line.100"></a>
+<FONT color="green">101</FONT>        public Object[] beforeMethodSearch(Object instance, String methodName, Object[] args) {<a name="line.101"></a>
+<FONT color="green">102</FONT>            if (instance instanceof HandlerAdapter) {<a name="line.102"></a>
+<FONT color="green">103</FONT>                    boolean grails = getSpringContext().getClass().getName().indexOf("Grails") &gt; 0;<a name="line.103"></a>
+<FONT color="green">104</FONT>                    <a name="line.104"></a>
+<FONT color="green">105</FONT>                    String componentName = (String)args[0];<a name="line.105"></a>
+<FONT color="green">106</FONT>                    String componentClassName = (String)args[1];<a name="line.106"></a>
+<FONT color="green">107</FONT>                Class&lt;?&gt; componentClass = null;<a name="line.107"></a>
+<FONT color="green">108</FONT>                try {<a name="line.108"></a>
+<FONT color="green">109</FONT>                    if (componentClassName != null)<a name="line.109"></a>
+<FONT color="green">110</FONT>                            componentClass = ClassUtil.forName(componentClassName);<a name="line.110"></a>
+<FONT color="green">111</FONT>                }<a name="line.111"></a>
+<FONT color="green">112</FONT>                catch (ClassNotFoundException e) {<a name="line.112"></a>
+<FONT color="green">113</FONT>                    throw new ServiceException("Component class not found " + componentClassName, e);<a name="line.113"></a>
+<FONT color="green">114</FONT>                }<a name="line.114"></a>
+<FONT color="green">115</FONT>                    Object component = findComponent(componentName, componentClass);<a name="line.115"></a>
+<FONT color="green">116</FONT>                    Set&lt;Class&lt;?&gt;&gt; componentClasses = findComponentClasses(componentName, componentClass);<a name="line.116"></a>
+<FONT color="green">117</FONT>                    Object handler = component;<a name="line.117"></a>
+<FONT color="green">118</FONT>                    if (grails &amp;&amp; componentName.endsWith("Controller")) {<a name="line.118"></a>
+<FONT color="green">119</FONT>                            // Special handling for Grails controllers<a name="line.119"></a>
+<FONT color="green">120</FONT>                            handler = springContext.getBean("mainSimpleController");<a name="line.120"></a>
+<FONT color="green">121</FONT>                    }<a name="line.121"></a>
+<FONT color="green">122</FONT>                    HttpGraniteContext context = (HttpGraniteContext)GraniteContext.getCurrentInstance();<a name="line.122"></a>
+<FONT color="green">123</FONT>                    @SuppressWarnings("unchecked")<a name="line.123"></a>
+<FONT color="green">124</FONT>                    Map&lt;String, Object&gt; requestMap = (args[3] != null &amp;&amp; args[3] instanceof Object[] &amp;&amp; ((Object[])args[3]).length &gt;= 1 &amp;&amp; ((Object[])args[3]).length &lt;= 2 &amp;&amp; ((Object[])args[3])[0] instanceof Map) <a name="line.124"></a>
+<FONT color="green">125</FONT>                            ? (Map&lt;String, Object&gt;)((Object[])args[3])[0] <a name="line.125"></a>
+<FONT color="green">126</FONT>                            : null;<a name="line.126"></a>
+<FONT color="green">127</FONT>                    boolean localBinding = false;<a name="line.127"></a>
+<FONT color="green">128</FONT>                    if (args[3] != null &amp;&amp; args[3] instanceof Object[] &amp;&amp; ((Object[])args[3]).length == 2 <a name="line.128"></a>
+<FONT color="green">129</FONT>                                    &amp;&amp; ((Object[])args[3])[0] instanceof Map&lt;?, ?&gt; &amp;&amp; ((Object[])args[3])[1] instanceof Boolean)<a name="line.129"></a>
+<FONT color="green">130</FONT>                            localBinding = (Boolean)((Object[])args[3])[1];<a name="line.130"></a>
+<FONT color="green">131</FONT>                    context.getRequestMap().put(SPRINGMVC_BINDING_ATTR, localBinding);<a name="line.131"></a>
+<FONT color="green">132</FONT>                    <a name="line.132"></a>
+<FONT color="green">133</FONT>                    Map&lt;String, Object&gt; valueMap = null;<a name="line.133"></a>
+<FONT color="green">134</FONT>                    if (args[4] instanceof InvocationCall) {<a name="line.134"></a>
+<FONT color="green">135</FONT>                            valueMap = new HashMap&lt;String, Object&gt;();<a name="line.135"></a>
+<FONT color="green">136</FONT>                            for (ContextUpdate u : ((InvocationCall)args[4]).getUpdates())<a name="line.136"></a>
+<FONT color="green">137</FONT>                                    valueMap.put(u.getComponentName() + (u.getExpression() != null ? "." + u.getExpression() : ""), u.getValue());<a name="line.137"></a>
+<FONT color="green">138</FONT>                    }<a name="line.138"></a>
+<FONT color="green">139</FONT>                    <a name="line.139"></a>
+<FONT color="green">140</FONT>                    if (grails) {<a name="line.140"></a>
+<FONT color="green">141</FONT>                                    // Special handling for Grails controllers<a name="line.141"></a>
+<FONT color="green">142</FONT>                            try {<a name="line.142"></a>
+<FONT color="green">143</FONT>                                    for (Class&lt;?&gt; cClass : componentClasses) {<a name="line.143"></a>
+<FONT color="green">144</FONT>                                            if (cClass.isInterface())<a name="line.144"></a>
+<FONT color="green">145</FONT>                                                    continue;<a name="line.145"></a>
+<FONT color="green">146</FONT>                                            Method m = cClass.getDeclaredMethod("getProperty", String.class);<a name="line.146"></a>
+<FONT color="green">147</FONT>                                            @SuppressWarnings("unchecked")<a name="line.147"></a>
+<FONT color="green">148</FONT>                                            Map&lt;String, Object&gt; map = (Map&lt;String, Object&gt;)m.invoke(component, "params");<a name="line.148"></a>
+<FONT color="green">149</FONT>                                            if (requestMap != null)<a name="line.149"></a>
+<FONT color="green">150</FONT>                                                    map.putAll(requestMap);<a name="line.150"></a>
+<FONT color="green">151</FONT>                                            if (valueMap != null)<a name="line.151"></a>
+<FONT color="green">152</FONT>                                                    map.putAll(valueMap);<a name="line.152"></a>
+<FONT color="green">153</FONT>                                    }<a name="line.153"></a>
+<FONT color="green">154</FONT>                            }<a name="line.154"></a>
+<FONT color="green">155</FONT>                            catch (Exception e) {<a name="line.155"></a>
+<FONT color="green">156</FONT>                                    // Ignore, probably not a Grails controller<a name="line.156"></a>
+<FONT color="green">157</FONT>                            }<a name="line.157"></a>
+<FONT color="green">158</FONT>                    }<a name="line.158"></a>
+<FONT color="green">159</FONT>                    ControllerRequestWrapper rw = new ControllerRequestWrapper(grails, context.getRequest(), componentName, (String)args[2], requestMap, valueMap);<a name="line.159"></a>
+<FONT color="green">160</FONT>                    return new Object[] { "handle", new Object[] { rw, context.getResponse(), handler }};<a name="line.160"></a>
+<FONT color="green">161</FONT>            }<a name="line.161"></a>
+<FONT color="green">162</FONT>            <a name="line.162"></a>
+<FONT color="green">163</FONT>            return super.beforeMethodSearch(instance, methodName, args);<a name="line.163"></a>
+<FONT color="green">164</FONT>        }<a name="line.164"></a>
+<FONT color="green">165</FONT>        <a name="line.165"></a>
+<FONT color="green">166</FONT>        <a name="line.166"></a>
+<FONT color="green">167</FONT>        @Override<a name="line.167"></a>
+<FONT color="green">168</FONT>        public void prepareCall(ServiceInvocationContext context, IInvocationCall c, String componentName, Class&lt;?&gt; componentClass) {<a name="line.168"></a>
+<FONT color="green">169</FONT>            super.prepareCall(context, c, componentName, componentClass);<a name="line.169"></a>
+<FONT color="green">170</FONT>                    <a name="line.170"></a>
+<FONT color="green">171</FONT>            if (componentName == null)<a name="line.171"></a>
+<FONT color="green">172</FONT>                    return;<a name="line.172"></a>
+<FONT color="green">173</FONT>            <a name="line.173"></a>
+<FONT color="green">174</FONT>                    Object component = findComponent(componentName, componentClass);<a name="line.174"></a>
+<FONT color="green">175</FONT>                    <a name="line.175"></a>
+<FONT color="green">176</FONT>                    if (context.getBean() instanceof HandlerAdapter) {<a name="line.176"></a>
+<FONT color="green">177</FONT>                            // In case of Spring controllers, call interceptors<a name="line.177"></a>
+<FONT color="green">178</FONT>                    ApplicationContext webContext = getSpringContext();<a name="line.178"></a>
+<FONT color="green">179</FONT>                    String[] interceptorNames = webContext.getBeanNamesForType(HandlerInterceptor.class);<a name="line.179"></a>
+<FONT color="green">180</FONT>                    String[] webRequestInterceptors = webContext.getBeanNamesForType(WebRequestInterceptor.class);<a name="line.180"></a>
+<FONT color="green">181</FONT>                    HandlerInterceptor[] interceptors = new HandlerInterceptor[interceptorNames.length+webRequestInterceptors.length];<a name="line.181"></a>
+<FONT color="green">182</FONT>            <a name="line.182"></a>
+<FONT color="green">183</FONT>                    int j = 0;<a name="line.183"></a>
+<FONT color="green">184</FONT>                    for (int i = 0; i &lt; webRequestInterceptors.length; i++)<a name="line.184"></a>
+<FONT color="green">185</FONT>                        interceptors[j++] = new WebRequestHandlerInterceptorAdapter((WebRequestInterceptor)webContext.getBean(webRequestInterceptors[i]));<a name="line.185"></a>
+<FONT color="green">186</FONT>                    for (int i = 0; i &lt; interceptorNames.length; i++)<a name="line.186"></a>
+<FONT color="green">187</FONT>                        interceptors[j++] = (HandlerInterceptor)webContext.getBean(interceptorNames[i]);<a name="line.187"></a>
+<FONT color="green">188</FONT>                    <a name="line.188"></a>
+<FONT color="green">189</FONT>                            HttpGraniteContext graniteContext = (HttpGraniteContext)GraniteContext.getCurrentInstance();<a name="line.189"></a>
+<FONT color="green">190</FONT>                            <a name="line.190"></a>
+<FONT color="green">191</FONT>                            graniteContext.getRequestMap().put(HandlerInterceptor.class.getName(), interceptors);<a name="line.191"></a>
+<FONT color="green">192</FONT>                            <a name="line.192"></a>
+<FONT color="green">193</FONT>                            try {<a name="line.193"></a>
+<FONT color="green">194</FONT>                            for (int i = 0; i &lt; interceptors.length; i++) {<a name="line.194"></a>
+<FONT color="green">195</FONT>                                HandlerInterceptor interceptor = interceptors[i];<a name="line.195"></a>
+<FONT color="green">196</FONT>                                interceptor.preHandle((HttpServletRequest)context.getParameters()[0], graniteContext.getResponse(), component);<a name="line.196"></a>
+<FONT color="green">197</FONT>                            }<a name="line.197"></a>
+<FONT color="green">198</FONT>                            }<a name="line.198"></a>
+<FONT color="green">199</FONT>                            catch (Exception e) {<a name="line.199"></a>
+<FONT color="green">200</FONT>                                    throw new ServiceException(e.getMessage(), e);<a name="line.200"></a>
+<FONT color="green">201</FONT>                            }<a name="line.201"></a>
+<FONT color="green">202</FONT>                    }<a name="line.202"></a>
+<FONT color="green">203</FONT>        }<a name="line.203"></a>
+<FONT color="green">204</FONT>        <a name="line.204"></a>
+<FONT color="green">205</FONT>    <a name="line.205"></a>
+<FONT color="green">206</FONT>        @Override<a name="line.206"></a>
+<FONT color="green">207</FONT>        @SuppressWarnings("unchecked")<a name="line.207"></a>
+<FONT color="green">208</FONT>        public IInvocationResult postCall(ServiceInvocationContext context, Object result, String componentName, Class&lt;?&gt; componentClass) {<a name="line.208"></a>
+<FONT color="green">209</FONT>            List&lt;ContextUpdate&gt; results = null;<a name="line.209"></a>
+<FONT color="green">210</FONT>            <a name="line.210"></a>
+<FONT color="green">211</FONT>            Object component = null;<a name="line.211"></a>
+<FONT color="green">212</FONT>            if (componentName != null &amp;&amp; context.getBean() instanceof HandlerAdapter) {<a name="line.212"></a>
+<FONT color="green">213</FONT>                            component = findComponent(componentName, componentClass);<a name="line.213"></a>
+<FONT color="green">214</FONT>                            <a name="line.214"></a>
+<FONT color="green">215</FONT>                            HttpGraniteContext graniteContext = (HttpGraniteContext)GraniteContext.getCurrentInstance();<a name="line.215"></a>
+<FONT color="green">216</FONT>                            <a name="line.216"></a>
+<FONT color="green">217</FONT>                    Map&lt;Object, Object&gt; modelMap = null;<a name="line.217"></a>
+<FONT color="green">218</FONT>                    if (result instanceof ModelAndView) {<a name="line.218"></a>
+<FONT color="green">219</FONT>                            ModelAndView modelAndView = (ModelAndView)result;<a name="line.219"></a>
+<FONT color="green">220</FONT>                            modelMap = modelAndView.getModel();<a name="line.220"></a>
+<FONT color="green">221</FONT>                            result = modelAndView.getViewName();<a name="line.221"></a>
+<FONT color="green">222</FONT>                            <a name="line.222"></a>
+<FONT color="green">223</FONT>                            if (context.getBean() instanceof HandlerAdapter) {<a name="line.223"></a>
+<FONT color="green">224</FONT>                                    try {<a name="line.224"></a>
+<FONT color="green">225</FONT>                                            HandlerInterceptor[] interceptors = (HandlerInterceptor[])graniteContext.getRequestMap().get(HandlerInterceptor.class.getName());<a name="line.225"></a>
+<FONT color="green">226</FONT>                                            <a name="line.226"></a>
+<FONT color="green">227</FONT>                                            if (interceptors != null) {<a name="line.227"></a>
+<FONT color="green">228</FONT>                                            for (int i = interceptors.length-1; i &gt;= 0; i--) {<a name="line.228"></a>
+<FONT color="green">229</FONT>                                                HandlerInterceptor interceptor = interceptors[i];<a name="line.229"></a>
+<FONT color="green">230</FONT>                                                interceptor.postHandle((HttpServletRequest)context.getParameters()[0], graniteContext.getResponse(), component, modelAndView);<a name="line.230"></a>
+<FONT color="green">231</FONT>                                            }<a name="line.231"></a>
+<FONT color="green">232</FONT>            <a name="line.232"></a>
+<FONT color="green">233</FONT>                                                triggerAfterCompletion(component, interceptors.length-1, interceptors, graniteContext.getRequest(), graniteContext.getResponse(), null);<a name="line.233"></a>
+<FONT color="green">234</FONT>                                            }<a name="line.234"></a>
+<FONT color="green">235</FONT>                                    }<a name="line.235"></a>
+<FONT color="green">236</FONT>                                    catch (Exception e) {<a name="line.236"></a>
+<FONT color="green">237</FONT>                                            throw new ServiceException(e.getMessage(), e);<a name="line.237"></a>
+<FONT color="green">238</FONT>                                    }<a name="line.238"></a>
+<FONT color="green">239</FONT>                            }<a name="line.239"></a>
+<FONT color="green">240</FONT>                    }<a name="line.240"></a>
+<FONT color="green">241</FONT>                    <a name="line.241"></a>
+<FONT color="green">242</FONT>                    if (modelMap != null) {<a name="line.242"></a>
+<FONT color="green">243</FONT>                            Boolean localBinding = (Boolean)graniteContext.getRequestMap().get(SPRINGMVC_BINDING_ATTR);<a name="line.243"></a>
+<FONT color="green">244</FONT>                            <a name="line.244"></a>
+<FONT color="green">245</FONT>                            results = new ArrayList&lt;ContextUpdate&gt;();<a name="line.245"></a>
+<FONT color="green">246</FONT>                            for (Map.Entry&lt;Object, Object&gt; me : modelMap.entrySet()) {<a name="line.246"></a>
+<FONT color="green">247</FONT>                                            if (me.getKey().toString().startsWith("org.springframework.validation.")<a name="line.247"></a>
+<FONT color="green">248</FONT>                                                            || (me.getValue() != null &amp;&amp; (<a name="line.248"></a>
+<FONT color="green">249</FONT>                                                                            me.getValue().getClass().getName().startsWith("groovy.lang.ExpandoMetaClass")<a name="line.249"></a>
+<FONT color="green">250</FONT>                                                                            || me.getValue().getClass().getName().indexOf("$_closure") &gt; 0<a name="line.250"></a>
+<FONT color="green">251</FONT>                                                                            || me.getValue() instanceof Class)))                                                                    <a name="line.251"></a>
+<FONT color="green">252</FONT>                                                    continue;<a name="line.252"></a>
+<FONT color="green">253</FONT>                                            String variableName = me.getKey().toString();<a name="line.253"></a>
+<FONT color="green">254</FONT>                                            if (Boolean.TRUE.equals(localBinding))<a name="line.254"></a>
+<FONT color="green">255</FONT>                                                    results.add(new ContextUpdate(componentName, variableName, me.getValue(), 3, false));<a name="line.255"></a>
+<FONT color="green">256</FONT>                                            else<a name="line.256"></a>
+<FONT color="green">257</FONT>                                                    results.add(new ContextUpdate(variableName, null, me.getValue(), 3, false));<a name="line.257"></a>
+<FONT color="green">258</FONT>                            }<a name="line.258"></a>
+<FONT color="green">259</FONT>                    }<a name="line.259"></a>
+<FONT color="green">260</FONT>                    <a name="line.260"></a>
+<FONT color="green">261</FONT>                            boolean grails = getSpringContext().getClass().getName().indexOf("Grails") &gt; 0;<a name="line.261"></a>
+<FONT color="green">262</FONT>                            if (grails) {<a name="line.262"></a>
+<FONT color="green">263</FONT>                                    // Special handling for Grails controllers: get flash content<a name="line.263"></a>
+<FONT color="green">264</FONT>                                    try {<a name="line.264"></a>
+<FONT color="green">265</FONT>                                    Set&lt;Class&lt;?&gt;&gt; componentClasses = findComponentClasses(componentName, componentClass);<a name="line.265"></a>
+<FONT color="green">266</FONT>                                    for (Class&lt;?&gt; cClass : componentClasses) {<a name="line.266"></a>
+<FONT color="green">267</FONT>                                            if (cClass.isInterface())<a name="line.267"></a>
+<FONT color="green">268</FONT>                                                    continue;<a name="line.268"></a>
+<FONT color="green">269</FONT>                                                    Method m = cClass.getDeclaredMethod("getProperty", String.class);<a name="line.269"></a>
+<FONT color="green">270</FONT>                                                    Map&lt;String, Object&gt; map = (Map&lt;String, Object&gt;)m.invoke(component, "flash");<a name="line.270"></a>
+<FONT color="green">271</FONT>                                                    if (results == null)<a name="line.271"></a>
+<FONT color="green">272</FONT>                                                            results = new ArrayList&lt;ContextUpdate&gt;();<a name="line.272"></a>
+<FONT color="green">273</FONT>                                                    for (Map.Entry&lt;String, Object&gt; me : map.entrySet()) {<a name="line.273"></a>
+<FONT color="green">274</FONT>                                                            Object value = me.getValue();<a name="line.274"></a>
+<FONT color="green">275</FONT>                                                            if (value != null &amp;&amp; value.getClass().getName().startsWith("org.codehaus.groovy.runtime.GString"))<a name="line.275"></a>
+<FONT color="green">276</FONT>                                                                    value = value.toString();<a name="line.276"></a>
+<FONT color="green">277</FONT>                                                            results.add(new ContextUpdate("flash", me.getKey(), value, 3, false));<a name="line.277"></a>
+<FONT color="green">278</FONT>                                                    }<a name="line.278"></a>
+<FONT color="green">279</FONT>                                    }<a name="line.279"></a>
+<FONT color="green">280</FONT>                                    }<a name="line.280"></a>
+<FONT color="green">281</FONT>                                    catch (Exception e) {<a name="line.281"></a>
+<FONT color="green">282</FONT>                                            throw new ServiceException("Flash scope retrieval failed", e);<a name="line.282"></a>
+<FONT color="green">283</FONT>                                    }<a name="line.283"></a>
+<FONT color="green">284</FONT>                            }<a name="line.284"></a>
+<FONT color="green">285</FONT>            }<a name="line.285"></a>
+<FONT color="green">286</FONT>                    <a name="line.286"></a>
+<FONT color="green">287</FONT>            DataContext dataContext = DataContext.get();<a name="line.287"></a>
+<FONT color="green">288</FONT>                    Set&lt;Object[]&gt; dataUpdates = dataContext != null ? dataContext.getDataUpdates() : null;<a name="line.288"></a>
+<FONT color="green">289</FONT>                    Object[][] updates = null;<a name="line.289"></a>
+<FONT color="green">290</FONT>                    if (dataUpdates != null &amp;&amp; !dataUpdates.isEmpty())<a name="line.290"></a>
+<FONT color="green">291</FONT>                            updates = dataUpdates.toArray(new Object[dataUpdates.size()][]);<a name="line.291"></a>
+<FONT color="green">292</FONT>                    <a name="line.292"></a>
+<FONT color="green">293</FONT>            InvocationResult ires = new InvocationResult(result, results);<a name="line.293"></a>
+<FONT color="green">294</FONT>            if (component == null)<a name="line.294"></a>
+<FONT color="green">295</FONT>                    component = context.getBean();<a name="line.295"></a>
+<FONT color="green">296</FONT>            if (component.getClass().isAnnotationPresent(BypassTideMerge.class))<a name="line.296"></a>
+<FONT color="green">297</FONT>                    ires.setMerge(false);<a name="line.297"></a>
+<FONT color="green">298</FONT>            else if (!(context.getParameters().length &gt; 0 &amp;&amp; context.getParameters()[0] instanceof ControllerRequestWrapper)) {<a name="line.298"></a>
+<FONT color="green">299</FONT>                    try {<a name="line.299"></a>
+<FONT color="green">300</FONT>                            Method m = component.getClass().getMethod(context.getMethod().getName(), context.getMethod().getParameterTypes());<a name="line.300"></a>
+<FONT color="green">301</FONT>                            if (m.isAnnotationPresent(BypassTideMerge.class))<a name="line.301"></a>
+<FONT color="green">302</FONT>                                    ires.setMerge(false);<a name="line.302"></a>
+<FONT color="green">303</FONT>                    }<a name="line.303"></a>
+<FONT color="green">304</FONT>                    catch (Exception e) {<a name="line.304"></a>
+<FONT color="green">305</FONT>                            log.warn("Could not find bean method", e);<a name="line.305"></a>
+<FONT color="green">306</FONT>                    }<a name="line.306"></a>
+<FONT color="green">307</FONT>            }<a name="line.307"></a>
+<FONT color="green">308</FONT>            <a name="line.308"></a>
+<FONT color="green">309</FONT>            ires.setUpdates(updates);<a name="line.309"></a>
+<FONT color="green">310</FONT>            <a name="line.310"></a>
+<FONT color="green">311</FONT>            return ires;<a name="line.311"></a>
+<FONT color="green">312</FONT>        }<a name="line.312"></a>
+<FONT color="green">313</FONT>    <a name="line.313"></a>
+<FONT color="green">314</FONT>        @Override<a name="line.314"></a>
+<FONT color="green">315</FONT>        public void postCallFault(ServiceInvocationContext context, Throwable t, String componentName, Class&lt;?&gt; componentClass) {<a name="line.315"></a>
+<FONT color="green">316</FONT>            if (componentName != null &amp;&amp; context.getBean() instanceof HandlerAdapter) {<a name="line.316"></a>
+<FONT color="green">317</FONT>                            HttpGraniteContext graniteContext = (HttpGraniteContext)GraniteContext.getCurrentInstance();<a name="line.317"></a>
+<FONT color="green">318</FONT>                            <a name="line.318"></a>
+<FONT color="green">319</FONT>                            Object component = findComponent(componentName, componentClass);<a name="line.319"></a>
+<FONT color="green">320</FONT>                            <a name="line.320"></a>
+<FONT color="green">321</FONT>                            HandlerInterceptor[] interceptors = (HandlerInterceptor[])graniteContext.getRequestMap().get(HandlerInterceptor.class.getName());<a name="line.321"></a>
+<FONT color="green">322</FONT>            <a name="line.322"></a>
+<FONT color="green">323</FONT>                    triggerAfterCompletion(component, interceptors.length-1, interceptors, <a name="line.323"></a>
+<FONT color="green">324</FONT>                                    graniteContext.getRequest(), graniteContext.getResponse(), <a name="line.324"></a>
+<FONT color="green">325</FONT>                                    t instanceof Exception ? (Exception)t : null);<a name="line.325"></a>
+<FONT color="green">326</FONT>            }<a name="line.326"></a>
+<FONT color="green">327</FONT>                    <a name="line.327"></a>
+<FONT color="green">328</FONT>            super.postCallFault(context, t, componentName, componentClass);<a name="line.328"></a>
+<FONT color="green">329</FONT>        }<a name="line.329"></a>
+<FONT color="green">330</FONT>    <a name="line.330"></a>
+<FONT color="green">331</FONT>        <a name="line.331"></a>
+<FONT color="green">332</FONT>        private void triggerAfterCompletion(Object component, int interceptorIndex, HandlerInterceptor[] interceptors, HttpServletRequest request, HttpServletResponse response, Exception ex) {<a name="line.332"></a>
+<FONT color="green">333</FONT>                    for (int i = interceptorIndex; i &gt;= 0; i--) {<a name="line.333"></a>
+<FONT color="green">334</FONT>                            HandlerInterceptor interceptor = interceptors[i];<a name="line.334"></a>
+<FONT color="green">335</FONT>                            try {<a name="line.335"></a>
+<FONT color="green">336</FONT>                                    interceptor.afterCompletion(request, response, component, ex);<a name="line.336"></a>
+<FONT color="green">337</FONT>                            }<a name="line.337"></a>
+<FONT color="green">338</FONT>                            catch (Throwable ex2) {<a name="line.338"></a>
+<FONT color="green">339</FONT>                                    log.error("HandlerInterceptor.afterCompletion threw exception", ex2);<a name="line.339"></a>
+<FONT color="green">340</FONT>                            }<a name="line.340"></a>
+<FONT color="green">341</FONT>                    }<a name="line.341"></a>
+<FONT color="green">342</FONT>        }<a name="line.342"></a>
+<FONT color="green">343</FONT>    <a name="line.343"></a>
+<FONT color="green">344</FONT>        <a name="line.344"></a>
+<FONT color="green">345</FONT>        <a name="line.345"></a>
+<FONT color="green">346</FONT>        private class ControllerRequestWrapper extends HttpServletRequestWrapper {<a name="line.346"></a>
+<FONT color="green">347</FONT>            private String componentName = null;<a name="line.347"></a>
+<FONT color="green">348</FONT>            private String methodName = null;<a name="line.348"></a>
+<FONT color="green">349</FONT>            private Map&lt;String, Object&gt; requestMap = null;<a name="line.349"></a>
+<FONT color="green">350</FONT>            private Map&lt;String, Object&gt; valueMap = null;<a name="line.350"></a>
+<FONT color="green">351</FONT>            <a name="line.351"></a>
+<FONT color="green">352</FONT>                    public ControllerRequestWrapper(boolean grails, HttpServletRequest request, String componentName, String methodName, Map&lt;String, Object&gt; requestMap, Map&lt;String, Object&gt; valueMap) {<a name="line.352"></a>
+<FONT color="green">353</FONT>                            super(request);<a name="line.353"></a>
+<FONT color="green">354</FONT>                            this.componentName = componentName.substring(0, componentName.length()-"Controller".length());<a name="line.354"></a>
+<FONT color="green">355</FONT>                            if (this.componentName.indexOf(".") &gt; 0)<a name="line.355"></a>
+<FONT color="green">356</FONT>                                    this.componentName = this.componentName.substring(this.componentName.lastIndexOf(".")+1);<a name="line.356"></a>
+<FONT color="green">357</FONT>                            if (grails)<a name="line.357"></a>
+<FONT color="green">358</FONT>                                    this.componentName = this.componentName.substring(0, 1).toLowerCase() + this.componentName.substring(1);<a name="line.358"></a>
+<FONT color="green">359</FONT>                            this.methodName = methodName;<a name="line.359"></a>
+<FONT color="green">360</FONT>                            this.requestMap = requestMap;<a name="line.360"></a>
+<FONT color="green">361</FONT>                            this.valueMap = valueMap;<a name="line.361"></a>
+<FONT color="green">362</FONT>                    }<a name="line.362"></a>
+<FONT color="green">363</FONT>            <a name="line.363"></a>
+<FONT color="green">364</FONT>                    @Override<a name="line.364"></a>
+<FONT color="green">365</FONT>                    public String getRequestURI() {<a name="line.365"></a>
+<FONT color="green">366</FONT>                            return getContextPath() + "/" + componentName + "/" + methodName;<a name="line.366"></a>
+<FONT color="green">367</FONT>                    }<a name="line.367"></a>
+<FONT color="green">368</FONT>                    <a name="line.368"></a>
+<FONT color="green">369</FONT>                    @Override<a name="line.369"></a>
+<FONT color="green">370</FONT>                    public String getServletPath() {<a name="line.370"></a>
+<FONT color="green">371</FONT>                            return "/" + componentName + "/" + methodName;<a name="line.371"></a>
+<FONT color="green">372</FONT>                    }<a name="line.372"></a>
+<FONT color="green">373</FONT>                    <a name="line.373"></a>
+<FONT color="green">374</FONT>                    public Object getRequestValue(String key) {<a name="line.374"></a>
+<FONT color="green">375</FONT>                            return requestMap != null ? requestMap.get(key) : null;<a name="line.375"></a>
+<FONT color="green">376</FONT>                    }<a name="line.376"></a>
+<FONT color="green">377</FONT>                    <a name="line.377"></a>
+<FONT color="green">378</FONT>                    public Object getBindValue(String key) {<a name="line.378"></a>
+<FONT color="green">379</FONT>                            return valueMap != null ? valueMap.get(key) : null;<a name="line.379"></a>
+<FONT color="green">380</FONT>                    }<a name="line.380"></a>
+<FONT color="green">381</FONT>                    <a name="line.381"></a>
+<FONT color="green">382</FONT>                    @Override<a name="line.382"></a>
+<FONT color="green">383</FONT>                    public String getParameter(String name) {<a name="line.383"></a>
+<FONT color="green">384</FONT>                            return requestMap != null &amp;&amp; requestMap.containsKey(name) ? REQUEST_VALUE : null;<a name="line.384"></a>
+<FONT color="green">385</FONT>                    }<a name="line.385"></a>
+<FONT color="green">386</FONT>                    <a name="line.386"></a>
+<FONT color="green">387</FONT>                    @Override<a name="line.387"></a>
+<FONT color="green">388</FONT>                    public String[] getParameterValues(String name) {<a name="line.388"></a>
+<FONT color="green">389</FONT>                            return requestMap != null &amp;&amp; requestMap.containsKey(name) ? new String[] { REQUEST_VALUE } : null;<a name="line.389"></a>
+<FONT color="green">390</FONT>                    }<a name="line.390"></a>
+<FONT color="green">391</FONT>    <a name="line.391"></a>
+<FONT color="green">392</FONT>                    @Override<a name="line.392"></a>
+<FONT color="green">393</FONT>                    @SuppressWarnings({ "unchecked", "rawtypes" })<a name="line.393"></a>
+<FONT color="green">394</FONT>                    public Map getParameterMap() {<a name="line.394"></a>
+<FONT color="green">395</FONT>                            Map&lt;String, Object&gt; pmap = new HashMap&lt;String, Object&gt;();<a name="line.395"></a>
+<FONT color="green">396</FONT>                            if (requestMap != null) {<a name="line.396"></a>
+<FONT color="green">397</FONT>                                    for (String name : requestMap.keySet())<a name="line.397"></a>
+<FONT color="green">398</FONT>                                            pmap.put(name, REQUEST_VALUE);<a name="line.398"></a>
+<FONT color="green">399</FONT>                            }<a name="line.399"></a>
+<FONT color="green">400</FONT>                            return pmap; <a name="line.400"></a>
+<FONT color="green">401</FONT>                    }<a name="line.401"></a>
+<FONT color="green">402</FONT>    <a name="line.402"></a>
+<FONT color="green">403</FONT>                    @Override<a name="line.403"></a>
+<FONT color="green">404</FONT>                    @SuppressWarnings({ "unchecked", "rawtypes" })<a name="line.404"></a>
+<FONT color="green">405</FONT>                    public Enumeration getParameterNames() {<a name="line.405"></a>
+<FONT color="green">406</FONT>                            Hashtable ht = new Hashtable();<a name="line.406"></a>
+<FONT color="green">407</FONT>                            if (requestMap != null)<a name="line.407"></a>
+<FONT color="green">408</FONT>                                    ht.putAll(requestMap);<a name="line.408"></a>
+<FONT color="green">409</FONT>                            return ht.keys();<a name="line.409"></a>
+<FONT color="green">410</FONT>                    }<a name="line.410"></a>
+<FONT color="green">411</FONT>        }<a name="line.411"></a>
+<FONT color="green">412</FONT>        <a name="line.412"></a>
+<FONT color="green">413</FONT>        <a name="line.413"></a>
+<FONT color="green">414</FONT>        private class ControllerRequestDataBinder extends ServletRequestDataBinder {<a name="line.414"></a>
+<FONT color="green">415</FONT>            <a name="line.415"></a>
+<FONT color="green">416</FONT>            private ControllerRequestWrapper wrapper = null;<a name="line.416"></a>
+<FONT color="green">417</FONT>            private Object target = null;<a name="line.417"></a>
+<FONT color="green">418</FONT>    <a name="line.418"></a>
+<FONT color="green">419</FONT>                    public ControllerRequestDataBinder(ServletRequest request, Object target, String objectName) {<a name="line.419"></a>
+<FONT color="green">420</FONT>                            super(target, objectName);<a name="line.420"></a>
+<FONT color="green">421</FONT>                            this.wrapper = (ControllerRequestWrapper)request;<a name="line.421"></a>
+<FONT color="green">422</FONT>                            this.target = target;<a name="line.422"></a>
+<FONT color="green">423</FONT>                    }<a name="line.423"></a>
+<FONT color="green">424</FONT>                    <a name="line.424"></a>
+<FONT color="green">425</FONT>                    private Object getBindValue(boolean request, Class&lt;?&gt; requiredType) {<a name="line.425"></a>
+<FONT color="green">426</FONT>                            GraniteContext context = GraniteContext.getCurrentInstance();<a name="line.426"></a>
+<FONT color="green">427</FONT>                            TidePersistenceManager pm = SpringMVCServiceContext.this.getTidePersistenceManager(true);<a name="line.427"></a>
+<FONT color="green">428</FONT>                            ClassGetter classGetter = context.getGraniteConfig().getClassGetter();<a name="line.428"></a>
+<FONT color="green">429</FONT>                            Object value = request ? wrapper.getRequestValue(getObjectName()) : wrapper.getBindValue(getObjectName());<a name="line.429"></a>
+<FONT color="green">430</FONT>                            if (requiredType != null) {<a name="line.430"></a>
+<FONT color="green">431</FONT>                                    Converter converter = context.getGraniteConfig().getConverters().getConverter(value, requiredType);<a name="line.431"></a>
+<FONT color="green">432</FONT>                                    if (converter != null)<a name="line.432"></a>
+<FONT color="green">433</FONT>                                            value = converter.convert(value, requiredType);<a name="line.433"></a>
+<FONT color="green">434</FONT>                            }<a name="line.434"></a>
+<FONT color="green">435</FONT>                            if (value != null &amp;&amp; !request)<a name="line.435"></a>
+<FONT color="green">436</FONT>                                    return SpringMVCServiceContext.this.mergeExternal(pm, classGetter, value, null, null, null);<a name="line.436"></a>
+<FONT color="green">437</FONT>                            return value;<a name="line.437"></a>
+<FONT color="green">438</FONT>                    }<a name="line.438"></a>
+<FONT color="green">439</FONT>    <a name="line.439"></a>
+<FONT color="green">440</FONT>                    @Override<a name="line.440"></a>
+<FONT color="green">441</FONT>                    public void bind(ServletRequest request) {<a name="line.441"></a>
+<FONT color="green">442</FONT>                            Object value = getBindValue(false, null);<a name="line.442"></a>
+<FONT color="green">443</FONT>                            if (value != null)<a name="line.443"></a>
+<FONT color="green">444</FONT>                                    target = value;<a name="line.444"></a>
+<FONT color="green">445</FONT>                    }<a name="line.445"></a>
+<FONT color="green">446</FONT>                    <a name="line.446"></a>
+<FONT color="green">447</FONT>                    @Override<a name="line.447"></a>
+<FONT color="green">448</FONT>                    public Object getTarget() {<a name="line.448"></a>
+<FONT color="green">449</FONT>                            return target;                  <a name="line.449"></a>
+<FONT color="green">450</FONT>                    }<a name="line.450"></a>
+<FONT color="green">451</FONT>                    <a name="line.451"></a>
+<FONT color="green">452</FONT>                    @SuppressWarnings("rawtypes")<a name="line.452"></a>
+<FONT color="green">453</FONT>                    @Override<a name="line.453"></a>
+<FONT color="green">454</FONT>                    public Object convertIfNecessary(Object value, Class requiredType, MethodParameter methodParam) throws TypeMismatchException {<a name="line.454"></a>
+<FONT color="green">455</FONT>                            if (target == null &amp;&amp; value == REQUEST_VALUE || (value instanceof String[] &amp;&amp; ((String[])value)[0] == REQUEST_VALUE))<a name="line.455"></a>
+<FONT color="green">456</FONT>                                    return getBindValue(true, requiredType);<a name="line.456"></a>
+<FONT color="green">457</FONT>                            return super.convertIfNecessary(value, requiredType, methodParam);<a name="line.457"></a>
+<FONT color="green">458</FONT>                    }<a name="line.458"></a>
+<FONT color="green">459</FONT>        }<a name="line.459"></a>
+<FONT color="green">460</FONT>    }<a name="line.460"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

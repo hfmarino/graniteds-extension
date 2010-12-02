@@ -1,0 +1,269 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /*<a name="line.1"></a>
+<FONT color="green">002</FONT>      GRANITE DATA SERVICES<a name="line.2"></a>
+<FONT color="green">003</FONT>      Copyright (C) 2007-2010 ADEQUATE SYSTEMS SARL<a name="line.3"></a>
+<FONT color="green">004</FONT>    <a name="line.4"></a>
+<FONT color="green">005</FONT>      This file is part of Granite Data Services.<a name="line.5"></a>
+<FONT color="green">006</FONT>    <a name="line.6"></a>
+<FONT color="green">007</FONT>      Granite Data Services is free software; you can redistribute it and/or modify<a name="line.7"></a>
+<FONT color="green">008</FONT>      it under the terms of the GNU Library General Public License as published by<a name="line.8"></a>
+<FONT color="green">009</FONT>      the Free Software Foundation; either version 2 of the License, or (at your<a name="line.9"></a>
+<FONT color="green">010</FONT>      option) any later version.<a name="line.10"></a>
+<FONT color="green">011</FONT>    <a name="line.11"></a>
+<FONT color="green">012</FONT>      Granite Data Services is distributed in the hope that it will be useful, but<a name="line.12"></a>
+<FONT color="green">013</FONT>      WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or<a name="line.13"></a>
+<FONT color="green">014</FONT>      FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License<a name="line.14"></a>
+<FONT color="green">015</FONT>      for more details.<a name="line.15"></a>
+<FONT color="green">016</FONT>    <a name="line.16"></a>
+<FONT color="green">017</FONT>      You should have received a copy of the GNU Library General Public License<a name="line.17"></a>
+<FONT color="green">018</FONT>      along with this library; if not, see &lt;http://www.gnu.org/licenses/&gt;.<a name="line.18"></a>
+<FONT color="green">019</FONT>    */<a name="line.19"></a>
+<FONT color="green">020</FONT>    <a name="line.20"></a>
+<FONT color="green">021</FONT>    package org.granite.messaging.service.security;<a name="line.21"></a>
+<FONT color="green">022</FONT>    <a name="line.22"></a>
+<FONT color="green">023</FONT>    import java.lang.reflect.Field;<a name="line.23"></a>
+<FONT color="green">024</FONT>    import java.lang.reflect.InvocationTargetException;<a name="line.24"></a>
+<FONT color="green">025</FONT>    import java.security.Principal;<a name="line.25"></a>
+<FONT color="green">026</FONT>    import java.util.Map;<a name="line.26"></a>
+<FONT color="green">027</FONT>    <a name="line.27"></a>
+<FONT color="green">028</FONT>    import javax.servlet.http.HttpServletRequest;<a name="line.28"></a>
+<FONT color="green">029</FONT>    import javax.servlet.http.HttpServletRequestWrapper;<a name="line.29"></a>
+<FONT color="green">030</FONT>    import javax.servlet.http.HttpSession;<a name="line.30"></a>
+<FONT color="green">031</FONT>    <a name="line.31"></a>
+<FONT color="green">032</FONT>    import org.apache.catalina.Engine;<a name="line.32"></a>
+<FONT color="green">033</FONT>    import org.apache.catalina.Realm;<a name="line.33"></a>
+<FONT color="green">034</FONT>    import org.apache.catalina.Server;<a name="line.34"></a>
+<FONT color="green">035</FONT>    import org.apache.catalina.ServerFactory;<a name="line.35"></a>
+<FONT color="green">036</FONT>    import org.apache.catalina.Service;<a name="line.36"></a>
+<FONT color="green">037</FONT>    import org.apache.catalina.Session;<a name="line.37"></a>
+<FONT color="green">038</FONT>    import org.apache.catalina.authenticator.Constants;<a name="line.38"></a>
+<FONT color="green">039</FONT>    import org.apache.catalina.connector.RequestFacade;<a name="line.39"></a>
+<FONT color="green">040</FONT>    import org.apache.catalina.connector.Request;<a name="line.40"></a>
+<FONT color="green">041</FONT>    import org.granite.context.GraniteContext;<a name="line.41"></a>
+<FONT color="green">042</FONT>    import org.granite.messaging.webapp.HttpGraniteContext;<a name="line.42"></a>
+<FONT color="green">043</FONT>    <a name="line.43"></a>
+<FONT color="green">044</FONT>    <a name="line.44"></a>
+<FONT color="green">045</FONT>    /**<a name="line.45"></a>
+<FONT color="green">046</FONT>     * @author Franck WOLFF<a name="line.46"></a>
+<FONT color="green">047</FONT>     */<a name="line.47"></a>
+<FONT color="green">048</FONT>    public class GlassFishV3SecurityService extends AbstractSecurityService {<a name="line.48"></a>
+<FONT color="green">049</FONT>    <a name="line.49"></a>
+<FONT color="green">050</FONT>        private final Field requestField;<a name="line.50"></a>
+<FONT color="green">051</FONT>        private Engine engine = null;<a name="line.51"></a>
+<FONT color="green">052</FONT>    <a name="line.52"></a>
+<FONT color="green">053</FONT>        public GlassFishV3SecurityService() {<a name="line.53"></a>
+<FONT color="green">054</FONT>            super();<a name="line.54"></a>
+<FONT color="green">055</FONT>            try {<a name="line.55"></a>
+<FONT color="green">056</FONT>                // We need to access the org.apache.catalina.connector.Request field from<a name="line.56"></a>
+<FONT color="green">057</FONT>                // a org.apache.catalina.connector.RequestFacade. Unfortunately there is<a name="line.57"></a>
+<FONT color="green">058</FONT>                // no public getter for this field (and I don't want to create a Valve)...<a name="line.58"></a>
+<FONT color="green">059</FONT>                requestField = RequestFacade.class.getDeclaredField("request");<a name="line.59"></a>
+<FONT color="green">060</FONT>                requestField.setAccessible(true);<a name="line.60"></a>
+<FONT color="green">061</FONT>            } catch (Exception e) {<a name="line.61"></a>
+<FONT color="green">062</FONT>                throw new RuntimeException("Could not get 'request' field in GlassFish V3 RequestFacade", e);<a name="line.62"></a>
+<FONT color="green">063</FONT>            }<a name="line.63"></a>
+<FONT color="green">064</FONT>        }<a name="line.64"></a>
+<FONT color="green">065</FONT>    <a name="line.65"></a>
+<FONT color="green">066</FONT>        protected Field getRequestField() {<a name="line.66"></a>
+<FONT color="green">067</FONT>            return requestField;<a name="line.67"></a>
+<FONT color="green">068</FONT>        }<a name="line.68"></a>
+<FONT color="green">069</FONT>    <a name="line.69"></a>
+<FONT color="green">070</FONT>        protected Engine getEngine() {<a name="line.70"></a>
+<FONT color="green">071</FONT>            return engine;<a name="line.71"></a>
+<FONT color="green">072</FONT>        }<a name="line.72"></a>
+<FONT color="green">073</FONT>    <a name="line.73"></a>
+<FONT color="green">074</FONT>        public void configure(Map&lt;String, String&gt; params) {<a name="line.74"></a>
+<FONT color="green">075</FONT>            String serviceId = params.get("service");<a name="line.75"></a>
+<FONT color="green">076</FONT>    <a name="line.76"></a>
+<FONT color="green">077</FONT>            Server server = ServerFactory.getServer();<a name="line.77"></a>
+<FONT color="green">078</FONT>            if (server == null)<a name="line.78"></a>
+<FONT color="green">079</FONT>                throw new NullPointerException("Could not get GlassFish V3 server");<a name="line.79"></a>
+<FONT color="green">080</FONT>    <a name="line.80"></a>
+<FONT color="green">081</FONT>            Service service = null;<a name="line.81"></a>
+<FONT color="green">082</FONT>            if (serviceId != null)<a name="line.82"></a>
+<FONT color="green">083</FONT>                service = server.findService(serviceId);<a name="line.83"></a>
+<FONT color="green">084</FONT>            else {<a name="line.84"></a>
+<FONT color="green">085</FONT>                Service[] services = server.findServices();<a name="line.85"></a>
+<FONT color="green">086</FONT>                if (services != null &amp;&amp; services.length &gt; 0)<a name="line.86"></a>
+<FONT color="green">087</FONT>                    service = services[0];<a name="line.87"></a>
+<FONT color="green">088</FONT>            }<a name="line.88"></a>
+<FONT color="green">089</FONT>            if (service == null)<a name="line.89"></a>
+<FONT color="green">090</FONT>                throw new NullPointerException("Could not find GlassFish V3 service for: " + (serviceId != null ? serviceId : "(default)"));<a name="line.90"></a>
+<FONT color="green">091</FONT>    <a name="line.91"></a>
+<FONT color="green">092</FONT>            engine = (Engine)service.getContainer();<a name="line.92"></a>
+<FONT color="green">093</FONT>            if (engine == null)<a name="line.93"></a>
+<FONT color="green">094</FONT>                throw new NullPointerException("Could not find GlassFish V3 container for: " + (serviceId != null ? serviceId : "(default)"));<a name="line.94"></a>
+<FONT color="green">095</FONT>        }<a name="line.95"></a>
+<FONT color="green">096</FONT>    <a name="line.96"></a>
+<FONT color="green">097</FONT>        public void login(Object credentials) throws SecurityServiceException {<a name="line.97"></a>
+<FONT color="green">098</FONT>            String[] decoded = decodeBase64Credentials(credentials);<a name="line.98"></a>
+<FONT color="green">099</FONT>    <a name="line.99"></a>
+<FONT color="green">100</FONT>            HttpGraniteContext context = (HttpGraniteContext)GraniteContext.getCurrentInstance();<a name="line.100"></a>
+<FONT color="green">101</FONT>            HttpServletRequest httpRequest = context.getRequest();<a name="line.101"></a>
+<FONT color="green">102</FONT>    <a name="line.102"></a>
+<FONT color="green">103</FONT>            Request request = getRequest(httpRequest);<a name="line.103"></a>
+<FONT color="green">104</FONT>            Realm realm = request.getContext().getRealm();<a name="line.104"></a>
+<FONT color="green">105</FONT>            Principal principal = realm.authenticate(decoded[0], decoded[1]);<a name="line.105"></a>
+<FONT color="green">106</FONT>            if (principal == null)<a name="line.106"></a>
+<FONT color="green">107</FONT>                throw SecurityServiceException.newInvalidCredentialsException("Wrong username or password");<a name="line.107"></a>
+<FONT color="green">108</FONT>            <a name="line.108"></a>
+<FONT color="green">109</FONT>            request.setAuthType(AUTH_TYPE);<a name="line.109"></a>
+<FONT color="green">110</FONT>            request.setUserPrincipal(principal);<a name="line.110"></a>
+<FONT color="green">111</FONT>    <a name="line.111"></a>
+<FONT color="green">112</FONT>            Session session = request.getSessionInternal();<a name="line.112"></a>
+<FONT color="green">113</FONT>            session.setAuthType(AUTH_TYPE);<a name="line.113"></a>
+<FONT color="green">114</FONT>            session.setPrincipal(principal);<a name="line.114"></a>
+<FONT color="green">115</FONT>            session.setNote(Constants.SESS_USERNAME_NOTE, decoded[0]);<a name="line.115"></a>
+<FONT color="green">116</FONT>            session.setNote(Constants.SESS_PASSWORD_NOTE, decoded[1]);<a name="line.116"></a>
+<FONT color="green">117</FONT>        }<a name="line.117"></a>
+<FONT color="green">118</FONT>    <a name="line.118"></a>
+<FONT color="green">119</FONT>        public Object authorize(AbstractSecurityContext context) throws Exception {<a name="line.119"></a>
+<FONT color="green">120</FONT>    <a name="line.120"></a>
+<FONT color="green">121</FONT>            startAuthorization(context);<a name="line.121"></a>
+<FONT color="green">122</FONT>    <a name="line.122"></a>
+<FONT color="green">123</FONT>            HttpGraniteContext graniteContext = (HttpGraniteContext)GraniteContext.getCurrentInstance();<a name="line.123"></a>
+<FONT color="green">124</FONT>            HttpServletRequest httpRequest = graniteContext.getRequest();<a name="line.124"></a>
+<FONT color="green">125</FONT>            Request request = getRequest(httpRequest);<a name="line.125"></a>
+<FONT color="green">126</FONT>            Session session = request.getSessionInternal();<a name="line.126"></a>
+<FONT color="green">127</FONT>            request.setAuthType(session.getAuthType());<a name="line.127"></a>
+<FONT color="green">128</FONT>            request.setUserPrincipal(session.getPrincipal());<a name="line.128"></a>
+<FONT color="green">129</FONT>    <a name="line.129"></a>
+<FONT color="green">130</FONT>            if (context.getDestination().isSecured()) {<a name="line.130"></a>
+<FONT color="green">131</FONT>                Principal principal = getPrincipal(httpRequest);<a name="line.131"></a>
+<FONT color="green">132</FONT>                if (principal == null) {<a name="line.132"></a>
+<FONT color="green">133</FONT>                    if (httpRequest.getRequestedSessionId() != null) {<a name="line.133"></a>
+<FONT color="green">134</FONT>                        HttpSession httpSession = httpRequest.getSession(false);<a name="line.134"></a>
+<FONT color="green">135</FONT>                        if (httpSession == null || httpRequest.getRequestedSessionId().equals(httpSession.getId()))<a name="line.135"></a>
+<FONT color="green">136</FONT>                            throw SecurityServiceException.newSessionExpiredException("Session expired");<a name="line.136"></a>
+<FONT color="green">137</FONT>                    }<a name="line.137"></a>
+<FONT color="green">138</FONT>                    throw SecurityServiceException.newNotLoggedInException("User not logged in");<a name="line.138"></a>
+<FONT color="green">139</FONT>                }<a name="line.139"></a>
+<FONT color="green">140</FONT>                <a name="line.140"></a>
+<FONT color="green">141</FONT>                boolean accessDenied = true;<a name="line.141"></a>
+<FONT color="green">142</FONT>                for (String role : context.getDestination().getRoles()) {<a name="line.142"></a>
+<FONT color="green">143</FONT>                    if (httpRequest.isUserInRole(role)) {<a name="line.143"></a>
+<FONT color="green">144</FONT>                        accessDenied = false;<a name="line.144"></a>
+<FONT color="green">145</FONT>                        break;<a name="line.145"></a>
+<FONT color="green">146</FONT>                    }<a name="line.146"></a>
+<FONT color="green">147</FONT>                }<a name="line.147"></a>
+<FONT color="green">148</FONT>                if (accessDenied)<a name="line.148"></a>
+<FONT color="green">149</FONT>                    throw SecurityServiceException.newAccessDeniedException("User not in required role");<a name="line.149"></a>
+<FONT color="green">150</FONT>            }<a name="line.150"></a>
+<FONT color="green">151</FONT>    <a name="line.151"></a>
+<FONT color="green">152</FONT>            try {<a name="line.152"></a>
+<FONT color="green">153</FONT>                return endAuthorization(context);<a name="line.153"></a>
+<FONT color="green">154</FONT>            } catch (InvocationTargetException e) {<a name="line.154"></a>
+<FONT color="green">155</FONT>                for (Throwable t = e; t != null; t = t.getCause()) {<a name="line.155"></a>
+<FONT color="green">156</FONT>                    // Don't create a dependency to javax.ejb in SecurityService...<a name="line.156"></a>
+<FONT color="green">157</FONT>                    if (t instanceof SecurityException ||<a name="line.157"></a>
+<FONT color="green">158</FONT>                        "javax.ejb.EJBAccessException".equals(t.getClass().getName()))<a name="line.158"></a>
+<FONT color="green">159</FONT>                        throw SecurityServiceException.newAccessDeniedException(t.getMessage());<a name="line.159"></a>
+<FONT color="green">160</FONT>                }<a name="line.160"></a>
+<FONT color="green">161</FONT>                throw e;<a name="line.161"></a>
+<FONT color="green">162</FONT>            }<a name="line.162"></a>
+<FONT color="green">163</FONT>        }<a name="line.163"></a>
+<FONT color="green">164</FONT>    <a name="line.164"></a>
+<FONT color="green">165</FONT>        public void logout() throws SecurityServiceException {<a name="line.165"></a>
+<FONT color="green">166</FONT>            HttpGraniteContext context = (HttpGraniteContext)GraniteContext.getCurrentInstance();<a name="line.166"></a>
+<FONT color="green">167</FONT>    <a name="line.167"></a>
+<FONT color="green">168</FONT>            Session session = getSession(context.getRequest(), false);<a name="line.168"></a>
+<FONT color="green">169</FONT>            if (session != null &amp;&amp; session.getPrincipal() != null) {<a name="line.169"></a>
+<FONT color="green">170</FONT>                session.setAuthType(null);<a name="line.170"></a>
+<FONT color="green">171</FONT>                session.setPrincipal(null);<a name="line.171"></a>
+<FONT color="green">172</FONT>                session.removeNote(Constants.SESS_USERNAME_NOTE);<a name="line.172"></a>
+<FONT color="green">173</FONT>                session.removeNote(Constants.SESS_PASSWORD_NOTE);<a name="line.173"></a>
+<FONT color="green">174</FONT>                session.expire();<a name="line.174"></a>
+<FONT color="green">175</FONT>            }<a name="line.175"></a>
+<FONT color="green">176</FONT>        }<a name="line.176"></a>
+<FONT color="green">177</FONT>    <a name="line.177"></a>
+<FONT color="green">178</FONT>        protected Principal getPrincipal(HttpServletRequest httpRequest) {<a name="line.178"></a>
+<FONT color="green">179</FONT>            Request request = getRequest(httpRequest);<a name="line.179"></a>
+<FONT color="green">180</FONT>            Session session = request.getSessionInternal(false);<a name="line.180"></a>
+<FONT color="green">181</FONT>            return (session != null ? session.getPrincipal() : null);<a name="line.181"></a>
+<FONT color="green">182</FONT>        }<a name="line.182"></a>
+<FONT color="green">183</FONT>    <a name="line.183"></a>
+<FONT color="green">184</FONT>        protected Session getSession(HttpServletRequest httpRequest, boolean create) {<a name="line.184"></a>
+<FONT color="green">185</FONT>            Request request = getRequest(httpRequest);<a name="line.185"></a>
+<FONT color="green">186</FONT>            return request.getSessionInternal(create);<a name="line.186"></a>
+<FONT color="green">187</FONT>        }<a name="line.187"></a>
+<FONT color="green">188</FONT>    <a name="line.188"></a>
+<FONT color="green">189</FONT>        protected Request getRequest(HttpServletRequest request) {<a name="line.189"></a>
+<FONT color="green">190</FONT>            while (request instanceof HttpServletRequestWrapper)<a name="line.190"></a>
+<FONT color="green">191</FONT>                request = (HttpServletRequest)((HttpServletRequestWrapper)request).getRequest();<a name="line.191"></a>
+<FONT color="green">192</FONT>            try {<a name="line.192"></a>
+<FONT color="green">193</FONT>                return (Request)requestField.get(request);<a name="line.193"></a>
+<FONT color="green">194</FONT>            } catch (Exception e) {<a name="line.194"></a>
+<FONT color="green">195</FONT>                throw new RuntimeException("Could not get GlassFish V3 request", e);<a name="line.195"></a>
+<FONT color="green">196</FONT>            }<a name="line.196"></a>
+<FONT color="green">197</FONT>        }<a name="line.197"></a>
+<FONT color="green">198</FONT>    <a name="line.198"></a>
+<FONT color="green">199</FONT>        protected Realm getRealm(HttpServletRequest request) {<a name="line.199"></a>
+<FONT color="green">200</FONT>            Request creq = getRequest(request);<a name="line.200"></a>
+<FONT color="green">201</FONT>            return creq.getContext().getRealm();<a name="line.201"></a>
+<FONT color="green">202</FONT>        }<a name="line.202"></a>
+<FONT color="green">203</FONT>    }<a name="line.203"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

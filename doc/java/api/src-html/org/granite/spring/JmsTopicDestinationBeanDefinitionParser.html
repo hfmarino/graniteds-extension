@@ -1,0 +1,152 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /*<a name="line.1"></a>
+<FONT color="green">002</FONT>      GRANITE DATA SERVICES<a name="line.2"></a>
+<FONT color="green">003</FONT>      Copyright (C) 2007-2009 ADEQUATE SYSTEMS SARL<a name="line.3"></a>
+<FONT color="green">004</FONT>    <a name="line.4"></a>
+<FONT color="green">005</FONT>      This file is part of Granite Data Services.<a name="line.5"></a>
+<FONT color="green">006</FONT>    <a name="line.6"></a>
+<FONT color="green">007</FONT>      Granite Data Services is free software; you can redistribute it and/or modify<a name="line.7"></a>
+<FONT color="green">008</FONT>      it under the terms of the GNU Library General Public License as published by<a name="line.8"></a>
+<FONT color="green">009</FONT>      the Free Software Foundation; either version 2 of the License, or (at your<a name="line.9"></a>
+<FONT color="green">010</FONT>      option) any later version.<a name="line.10"></a>
+<FONT color="green">011</FONT>    <a name="line.11"></a>
+<FONT color="green">012</FONT>      Granite Data Services is distributed in the hope that it will be useful, but<a name="line.12"></a>
+<FONT color="green">013</FONT>      WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or<a name="line.13"></a>
+<FONT color="green">014</FONT>      FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License<a name="line.14"></a>
+<FONT color="green">015</FONT>      for more details.<a name="line.15"></a>
+<FONT color="green">016</FONT>    <a name="line.16"></a>
+<FONT color="green">017</FONT>      You should have received a copy of the GNU Library General Public License<a name="line.17"></a>
+<FONT color="green">018</FONT>      along with this library; if not, see &lt;http://www.gnu.org/licenses/&gt;.<a name="line.18"></a>
+<FONT color="green">019</FONT>    */<a name="line.19"></a>
+<FONT color="green">020</FONT>    <a name="line.20"></a>
+<FONT color="green">021</FONT>    package org.granite.spring;<a name="line.21"></a>
+<FONT color="green">022</FONT>    <a name="line.22"></a>
+<FONT color="green">023</FONT>    import java.util.List;<a name="line.23"></a>
+<FONT color="green">024</FONT>    <a name="line.24"></a>
+<FONT color="green">025</FONT>    import org.springframework.beans.factory.support.BeanDefinitionBuilder;<a name="line.25"></a>
+<FONT color="green">026</FONT>    import org.springframework.beans.factory.support.ManagedList;<a name="line.26"></a>
+<FONT color="green">027</FONT>    import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;<a name="line.27"></a>
+<FONT color="green">028</FONT>    import org.springframework.beans.factory.xml.ParserContext;<a name="line.28"></a>
+<FONT color="green">029</FONT>    import org.springframework.core.Conventions;<a name="line.29"></a>
+<FONT color="green">030</FONT>    import org.springframework.util.StringUtils;<a name="line.30"></a>
+<FONT color="green">031</FONT>    import org.springframework.util.xml.DomUtils;<a name="line.31"></a>
+<FONT color="green">032</FONT>    import org.w3c.dom.Element;<a name="line.32"></a>
+<FONT color="green">033</FONT>    <a name="line.33"></a>
+<FONT color="green">034</FONT>    /**<a name="line.34"></a>
+<FONT color="green">035</FONT>     * @author William Drai<a name="line.35"></a>
+<FONT color="green">036</FONT>     */<a name="line.36"></a>
+<FONT color="green">037</FONT>    public class JmsTopicDestinationBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {<a name="line.37"></a>
+<FONT color="green">038</FONT>    <a name="line.38"></a>
+<FONT color="green">039</FONT>        @Override<a name="line.39"></a>
+<FONT color="green">040</FONT>        @SuppressWarnings("unchecked")<a name="line.40"></a>
+<FONT color="green">041</FONT>        protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {<a name="line.41"></a>
+<FONT color="green">042</FONT>            builder.setLazyInit(false);<a name="line.42"></a>
+<FONT color="green">043</FONT>            <a name="line.43"></a>
+<FONT color="green">044</FONT>            mapOptionalAttributes(element, parserContext, builder, "id", "name", "connection-factory", "jndi-name", <a name="line.44"></a>
+<FONT color="green">045</FONT>                            "acknowledge-mode", "transacted-sessions", "no-local", "session-selector");<a name="line.45"></a>
+<FONT color="green">046</FONT>            <a name="line.46"></a>
+<FONT color="green">047</FONT>            Object sourceElement = parserContext.extractSource(element);<a name="line.47"></a>
+<FONT color="green">048</FONT>            ManagedList roles = new ManagedList();<a name="line.48"></a>
+<FONT color="green">049</FONT>            roles.setSource(sourceElement);<a name="line.49"></a>
+<FONT color="green">050</FONT>            List&lt;Element&gt; rolesElements = DomUtils.getChildElementsByTagName(element, "roles");<a name="line.50"></a>
+<FONT color="green">051</FONT>            for (Element rolesElement : rolesElements) {<a name="line.51"></a>
+<FONT color="green">052</FONT>                List&lt;Element&gt; valueElements = DomUtils.getChildElementsByTagName(rolesElement, "role");<a name="line.52"></a>
+<FONT color="green">053</FONT>                for (Element valueElement : valueElements)<a name="line.53"></a>
+<FONT color="green">054</FONT>                    roles.add(valueElement.getTextContent());<a name="line.54"></a>
+<FONT color="green">055</FONT>            }<a name="line.55"></a>
+<FONT color="green">056</FONT>            if (!roles.isEmpty())<a name="line.56"></a>
+<FONT color="green">057</FONT>                    builder.addPropertyValue("roles", roles);        <a name="line.57"></a>
+<FONT color="green">058</FONT>        }<a name="line.58"></a>
+<FONT color="green">059</FONT>    <a name="line.59"></a>
+<FONT color="green">060</FONT>        @Override<a name="line.60"></a>
+<FONT color="green">061</FONT>        protected String getBeanClassName(Element element) {<a name="line.61"></a>
+<FONT color="green">062</FONT>            return "org.granite.spring.JmsTopicDestination";<a name="line.62"></a>
+<FONT color="green">063</FONT>        }<a name="line.63"></a>
+<FONT color="green">064</FONT>    <a name="line.64"></a>
+<FONT color="green">065</FONT>        static void mapOptionalAttributes(Element element, ParserContext parserContext, BeanDefinitionBuilder builder, String... attrs) {<a name="line.65"></a>
+<FONT color="green">066</FONT>            for (String attr : attrs) {<a name="line.66"></a>
+<FONT color="green">067</FONT>                String value = element.getAttribute(attr);<a name="line.67"></a>
+<FONT color="green">068</FONT>                if (StringUtils.hasText(value)) {<a name="line.68"></a>
+<FONT color="green">069</FONT>                    String propertyName = Conventions.attributeNameToPropertyName(attr);<a name="line.69"></a>
+<FONT color="green">070</FONT>                    if (validateProperty(element, parserContext, propertyName, attr)) {<a name="line.70"></a>
+<FONT color="green">071</FONT>                        builder.addPropertyValue(propertyName, value);<a name="line.71"></a>
+<FONT color="green">072</FONT>                    }<a name="line.72"></a>
+<FONT color="green">073</FONT>                }<a name="line.73"></a>
+<FONT color="green">074</FONT>            }<a name="line.74"></a>
+<FONT color="green">075</FONT>        }<a name="line.75"></a>
+<FONT color="green">076</FONT>    <a name="line.76"></a>
+<FONT color="green">077</FONT>        private static boolean validateProperty(Element element, ParserContext parserContext, String propertyName, String attr) {<a name="line.77"></a>
+<FONT color="green">078</FONT>            if (!StringUtils.hasText(propertyName)) {<a name="line.78"></a>
+<FONT color="green">079</FONT>                parserContext.getReaderContext().error(<a name="line.79"></a>
+<FONT color="green">080</FONT>                    "Illegal property name trying to convert from attribute '" + attr + "' : cannot be null or empty.",<a name="line.80"></a>
+<FONT color="green">081</FONT>                    parserContext.extractSource(element));<a name="line.81"></a>
+<FONT color="green">082</FONT>                return false;<a name="line.82"></a>
+<FONT color="green">083</FONT>            }<a name="line.83"></a>
+<FONT color="green">084</FONT>            return true;<a name="line.84"></a>
+<FONT color="green">085</FONT>        }<a name="line.85"></a>
+<FONT color="green">086</FONT>    }<a name="line.86"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

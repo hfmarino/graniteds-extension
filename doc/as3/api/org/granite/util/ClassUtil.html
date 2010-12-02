@@ -1,0 +1,764 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="ClassUtil,org.granite.util.ClassUtil,systemDomain,describeClass,extractPackageName,extractSimpleName,forInstance,forName,getName,getPackageName,getSimpleName,getUnqualifiedClassName,hasDefinition,isFlashClass,isMathClass,isMxClass,isTopLevel,isVector,parseQName" name="keywords">
+<title>org.granite.util.ClassUtil</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'ClassUtil - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/util/ClassUtil.html&amp;org/granite/util/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;ClassUtil</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class ClassUtil"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.util</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class ClassUtil</td>
+</tr>
+</table>
+<p></p>
+  Static utility methods for <code>Class</code> manipulation.
+  
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#systemDomain">systemDomain</a> : ApplicationDomain<div class="summaryTableDescription">[static][read-only]
+   The Flash VM system application domain.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#describeClass()">describeClass</a>(clazz:Class):XML</div>
+<div class="summaryTableDescription">[static]
+   This method returns the XML description of the supplied class parameter.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#extractPackageName()">extractPackageName</a>(name:String):String</div>
+<div class="summaryTableDescription">[static]
+   Returns the package name of the supplied class name parameter.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#extractSimpleName()">extractSimpleName</a>(name:String):String</div>
+<div class="summaryTableDescription">[static]
+   Returns the simple (without the package part) name of the supplied
+   class name parameter.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#forInstance()">forInstance</a>(o:*, domain:ApplicationDomain = null):Class</div>
+<div class="summaryTableDescription">[static]
+   Returns the <code>Class</code> of the supplied instance parameter.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#forName()">forName</a>(name:String, domain:ApplicationDomain = null):Class</div>
+<div class="summaryTableDescription">[static]
+   Returns the <code>Class</code> denoted by the name parameter, in the optional application
+   domain parameter.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getName()">getName</a>(clazz:Class):String</div>
+<div class="summaryTableDescription">[static]
+   Returns the fully qualified name of the supplied <code>Class</code> parameter
+   in the form of <code>"path.to::MyClass"</code>.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getPackageName()">getPackageName</a>(clazz:Class):String</div>
+<div class="summaryTableDescription">[static]
+   Returns the package name of the supplied <code>Class</code> parameter.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getSimpleName()">getSimpleName</a>(clazz:Class):String</div>
+<div class="summaryTableDescription">[static]
+   Returns the simple (without the package part) name of the supplied
+   <code>Class</code> parameter.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getUnqualifiedClassName()">getUnqualifiedClassName</a>(o:Object):String</div>
+<div class="summaryTableDescription">[static]
+   Get the unqualified (simple) class name of the object passed as
+   a parameter.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasDefinition()">hasDefinition</a>(name:String, domain:ApplicationDomain = null):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Test if a class name exists in the supplied domain or in the global system domain.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isFlashClass()">isFlashClass</a>(clazz:Class):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Tests if the supplied clazz parameter is a <i>Flash</i> class, ie.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isMathClass()">isMathClass</a>(clazz:Class):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Tests if the supplied clazz parameter is a GraniteDS <i> Math</i> class, ie.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isMxClass()">isMxClass</a>(clazz:Class):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Tests if the supplied clazz parameter is a <i>Flex</i> class, ie.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isTopLevel()">isTopLevel</a>(clazz:Class):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Tests if the supplied clazz parameter is a <i>Top Level</i> class defined in the
+   Flash 10 VM (including <code>Vector</code>).</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isVector()">isVector</a>(o:*):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Tests if the supplied o parameter is an instance of the Flash 10 Vector class.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#parseQName()">parseQName</a>(name:String, upperPolicy:Boolean = true):Array</div>
+<div class="summaryTableDescription">[static]
+   Split a name into a namespace prefix and a value.</div>
+</td><td class="summaryTableOwnerCol">ClassUtil</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="systemDomain"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">systemDomain</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>systemDomain:ApplicationDomain</code>&nbsp;&nbsp;[read-only]<p>
+   The Flash VM system application domain.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get systemDomain():ApplicationDomain</code>
+<br>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="describeClass()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">describeClass</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function describeClass(clazz:Class):XML</code><p>
+   This method returns the XML description of the supplied class parameter.
+   
+   </p><p>
+   It actually just calls the <code>flash.utils.describeType</code> builtin
+   method (<code>mx.utils.DescribeTypeCache</code> is buggy and its caching
+   startegy is unsuitable for multiple application domain support).
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; the class from which the XML description is to be returned.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>XML</code> &mdash; the XML description of the class.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">flash.utils.describeType</div>
+</div>
+<a name="extractPackageName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">extractPackageName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function extractPackageName(name:String):String</code><p>
+   Returns the package name of the supplied class name parameter. The class
+   name must be in the form of <code>"path.to::MyClass"</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; class name used for extraction.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the package name of the supplied class name.
+   </td>
+</tr>
+</table>
+</div>
+<a name="extractSimpleName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">extractSimpleName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function extractSimpleName(name:String):String</code><p>
+   Returns the simple (without the package part) name of the supplied
+   class name parameter. The class name must be in the form of
+   <code>"path.to::MyClass"</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; class name used for extraction.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the simple name of the supplied class name.
+   </td>
+</tr>
+</table>
+</div>
+<a name="forInstance()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">forInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function forInstance(o:*, domain:ApplicationDomain = null):Class</code><p>
+   Returns the <code>Class</code> of the supplied instance parameter.
+   
+   </p><p>
+   Notes:
+   <ul>if the o parameter is a <code>flash.utils.Proxy</code> instance, this method will try to
+   get its class by using the qualified class name of the instance and the supplied application
+   domain.</ul>
+   <ul>if the o parameter is <code>null</code>, this method returns <code>null</code>.</ul>
+   <ul>if o is an <code>uint</code> instance, this method returns the class
+   <code>int</code> (Flash VM bug)</ul>
+   </p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:*</code> &mdash; the instance from which the <code>Class</code> is to be returned.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> (default = <code>null</code>)<code></code> &mdash; the optional application domain to be used for getting the class definition.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Class</code> &mdash; the <code>Class</code> of the supplied instance (or <code>null</code>
+     if the o parameter is <code>null</code>).
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code></code> &mdash; if o is a function or a class.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../reflect/ClassNotFoundError.html">ClassNotFoundError</a> </code> &mdash; if no <code>Class</code> can be found in
+     the supplied or system domain with this the given object class name.
+   </td>
+</tr>
+</table>
+</div>
+<a name="forName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">forName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function forName(name:String, domain:ApplicationDomain = null):Class</code><p>
+   Returns the <code>Class</code> denoted by the name parameter, in the optional application
+   domain parameter. If domain parameter is null, this method will try to use the Flash system
+   domain.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the class name.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> (default = <code>null</code>)<code></code> &mdash; the optional application domain to be used for getting the class definition.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Class</code> &mdash; the <code>Class</code> object denoted by the name parameter (or <code>null</code>
+     if the name parameter is <code>null</code>).
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../reflect/ClassNotFoundError.html">ClassNotFoundError</a> </code> &mdash; if no <code>Class</code> can be found in
+     the supplied or system domain with this name.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getName(clazz:Class):String</code><p>
+   Returns the fully qualified name of the supplied <code>Class</code> parameter
+   in the form of <code>"path.to::MyClass"</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; class whose name is to be returned.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the fully qualified name of the supplied <code>Class</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getPackageName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getPackageName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getPackageName(clazz:Class):String</code><p>
+   Returns the package name of the supplied <code>Class</code> parameter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; class whose package name is to be returned.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the package name of the supplied <code>Class</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getSimpleName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getSimpleName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getSimpleName(clazz:Class):String</code><p>
+   Returns the simple (without the package part) name of the supplied
+   <code>Class</code> parameter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; class whose name is to be returned.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the simple name of the supplied <code>Class</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getUnqualifiedClassName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getUnqualifiedClassName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getUnqualifiedClassName(o:Object):String</code><p>
+   Get the unqualified (simple) class name of the object passed as
+   a parameter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code> &mdash; object whose class name is to be returned.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the unqualified class name of the supplied object.
+   </td>
+</tr>
+</table>
+</div>
+<a name="hasDefinition()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasDefinition</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function hasDefinition(name:String, domain:ApplicationDomain = null):Boolean</code><p>
+   Test if a class name exists in the supplied domain or in the global system domain.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the class name.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">domain</span>:ApplicationDomain</code> (default = <code>null</code>)<code></code> &mdash; the optional application domain to be used for testing the class definition.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if the class name exists in the supplied domain or, if domain
+     is null, in the system domain; <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isFlashClass()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isFlashClass</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function isFlashClass(clazz:Class):Boolean</code><p>
+   Tests if the supplied clazz parameter is a <i>Flash</i> class, ie. defined in the
+   <code>flash</code> or <code>air</code> package or any of their subpackages.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; the classe to be tested.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if clazz is a Flash class, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isMathClass()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isMathClass</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function isMathClass(clazz:Class):Boolean</code><p>
+   Tests if the supplied clazz parameter is a GraniteDS <i> Math</i> class, ie. in the
+   <code>org.granite.math</code> package or any of its subpackages.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; the classe to be tested.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if clazz is a big number class, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isMxClass()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isMxClass</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function isMxClass(clazz:Class):Boolean</code><p>
+   Tests if the supplied clazz parameter is a <i>Flex</i> class, ie. defined in the
+   <code>mx</code> package or any of its subpackages.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; the classe to be tested.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if clazz is a Flex class, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isTopLevel()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isTopLevel</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function isTopLevel(clazz:Class):Boolean</code><p>
+   Tests if the supplied clazz parameter is a <i>Top Level</i> class defined in the
+   Flash 10 VM (including <code>Vector</code>).
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">clazz</span>:Class</code> &mdash; the classe to be tested.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if clazz is a top level class, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="isVector()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isVector</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function isVector(o:*):Boolean</code><p>
+   Tests if the supplied o parameter is an instance of the Flash 10 Vector class. This
+   method doesn't use directly the Vector class, so it is compatible with earlier
+   Flash versions.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:*</code> &mdash; the instance to test.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if o is a Vector instance, <code>false</code> otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="parseQName()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">parseQName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function parseQName(name:String, upperPolicy:Boolean = true):Array</code><p>
+   Split a name into a namespace prefix and a value. Returns an array of two
+   Strings, the first one containing the prefix (possibly <code>null</code>
+   or empty), the second one containing the associated value.
+   
+   <div class='listing'><pre>
+   ClassUtil.parseQName("path.to.MyClass"); // [null, "path.to.MyClass"]
+   ClassUtil.parseQName("path.to::MyClass"); // [null, "path.to::MyClass"]
+   ClassUtil.parseQName("::MyClass"); // [null, "::MyClass"]
+   ClassUtil.parseQName(":MyClass"); // ["", "MyClass"]
+   ClassUtil.parseQName("MyClass"); // ["", "MyClass"]
+   ClassUtil.parseQName("MyClass.Inner"); // ["", "MyClass.Inner"]
+   ClassUtil.parseQName("myClass.Inner"); // [null, "myClass.Inner"]
+   ClassUtil.parseQName("MyClass", false)); // ["", "MyClass"]
+   ClassUtil.parseQName("MyClass.Inner", false); // [null, "MyClass.Inner"]
+   ClassUtil.parseQName("myClass.Inner", false); // [null, "myClass.Inner"]
+   ClassUtil.parseQName("abc:MyClass"); // ["abc", "MyClass"]
+   ClassUtil.parseQName("ABC:MyClass"); // ["ABC", "MyClass"]</pre></div>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; the name to be parsed for namespace prefix and value.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">upperPolicy</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; should we consider a String without any ':' character but
+     at least one '.' character and beginning by an uppercase letter as a
+     qualified name in the default namespace?
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; an array of two Strings, the first one containing the prefix (possibly
+     <code>null</code> or empty), the second one containing the associated value.
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

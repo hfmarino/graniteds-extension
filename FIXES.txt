@@ -1,0 +1,2 @@
+Add Default Serialization, like BlazeDS: Possibility to serialize non existing properties in Java classes that exist in AS3 classes.
+Modify the way that GraditeDS logs lazy entities. 

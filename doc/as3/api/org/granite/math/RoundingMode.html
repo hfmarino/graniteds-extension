@@ -1,0 +1,621 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="RoundingMode,org.granite.math.RoundingMode,CEILING,DOWN,FLOOR,HALF_DOWN,HALF_EVEN,HALF_UP,UNNECESSARY,UP,valueOf" name="keywords">
+<title>org.granite.math.RoundingMode</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'RoundingMode - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/math/RoundingMode.html&amp;org/granite/math/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;RoundingMode</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class RoundingMode"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.math</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public final  class RoundingMode</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">RoundingMode <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../util/Enum.html">Enum</a></td>
+</tr>
+</table>
+<p></p>
+  Specifies a <i>rounding behavior</i> for numerical operations
+  capable of discarding precision. Each rounding mode indicates how
+  the least significant returned digit of a rounded result is to be
+  calculated.  If fewer digits are returned than the digits needed to
+  represent the exact numerical result, the discarded digits will be
+  referred to as the <i>discarded fraction</i> regardless the digits'
+  contribution to the value of the number. In other words,
+  considered as a numerical value, the discarded fraction could have
+  an absolute value greater than one.
+  <br>
+  <br>
+  Each rounding mode description includes a table listing how
+  different two-digit decimal values would round to a one digit
+  decimal value under the rounding mode in question. The result
+  column in the tables could be gotten by creating a
+  <code>BigDecimal</code> number with the specified value, forming a
+  <code>MathContext</code> object with the proper settings
+  (<code>precision</code> set to <code>1</code>, and the
+  <code>roundingMode</code> set to the rounding mode in question), and
+  calling <code>BigDecimal.round</code> on this number with the
+  proper <code>MathContext</code>. A summary table showing the results
+  of these rounding operations for all rounding modes appears below.
+  <br>
+  <br>
+  <i>This class is basically an ActionScript3 port of the Java
+  class <code>java.math.RoundingMode</code> originally written by
+  Josh Bloch, Mike Cowlishaw and Joseph D. Darcy.</i>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="BigDecimal.html" target="">BigDecimal.html</a>
+<br>
+<a href="MathContext.html" target="">MathContext.html</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable hideInheritedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../util/Enum.html#name">name</a> : String<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../util/Enum.html#_">_</a> : Restrictor<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#checkForConstant()">checkForConstant</a>(o:*):*</div>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#equals()">equals</a>(other:<a href="../util/Enum.html">Enum</a>):Boolean</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#normalize()">normalize</a>(tmp:<a href="../util/Enum.html">Enum</a>):<a href="../util/Enum.html">Enum</a>
+</div>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#readEnum()">readEnum</a>(input:IDataInput):<a href="../util/Enum.html">Enum</a>
+</div>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#readExternal()">readExternal</a>(input:IDataInput):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#toString()">toString</a>():String</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#valueOf()">valueOf</a>(name:String):<a href="../math/RoundingMode.html">RoundingMode</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Returns a <code>RoundingMode</code> constant according to the
+   supplied parameter.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#writeExternal()">writeExternal</a>(output:IDataOutput):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable hideInheritedProtectedMethod" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#constantOf()">constantOf</a>(name:String):<a href="../util/Enum.html">Enum</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../util/Enum.html#getConstants()">getConstants</a>():Array</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../util/Enum.html">Enum</a></td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#CEILING">CEILING</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[static]
+   Rounding mode to round towards positive infinity.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#DOWN">DOWN</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[static]
+   Rounding mode to round towards zero.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#FLOOR">FLOOR</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[static]
+   Rounding mode to round towards negative infinity.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#HALF_DOWN">HALF_DOWN</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[static]
+   Rounding mode to round towards "nearest neighbor" unless both neighbors
+   are equidistant, in which case round down.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#HALF_EVEN">HALF_EVEN</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[static]
+   Rounding mode to round towards the "nearest neighbor" unless both
+   neighbors are equidistant, in which case, round towards the even
+   neighbor.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#HALF_UP">HALF_UP</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[static]
+   Rounding mode to round towards "nearest neighbor" unless both neighbors
+   are equidistant, in which case round up.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#UNNECESSARY">UNNECESSARY</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[static]
+   Rounding mode to assert that the requested operation has an exact result,
+   hence no rounding is necessary.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#UP">UP</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[static]
+   Rounding mode to round away from zero.</div>
+</td><td class="summaryTableOwnerCol">RoundingMode</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="valueOf()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">valueOf</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function valueOf(name:String):<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Returns a <code>RoundingMode</code> constant according to the
+   supplied parameter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> &mdash; a <code>RoundingMode</code> constant name.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/RoundingMode.html">RoundingMode</a></code> &mdash; 
+                        a <code>RoundingMode</code> constant.
+   
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>name</code>
+     parameter does not specify a <code>RoundingMode</code> constant
+     name.
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="CEILING"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">CEILING</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const CEILING:<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Rounding mode to round towards positive infinity. If the
+   result is positive, behaves as for <code>RoundingMode.UP</code>;
+   if negative, behaves as for <code>RoundingMode.DOWN</code>. Note
+   that this rounding mode never decreases the calculated value.
+   <br>
+   <br>
+   Example:
+   <table border>
+   <tr valign=top>
+   <th>Input Number</th>
+   <th>Input rounded to one digit<br> with <code>CEILING</code> rounding
+   </tr>
+   <tr align=right><td>5.5</td><td>6</td></tr>
+   <tr align=right><td>2.5</td><td>3</td></tr>
+   <tr align=right><td>1.6</td><td>2</td></tr>
+   <tr align=right><td>1.1</td><td>2</td></tr>
+   <tr align=right><td>1.0</td><td>1</td></tr>
+   <tr align=right><td>-1.0</td><td>-1</td></tr>
+   <tr align=right><td>-1.1</td><td>-1</td></tr>
+   <tr align=right><td>-1.6</td><td>-1</td></tr>
+   <tr align=right><td>-2.5</td><td>-2</td></tr>
+   <tr align=right><td>-5.5</td><td>-5</td></tr>
+   </table>
+   </p></div>
+<a name="DOWN"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DOWN</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const DOWN:<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Rounding mode to round towards zero. Never increments the digit
+   prior to a discarded fraction (i.e., truncates).  Note that this
+   rounding mode never increases the magnitude of the calculated value.
+   <br>
+   <br>
+   Example:
+   <table border>
+   <tr valign=top>
+   <th>Input Number</th>
+   <th>Input rounded to one digit<br> with <code>DOWN</code> rounding
+   </tr>
+   <tr align=right><td>5.5</td><td>5</td></tr>
+   <tr align=right><td>2.5</td><td>2</td></tr>
+   <tr align=right><td>1.6</td><td>1</td></tr>
+   <tr align=right><td>1.1</td><td>1</td></tr>
+   <tr align=right><td>1.0</td><td>1</td></tr>
+   <tr align=right><td>-1.0</td><td>-1</td></tr>
+   <tr align=right><td>-1.1</td><td>-1</td></tr>
+   <tr align=right><td>-1.6</td><td>-1</td></tr>
+   <tr align=right><td>-2.5</td><td>-2</td></tr>
+   <tr align=right><td>-5.5</td><td>-5</td></tr>
+   </table>
+   </p></div>
+<a name="FLOOR"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">FLOOR</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const FLOOR:<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Rounding mode to round towards negative infinity. If the
+   result is positive, behave as for <code>RoundingMode.DOWN</code>;
+   if negative, behave as for <code>RoundingMode.UP</code>. Note that
+   this rounding mode never increases the calculated value.
+   <br>
+   <br>
+   Example:
+   <table border>
+   <tr valign=top>
+   <th>Input Number</th>
+   <th>Input rounded to one digit<br> with <code>FLOOR</code> rounding
+   </tr>
+   <tr align=right><td>5.5</td><td>5</td></tr>
+   <tr align=right><td>2.5</td><td>2</td></tr>
+   <tr align=right><td>1.6</td><td>1</td></tr>
+   <tr align=right><td>1.1</td><td>1</td></tr>
+   <tr align=right><td>1.0</td><td>1</td></tr>
+   <tr align=right><td>-1.0</td><td>-1</td></tr>
+   <tr align=right><td>-1.1</td><td>-2</td></tr>
+   <tr align=right><td>-1.6</td><td>-2</td></tr>
+   <tr align=right><td>-2.5</td><td>-3</td></tr>
+   <tr align=right><td>-5.5</td><td>-6</td></tr>
+   </table>
+   </p></div>
+<a name="HALF_DOWN"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">HALF_DOWN</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const HALF_DOWN:<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Rounding mode to round towards "nearest neighbor" unless both neighbors
+   are equidistant, in which case round down. Behaves as for
+   <code>RoundingMode.UP</code> if the discarded fraction is &gt; 0.5;
+   otherwise, behaves as for <code>RoundingMode.DOWN</code>.
+   <br>
+   <br>
+   Example:
+   <table border>
+   <tr valign=top>
+   <th>Input Number</th>
+   <th>Input rounded to one digit<br> with <code>HALF_DOWN</code> rounding
+   </tr>
+   <tr align=right><td>5.5</td><td>5</td></tr>
+   <tr align=right><td>2.5</td><td>2</td></tr>
+   <tr align=right><td>1.6</td><td>2</td></tr>
+   <tr align=right><td>1.1</td><td>1</td></tr>
+   <tr align=right><td>1.0</td><td>1</td></tr>
+   <tr align=right><td>-1.0</td><td>-1</td></tr>
+   <tr align=right><td>-1.1</td><td>-1</td></tr>
+   <tr align=right><td>-1.6</td><td>-2</td></tr>
+   <tr align=right><td>-2.5</td><td>-2</td></tr>
+   <tr align=right><td>-5.5</td><td>-5</td></tr>
+   </table>
+   </p></div>
+<a name="HALF_EVEN"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">HALF_EVEN</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const HALF_EVEN:<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Rounding mode to round towards the "nearest neighbor" unless both
+   neighbors are equidistant, in which case, round towards the even
+   neighbor. Behaves as for <code>RoundingMode.HALF_UP</code> if the
+   digit to the left of the discarded fraction is odd; behaves as for
+   <code>RoundingMode.HALF_DOWN</code> if it's even.  Note that this
+   is the rounding mode that statistically minimizes cumulative
+   error when applied repeatedly over a sequence of calculations.
+   It is sometimes known as &quot;Banker's rounding,&quot; and is
+   chiefly used in the USA.  This rounding mode is analogous to
+   the rounding policy used for <code>float</code> and <code>double</code>
+   arithmetic in Java.
+   <br>
+   <br>
+   Example:
+   <table border>
+   <tr valign=top>
+   <th>Input Number</th>
+   <th>Input rounded to one digit<br> with <code>HALF_EVEN</code> rounding
+   </tr>
+   <tr align=right><td>5.5</td><td>6</td></tr>
+   <tr align=right><td>2.5</td><td>2</td></tr>
+   <tr align=right><td>1.6</td><td>2</td></tr>
+   <tr align=right><td>1.1</td><td>1</td></tr>
+   <tr align=right><td>1.0</td><td>1</td></tr>
+   <tr align=right><td>-1.0</td><td>-1</td></tr>
+   <tr align=right><td>-1.1</td><td>-1</td></tr>
+   <tr align=right><td>-1.6</td><td>-2</td></tr>
+   <tr align=right><td>-2.5</td><td>-2</td></tr>
+   <tr align=right><td>-5.5</td><td>-6</td></tr>
+   </table>
+   </p></div>
+<a name="HALF_UP"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">HALF_UP</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const HALF_UP:<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Rounding mode to round towards "nearest neighbor" unless both neighbors
+   are equidistant, in which case round up. Behaves as for
+   <code>RoundingMode.UP</code> if the discarded fraction is &gt;= 0.5;
+   otherwise, behaves as for <code>RoundingMode.DOWN</code>.  Note that this
+   is the rounding mode commonly taught at school.
+   <br>
+   <br>
+   Example:
+   <table border>
+   <tr valign=top>
+   <th>Input Number</th>
+   <th>Input rounded to one digit<br> with <code>HALF_UP</code> rounding
+   </tr>
+   <tr align=right><td>5.5</td><td>6</td></tr>
+   <tr align=right><td>2.5</td><td>3</td></tr>
+   <tr align=right><td>1.6</td><td>2</td></tr>
+   <tr align=right><td>1.1</td><td>1</td></tr>
+   <tr align=right><td>1.0</td><td>1</td></tr>
+   <tr align=right><td>-1.0</td><td>-1</td></tr>
+   <tr align=right><td>-1.1</td><td>-1</td></tr>
+   <tr align=right><td>-1.6</td><td>-2</td></tr>
+   <tr align=right><td>-2.5</td><td>-3</td></tr>
+   <tr align=right><td>-5.5</td><td>-6</td></tr>
+   </table>
+   </p></div>
+<a name="UNNECESSARY"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">UNNECESSARY</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const UNNECESSARY:<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Rounding mode to assert that the requested operation has an exact result,
+   hence no rounding is necessary. If this rounding mode is
+   specified on an operation that yields an inexact result, an
+   <code>BigNumberError</code> is thrown.
+   <br>
+   <br>
+   Example:
+   <table border>
+   <tr valign=top>
+   <th>Input Number</th>
+   <th>Input rounded to one digit<br> with <code>UNNECESSARY</code> rounding
+   </tr>
+   <tr align=right><td>5.5</td><td>throw <code>BigNumberError</code></td></tr>
+   <tr align=right><td>2.5</td><td>throw <code>BigNumberError</code></td></tr>
+   <tr align=right><td>1.6</td><td>throw <code>BigNumberError</code></td></tr>
+   <tr align=right><td>1.1</td><td>throw <code>BigNumberError</code></td></tr>
+   <tr align=right><td>1.0</td><td>1</td></tr>
+   <tr align=right><td>-1.0</td><td>-1</td></tr>
+   <tr align=right><td>-1.1</td><td>throw <code>BigNumberError</code></td></tr>
+   <tr align=right><td>-1.6</td><td>throw <code>BigNumberError</code></td></tr>
+   <tr align=right><td>-2.5</td><td>throw <code>BigNumberError</code></td></tr>
+   <tr align=right><td>-5.5</td><td>throw <code>BigNumberError</code></td></tr>
+   </table>
+   </p></div>
+<a name="UP"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">UP</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const UP:<a href="../math/RoundingMode.html">RoundingMode</a></code><p>
+   Rounding mode to round away from zero. Always increments the
+   digit prior to a non-zero discarded fraction.  Note that this
+   rounding mode never decreases the magnitude of the calculated
+   value.
+   <br>
+   <br>
+   Example:
+   <table border>
+   <tr valign=top>
+   <th>Input Number</th>
+   <th>Input rounded to one digit<br> with <code>UP</code> rounding
+   </tr>
+   <tr align=right><td>5.5</td><td>6</td></tr>
+   <tr align=right><td>2.5</td><td>3</td></tr>
+   <tr align=right><td>1.6</td><td>2</td></tr>
+   <tr align=right><td>1.1</td><td>2</td></tr>
+   <tr align=right><td>1.0</td><td>1</td></tr>
+   <tr align=right><td>-1.0</td><td>-1</td></tr>
+   <tr align=right><td>-1.1</td><td>-2</td></tr>
+   <tr align=right><td>-1.6</td><td>-2</td></tr>
+   <tr align=right><td>-2.5</td><td>-3</td></tr>
+   <tr align=right><td>-5.5</td><td>-6</td></tr>
+   </table>
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

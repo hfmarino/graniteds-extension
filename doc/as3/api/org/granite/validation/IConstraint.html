@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="IConstraint,org.granite.validation.IConstraint,factory,groups,message,payload,properties,initialize,validate" name="keywords">
+<title>org.granite.validation.IConstraint</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'IConstraint - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/validation/IConstraint.html&amp;org/granite/validation/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IConstraint</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IConstraint"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.validation</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IConstraint</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../validation/BaseConstraint.html">BaseConstraint</a></td>
+</tr>
+</table>
+<p></p>
+  The interface that all constraint validors must implement.
+  
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#factory">factory</a> : <a href="../validation/ValidatorFactory.html">ValidatorFactory</a>
+<div class="summaryTableDescription">[read-only]
+   The <code>ValidatorFactory</code> passed to the <code>initialized</code>
+   function.</div>
+</td><td class="summaryTableOwnerCol">IConstraint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#groups">groups</a> : Array<div class="summaryTableDescription">[read-only]
+   The processing groups with which this constraint is associated as
+   an array of <code>Class</code>.</div>
+</td><td class="summaryTableOwnerCol">IConstraint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#message">message</a> : String<div class="summaryTableDescription">[read-only]
+   The error message associated with this constraint.</div>
+</td><td class="summaryTableOwnerCol">IConstraint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#payload">payload</a> : Array<div class="summaryTableDescription">[read-only]
+   The payload with which this constraint is associated as
+   an array of <code>String</code>.</div>
+</td><td class="summaryTableOwnerCol">IConstraint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#properties">properties</a> : Array<div class="summaryTableDescription">[read-only]
+   The properties with which this constraint is associated as
+   an array of <code>String</code> (only for class-level constraints that
+   deal with one or more properties, in order to figure out where error
+   messages should be displayed when this constraint fails).</div>
+</td><td class="summaryTableOwnerCol">IConstraint</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initialize()">initialize</a>(annotation:<a href="../reflect/Annotation.html">Annotation</a>, factory:<a href="ValidatorFactory.html">ValidatorFactory</a>):void</div>
+<div class="summaryTableDescription">
+   Initialize this constraint, according to the supplied annotation
+   parameters.</div>
+</td><td class="summaryTableOwnerCol">IConstraint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#validate()">validate</a>(value:*):String</div>
+<div class="summaryTableDescription">
+   Validate the <code>value</code> parameter, according to this
+   constraint specification.</div>
+</td><td class="summaryTableOwnerCol">IConstraint</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="factory"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">factory</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>factory:<a href="../validation/ValidatorFactory.html">ValidatorFactory</a></code>&nbsp;&nbsp;[read-only]<p>
+   The <code>ValidatorFactory</code> passed to the <code>initialized</code>
+   function.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get factory():<a href="../validation/ValidatorFactory.html">ValidatorFactory</a></code>
+<br>
+</div>
+<a name="groups"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">groups</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>groups:Array</code>&nbsp;&nbsp;[read-only]<p>
+   The processing groups with which this constraint is associated as
+   an array of <code>Class</code>.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get groups():Array</code>
+<br>
+</div>
+<a name="message"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">message</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>message:String</code>&nbsp;&nbsp;[read-only]<p>
+   The error message associated with this constraint.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get message():String</code>
+<br>
+</div>
+<a name="payload"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">payload</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>payload:Array</code>&nbsp;&nbsp;[read-only]<p>
+   The payload with which this constraint is associated as
+   an array of <code>String</code>.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get payload():Array</code>
+<br>
+</div>
+<a name="properties"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">properties</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>properties:Array</code>&nbsp;&nbsp;[read-only]<p>
+   The properties with which this constraint is associated as
+   an array of <code>String</code> (only for class-level constraints that
+   deal with one or more properties, in order to figure out where error
+   messages should be displayed when this constraint fails).
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get properties():Array</code>
+<br>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="initialize()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initialize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function initialize(annotation:<a href="../reflect/Annotation.html">Annotation</a>, factory:<a href="ValidatorFactory.html">ValidatorFactory</a>):void</code><p>
+   Initialize this constraint, according to the supplied annotation
+   parameters.
+   <br>
+   <br>
+   <i>The <code>org.granite.validation.BaseConstraint</code>
+   implementation of this method throws an <code>Error</code>
+   and must be overridden in inherited classes.</i>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">annotation</span>:<a href="../reflect/Annotation.html">Annotation</a></code> &mdash; the anntotation defining this constraint.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">factory</span>:<a href="ValidatorFactory.html">ValidatorFactory</a></code></td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../validation/ConstraintDefinitionError.html">ConstraintDefinitionError</a> </code> &mdash; if a required
+     argument is missing, if an argument value isn't of the expected
+     type or if an unknown argument is present.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../validation/BaseConstraint.html" target="">org.granite.validation.BaseConstraint</a>
+</div>
+</div>
+<a name="validate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">validate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function validate(value:*):String</code><p>
+   Validate the <code>value</code> parameter, according to this
+   constraint specification.
+   <br>
+   <br>
+   <i>The <code>org.granite.validation.BaseConstraint</code>
+   implementation of this method throws an <code>Error</code>
+   and must be overridden in inherited classes.</i>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> &mdash; the value to be validated.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; <code>null</code> if the supplied value is valid, an error
+     message key otherwise.
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../validation/ConstraintExecutionError.html">ConstraintExecutionError</a> </code> &mdash; if the
+     <code>value</code> parameter is an instance of an unsupported
+     type according to this constraint specification.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../validation/BaseConstraint.html" target="">org.granite.validation.BaseConstraint</a>
+</div>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

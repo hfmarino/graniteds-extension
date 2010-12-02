@@ -1,0 +1,538 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /*<a name="line.1"></a>
+<FONT color="green">002</FONT>      GRANITE DATA SERVICES<a name="line.2"></a>
+<FONT color="green">003</FONT>      Copyright (C) 2007-2010 ADEQUATE SYSTEMS SARL<a name="line.3"></a>
+<FONT color="green">004</FONT>    <a name="line.4"></a>
+<FONT color="green">005</FONT>      This file is part of Granite Data Services.<a name="line.5"></a>
+<FONT color="green">006</FONT>    <a name="line.6"></a>
+<FONT color="green">007</FONT>      Granite Data Services is free software; you can redistribute it and/or modify<a name="line.7"></a>
+<FONT color="green">008</FONT>      it under the terms of the GNU Library General Public License as published by<a name="line.8"></a>
+<FONT color="green">009</FONT>      the Free Software Foundation; either version 2 of the License, or (at your<a name="line.9"></a>
+<FONT color="green">010</FONT>      option) any later version.<a name="line.10"></a>
+<FONT color="green">011</FONT>    <a name="line.11"></a>
+<FONT color="green">012</FONT>      Granite Data Services is distributed in the hope that it will be useful, but<a name="line.12"></a>
+<FONT color="green">013</FONT>      WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or<a name="line.13"></a>
+<FONT color="green">014</FONT>      FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License<a name="line.14"></a>
+<FONT color="green">015</FONT>      for more details.<a name="line.15"></a>
+<FONT color="green">016</FONT>    <a name="line.16"></a>
+<FONT color="green">017</FONT>      You should have received a copy of the GNU Library General Public License<a name="line.17"></a>
+<FONT color="green">018</FONT>      along with this library; if not, see &lt;http://www.gnu.org/licenses/&gt;.<a name="line.18"></a>
+<FONT color="green">019</FONT>    */<a name="line.19"></a>
+<FONT color="green">020</FONT>    <a name="line.20"></a>
+<FONT color="green">021</FONT>    package org.granite.jmx;<a name="line.21"></a>
+<FONT color="green">022</FONT>    <a name="line.22"></a>
+<FONT color="green">023</FONT>    import java.beans.BeanInfo;<a name="line.23"></a>
+<FONT color="green">024</FONT>    import java.beans.Introspector;<a name="line.24"></a>
+<FONT color="green">025</FONT>    import java.beans.MethodDescriptor;<a name="line.25"></a>
+<FONT color="green">026</FONT>    import java.beans.PropertyDescriptor;<a name="line.26"></a>
+<FONT color="green">027</FONT>    import java.lang.annotation.Annotation;<a name="line.27"></a>
+<FONT color="green">028</FONT>    import java.lang.reflect.Method;<a name="line.28"></a>
+<FONT color="green">029</FONT>    import java.math.BigDecimal;<a name="line.29"></a>
+<FONT color="green">030</FONT>    import java.math.BigInteger;<a name="line.30"></a>
+<FONT color="green">031</FONT>    import java.util.ArrayList;<a name="line.31"></a>
+<FONT color="green">032</FONT>    import java.util.Arrays;<a name="line.32"></a>
+<FONT color="green">033</FONT>    import java.util.Date;<a name="line.33"></a>
+<FONT color="green">034</FONT>    import java.util.HashMap;<a name="line.34"></a>
+<FONT color="green">035</FONT>    import java.util.HashSet;<a name="line.35"></a>
+<FONT color="green">036</FONT>    import java.util.List;<a name="line.36"></a>
+<FONT color="green">037</FONT>    import java.util.Map;<a name="line.37"></a>
+<FONT color="green">038</FONT>    import java.util.Set;<a name="line.38"></a>
+<FONT color="green">039</FONT>    <a name="line.39"></a>
+<FONT color="green">040</FONT>    import javax.management.Attribute;<a name="line.40"></a>
+<FONT color="green">041</FONT>    import javax.management.AttributeList;<a name="line.41"></a>
+<FONT color="green">042</FONT>    import javax.management.AttributeNotFoundException;<a name="line.42"></a>
+<FONT color="green">043</FONT>    import javax.management.DynamicMBean;<a name="line.43"></a>
+<FONT color="green">044</FONT>    import javax.management.InvalidAttributeValueException;<a name="line.44"></a>
+<FONT color="green">045</FONT>    import javax.management.MBeanException;<a name="line.45"></a>
+<FONT color="green">046</FONT>    import javax.management.MBeanInfo;<a name="line.46"></a>
+<FONT color="green">047</FONT>    import javax.management.MBeanNotificationInfo;<a name="line.47"></a>
+<FONT color="green">048</FONT>    import javax.management.MBeanOperationInfo;<a name="line.48"></a>
+<FONT color="green">049</FONT>    import javax.management.ObjectName;<a name="line.49"></a>
+<FONT color="green">050</FONT>    import javax.management.ReflectionException;<a name="line.50"></a>
+<FONT color="green">051</FONT>    import javax.management.openmbean.ArrayType;<a name="line.51"></a>
+<FONT color="green">052</FONT>    import javax.management.openmbean.OpenDataException;<a name="line.52"></a>
+<FONT color="green">053</FONT>    import javax.management.openmbean.OpenMBeanAttributeInfo;<a name="line.53"></a>
+<FONT color="green">054</FONT>    import javax.management.openmbean.OpenMBeanAttributeInfoSupport;<a name="line.54"></a>
+<FONT color="green">055</FONT>    import javax.management.openmbean.OpenMBeanConstructorInfo;<a name="line.55"></a>
+<FONT color="green">056</FONT>    import javax.management.openmbean.OpenMBeanInfoSupport;<a name="line.56"></a>
+<FONT color="green">057</FONT>    import javax.management.openmbean.OpenMBeanOperationInfo;<a name="line.57"></a>
+<FONT color="green">058</FONT>    import javax.management.openmbean.OpenMBeanOperationInfoSupport;<a name="line.58"></a>
+<FONT color="green">059</FONT>    import javax.management.openmbean.OpenMBeanParameterInfo;<a name="line.59"></a>
+<FONT color="green">060</FONT>    import javax.management.openmbean.OpenMBeanParameterInfoSupport;<a name="line.60"></a>
+<FONT color="green">061</FONT>    import javax.management.openmbean.OpenType;<a name="line.61"></a>
+<FONT color="green">062</FONT>    import javax.management.openmbean.SimpleType;<a name="line.62"></a>
+<FONT color="green">063</FONT>    <a name="line.63"></a>
+<FONT color="green">064</FONT>    /**<a name="line.64"></a>
+<FONT color="green">065</FONT>     * The OpenMBean class wraps an instance of any bean and introspects its properties and methods<a name="line.65"></a>
+<FONT color="green">066</FONT>     * for MBeanAttributes and MBeanOperations. It implements all functionalities required by a<a name="line.66"></a>
+<FONT color="green">067</FONT>     * {@link DynamicMBean} and returns an OpenMBeanInfo object.<a name="line.67"></a>
+<FONT color="green">068</FONT>     * &lt;br&gt;<a name="line.68"></a>
+<FONT color="green">069</FONT>     * &lt;br&gt;<a name="line.69"></a>
+<FONT color="green">070</FONT>     * Limitations:<a name="line.70"></a>
+<FONT color="green">071</FONT>     * &lt;ul&gt;<a name="line.71"></a>
+<FONT color="green">072</FONT>     * &lt;li&gt;only attributes and operations are supported (no contructor and no notification),&lt;/li&gt;<a name="line.72"></a>
+<FONT color="green">073</FONT>     * &lt;li&gt;only {@link SimpleType} and {@link ArrayType} are supported (no composite type).&lt;/li&gt;<a name="line.73"></a>
+<FONT color="green">074</FONT>     * &lt;/ul&gt;<a name="line.74"></a>
+<FONT color="green">075</FONT>     * <a name="line.75"></a>
+<FONT color="green">076</FONT>     * @author Franck WOLFF<a name="line.76"></a>
+<FONT color="green">077</FONT>     */<a name="line.77"></a>
+<FONT color="green">078</FONT>    @SuppressWarnings({ "unchecked", "rawtypes" })<a name="line.78"></a>
+<FONT color="green">079</FONT>    public class OpenMBean implements DynamicMBean {<a name="line.79"></a>
+<FONT color="green">080</FONT>    <a name="line.80"></a>
+<FONT color="green">081</FONT>            ///////////////////////////////////////////////////////////////////////////<a name="line.81"></a>
+<FONT color="green">082</FONT>            // Fields.<a name="line.82"></a>
+<FONT color="green">083</FONT>    <a name="line.83"></a>
+<FONT color="green">084</FONT>            private static final Map&lt;Class&lt;?&gt;, SimpleType&gt; SIMPLE_TYPES = new HashMap&lt;Class&lt;?&gt;, SimpleType&gt;();<a name="line.84"></a>
+<FONT color="green">085</FONT>            static {<a name="line.85"></a>
+<FONT color="green">086</FONT>                    SIMPLE_TYPES.put(Void.class, SimpleType.VOID);<a name="line.86"></a>
+<FONT color="green">087</FONT>                    SIMPLE_TYPES.put(Void.TYPE, SimpleType.VOID);<a name="line.87"></a>
+<FONT color="green">088</FONT>                    SIMPLE_TYPES.put(Boolean.class, SimpleType.BOOLEAN);<a name="line.88"></a>
+<FONT color="green">089</FONT>                    SIMPLE_TYPES.put(Boolean.TYPE, SimpleType.BOOLEAN);<a name="line.89"></a>
+<FONT color="green">090</FONT>                    SIMPLE_TYPES.put(Character.class, SimpleType.CHARACTER);<a name="line.90"></a>
+<FONT color="green">091</FONT>                    SIMPLE_TYPES.put(Character.TYPE, SimpleType.CHARACTER);<a name="line.91"></a>
+<FONT color="green">092</FONT>                    SIMPLE_TYPES.put(Byte.class, SimpleType.BYTE);<a name="line.92"></a>
+<FONT color="green">093</FONT>                    SIMPLE_TYPES.put(Byte.TYPE, SimpleType.BYTE);<a name="line.93"></a>
+<FONT color="green">094</FONT>                    SIMPLE_TYPES.put(Short.class, SimpleType.SHORT);<a name="line.94"></a>
+<FONT color="green">095</FONT>                    SIMPLE_TYPES.put(Short.TYPE, SimpleType.SHORT);<a name="line.95"></a>
+<FONT color="green">096</FONT>                    SIMPLE_TYPES.put(Integer.class, SimpleType.INTEGER);<a name="line.96"></a>
+<FONT color="green">097</FONT>                    SIMPLE_TYPES.put(Integer.TYPE, SimpleType.INTEGER);<a name="line.97"></a>
+<FONT color="green">098</FONT>                    SIMPLE_TYPES.put(Long.class, SimpleType.LONG);<a name="line.98"></a>
+<FONT color="green">099</FONT>                    SIMPLE_TYPES.put(Long.TYPE, SimpleType.LONG);<a name="line.99"></a>
+<FONT color="green">100</FONT>                    SIMPLE_TYPES.put(Float.class, SimpleType.FLOAT);<a name="line.100"></a>
+<FONT color="green">101</FONT>                    SIMPLE_TYPES.put(Float.TYPE, SimpleType.FLOAT);<a name="line.101"></a>
+<FONT color="green">102</FONT>                    SIMPLE_TYPES.put(Double.class, SimpleType.DOUBLE);<a name="line.102"></a>
+<FONT color="green">103</FONT>                    SIMPLE_TYPES.put(Double.TYPE, SimpleType.DOUBLE);<a name="line.103"></a>
+<FONT color="green">104</FONT>                    SIMPLE_TYPES.put(String.class, SimpleType.STRING);<a name="line.104"></a>
+<FONT color="green">105</FONT>                    SIMPLE_TYPES.put(BigDecimal.class, SimpleType.BIGDECIMAL);<a name="line.105"></a>
+<FONT color="green">106</FONT>                    SIMPLE_TYPES.put(BigInteger.class, SimpleType.BIGINTEGER);<a name="line.106"></a>
+<FONT color="green">107</FONT>                    SIMPLE_TYPES.put(Date.class, SimpleType.DATE);<a name="line.107"></a>
+<FONT color="green">108</FONT>                    SIMPLE_TYPES.put(ObjectName.class, SimpleType.OBJECTNAME);<a name="line.108"></a>
+<FONT color="green">109</FONT>            }<a name="line.109"></a>
+<FONT color="green">110</FONT>            <a name="line.110"></a>
+<FONT color="green">111</FONT>            private final MBeanInfo info;<a name="line.111"></a>
+<FONT color="green">112</FONT>            private final Object instance;<a name="line.112"></a>
+<FONT color="green">113</FONT>            <a name="line.113"></a>
+<FONT color="green">114</FONT>            private final Map&lt;String, PropertyDescriptor&gt; attributesMap = new HashMap&lt;String, PropertyDescriptor&gt;();<a name="line.114"></a>
+<FONT color="green">115</FONT>            private final Map&lt;String, MethodDescriptor&gt; operationsMap = new HashMap&lt;String, MethodDescriptor&gt;();<a name="line.115"></a>
+<FONT color="green">116</FONT>    <a name="line.116"></a>
+<FONT color="green">117</FONT>            ///////////////////////////////////////////////////////////////////////////<a name="line.117"></a>
+<FONT color="green">118</FONT>            // Constructors.<a name="line.118"></a>
+<FONT color="green">119</FONT>            <a name="line.119"></a>
+<FONT color="green">120</FONT>            /**<a name="line.120"></a>
+<FONT color="green">121</FONT>             * Creates a new OpenMBean instance and instrospects its child class for attributes<a name="line.121"></a>
+<FONT color="green">122</FONT>             * and operations.<a name="line.122"></a>
+<FONT color="green">123</FONT>             */<a name="line.123"></a>
+<FONT color="green">124</FONT>            protected OpenMBean() {<a name="line.124"></a>
+<FONT color="green">125</FONT>                    this.info = init(getClass(), OpenMBean.class, attributesMap, operationsMap);<a name="line.125"></a>
+<FONT color="green">126</FONT>                    this.instance = this;<a name="line.126"></a>
+<FONT color="green">127</FONT>            }<a name="line.127"></a>
+<FONT color="green">128</FONT>            <a name="line.128"></a>
+<FONT color="green">129</FONT>            private OpenMBean(Class&lt;?&gt; beanClass, Class&lt;?&gt; stopClass, Object instance) {<a name="line.129"></a>
+<FONT color="green">130</FONT>                    this.info = init(beanClass, stopClass, attributesMap, operationsMap);<a name="line.130"></a>
+<FONT color="green">131</FONT>                    this.instance = instance;<a name="line.131"></a>
+<FONT color="green">132</FONT>            }<a name="line.132"></a>
+<FONT color="green">133</FONT>    <a name="line.133"></a>
+<FONT color="green">134</FONT>            ///////////////////////////////////////////////////////////////////////////<a name="line.134"></a>
+<FONT color="green">135</FONT>            // Static OpenMBean creators.<a name="line.135"></a>
+<FONT color="green">136</FONT>    <a name="line.136"></a>
+<FONT color="green">137</FONT>            /**<a name="line.137"></a>
+<FONT color="green">138</FONT>             * Creates a new OpenMBean by introspecting and wrapping the &lt;tt&gt;instance&lt;/tt&gt; parameter.<a name="line.138"></a>
+<FONT color="green">139</FONT>             * This method search for an interface named &lt;tt&gt;instance.getClass().getSimpleName() + "MBean"&lt;/tt&gt;<a name="line.139"></a>
+<FONT color="green">140</FONT>             * and, if it finds it, uses it for introspection. Otherwise, the class of the &lt;tt&gt;instance&lt;/tt&gt;<a name="line.140"></a>
+<FONT color="green">141</FONT>             * object is used instead.<a name="line.141"></a>
+<FONT color="green">142</FONT>             * <a name="line.142"></a>
+<FONT color="green">143</FONT>             * @param instance an instance of a bean to introspect.<a name="line.143"></a>
+<FONT color="green">144</FONT>             * @return a new OpenMBean instance that wraps the instance bean.<a name="line.144"></a>
+<FONT color="green">145</FONT>             */<a name="line.145"></a>
+<FONT color="green">146</FONT>            public static OpenMBean createMBean(Object instance) {<a name="line.146"></a>
+<FONT color="green">147</FONT>                    <a name="line.147"></a>
+<FONT color="green">148</FONT>                    Class&lt;?&gt; beanClass = instance.getClass();<a name="line.148"></a>
+<FONT color="green">149</FONT>                    String interMBeanName = beanClass.getSimpleName() + "MBean";<a name="line.149"></a>
+<FONT color="green">150</FONT>                    for (Class&lt;?&gt; inter : instance.getClass().getInterfaces()) {<a name="line.150"></a>
+<FONT color="green">151</FONT>                            if (interMBeanName.equals(inter.getSimpleName())) {<a name="line.151"></a>
+<FONT color="green">152</FONT>                                    beanClass = inter;<a name="line.152"></a>
+<FONT color="green">153</FONT>                                    break;<a name="line.153"></a>
+<FONT color="green">154</FONT>                            }<a name="line.154"></a>
+<FONT color="green">155</FONT>                    }<a name="line.155"></a>
+<FONT color="green">156</FONT>                    <a name="line.156"></a>
+<FONT color="green">157</FONT>                    Class&lt;?&gt; stopClass = null;<a name="line.157"></a>
+<FONT color="green">158</FONT>                    if (!beanClass.isInterface()) {<a name="line.158"></a>
+<FONT color="green">159</FONT>                            stopClass = beanClass.getSuperclass();<a name="line.159"></a>
+<FONT color="green">160</FONT>                            if (stopClass == null)<a name="line.160"></a>
+<FONT color="green">161</FONT>                                    stopClass = Object.class;<a name="line.161"></a>
+<FONT color="green">162</FONT>                    }<a name="line.162"></a>
+<FONT color="green">163</FONT>                    <a name="line.163"></a>
+<FONT color="green">164</FONT>                    return new OpenMBean(beanClass, stopClass, instance);<a name="line.164"></a>
+<FONT color="green">165</FONT>            }<a name="line.165"></a>
+<FONT color="green">166</FONT>            <a name="line.166"></a>
+<FONT color="green">167</FONT>            /**<a name="line.167"></a>
+<FONT color="green">168</FONT>             * Creates a new OpenMBean by introspecting the &lt;tt&gt;beanClass&lt;/tt&gt; parameter and wrapping<a name="line.168"></a>
+<FONT color="green">169</FONT>             * the &lt;tt&gt;instance&lt;/tt&gt; parameter.<a name="line.169"></a>
+<FONT color="green">170</FONT>             * <a name="line.170"></a>
+<FONT color="green">171</FONT>             * @param beanClass a class (or interface) used for introspection.<a name="line.171"></a>
+<FONT color="green">172</FONT>             * @param instance the bean to encapsulate.<a name="line.172"></a>
+<FONT color="green">173</FONT>             * @return a new OpenMBean instance that wraps the instance bean.<a name="line.173"></a>
+<FONT color="green">174</FONT>             * @throws IllegalArgumentException if instance is not an instance of beanClass.<a name="line.174"></a>
+<FONT color="green">175</FONT>             */<a name="line.175"></a>
+<FONT color="green">176</FONT>            public static OpenMBean createMBean(Class&lt;?&gt; beanClass, Object instance) {<a name="line.176"></a>
+<FONT color="green">177</FONT>                    if (!beanClass.isAssignableFrom(instance.getClass()))<a name="line.177"></a>
+<FONT color="green">178</FONT>                            throw new IllegalArgumentException("Instance " + instance + " should be an instance of " + beanClass);<a name="line.178"></a>
+<FONT color="green">179</FONT>    <a name="line.179"></a>
+<FONT color="green">180</FONT>                    Class&lt;?&gt; stopClass = null;<a name="line.180"></a>
+<FONT color="green">181</FONT>                    if (!beanClass.isInterface()) {<a name="line.181"></a>
+<FONT color="green">182</FONT>                            stopClass = beanClass.getSuperclass();<a name="line.182"></a>
+<FONT color="green">183</FONT>                            if (stopClass == null)<a name="line.183"></a>
+<FONT color="green">184</FONT>                                    stopClass = Object.class;<a name="line.184"></a>
+<FONT color="green">185</FONT>                    }<a name="line.185"></a>
+<FONT color="green">186</FONT>    <a name="line.186"></a>
+<FONT color="green">187</FONT>                    return new OpenMBean(beanClass, stopClass, instance);<a name="line.187"></a>
+<FONT color="green">188</FONT>            }<a name="line.188"></a>
+<FONT color="green">189</FONT>    <a name="line.189"></a>
+<FONT color="green">190</FONT>            ///////////////////////////////////////////////////////////////////////////<a name="line.190"></a>
+<FONT color="green">191</FONT>            // Static initialization methods.<a name="line.191"></a>
+<FONT color="green">192</FONT>            <a name="line.192"></a>
+<FONT color="green">193</FONT>            private static MBeanInfo init(<a name="line.193"></a>
+<FONT color="green">194</FONT>                    Class&lt;?&gt; beanClass,<a name="line.194"></a>
+<FONT color="green">195</FONT>                    Class&lt;?&gt; stopClass,<a name="line.195"></a>
+<FONT color="green">196</FONT>                    Map&lt;String, PropertyDescriptor&gt; attributesMap,<a name="line.196"></a>
+<FONT color="green">197</FONT>                    Map&lt;String, MethodDescriptor&gt; operationsMap) {<a name="line.197"></a>
+<FONT color="green">198</FONT>                    <a name="line.198"></a>
+<FONT color="green">199</FONT>                    MBean mb = beanClass.getAnnotation(MBean.class);<a name="line.199"></a>
+<FONT color="green">200</FONT>                    <a name="line.200"></a>
+<FONT color="green">201</FONT>                    String description = null;<a name="line.201"></a>
+<FONT color="green">202</FONT>                    if (mb != null)<a name="line.202"></a>
+<FONT color="green">203</FONT>                            description = mb.description();<a name="line.203"></a>
+<FONT color="green">204</FONT>                    if (description == null)<a name="line.204"></a>
+<FONT color="green">205</FONT>                            description = beanClass.getSimpleName() + " MBean";<a name="line.205"></a>
+<FONT color="green">206</FONT>                    <a name="line.206"></a>
+<FONT color="green">207</FONT>                    List&lt;OpenMBeanAttributeInfo&gt; attributes = new ArrayList&lt;OpenMBeanAttributeInfo&gt;();<a name="line.207"></a>
+<FONT color="green">208</FONT>                    List&lt;OpenMBeanOperationInfo&gt; operations = new ArrayList&lt;OpenMBeanOperationInfo&gt;();<a name="line.208"></a>
+<FONT color="green">209</FONT>                    <a name="line.209"></a>
+<FONT color="green">210</FONT>                    try {<a name="line.210"></a>
+<FONT color="green">211</FONT>                            BeanInfo beanInfo = (<a name="line.211"></a>
+<FONT color="green">212</FONT>                                    stopClass == null ?<a name="line.212"></a>
+<FONT color="green">213</FONT>                                    Introspector.getBeanInfo(beanClass) :<a name="line.213"></a>
+<FONT color="green">214</FONT>                                    Introspector.getBeanInfo(beanClass, stopClass)<a name="line.214"></a>
+<FONT color="green">215</FONT>                            );<a name="line.215"></a>
+<FONT color="green">216</FONT>                            <a name="line.216"></a>
+<FONT color="green">217</FONT>                            Set&lt;Method&gt; attributeMethods = new HashSet&lt;Method&gt;();<a name="line.217"></a>
+<FONT color="green">218</FONT>                            <a name="line.218"></a>
+<FONT color="green">219</FONT>                            // Attributes.<a name="line.219"></a>
+<FONT color="green">220</FONT>                            for (PropertyDescriptor property : beanInfo.getPropertyDescriptors()) {<a name="line.220"></a>
+<FONT color="green">221</FONT>    <a name="line.221"></a>
+<FONT color="green">222</FONT>                                    MBeanAttribute mba = null;<a name="line.222"></a>
+<FONT color="green">223</FONT>                                    if (property.getReadMethod() != null)<a name="line.223"></a>
+<FONT color="green">224</FONT>                                            mba = property.getReadMethod().getAnnotation(MBeanAttribute.class);<a name="line.224"></a>
+<FONT color="green">225</FONT>                                    if (mba == null &amp;&amp; property.getWriteMethod() != null)<a name="line.225"></a>
+<FONT color="green">226</FONT>                                            mba = property.getWriteMethod().getAnnotation(MBeanAttribute.class);<a name="line.226"></a>
+<FONT color="green">227</FONT>                                    <a name="line.227"></a>
+<FONT color="green">228</FONT>                                    String name = property.getName();<a name="line.228"></a>
+<FONT color="green">229</FONT>                                    <a name="line.229"></a>
+<FONT color="green">230</FONT>                                    String desc = null;<a name="line.230"></a>
+<FONT color="green">231</FONT>                                    if (mba != null)<a name="line.231"></a>
+<FONT color="green">232</FONT>                                            desc = mba.description();<a name="line.232"></a>
+<FONT color="green">233</FONT>                                    if (desc == null)<a name="line.233"></a>
+<FONT color="green">234</FONT>                                            desc = name.substring(0, 1).toUpperCase() + name.substring(1) + " Attribute";<a name="line.234"></a>
+<FONT color="green">235</FONT>                                    <a name="line.235"></a>
+<FONT color="green">236</FONT>                                    OpenType type = getOpenType(property.getPropertyType());<a name="line.236"></a>
+<FONT color="green">237</FONT>                                    <a name="line.237"></a>
+<FONT color="green">238</FONT>                                    attributes.add(new OpenMBeanAttributeInfoSupport(<a name="line.238"></a>
+<FONT color="green">239</FONT>                                            name,<a name="line.239"></a>
+<FONT color="green">240</FONT>                                            desc,<a name="line.240"></a>
+<FONT color="green">241</FONT>                                            type,<a name="line.241"></a>
+<FONT color="green">242</FONT>                                            property.getReadMethod() != null,<a name="line.242"></a>
+<FONT color="green">243</FONT>                                            property.getWriteMethod() != null,<a name="line.243"></a>
+<FONT color="green">244</FONT>                                            property.getReadMethod() != null &amp;&amp; property.getReadMethod().getName().startsWith("is")<a name="line.244"></a>
+<FONT color="green">245</FONT>                                    ));<a name="line.245"></a>
+<FONT color="green">246</FONT>                                    attributesMap.put(property.getName(), property);<a name="line.246"></a>
+<FONT color="green">247</FONT>                                    <a name="line.247"></a>
+<FONT color="green">248</FONT>                                    if (property.getReadMethod() != null)<a name="line.248"></a>
+<FONT color="green">249</FONT>                                            attributeMethods.add(property.getReadMethod());<a name="line.249"></a>
+<FONT color="green">250</FONT>                                    if (property.getWriteMethod() != null)<a name="line.250"></a>
+<FONT color="green">251</FONT>                                            attributeMethods.add(property.getWriteMethod());<a name="line.251"></a>
+<FONT color="green">252</FONT>                            }<a name="line.252"></a>
+<FONT color="green">253</FONT>                            <a name="line.253"></a>
+<FONT color="green">254</FONT>                            // Operations<a name="line.254"></a>
+<FONT color="green">255</FONT>                            for (MethodDescriptor method : beanInfo.getMethodDescriptors()) {<a name="line.255"></a>
+<FONT color="green">256</FONT>                                    <a name="line.256"></a>
+<FONT color="green">257</FONT>                                    if (attributeMethods.contains(method.getMethod()))<a name="line.257"></a>
+<FONT color="green">258</FONT>                                            continue;<a name="line.258"></a>
+<FONT color="green">259</FONT>                                    <a name="line.259"></a>
+<FONT color="green">260</FONT>                                    MBeanOperation mbo = method.getMethod().getAnnotation(MBeanOperation.class);<a name="line.260"></a>
+<FONT color="green">261</FONT>                                    <a name="line.261"></a>
+<FONT color="green">262</FONT>                                    String name = method.getName();<a name="line.262"></a>
+<FONT color="green">263</FONT>    <a name="line.263"></a>
+<FONT color="green">264</FONT>                                    String desc = null;<a name="line.264"></a>
+<FONT color="green">265</FONT>                                    if (mbo != null)<a name="line.265"></a>
+<FONT color="green">266</FONT>                                            desc = mbo.description();<a name="line.266"></a>
+<FONT color="green">267</FONT>                                    if (desc == null)<a name="line.267"></a>
+<FONT color="green">268</FONT>                                            desc = name.substring(0, 1).toUpperCase() + name.substring(1) + " Operation";<a name="line.268"></a>
+<FONT color="green">269</FONT>                                    <a name="line.269"></a>
+<FONT color="green">270</FONT>                                    List&lt;OpenMBeanParameterInfo&gt; parameters = new ArrayList&lt;OpenMBeanParameterInfo&gt;();<a name="line.270"></a>
+<FONT color="green">271</FONT>                                    Annotation[][] annotations = method.getMethod().getParameterAnnotations();<a name="line.271"></a>
+<FONT color="green">272</FONT>                                    <a name="line.272"></a>
+<FONT color="green">273</FONT>                                    int i = 0;<a name="line.273"></a>
+<FONT color="green">274</FONT>                                    for (Class&lt;?&gt; parameter : method.getMethod().getParameterTypes()) {<a name="line.274"></a>
+<FONT color="green">275</FONT>                                            String paramName = getParameterName(annotations, i);<a name="line.275"></a>
+<FONT color="green">276</FONT>                                            String paramDesc = getParameterDescription(annotations, i);<a name="line.276"></a>
+<FONT color="green">277</FONT>                                            OpenType paramType = getOpenType(parameter);<a name="line.277"></a>
+<FONT color="green">278</FONT>                                            <a name="line.278"></a>
+<FONT color="green">279</FONT>                                            parameters.add(new OpenMBeanParameterInfoSupport(paramName, paramDesc, paramType));<a name="line.279"></a>
+<FONT color="green">280</FONT>                                            <a name="line.280"></a>
+<FONT color="green">281</FONT>                                            i++;<a name="line.281"></a>
+<FONT color="green">282</FONT>                                    }<a name="line.282"></a>
+<FONT color="green">283</FONT>                                    <a name="line.283"></a>
+<FONT color="green">284</FONT>                                    OpenType returnedType = getOpenType(method.getMethod().getReturnType());<a name="line.284"></a>
+<FONT color="green">285</FONT>                                    <a name="line.285"></a>
+<FONT color="green">286</FONT>                                    int impact = MBeanOperationInfo.UNKNOWN;<a name="line.286"></a>
+<FONT color="green">287</FONT>                                    if (mbo != null &amp;&amp; mbo.impact() != null) {<a name="line.287"></a>
+<FONT color="green">288</FONT>                                            switch (mbo.impact()) {<a name="line.288"></a>
+<FONT color="green">289</FONT>                                                    case ACTION: impact = MBeanOperationInfo.ACTION; break;<a name="line.289"></a>
+<FONT color="green">290</FONT>                                                    case ACTION_INFO: impact = MBeanOperationInfo.ACTION_INFO; break;<a name="line.290"></a>
+<FONT color="green">291</FONT>                                                    case INFO: impact = MBeanOperationInfo.INFO; break;<a name="line.291"></a>
+<FONT color="green">292</FONT>                                            }<a name="line.292"></a>
+<FONT color="green">293</FONT>                                    }<a name="line.293"></a>
+<FONT color="green">294</FONT>                                    <a name="line.294"></a>
+<FONT color="green">295</FONT>                                    operations.add(new OpenMBeanOperationInfoSupport(<a name="line.295"></a>
+<FONT color="green">296</FONT>                                            name,<a name="line.296"></a>
+<FONT color="green">297</FONT>                                            desc,<a name="line.297"></a>
+<FONT color="green">298</FONT>                                            parameters.toArray(new OpenMBeanParameterInfo[parameters.size()]),<a name="line.298"></a>
+<FONT color="green">299</FONT>                                            returnedType,<a name="line.299"></a>
+<FONT color="green">300</FONT>                                            impact<a name="line.300"></a>
+<FONT color="green">301</FONT>                                    ));<a name="line.301"></a>
+<FONT color="green">302</FONT>                                    <a name="line.302"></a>
+<FONT color="green">303</FONT>                                    String[] paramClasses = new String[parameters.size()];<a name="line.303"></a>
+<FONT color="green">304</FONT>                                    for (i = 0; i &lt; parameters.size(); i++)<a name="line.304"></a>
+<FONT color="green">305</FONT>                                            paramClasses[i] = parameters.get(i).getOpenType().getTypeName().toString();<a name="line.305"></a>
+<FONT color="green">306</FONT>                                    String qName = name + Arrays.toString(paramClasses);<a name="line.306"></a>
+<FONT color="green">307</FONT>                                    <a name="line.307"></a>
+<FONT color="green">308</FONT>                                    operationsMap.put(qName, method);<a name="line.308"></a>
+<FONT color="green">309</FONT>                            }<a name="line.309"></a>
+<FONT color="green">310</FONT>                    }<a name="line.310"></a>
+<FONT color="green">311</FONT>                    catch (Exception e) {<a name="line.311"></a>
+<FONT color="green">312</FONT>                            throw new RuntimeException("Could not introspect MBean class: " + beanClass, e);<a name="line.312"></a>
+<FONT color="green">313</FONT>                    }<a name="line.313"></a>
+<FONT color="green">314</FONT>                    <a name="line.314"></a>
+<FONT color="green">315</FONT>                    return new OpenMBeanInfoSupport(<a name="line.315"></a>
+<FONT color="green">316</FONT>                            beanClass.getName(),<a name="line.316"></a>
+<FONT color="green">317</FONT>                            description,<a name="line.317"></a>
+<FONT color="green">318</FONT>                            attributes.toArray(new OpenMBeanAttributeInfo[attributes.size()]),<a name="line.318"></a>
+<FONT color="green">319</FONT>                            new OpenMBeanConstructorInfo[0],<a name="line.319"></a>
+<FONT color="green">320</FONT>                            operations.toArray(new OpenMBeanOperationInfo[operations.size()]),<a name="line.320"></a>
+<FONT color="green">321</FONT>                            new MBeanNotificationInfo[0]<a name="line.321"></a>
+<FONT color="green">322</FONT>                    );<a name="line.322"></a>
+<FONT color="green">323</FONT>            }<a name="line.323"></a>
+<FONT color="green">324</FONT>            <a name="line.324"></a>
+<FONT color="green">325</FONT>            private static String getParameterName(Annotation[][] paramAnnotations, int index) {<a name="line.325"></a>
+<FONT color="green">326</FONT>                    String name = null;<a name="line.326"></a>
+<FONT color="green">327</FONT>                    if (paramAnnotations != null &amp;&amp; paramAnnotations.length &gt; index) {<a name="line.327"></a>
+<FONT color="green">328</FONT>                            for (Annotation annot : paramAnnotations[index]) {<a name="line.328"></a>
+<FONT color="green">329</FONT>                                    if (MBeanParameter.class.equals(annot.annotationType())) {<a name="line.329"></a>
+<FONT color="green">330</FONT>                                            name = ((MBeanParameter)annot).name();<a name="line.330"></a>
+<FONT color="green">331</FONT>                                            break;<a name="line.331"></a>
+<FONT color="green">332</FONT>                                    }<a name="line.332"></a>
+<FONT color="green">333</FONT>                            }<a name="line.333"></a>
+<FONT color="green">334</FONT>                    }<a name="line.334"></a>
+<FONT color="green">335</FONT>                    return (name != null ? name : "arg" + (index + 1));<a name="line.335"></a>
+<FONT color="green">336</FONT>            }<a name="line.336"></a>
+<FONT color="green">337</FONT>            <a name="line.337"></a>
+<FONT color="green">338</FONT>            private static String getParameterDescription(Annotation[][] paramAnnotations, int index) {<a name="line.338"></a>
+<FONT color="green">339</FONT>                    String description = null;<a name="line.339"></a>
+<FONT color="green">340</FONT>                    if (paramAnnotations != null &amp;&amp; paramAnnotations.length &gt; index) {<a name="line.340"></a>
+<FONT color="green">341</FONT>                            for (Annotation annot : paramAnnotations[index]) {<a name="line.341"></a>
+<FONT color="green">342</FONT>                                    if (MBeanParameter.class.equals(annot.annotationType())) {<a name="line.342"></a>
+<FONT color="green">343</FONT>                                            description = ((MBeanParameter)annot).description();<a name="line.343"></a>
+<FONT color="green">344</FONT>                                            break;<a name="line.344"></a>
+<FONT color="green">345</FONT>                                    }<a name="line.345"></a>
+<FONT color="green">346</FONT>                            }<a name="line.346"></a>
+<FONT color="green">347</FONT>                    }<a name="line.347"></a>
+<FONT color="green">348</FONT>                    return (description != null ? description : "Operation Parameter " + (index + 1));<a name="line.348"></a>
+<FONT color="green">349</FONT>            }<a name="line.349"></a>
+<FONT color="green">350</FONT>            <a name="line.350"></a>
+<FONT color="green">351</FONT>            private static OpenType getOpenType(Class&lt;?&gt; clazz) throws OpenDataException {<a name="line.351"></a>
+<FONT color="green">352</FONT>                    <a name="line.352"></a>
+<FONT color="green">353</FONT>                    if (SIMPLE_TYPES.containsKey(clazz))<a name="line.353"></a>
+<FONT color="green">354</FONT>                            return SIMPLE_TYPES.get(clazz);<a name="line.354"></a>
+<FONT color="green">355</FONT>                    <a name="line.355"></a>
+<FONT color="green">356</FONT>                    if (clazz.isArray()) {<a name="line.356"></a>
+<FONT color="green">357</FONT>                            int dimension = 1;<a name="line.357"></a>
+<FONT color="green">358</FONT>                            Class&lt;?&gt; componentType = clazz.getComponentType();<a name="line.358"></a>
+<FONT color="green">359</FONT>                            while (componentType.isArray()) {<a name="line.359"></a>
+<FONT color="green">360</FONT>                                    dimension++;<a name="line.360"></a>
+<FONT color="green">361</FONT>                                    componentType = componentType.getComponentType();<a name="line.361"></a>
+<FONT color="green">362</FONT>                            }<a name="line.362"></a>
+<FONT color="green">363</FONT>                            return new ArrayType(dimension, getOpenType(componentType));<a name="line.363"></a>
+<FONT color="green">364</FONT>                    }<a name="line.364"></a>
+<FONT color="green">365</FONT>                    <a name="line.365"></a>
+<FONT color="green">366</FONT>                    throw new OpenDataException("Unsupported type: " + clazz);<a name="line.366"></a>
+<FONT color="green">367</FONT>            }<a name="line.367"></a>
+<FONT color="green">368</FONT>    <a name="line.368"></a>
+<FONT color="green">369</FONT>            ///////////////////////////////////////////////////////////////////////////<a name="line.369"></a>
+<FONT color="green">370</FONT>            // DynamicMBean implementation.<a name="line.370"></a>
+<FONT color="green">371</FONT>    <a name="line.371"></a>
+<FONT color="green">372</FONT>            /**<a name="line.372"></a>
+<FONT color="green">373</FONT>             * {@inheritDoc}<a name="line.373"></a>
+<FONT color="green">374</FONT>             */<a name="line.374"></a>
+<FONT color="green">375</FONT>            public synchronized Object getAttribute(String attribute)<a name="line.375"></a>
+<FONT color="green">376</FONT>                    throws AttributeNotFoundException, MBeanException, ReflectionException {<a name="line.376"></a>
+<FONT color="green">377</FONT>                    <a name="line.377"></a>
+<FONT color="green">378</FONT>                    PropertyDescriptor property = attributesMap.get(attribute);<a name="line.378"></a>
+<FONT color="green">379</FONT>                    if (property != null &amp;&amp; property.getReadMethod() != null) {<a name="line.379"></a>
+<FONT color="green">380</FONT>                            try {<a name="line.380"></a>
+<FONT color="green">381</FONT>                                    return property.getReadMethod().invoke(instance);<a name="line.381"></a>
+<FONT color="green">382</FONT>                            }<a name="line.382"></a>
+<FONT color="green">383</FONT>                            catch (Exception e) {<a name="line.383"></a>
+<FONT color="green">384</FONT>                                    throw new ReflectionException(e, "Could not get attribute value: " + attribute);<a name="line.384"></a>
+<FONT color="green">385</FONT>                            }<a name="line.385"></a>
+<FONT color="green">386</FONT>                    }<a name="line.386"></a>
+<FONT color="green">387</FONT>                    throw new AttributeNotFoundException("Attribute " + attribute + " not found");<a name="line.387"></a>
+<FONT color="green">388</FONT>            }<a name="line.388"></a>
+<FONT color="green">389</FONT>    <a name="line.389"></a>
+<FONT color="green">390</FONT>            /**<a name="line.390"></a>
+<FONT color="green">391</FONT>             * {@inheritDoc}<a name="line.391"></a>
+<FONT color="green">392</FONT>             */<a name="line.392"></a>
+<FONT color="green">393</FONT>            public synchronized AttributeList getAttributes(String[] names) {<a name="line.393"></a>
+<FONT color="green">394</FONT>                    AttributeList attributes = new AttributeList();<a name="line.394"></a>
+<FONT color="green">395</FONT>                    for (String name : names) {<a name="line.395"></a>
+<FONT color="green">396</FONT>                            try {<a name="line.396"></a>
+<FONT color="green">397</FONT>                                    attributes.add(new Attribute(name, getAttribute(name)));<a name="line.397"></a>
+<FONT color="green">398</FONT>                            }<a name="line.398"></a>
+<FONT color="green">399</FONT>                            catch (Exception e) {<a name="line.399"></a>
+<FONT color="green">400</FONT>                                    // ignore...<a name="line.400"></a>
+<FONT color="green">401</FONT>                            }<a name="line.401"></a>
+<FONT color="green">402</FONT>                    }<a name="line.402"></a>
+<FONT color="green">403</FONT>                    return attributes;<a name="line.403"></a>
+<FONT color="green">404</FONT>            }<a name="line.404"></a>
+<FONT color="green">405</FONT>    <a name="line.405"></a>
+<FONT color="green">406</FONT>            /**<a name="line.406"></a>
+<FONT color="green">407</FONT>             * {@inheritDoc}<a name="line.407"></a>
+<FONT color="green">408</FONT>             */<a name="line.408"></a>
+<FONT color="green">409</FONT>            public synchronized MBeanInfo getMBeanInfo() {<a name="line.409"></a>
+<FONT color="green">410</FONT>                    return info;<a name="line.410"></a>
+<FONT color="green">411</FONT>            }<a name="line.411"></a>
+<FONT color="green">412</FONT>    <a name="line.412"></a>
+<FONT color="green">413</FONT>            /**<a name="line.413"></a>
+<FONT color="green">414</FONT>             * {@inheritDoc}<a name="line.414"></a>
+<FONT color="green">415</FONT>             */<a name="line.415"></a>
+<FONT color="green">416</FONT>            public synchronized Object invoke(String actionName, Object[] params, String[] signature)<a name="line.416"></a>
+<FONT color="green">417</FONT>                    throws MBeanException, ReflectionException {<a name="line.417"></a>
+<FONT color="green">418</FONT>                    <a name="line.418"></a>
+<FONT color="green">419</FONT>                    if (signature == null)<a name="line.419"></a>
+<FONT color="green">420</FONT>                            signature = new String[0];<a name="line.420"></a>
+<FONT color="green">421</FONT>                    <a name="line.421"></a>
+<FONT color="green">422</FONT>                    String qName = actionName + Arrays.toString(signature);<a name="line.422"></a>
+<FONT color="green">423</FONT>                    <a name="line.423"></a>
+<FONT color="green">424</FONT>                    MethodDescriptor method = operationsMap.get(qName);<a name="line.424"></a>
+<FONT color="green">425</FONT>                    if (method == null)<a name="line.425"></a>
+<FONT color="green">426</FONT>                            throw new RuntimeException("Method not found: " + qName);<a name="line.426"></a>
+<FONT color="green">427</FONT>    <a name="line.427"></a>
+<FONT color="green">428</FONT>                    try {<a name="line.428"></a>
+<FONT color="green">429</FONT>                            return method.getMethod().invoke(instance, params);<a name="line.429"></a>
+<FONT color="green">430</FONT>                    }<a name="line.430"></a>
+<FONT color="green">431</FONT>                    catch (Exception e) {<a name="line.431"></a>
+<FONT color="green">432</FONT>                            throw new ReflectionException(e, "Could not invoke operation: " + qName);<a name="line.432"></a>
+<FONT color="green">433</FONT>                    }<a name="line.433"></a>
+<FONT color="green">434</FONT>            }<a name="line.434"></a>
+<FONT color="green">435</FONT>    <a name="line.435"></a>
+<FONT color="green">436</FONT>            /**<a name="line.436"></a>
+<FONT color="green">437</FONT>             * {@inheritDoc}<a name="line.437"></a>
+<FONT color="green">438</FONT>             */<a name="line.438"></a>
+<FONT color="green">439</FONT>            public synchronized void setAttribute(Attribute attribute)<a name="line.439"></a>
+<FONT color="green">440</FONT>                    throws AttributeNotFoundException, InvalidAttributeValueException, MBeanException, ReflectionException {<a name="line.440"></a>
+<FONT color="green">441</FONT>                    <a name="line.441"></a>
+<FONT color="green">442</FONT>                    PropertyDescriptor property = attributesMap.get(attribute.getName());<a name="line.442"></a>
+<FONT color="green">443</FONT>                    if (property != null &amp;&amp; property.getWriteMethod() != null) {<a name="line.443"></a>
+<FONT color="green">444</FONT>                            try {<a name="line.444"></a>
+<FONT color="green">445</FONT>                                    property.getWriteMethod().invoke(instance, attribute.getValue());<a name="line.445"></a>
+<FONT color="green">446</FONT>                            }<a name="line.446"></a>
+<FONT color="green">447</FONT>                            catch (Exception e) {<a name="line.447"></a>
+<FONT color="green">448</FONT>                                    throw new ReflectionException(e, "Could not set attribute value: " + attribute.getName() + "=" + attribute.getValue());<a name="line.448"></a>
+<FONT color="green">449</FONT>                            }<a name="line.449"></a>
+<FONT color="green">450</FONT>                    }<a name="line.450"></a>
+<FONT color="green">451</FONT>                    else<a name="line.451"></a>
+<FONT color="green">452</FONT>                            throw new AttributeNotFoundException("Attribute " + attribute.getName() + " not found");<a name="line.452"></a>
+<FONT color="green">453</FONT>            }<a name="line.453"></a>
+<FONT color="green">454</FONT>    <a name="line.454"></a>
+<FONT color="green">455</FONT>            /**<a name="line.455"></a>
+<FONT color="green">456</FONT>             * {@inheritDoc}<a name="line.456"></a>
+<FONT color="green">457</FONT>             */<a name="line.457"></a>
+<FONT color="green">458</FONT>            public synchronized AttributeList setAttributes(AttributeList attributes) {<a name="line.458"></a>
+<FONT color="green">459</FONT>                    AttributeList returnedAttributes = new AttributeList();<a name="line.459"></a>
+<FONT color="green">460</FONT>                    for (Object a : attributes) {<a name="line.460"></a>
+<FONT color="green">461</FONT>                            Attribute attribute = (Attribute)a;<a name="line.461"></a>
+<FONT color="green">462</FONT>                            try {<a name="line.462"></a>
+<FONT color="green">463</FONT>                                    setAttribute(attribute);<a name="line.463"></a>
+<FONT color="green">464</FONT>                                    returnedAttributes.add(new Attribute(attribute.getName(), getAttribute(attribute.getName())));<a name="line.464"></a>
+<FONT color="green">465</FONT>                            }<a name="line.465"></a>
+<FONT color="green">466</FONT>                            catch (Exception e) {<a name="line.466"></a>
+<FONT color="green">467</FONT>                                    // Ignore...<a name="line.467"></a>
+<FONT color="green">468</FONT>                            }<a name="line.468"></a>
+<FONT color="green">469</FONT>                    }<a name="line.469"></a>
+<FONT color="green">470</FONT>                    return returnedAttributes;<a name="line.470"></a>
+<FONT color="green">471</FONT>            }<a name="line.471"></a>
+<FONT color="green">472</FONT>    }<a name="line.472"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

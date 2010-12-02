@@ -1,0 +1,1976 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="BigDecimal,org.granite.math.BigDecimal,ONE,TEN,ZERO,precision,scale,sign,ulp,unscaledValue,abs,add,compareTo,divide,divideAndRemainder,divideToIntegralValue,equals,max,min,movePointLeft,movePointRight,multiply,negate,plus,remainder,round,scaleByPowerOfTen,setScale,stripTrailingZeros,subtract,toBigInteger,toBigIntegerExact,toInt,toIntExact,toNumber,toPlainString,toString" name="keywords">
+<title>org.granite.math.BigDecimal</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'BigDecimal - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/math/BigDecimal.html&amp;org/granite/math/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;BigDecimal</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class BigDecimal"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.math</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public final  class BigDecimal</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="BigNumber.html">BigNumber</a></td>
+</tr>
+</table>
+<p></p>
+  Immutable, arbitrary-precision signed decimal numbers. A
+  <code>BigDecimal</code> consists of an arbitrary precision integer
+  <i>unscaled value</i> and a 32-bit integer <i>scale</i>.  If zero
+  or positive, the scale is the number of digits to the right of the
+  decimal point.  If negative, the unscaled value of the number is
+  multiplied by ten to the power of the negation of the scale.  The
+  value of the number represented by the <code>BigDecimal</code> is
+  therefore <code>(unscaledValue &times; 10<sup>-scale</sup>)</code>.
+  <br>
+  <br>
+  The <code>BigDecimal</code> class provides operations for
+  arithmetic, scale manipulation, rounding, comparison and
+  format conversion. The <code>toString()</code> method provides a
+  canonical representation of a <code>BigDecimal</code>.
+  <br>
+  <br>
+  The <code>BigDecimal</code> class gives its user complete control
+  over rounding behavior.  If no rounding mode is specified and the
+  exact result cannot be represented, an exception is thrown;
+  otherwise, calculations can be carried out to a chosen precision
+  and rounding mode by supplying an appropriate <code>MathContext</code>
+  object to the operation.  In either case, eight <b>rounding
+  modes</b> are provided for the control of rounding. The enumeration
+  values of the <code>RoundingMode</code> should be used for such
+  rounding operations.
+  <br>
+  <br>
+  <i>This class is a partial ActionScript3 port of the Java
+  class <code>java.math.BigDecimal</code> originally written by
+  Josh Bloch, Mike Cowlishaw and Joseph D. Darcy, but relies on a
+  completely different <code>BigInteger</code> implementation. It provides
+  externalization methods that are meant to be used with specific GraniteDS
+  serialization mechanisms.</i>
+    <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Long.html" target="">Long</a>
+<br>
+<a href="BigInteger.html" target="">BigInteger</a>
+<br>
+<a href="MathContext.html" target="">MathContext</a>
+<br>
+<a href="RoundingMode.html" target="">RoundingMode</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#precision">precision</a> : int<div class="summaryTableDescription">[read-only]
+      The <i>precision</i> of this <code>BigDecimal</code> (the
+      precision is the number of digits in the unscaled value.)
+      <br>
+      <br>
+      The precision of a zero value is 1.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scale">scale</a> : int<div class="summaryTableDescription">[read-only]
+      The <i>scale</i> of this <code>BigDecimal</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sign">sign</a> : int<div class="summaryTableDescription">[read-only]
+      The sign of this <code>BigDecimal</code> as an <code>int</code>, ie:
+   -1, 0 or 1 as the value of this <code>BigDecimal</code> is negative,
+   zero or positive.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ulp">ulp</a> : <a href="../math/BigDecimal.html">BigDecimal</a>
+<div class="summaryTableDescription">[read-only]
+      The size of an ulp, a unit in the last place, of this
+      <code>BigDecimal</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#unscaledValue">unscaledValue</a> : <a href="../math/BigInteger.html">BigInteger</a>
+<div class="summaryTableDescription">[read-only]
+      A <code>BigInteger</code> whose value is the <i>unscaled
+      value</i> of this <code>BigDecimal</code>: computes
+   <code>(this * 10<sup>this.scale</sup>)</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#BigDecimal()">BigDecimal</a>(value:* = null)</div>
+<div class="summaryTableDescription">
+   Constructs a new <code>BigDecimal</code> instance according to the
+   supplied parameter.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#abs()">abs</a>(mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is the absolute value
+      of this <code>BigDecimal</code>, with rounding according to the
+      context settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#add()">add</a>(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is <code>(this + b)</code>,
+      with rounding according to the context settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#compareTo()">compareTo</a>(b:<a href="BigDecimal.html">BigDecimal</a>, unsigned:Boolean = false):int</div>
+<div class="summaryTableDescription">
+      Compares this <code>BigDecimal</code> with the specified
+      <code>BigDecimal</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#divide()">divide</a>(b:*, ... args):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is <code>(this / b)</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#divideAndRemainder()">divideAndRemainder</a>(b:*, mc:<a href="MathContext.html">MathContext</a> = null):Array</div>
+<div class="summaryTableDescription">
+      Returns a two-element <code>BigDecimal</code> array containing the
+      result of <code>divideToIntegralValue</code> followed by the result of
+      <code>remainder</code> on the two operands calculated with rounding
+      according to the context settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#divideToIntegralValue()">divideToIntegralValue</a>(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is the integer part
+      of <code>(this / b)</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#equals()">equals</a>(b:*):Boolean</div>
+<div class="summaryTableDescription">
+      Compares this <code>BigDecimal</code> with the specified object for
+   equality.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#max()">max</a>(b:<a href="BigDecimal.html">BigDecimal</a>):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns the maximum of this <code>BigDecimal</code> and <code>b</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#min()">min</a>(b:<a href="BigDecimal.html">BigDecimal</a>):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns the minimum of this <code>BigDecimal</code> and <code>b</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#movePointLeft()">movePointLeft</a>(n:int):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> which is equivalent to this one
+      with the decimal point moved <code>n</code> places to the left.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#movePointRight()">movePointRight</a>(n:int):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> which is equivalent to this one
+      with the decimal point moved <code>n</code> places to the right.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#multiply()">multiply</a>(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is <code>(this * b)</code>,
+   with rounding according to the context settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#negate()">negate</a>(mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is <code>(-this)</code>,
+      with rounding according to the context settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#plus()">plus</a>(mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is <code>(+this)</code>,
+      with rounding according to the context settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#remainder()">remainder</a>(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is <code>(this % b)</code>,
+   with rounding according to the context settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#round()">round</a>(mc:<a href="MathContext.html">MathContext</a>):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> rounded according to the
+      <code>MathContext</code> settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#scaleByPowerOfTen()">scaleByPowerOfTen</a>(n:int):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose numerical value is equal to
+      <code>(this * 10<sup>n</sup>)</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setScale()">setScale</a>(scale:int, round:<a href="RoundingMode.html">RoundingMode</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose scale is the specified
+      value, and whose unscaled value is determined by multiplying or
+      dividing this <code>BigDecimal</code>'s unscaled value by the
+      appropriate power of ten to maintain its overall value.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#stripTrailingZeros()">stripTrailingZeros</a>():<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> which is numerically equal to
+      this one but with any trailing zeros removed from the
+      representation.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#subtract()">subtract</a>(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a <code>BigDecimal</code> whose value is <code>(this - b)</code>,
+      with rounding according to the context settings.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toBigInteger()">toBigInteger</a>():<a href="../math/BigInteger.html">BigInteger</a>
+</div>
+<div class="summaryTableDescription">
+      Converts this <code>BigDecimal</code> to a <code>BigInteger</code>: any
+   fractional part of this <code>BigDecimal</code> will be discarded.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toBigIntegerExact()">toBigIntegerExact</a>():<a href="../math/BigInteger.html">BigInteger</a>
+</div>
+<div class="summaryTableDescription">
+      Converts this <code>BigDecimal</code> to a <code>BigInteger</code>,
+      checking for lost information.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toInt()">toInt</a>():int</div>
+<div class="summaryTableDescription">
+      Converts this <code>BigDecimal</code> to an <code>int</code>: any
+   fractional part of this <code>BigDecimal</code> will be discarded,
+   and if the resulting <code>BigInteger</code> is too big to fit in an
+      <code>int</code>, only the low-order 31 bits are returned, signed as
+   this <code>BigDecimal</code> was.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toIntExact()">toIntExact</a>():int</div>
+<div class="summaryTableDescription">
+      Converts this <code>BigDecimal</code> to an <code>int</code>, checking
+      for lost information.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toNumber()">toNumber</a>():Number</div>
+<div class="summaryTableDescription">
+      Converts this <code>BigDecimal</code> to a <code>Number</code>.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toPlainString()">toPlainString</a>():String</div>
+<div class="summaryTableDescription">
+      Returns a string representation of this <code>BigDecimal</code>
+      without an exponent field.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>(engineering:Boolean = false):String</div>
+<div class="summaryTableDescription">
+      Returns the string representation of this <code>BigDecimal</code>,
+      using scientific notation if an exponent is needed.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ONE">ONE</a> : <a href="../math/BigDecimal.html">BigDecimal</a>
+<div class="summaryTableDescription">[static]
+      The value 1, with a scale of 0.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#TEN">TEN</a> : <a href="../math/BigDecimal.html">BigDecimal</a>
+<div class="summaryTableDescription">[static]
+      The value 10, with a scale of 0.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ZERO">ZERO</a> : <a href="../math/BigDecimal.html">BigDecimal</a>
+<div class="summaryTableDescription">[static]
+      The value 0, with a scale of 0.</div>
+</td><td class="summaryTableOwnerCol">BigDecimal</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="precision"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">precision</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>precision:int</code>&nbsp;&nbsp;[read-only]<p>
+      The <i>precision</i> of this <code>BigDecimal</code> (the
+      precision is the number of digits in the unscaled value.)
+      <br>
+      <br>
+      The precision of a zero value is 1.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get precision():int</code>
+<br>
+</div>
+<a name="scale"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scale</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>scale:int</code>&nbsp;&nbsp;[read-only]<p>
+      The <i>scale</i> of this <code>BigDecimal</code>.  If zero
+      or positive, the scale is the number of digits to the right of
+      the decimal point.  If negative, the unscaled value of the
+      number is multiplied by ten to the power of the negation of the
+      scale.  For example, a scale of <code>-3</code> means the unscaled
+      value is multiplied by 1000.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get scale():int</code>
+<br>
+</div>
+<a name="sign"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sign</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>sign:int</code>&nbsp;&nbsp;[read-only]<p>
+      The sign of this <code>BigDecimal</code> as an <code>int</code>, ie:
+   -1, 0 or 1 as the value of this <code>BigDecimal</code> is negative,
+   zero or positive.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get sign():int</code>
+<br>
+</div>
+<a name="ulp"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ulp</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>ulp:<a href="../math/BigDecimal.html">BigDecimal</a></code>&nbsp;&nbsp;[read-only]<p>
+      The size of an ulp, a unit in the last place, of this
+      <code>BigDecimal</code>. An ulp of a nonzero <code>BigDecimal</code>
+      value is the positive distance between this value and the
+      <code>BigDecimal</code> value next larger in magnitude with the
+      same number of digits. An ulp of a zero value is numerically
+      equal to 1 with the scale of <code>this</code>. The result is
+      stored with the same scale as <code>this</code> so the result
+      for zero and nonzero values is equal to <code>[1, this.scale]</code>.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get ulp():<a href="../math/BigDecimal.html">BigDecimal</a></code>
+<br>
+</div>
+<a name="unscaledValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unscaledValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>unscaledValue:<a href="../math/BigInteger.html">BigInteger</a></code>&nbsp;&nbsp;[read-only]<p>
+      A <code>BigInteger</code> whose value is the <i>unscaled
+      value</i> of this <code>BigDecimal</code>: computes
+   <code>(this * 10<sup>this.scale</sup>)</code>.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get unscaledValue():<a href="../math/BigInteger.html">BigInteger</a></code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="BigDecimal()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">BigDecimal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function BigDecimal(value:* = null)</code><p>
+   Constructs a new <code>BigDecimal</code> instance according to the
+   supplied parameter.
+   <br>
+   <br>
+   The <code>value</code> parameter may be a String representation of
+   a decimal value, an <code>int</code> primitive value, a <code>Number</code>,
+   a <code>Long</code>, a <code>BigInteger</code> or even another
+   <code>BigDecimal</code>:
+   <br>
+   <ul>
+   <li><code>String</code>: the string representation consists
+      of an optional sign, <code>'+'</code> or <code>'-'</code>, followed by
+   a sequence of zero or more decimal digits ("the integer"), optionally
+      followed by a fraction, optionally followed by an exponent.
+   <br>
+   The fraction consists of a decimal point followed by zero
+      or more decimal digits.  The string must contain at least one
+      digit in either the integer or the fraction.  The number formed
+      by the sign, the integer and the fraction is referred to as the
+      <i>significand</i>.
+      <br>
+      The exponent consists of the character <code>'e'</code> or <code>'E'</code>
+      followed by one or more decimal digits. The value of the
+      exponent must lie between <code>-int.MAX_VALUE</code> and
+   <code>int.MAX_VALUE</code>, inclusive.</li>
+   <li><code>int</code>: a primitive integer value.</li>
+   <li><code>Number</code>: a primitive number value. Note that the provided
+   number is first translated to its String representation in order to parsed
+   as if it was a String parameter.</li>
+   <li><code>BigDecimal</code>: the new BigInteger will be an exact copy of
+     the specified parameter.</li>
+   <li><code>null</code>: the new BigDecimal will be an exact copy of
+     the constant <code>BigDecimal.ZERO</code>.</li>
+   </ul>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:*</code> (default = <code>null</code>)<code></code> &mdash; the value to be assigned to the new <code>BigDecimal</code>.
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/NumberFormatError.html">NumberFormatError</a> </code> &mdash; if the <code>value</code>
+     parameter is an invalid String representation. 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>value</code>
+     parameter is not one of the supported types or if it is
+     <code>Number.NaN</code>, <code>Number.POSITIVE_INFINITY</code> or
+     <code>Number.NEGATIVE_INFINITY</code>.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="abs()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">abs</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function abs(mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is the absolute value
+      of this <code>BigDecimal</code>, with rounding according to the
+      context settings. If context is omitted or null, the returned value
+   is the absolute value of this <code>BigDecimal</code> with a scale
+   of <code>this.scale</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        <code>abs(this)</code>, rounded as necessary.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the result is inexact but
+     the rounding mode is <code>RoundingMode.UNNECESSARY</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="add()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">add</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function add(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is <code>(this + b)</code>,
+      with rounding according to the context settings. If context is omitted,
+   no rounding operation is performed.
+      <br>
+      <br>
+      If either number is zero and the precision setting is nonzero then
+      the other number, rounded if necessary, is used as the result.
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>BigDecimal</code> constructor documentation.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; value to be added to this <code>BigDecimal</code>.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; mc the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        <code>this + b</code>, rounded as necessary.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the result is inexact but the
+        rounding mode is <code>RoundingMode.UNNECESSARY</code>.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#BigDecimal()" target="">BigDecimal()</a>
+</div>
+</div>
+<a name="compareTo()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">compareTo</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function compareTo(b:<a href="BigDecimal.html">BigDecimal</a>, unsigned:Boolean = false):int</code><p>
+      Compares this <code>BigDecimal</code> with the specified
+      <code>BigDecimal</code>. Two <code>BigDecimal</code> objects that are
+      equal in value but have a different scale (like 2.0 and 2.00)
+      are considered equal by this method. This method is provided
+      in preference to individual methods for each of the six boolean
+      comparison operators (&lt;, ==, &gt;, &gt;=, !=, &lt;=).  The
+      suggested idiom for performing these comparisons is:
+      <code>(x.compareTo(y) &lt;<i>op</i>&gt; 0)</code>, where
+      &lt;<i>op</i>&gt; is one of the six comparison operators.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:<a href="BigDecimal.html">BigDecimal</a></code> &mdash; <code>BigDecimal</code> to which this <code>BigDecimal</code>
+     is to be compared.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">unsigned</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; if <code>true</code>, the comparison will be between
+     absolute values of <code>this</code> and <code>b</code>.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash; -1, 0, or 1 as this <code>BigDecimal</code> is numerically 
+               less than, equal to, or greater than <code>b</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="divide()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">divide</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function divide(b:*, ... args):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is <code>(this / b)</code>.
+   <br>
+   <br>
+   Optional parameters are:
+   <ul>
+   <li><i>none</i>: the quotient will have a preferred scale of
+   <code>(this.scale - b.scale)</code>: if the exact quotient cannot be
+      represented (because it has a non-terminating decimal expansion) an
+   <code>ArithmeticError</code> is thrown.</li>
+   <li><code>MathContext</code>: rouding is performed rounding according to
+   the context settings.</li>
+   <li><code>RoundingMode</code>: rouding is performed rounding according to
+   the supplied rounding mode.</li>
+   <li><code>scale, RoundingMode</code>: scale of the result will be as
+   specified. If rounding must be performed to generate a result with the
+   specified scale, the specified rounding mode is applied.</li>
+   </ul>
+   
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>BigDecimal</code> constructor documentation.
+   <br>
+   <br>
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; value by which this <code>BigDecimal</code> is to be divided.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code>... <span class="label">args</span></code> &mdash; zero, one or two optional parameters as specified above.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        <code>this / b</code>.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>b</code> is zero, or if 
+     rounding mode is omitted or equals to <code>RoundingMode.UNNECESSARY</code>
+     and the exact quotient does not have a terminating decimal expansion or
+     cannot be scaled according to the scale parameter.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#BigDecimal()" target="">BigDecimal()</a>
+</div>
+</div>
+<a name="divideAndRemainder()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">divideAndRemainder</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function divideAndRemainder(b:*, mc:<a href="MathContext.html">MathContext</a> = null):Array</code><p>
+      Returns a two-element <code>BigDecimal</code> array containing the
+      result of <code>divideToIntegralValue</code> followed by the result of
+      <code>remainder</code> on the two operands calculated with rounding
+      according to the context settings.
+      <br>
+      <br>
+      Note that if both the integer quotient and remainder are needed, this
+   method is faster than using the <code>divideToIntegralValue</code> and
+   <code>remainder</code> methods separately because the division need only
+   be carried out once.
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>BigDecimal</code> constructor documentation.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; value by which this <code>BigDecimal</code> is to be divided, 
+              and the remainder computed.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; a two element <code>BigDecimal</code> array: the quotient 
+              (the result of <code>divideToIntegralValue</code>) is the 
+              initial element and the remainder is the final element.
+      </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>b</code> is zero or if
+     the result is inexact but the rounding mode is
+     <code>RoundingMode.UNNECESSARY</code>, or
+     <code>mc.precision &gt; 0</code> and the result of
+     <code>this.divideToIntgralValue(b)</code> would require a precision
+     of more than <code>mc.precision</code> digits.
+   
+      </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#divideToIntegralValue()" target="">divideToIntegralValue()</a>
+<br>
+<a href="../math/BigDecimal.html#remainder()" target="">remainder()</a>
+</div>
+</div>
+<a name="divideToIntegralValue()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">divideToIntegralValue</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function divideToIntegralValue(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is the integer part
+      of <code>(this / b)</code>. Since the integer part of the exact
+   quotient does not depend on the rounding mode, the rounding mode
+   does not affect the values returned by this method. The preferred
+   scale of the result is <code>(this.scale - b.scale())</code>. An
+      <code>ArithmeticError</code> is thrown if the integer part of the
+   exact quotient needs more than <code>mc.precision</code> digits.
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>BigDecimal</code> constructor documentation.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; value by which this <code>BigDecimal</code> is to be divided.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        The integer part of <code>this / b</code>.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>b</code> is zero
+     or if <code>mc.precision &gt; 0</code> and the result requires
+     a precision of more than <code>mc.precision</code> digits.
+      </td>
+</tr>
+</table>
+</div>
+<a name="equals()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">equals</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function equals(b:*):Boolean</code><p>
+      Compares this <code>BigDecimal</code> with the specified object for
+   equality.  Unlike <code>compareTo</code>, this method considers two
+      <code>BigDecimal</code> objects equal only if they are equal in
+      value and scale (thus 2.0 is not equal to 2.00 when compared by
+      this method).
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>BigDecimal</code> constructor documentation.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; b the bject to which this <code>BigDecimal</code> is 
+              to be compared.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if and only if the specified object is a
+              <code>BigDecimal</code> whose value and scale are equal to this 
+              <code>BigDecimal</code>'s.
+   
+      </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#compareTo()" target="">compareTo()</a>
+</div>
+</div>
+<a name="max()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">max</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function max(b:<a href="BigDecimal.html">BigDecimal</a>):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns the maximum of this <code>BigDecimal</code> and <code>b</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:<a href="BigDecimal.html">BigDecimal</a></code> &mdash; value with which the maximum is to be computed.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        the <code>BigDecimal</code> whose value is the greater of this 
+           <code>BigDecimal</code> and <code>b</code>. If they are equal, 
+           as defined by the <code>compareTo</code> method, <code>this</code>
+     is returned.
+   
+      
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#compareTo()" target="">compareTo()</a>
+</div>
+</div>
+<a name="min()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">min</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function min(b:<a href="BigDecimal.html">BigDecimal</a>):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns the minimum of this <code>BigDecimal</code> and <code>b</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:<a href="BigDecimal.html">BigDecimal</a></code> &mdash; value with which the minimum is to be computed.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        the <code>BigDecimal</code> whose value is the lesser of this 
+        <code>BigDecimal</code> and <code>b</code>. If they are equal, 
+           as defined by the <code>compareTo</code> method, <code>this</code>
+     is returned.
+   
+      
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#compareTo()" target="">compareTo()</a>
+</div>
+</div>
+<a name="movePointLeft()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">movePointLeft</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function movePointLeft(n:int):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> which is equivalent to this one
+      with the decimal point moved <code>n</code> places to the left.  If
+      <code>n</code> is non-negative, the call merely adds <code>n</code>
+   to the scale.  If <code>n</code> is negative, the call is equivalent
+      to <code>movePointRight(-n)</code>.  The <code>BigDecimal</code>
+      returned by this call has value <code>(this * 10<sup>-n</sup>)</code>
+   and scale <code>max(this.scale + n, 0)</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">n</span>:int</code> &mdash; n number of places to move the decimal point to the left.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        a <code>BigDecimal</code> which is equivalent to this one with
+     the decimal point moved <code>n</code> places to the left.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if scale overflows.
+      </td>
+</tr>
+</table>
+</div>
+<a name="movePointRight()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">movePointRight</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function movePointRight(n:int):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> which is equivalent to this one
+      with the decimal point moved <code>n</code> places to the right.
+      If <code>n</code> is non-negative, the call merely subtracts
+      <code>n</code> from the scale.  If <code>n</code> is negative, the call
+      is equivalent to <code>movePointLeft(-n)</code>.  The <code>BigDecimal</code>
+   returned by this call has value <code>(this * 10<sup>n</sup>)</code> and
+   scale <code>max(this.scale - n, 0)</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">n</span>:int</code> &mdash; n number of places to move the decimal point to the right.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        a <code>BigDecimal</code> which is equivalent to this one
+        with the decimal point moved <code>n</code> places to the right.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if scale overflows.
+      </td>
+</tr>
+</table>
+</div>
+<a name="multiply()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">multiply</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function multiply(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is <code>(this * b)</code>,
+   with rounding according to the context settings. If context is omitted,
+   no rounding operation is performed.
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>BigDecimal</code> constructor documentation.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; value to be multiplied by this <code>BigDecimal</code>.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        <code>this * b</code>, rounded as necessary.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the result is inexact but the
+        rounding mode is <code>RoundingMode.UNNECESSARY</code>.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#BigDecimal()" target="">BigDecimal()</a>
+</div>
+</div>
+<a name="negate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">negate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function negate(mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is <code>(-this)</code>,
+      with rounding according to the context settings. If context is omitted
+   or null, no rounding is performed.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        <code>-this</code>, rounded as necessary.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the result is inexact but
+     the rounding mode is <code>RoundingMode.UNNECESSARY</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="plus()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">plus</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function plus(mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is <code>(+this)</code>,
+      with rounding according to the context settings.
+      <br>
+      <br>
+      The effect of this method is identical to that of the <code>round()</code>
+   method.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        <code>this</code>, rounded as necessary.  A zero result will
+        have a scale of 0.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the result is inexact but
+     the rounding mode is <code>RoundingMode.UNNECESSARY</code>.
+   
+      </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#round()" target="">round()</a>
+</div>
+</div>
+<a name="remainder()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">remainder</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function remainder(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is <code>(this % b)</code>,
+   with rounding according to the context settings. The <code>MathContext</code>
+   settings affect the implicit divide used to compute the remainder. The
+   remainder computation itself is by definition exact. Therefore, the remainder
+   may contain more than <code>mc.precision</code> digits.
+      <br>
+      <br>
+      The remainder is given by
+      <code>this.subtract(this.divideToIntegralValue(b, mc).multiply(b))</code>. Note
+   that this is not the modulo operation (the result can be negative).
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>BigDecimal</code> constructor documentation.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; value by which this {</td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; mc the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        {
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>b</code> is zero or if rounding
+     mode is <code>RoundingMode.UNNECESSARY</code>, or <code>mc.precision &gt; 0</code> 
+           and the result of <code>this.divideToIntgralValue(b)</code> would require a
+     precision of more than <code>mc.precision</code> digits.
+   
+      </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#divideToIntegralValue()" target="">divideToIntegralValue()</a>
+</div>
+</div>
+<a name="round()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">round</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function round(mc:<a href="MathContext.html">MathContext</a>):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> rounded according to the
+      <code>MathContext</code> settings. If the precision setting is
+   0 then no rounding takes place.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> &mdash; the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        a <code>BigDecimal</code> rounded according to the 
+        <code>MathContext</code> settings.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the rounding mode is
+        <code>RoundingMode.UNNECESSARY</code> and the
+     <code>BigDecimal</code> operation would require rounding.
+   
+      </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#plus()" target="">plus()</a>
+</div>
+</div>
+<a name="scaleByPowerOfTen()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleByPowerOfTen</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function scaleByPowerOfTen(n:int):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose numerical value is equal to
+      <code>(this * 10<sup>n</sup>)</code>. The scale of the result is
+   <code>(this.scale - n)</code>.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">n</span>:int</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code></td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the scale would be
+        outside the range of a 32-bit integer.
+      </td>
+</tr>
+</table>
+</div>
+<a name="setScale()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setScale</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setScale(scale:int, round:<a href="RoundingMode.html">RoundingMode</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose scale is the specified
+      value, and whose unscaled value is determined by multiplying or
+      dividing this <code>BigDecimal</code>'s unscaled value by the
+      appropriate power of ten to maintain its overall value. If the
+      scale is reduced by the operation, the unscaled value must be
+      divided (rather than multiplied), and the value may be changed;
+      in this case, the specified rounding mode is applied to the
+      division.
+      
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">scale</span>:int</code> &mdash; the scale of the <code>BigDecimal</code> value to be
+     returned.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">round</span>:<a href="RoundingMode.html">RoundingMode</a></code> (default = <code>null</code>)<code></code> &mdash; the rounding mode to apply (if <code>null</code>, the
+     default value of <code>RoundingMode.UNNECESSARY</code> is used).
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        a <code>BigDecimal</code> whose scale is the specified value, 
+           and whose unscaled value is determined by multiplying or 
+           dividing this <code>BigDecimal</code>'s unscaled value by the 
+           appropriate power of ten to maintain its overall value.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if
+     <code>round == RoundingMode.UNNECESSARY</code> and the specified
+     scaling operation would require rounding.
+      </td>
+</tr>
+</table>
+</div>
+<a name="stripTrailingZeros()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">stripTrailingZeros</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function stripTrailingZeros():<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> which is numerically equal to
+      this one but with any trailing zeros removed from the
+      representation.  For example, stripping the trailing zeros from
+      the <code>BigDecimal</code> value <code>600.0</code>, which has
+      [<code>BigInteger</code>, <code>scale</code>] components equals to
+      [6000, 1], yields <code>6E2</code> with [<code>BigInteger</code>,
+   <code>scale</code>] components equals to [6, -2].
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        a numerically equal <code>BigDecimal</code> with any
+        trailing zeros removed.
+      
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="subtract()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">subtract</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function subtract(b:*, mc:<a href="MathContext.html">MathContext</a> = null):<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      Returns a <code>BigDecimal</code> whose value is <code>(this - b)</code>,
+      with rounding according to the context settings. If context is omitted,
+   no rounding operation is performed.
+      <br>
+      <br>
+      If <code>b</code> is zero then this, rounded if necessary, is used as the
+      result. If this is zero then the result is <code>b.negate(mc)</code>.
+   <br>
+   <br>
+   The <code>b</code> parameter may be of any of the supported types as
+   specified in the <code>BigDecimal</code> constructor documentation.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:*</code> &mdash; value to be subtracted from this <code>BigDecimal</code>.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mc</span>:<a href="MathContext.html">MathContext</a></code> (default = <code>null</code>)<code></code> &mdash; the context to use.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigDecimal.html">BigDecimal</a></code> &mdash; 
+                        <code>this - b</code>, rounded as necessary.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if the result is inexact but the
+        rounding mode is <code>RoundingMode.UNNECESSARY</code>.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#BigDecimal()" target="">BigDecimal()</a>
+</div>
+</div>
+<a name="toBigInteger()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toBigInteger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toBigInteger():<a href="../math/BigInteger.html">BigInteger</a></code><p>
+      Converts this <code>BigDecimal</code> to a <code>BigInteger</code>: any
+   fractional part of this <code>BigDecimal</code> will be discarded. Note
+   that this conversion can lose information about the precision of the
+      <code>BigDecimal</code> value.
+      <br>
+      <br>
+      To have an exception thrown if the conversion is inexact (in
+      other words if a nonzero fractional part is discarded), use the
+      <code>toBigIntegerExact</code> method.
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigInteger.html">BigInteger</a></code> &mdash; 
+                        this {
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#toBigIntegerExact()" target="">toBigIntegerExact()</a>
+</div>
+</div>
+<a name="toBigIntegerExact()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toBigIntegerExact</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toBigIntegerExact():<a href="../math/BigInteger.html">BigInteger</a></code><p>
+      Converts this <code>BigDecimal</code> to a <code>BigInteger</code>,
+      checking for lost information. An exception is thrown if this
+      <code>BigDecimal</code> has a nonzero fractional part.
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/BigInteger.html">BigInteger</a></code> &mdash; 
+                        this <code>BigDecimal</code> converted to a <code>BigInteger</code>.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>this</code> has a nonzero
+        fractional part.
+      </td>
+</tr>
+</table>
+</div>
+<a name="toInt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toInt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toInt():int</code><p>
+      Converts this <code>BigDecimal</code> to an <code>int</code>: any
+   fractional part of this <code>BigDecimal</code> will be discarded,
+   and if the resulting <code>BigInteger</code> is too big to fit in an
+      <code>int</code>, only the low-order 31 bits are returned, signed as
+   this <code>BigDecimal</code> was.
+      
+      </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash; this <code>BigDecimal</code> converted to an <code>int</code>.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="BigInteger.html#toInt()" target="">BigInteger.toInt()</a>
+<br>
+<a href="../math/BigDecimal.html#toIntExact()" target="">toIntExact()</a>
+</div>
+</div>
+<a name="toIntExact()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toIntExact</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toIntExact():int</code><p>
+      Converts this <code>BigDecimal</code> to an <code>int</code>, checking
+      for lost information. If this <code>BigDecimal</code> has a nonzero
+   fractional part or is out of the possible range for an <code>int</code>
+   result then an <code>ArithmeticError</code> is thrown.
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash; this <code>BigDecimal</code> converted to an <code>int</code>.
+      </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/ArithmeticError.html">ArithmeticError</a> </code> &mdash; if <code>this</code> has a nonzero
+              fractional part, or will not fit in an <code>int</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="toNumber()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toNumber</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toNumber():Number</code><p>
+      Converts this <code>BigDecimal</code> to a <code>Number</code>. This
+      conversion is done by converting this <code>BigInteger</code> to signed
+   String representation and constructing a new <code>Number</code> from
+   this representation: if this <code>BigDecimal</code> has a too great a
+   magnitude to be represented as a <code>Number</code>, it will be
+      converted to <code>Number.NEGATIVE_INFINITY</code> or
+   <code>Number.POSITIVE_INFINITY</code> as appropriate. Note that even when
+      the return value is finite, this conversion can lose information about
+   the precision of the <code>BigDecimal</code> value.
+      
+      </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; this <code>BigDecimal</code> converted to a <code>Number</code>.
+      </td>
+</tr>
+</table>
+</div>
+<a name="toPlainString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toPlainString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toPlainString():String</code><p>
+      Returns a string representation of this <code>BigDecimal</code>
+      without an exponent field. For values with a positive scale,
+      the number of digits to the right of the decimal point is used
+      to indicate scale. For values with a zero or negative scale,
+      the resulting string is generated as if the value were
+      converted to a numerically equal value with zero scale and as
+      if all the trailing zeros of the zero scale value were present
+      in the result.
+      <br>
+      <br>
+      The entire string is prefixed by a minus sign character '-'
+      if the unscaled value is less than zero. No sign character is
+   prefixed if the unscaled value is zero or positive.
+      <br>
+      <br>
+      Note that if the result of this method is passed to the
+      <code>BigDecimal</code> constructor, only the numerical value of
+   this <code>BigDecimal</code> will necessarily be recovered; the
+   representation of the new <code>BigDecimal</code> may have a
+   different scale. In particular, if this <code>BigDecimal</code>
+   has a negative scale, the string resulting from this method will
+   have a scale of zero when processed by the string constructor.
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; a string representation of this <code>BigDecimal</code>
+        without an exponent field.
+      
+      </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#toString()" target="">toString()</a>
+</div>
+</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toString(engineering:Boolean = false):String</code><p>
+      Returns the string representation of this <code>BigDecimal</code>,
+      using scientific notation if an exponent is needed.
+      <br>
+      <br>
+      A standard canonical string form of the <code>BigDecimal</code>
+      is created as though by the following steps: first, the
+      absolute value of the unscaled value of the <code>BigDecimal</code>
+      is converted to a string in base ten using the characters
+      '0' through '9' with no leading zeros (except if its value is zero,
+   in which case a single '0' character is used).
+      <br>
+      <br>
+      Next, an <i>adjusted exponent</i> is calculated; this is the
+      negated scale, plus the number of characters in the converted
+      unscaled value, less one. That is,
+      <code>-scale + (ulength - 1)</code>, where <code>ulength</code> is
+   the length of the absolute value of the unscaled value in decimal
+      digits (its <i>precision</i>).
+      <br>
+      <br>
+      If the scale is greater than or equal to zero and the
+      adjusted exponent is greater than or equal to <code>-6</code>, the
+      number will be converted to a character form without using
+      exponential notation. In this case, if the scale is zero then
+      no decimal point is added and if the scale is positive a
+      decimal point will be inserted with the scale specifying the
+      number of characters to the right of the decimal point.
+      '0' characters are added to the left of the converted
+      unscaled value as necessary. If no character precedes the
+      decimal point after this insertion then a conventional
+      '0' character is prefixed.
+      <br>
+      <br>
+      Otherwise (that is, if the scale is negative, or the
+      adjusted exponent is less than <code>-6</code>), the number will be
+      converted to a character form using exponential notation.  In
+      this case, if the converted <code>BigInteger</code> has more than
+      one digit a decimal point is inserted after the first digit.
+      An exponent in character form is then suffixed to the converted
+      unscaled value (perhaps with inserted decimal point); this
+      comprises the letter 'E' followed immediately by the
+      adjusted exponent converted to a character form.  The latter is
+      in base ten, using the characters '0' through '9' with no leading
+   zeros, and is always prefixed by a sign character '-' if the
+      adjusted exponent is negative, '+' otherwise.
+      <br>
+      <br>
+      Finally, the entire string is prefixed by a minus sign character '-'
+   if the unscaled value is less than zero. No sign character is prefixed
+   if the unscaled value is zero or positive.
+      <br>
+      <br>
+      <b>Examples:</b>
+   <br>
+   <br>
+      For each representation [<i>unscaled value</i>, <i>scale</i>]
+      on the left, the resulting string is shown on the right.
+      <pre>
+      [123,0]      "123"
+      [-123,0]     "-123"
+      [123,-1]     "1.23E+3"
+      [123,-3]     "1.23E+5"
+      [123,1]      "12.3"
+      [123,5]      "0.00123"
+      [123,10]     "1.23E-8"
+      [-123,12]    "-1.23E-10"
+      </pre>
+            <b>Notes:</b>
+      <ul>
+            <li>There is a one-to-one mapping between the distinguishable
+      <code>BigDecimal</code> values and the result of this conversion.
+      That is, every distinguishable <code>BigDecimal</code> value
+      (unscaled value and scale) has a unique string representation
+      as a result of using <code>toString(false)</code>. If that string
+      representation is converted back to a <code>BigDecimal</code> using
+      the <code>BigDecimal</code> constructor, then the original
+      value will be recovered.</li>
+      
+      <li>The string produced for a given number is always the same;
+      it is not affected by locale.</li>
+      
+      <li>The <code>engineering</code> parameter may be used for
+      presenting numbers with exponents in engineering notation: if
+      exponential notation is used, the power of ten is adjusted to
+      be a multiple of three (engineering notation) such that the
+      integer part of nonzero values will be in the range 1 through
+      999.</li>
+   
+   <li>The <code>setScale</code> method may be used for rounding a
+   <code>BigDecimal</code> so it has a known number of digits after
+      the decimal point.</li>
+            </ul>
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">engineering</span>:Boolean</code> (default = <code>false</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the string representation of this <code>BigDecimal</code>.
+   
+      </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/BigDecimal.html#BigDecimal()" target="">BigDecimal()</a>
+</div>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="ONE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ONE</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const ONE:<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      The value 1, with a scale of 0.
+      </p></div>
+<a name="TEN"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">TEN</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const TEN:<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      The value 10, with a scale of 0.
+      </p></div>
+<a name="ZERO"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ZERO</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const ZERO:<a href="../math/BigDecimal.html">BigDecimal</a></code><p>
+      The value 0, with a scale of 0.
+      </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

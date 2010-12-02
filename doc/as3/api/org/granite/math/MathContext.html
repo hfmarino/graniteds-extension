@@ -1,0 +1,494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="MathContext,org.granite.math.MathContext,DECIMAL128,DECIMAL32,DECIMAL64,UNLIMITED,precision,roundingMode,equals,forString,toString" name="keywords">
+<title>org.granite.math.MathContext</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'MathContext - Granite Data Services API Documentation - 2.2.0.GA';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Granite Data Services API Documentation (2.2.0.GA)</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/granite/math/MathContext.html&amp;org/granite/math/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;MathContext</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class MathContext"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.granite.math</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public final  class MathContext</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td>flash.utils.IExternalizable</td>
+</tr>
+</table>
+<p></p>
+  Immutable objects which encapsulate the context settings which
+  describe certain rules for numerical operators, such as those
+  implemented by the <code>BigDecimal</code> class.
+  
+  <p>The base-independent settings are:
+  <ol>
+  <li><code>precision</code>:
+  the number of digits to be used for an operation; results are
+  rounded to this precision
+  
+  <li><code>roundingMode</code>:
+  a <code>RoundingMode</code> object which specifies the algorithm to be
+  used for rounding.
+  </ol>
+  
+  <i>This class is basically an ActionScript3 port of the Java
+  class <code>java.math.MathContext</code> originally written by
+  Mike Cowlishaw and Joseph D. Darcy.</i>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="RoundingMode.html" target="">RoundingMode</a>
+<br>
+<a href="BigDecimal.html" target="">BigDecimal</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#precision">precision</a> : int<div class="summaryTableDescription">[read-only]
+      The number of digits to be used for an operation.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#roundingMode">roundingMode</a> : <a href="../math/RoundingMode.html">RoundingMode</a>
+<div class="summaryTableDescription">[read-only]
+      The rounding algorithm to be used for an operation.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#MathContext()">MathContext</a>(precision:int = 0, roundingMode:<a href="RoundingMode.html">RoundingMode</a> = null)</div>
+<div class="summaryTableDescription">
+      Constructs a new <code>MathContext</code> with a specified
+      precision and rounding mode.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#equals()">equals</a>(o:*):Boolean</div>
+<div class="summaryTableDescription">
+      Compares this <code>MathContext</code> with the specified
+      <code>Object</code> for equality.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#forString()">forString</a>(s:String):<a href="../math/MathContext.html">MathContext</a>
+</div>
+<div class="summaryTableDescription">[static]
+      Returns a new <code>MathContext</code> from a string.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>():String</div>
+<div class="summaryTableDescription">
+      Returns the string representation of this <code>MathContext</code>.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#DECIMAL128">DECIMAL128</a> : <a href="../math/MathContext.html">MathContext</a>
+<div class="summaryTableDescription">[static]
+      A <code>MathContext</code> object with a precision setting
+      matching the IEEE 754R Decimal128 format, 34 digits, and a
+      rounding mode of <code>RoundingMode.HALF_EVEN</code>, the
+      IEEE 754R default.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#DECIMAL32">DECIMAL32</a> : <a href="../math/MathContext.html">MathContext</a>
+<div class="summaryTableDescription">[static]
+      A <code>MathContext</code> object with a precision setting
+      matching the IEEE 754R Decimal32 format, 7 digits, and a
+      rounding mode of <code>RoundingMode.HALF_EVEN</code>, the
+      IEEE 754R default.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#DECIMAL64">DECIMAL64</a> : <a href="../math/MathContext.html">MathContext</a>
+<div class="summaryTableDescription">[static]
+      A <code>MathContext</code> object with a precision setting
+      matching the IEEE 754R Decimal64 format, 16 digits, and a
+      rounding mode of <code>RoundingMode.HALF_EVEN</code>, the
+      IEEE 754R default.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#UNLIMITED">UNLIMITED</a> : <a href="../math/MathContext.html">MathContext</a>
+<div class="summaryTableDescription">[static]
+      A <code>MathContext</code> object whose settings have the values
+      required for unlimited precision arithmetic.</div>
+</td><td class="summaryTableOwnerCol">MathContext</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="precision"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">precision</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>precision:int</code>&nbsp;&nbsp;[read-only]<p>
+      The number of digits to be used for an operation.  A value of 0
+      indicates that unlimited precision (as many digits as are
+      required) will be used.  Note that leading zeros (in the
+      coefficient of a number) are never significant.
+      <br>
+      <code>precision</code> will always be non-negative.
+      </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get precision():int</code>
+<br>
+</div>
+<a name="roundingMode"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">roundingMode</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>roundingMode:<a href="../math/RoundingMode.html">RoundingMode</a></code>&nbsp;&nbsp;[read-only]<p>
+      The rounding algorithm to be used for an operation.
+            </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get roundingMode():<a href="../math/RoundingMode.html">RoundingMode</a></code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="RoundingMode.html" target="">RoundingMode</a>
+</div>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="MathContext()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">MathContext</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function MathContext(precision:int = 0, roundingMode:<a href="RoundingMode.html">RoundingMode</a> = null)</code><p>
+      Constructs a new <code>MathContext</code> with a specified
+      precision and rounding mode.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">precision</span>:int</code> (default = <code>0</code>)<code></code> &mdash; The non-negative <code>int</code> precision setting.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">roundingMode</span>:<a href="RoundingMode.html">RoundingMode</a></code> (default = <code>null</code>)<code></code> &mdash; The rounding mode to use. If this parameter is
+     omitted or <code>null</code>, it is defaulted to
+     <code>RoundingMode.HALF_UP</code>.
+            </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the <code>precision</code>
+     parameter is less than zero.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="RoundingMode.html#HALF_UP" target="">RoundingMode.HALF_UP</a>
+</div>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="equals()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">equals</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function equals(o:*):Boolean</code><p>
+      Compares this <code>MathContext</code> with the specified
+      <code>Object</code> for equality.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:*</code> &mdash; <code>Object</code> to which this <code>MathContext</code>
+     is to be compared.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; <code>true</code> if and only if the specified
+     <code>Object</code> is a <code>MathContext</code> object which
+     has exactly the same settings as this object.
+      </td>
+</tr>
+</table>
+</div>
+<a name="forString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">forString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function forString(s:String):<a href="../math/MathContext.html">MathContext</a></code><p>
+      Returns a new <code>MathContext</code> from a string.
+            The string must be in the same format as that produced by the
+      <code>toString</code> method.
+            </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">s</span>:String</code> &mdash; The string to be parsed
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/MathContext.html">MathContext</a></code> &mdash; 
+                        a new <code>MathContext</code> instance according to
+     the supplied parameter.
+      
+                        
+                     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../math/IllegalArgumentError.html">IllegalArgumentError</a> </code> &mdash; if the precision section
+     is out of range or the string is not in the format created by the
+     <code>toString</code> method.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/MathContext.html#toString" target="">toString</a>
+</div>
+</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toString():String</code><p>
+      Returns the string representation of this <code>MathContext</code>.
+      The <code>String</code> returned represents the settings of the
+      <code>MathContext</code> object as two space-delimited words
+      (separated by a single space character, <code>'&#92;u0020'</code>,
+      and with no leading or trailing white space), as follows:
+      <ol>
+      <li>
+      The string <code>"precision="</code>, immediately followed
+      by the value of the precision setting as a numeric string as if
+      generated by the <code>int.toString()</code> method.
+            <li>
+      The string <code>"roundingMode="</code>, immediately
+      followed by the value of the <code>roundingMode</code> setting as a
+      word.  This word will be the same as the name of the
+      corresponding public constant in the <code>RoundingMode</code> enum.
+      </ol>
+      <br>
+      For example: <code>"precision=9 roundingMode=HALF_UP"</code>
+      <br>
+      Additional words may be appended to the result of
+      <code>toString</code> in the future if more properties are added to
+      this class.
+            </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; a <code>String</code> representing the context settings.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../math/MathContext.html#forString" target="">forString</a>
+<br>
+<a href="RoundingMode.html" target="">RoundingMode</a>
+</div>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="DECIMAL128"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DECIMAL128</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const DECIMAL128:<a href="../math/MathContext.html">MathContext</a></code><p>
+      A <code>MathContext</code> object with a precision setting
+      matching the IEEE 754R Decimal128 format, 34 digits, and a
+      rounding mode of <code>RoundingMode.HALF_EVEN</code>, the
+      IEEE 754R default.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="RoundingMode.html#HALF_EVEN" target="">RoundingMode.HALF_EVEN</a>
+</div>
+</div>
+<a name="DECIMAL32"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DECIMAL32</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const DECIMAL32:<a href="../math/MathContext.html">MathContext</a></code><p>
+      A <code>MathContext</code> object with a precision setting
+      matching the IEEE 754R Decimal32 format, 7 digits, and a
+      rounding mode of <code>RoundingMode.HALF_EVEN</code>, the
+      IEEE 754R default.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="RoundingMode.html#HALF_EVEN" target="">RoundingMode.HALF_EVEN</a>
+</div>
+</div>
+<a name="DECIMAL64"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DECIMAL64</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const DECIMAL64:<a href="../math/MathContext.html">MathContext</a></code><p>
+      A <code>MathContext</code> object with a precision setting
+      matching the IEEE 754R Decimal64 format, 16 digits, and a
+      rounding mode of <code>RoundingMode.HALF_EVEN</code>, the
+      IEEE 754R default.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="RoundingMode.html#HALF_EVEN" target="">RoundingMode.HALF_EVEN</a>
+</div>
+</div>
+<a name="UNLIMITED"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">UNLIMITED</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const UNLIMITED:<a href="../math/MathContext.html">MathContext</a></code><p>
+      A <code>MathContext</code> object whose settings have the values
+      required for unlimited precision arithmetic.
+   <br>
+      The values of the settings are:
+      <code>precision=0 roundingMode=HALF_UP</code>
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="RoundingMode.html#HALF_UP" target="">RoundingMode.HALF_UP</a>
+</div>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->
